@@ -4,17 +4,28 @@
 
 Data is split between two layers based on one criterion: **does this data change at runtime?**
 
+<<<<<<< HEAD
 **PostgreSQL** stores user-generated content — accounts, teams, team configurations, and likes. This data is dynamic, relational, and needs to support filtered queries like "show me all teams that use Earthquake."
 
 **JSON files** store Pokémon game data — species, moves, abilities, items, natures, formats, learnsets. This data is immutable — defined by Game Freak, written once, read forever. These files have **no database representation**; integer IDs stored in PostgreSQL columns like `pokemon_id` and `move_id` reference entries in these JSON files, not foreign-keyed database rows.
+=======
+**PostgreSQL** stores user-generated content — accounts, teams, and team configurations. This data is dynamic, relational, and needs to support filtered queries like "show me all teams that use Earthquake."
+
+**JSON files** store Pokémon game data — species, moves, abilities, items, natures, formats, learnsets. This data is immutable — defined by Game Freak, written once, read forever.
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ```
 JSON (static, immutable)          PostgreSQL (dynamic, user-generated)
 ├── pokemons.json                 ├── users
 ├── moves.json                    ├── teams
 ├── abilities.json                ├── teams_pokemons
+<<<<<<< HEAD
 ├── items.json                    ├── teams_pokemons_moves
 ├── natures.json                  └── team_likes
+=======
+├── items.json                    └── teams_pokemons_moves
+├── natures.json
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 ├── formats.json
 ├── pokemon-moves.json
 └── pokemon-abilities.json
@@ -48,6 +59,7 @@ No network request. No database query. The teambuilder is fully local.
 
 ---
 
+<<<<<<< HEAD
 ## formats.json Shape
 
 Each format entry includes the tier used for Pokémon legality checks, plus arrays of banned move and item IDs:
@@ -68,6 +80,11 @@ Each format entry includes the tier used for Pokémon legality checks, plus arra
 ## Server-Side Validation
 
 When a user publishes or updates a team (`POST /teams`, `PUT /teams/:id`), the API validates everything server-side before persisting. JSON files are loaded into server memory at startup.
+=======
+## Server-Side Validation
+
+When a user publishes a team (`POST /teams`), the API validates everything server-side before persisting. The JSON files are also loaded in memory on the server at startup.
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 | Check | Source | Method |
 |-------|--------|--------|
@@ -75,6 +92,7 @@ When a user publishes or updates a team (`POST /teams`, `PUT /teams/:id`), the A
 | Pokémon is legal in this format's tier | pokemons.json + formats.json | In-memory comparison |
 | Ability belongs to this Pokémon | pokemon-abilities.json | In-memory lookup |
 | Each move is in this Pokémon's learnset | pokemon-moves.json | In-memory lookup |
+<<<<<<< HEAD
 | Move not in format's banned_moves | formats.json | In-memory lookup |
 | Item not in format's banned_items | formats.json | In-memory lookup |
 | No duplicate Pokémon in the team | Request payload | Zod |
@@ -85,6 +103,14 @@ When a user publishes or updates a team (`POST /teams`, `PUT /teams/:id`), the A
 | Total EVs ≤ 508 | Request payload | Zod |
 | Happiness between 0–255 | Request payload | Zod |
 | Level = 5 (LC) or 100 (all other formats) | formats.json | Set server-side — client value ignored |
+=======
+| No duplicate Pokémon in the team | Request payload | Zod |
+| Max 6 Pokémon per team | Request payload | Zod |
+| Max 4 moves per Pokémon | Request payload | Zod |
+| EVs per stat between 0-252 | Request payload | Zod + DB CHECK |
+| IVs per stat between 0-31 | Request payload | Zod + DB CHECK |
+| Total EVs ≤ 508 | Request payload | Zod |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 A team in the database is by definition **valid and public**. Drafts are never persisted — they live in the client's localStorage until publication.
 
@@ -99,10 +125,17 @@ A team in the database is by definition **valid and public**. Drafts are never p
 | id | SERIAL | PRIMARY KEY |
 | email | VARCHAR(255) | NOT NULL, UNIQUE |
 | password | VARCHAR(60) | NOT NULL, hashed with bcrypt |
+<<<<<<< HEAD
 | pseudo | VARCHAR(60) | NOT NULL, UNIQUE, immutable after registration |
 | avatar | VARCHAR(255) | Nullable — profile picture URL |
 | bio | VARCHAR(255) | Nullable |
 | created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+=======
+| pseudo | VARCHAR(60) | NOT NULL, UNIQUE |
+| created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
+| avatar | VARCHAR(255) | Nullable — profile picture URL |
+| bio | VARCHAR(255) | Nullable |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ### `teams`
 
@@ -111,7 +144,11 @@ A team in the database is by definition **valid and public**. Drafts are never p
 | id | SERIAL | PRIMARY KEY |
 | name | VARCHAR(30) | NOT NULL |
 | user_id | INTEGER | FK → users, **nullable**, ON DELETE SET NULL |
+<<<<<<< HEAD
 | format_id | INTEGER | NOT NULL — references id in formats.json, no FK constraint |
+=======
+| format_id | INTEGER | NOT NULL |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 | description | TEXT | |
 | created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
 
@@ -127,6 +164,7 @@ Each row is a specific Pokémon in a specific team with its full competitive con
 |--------|------|-------------|
 | id | SERIAL | PRIMARY KEY |
 | team_id | INTEGER | NOT NULL, FK → teams, ON DELETE CASCADE |
+<<<<<<< HEAD
 | pokemon_id | INTEGER | NOT NULL — references id in pokemons.json |
 | ability_id | INTEGER | NOT NULL — references id in abilities.json |
 | nature_id | INTEGER | NOT NULL — references id in natures.json |
@@ -138,6 +176,19 @@ Each row is a specific Pokémon in a specific team with its full competitive con
 | nickname | VARCHAR(12) | Nullable |
 | iv_hp … iv_speed | INTEGER | NOT NULL, CHECK (0–31) |
 | ev_hp … ev_speed | INTEGER | NOT NULL, CHECK (0–252) |
+=======
+| pokemon_id | INTEGER | NOT NULL |
+| ability_id | INTEGER | NOT NULL |
+| nature_id | INTEGER | NOT NULL |
+| item_id | INTEGER | Nullable — a Pokémon can hold no item |
+| level | INTEGER | NOT NULL |
+| gender | gender ENUM | NOT NULL (male, female, random, genderless) |
+| shiny | BOOLEAN | NOT NULL |
+| happiness | INTEGER | NOT NULL |
+| nickname | VARCHAR(12) | Nullable |
+| iv_hp ... iv_speed | INTEGER | NOT NULL, CHECK (0-31) |
+| ev_hp ... ev_speed | INTEGER | NOT NULL, CHECK (0-252) |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 - **UNIQUE (team_id, pokemon_id)** — a Pokémon can only appear once per team
 - **ON DELETE CASCADE on team_id** — deleting a team deletes all its Pokémon configurations
@@ -149,11 +200,16 @@ Each row is a specific Pokémon in a specific team with its full competitive con
 | Column | Type | Constraints |
 |--------|------|-------------|
 | teams_pokemon_id | INTEGER | NOT NULL, FK → teams_pokemons, ON DELETE CASCADE |
+<<<<<<< HEAD
 | move_id | INTEGER | NOT NULL — references id in moves.json |
+=======
+| move_id | INTEGER | NOT NULL |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 - **PRIMARY KEY (teams_pokemon_id, move_id)** — a move can only appear once per Pokémon
 - **ON DELETE CASCADE on teams_pokemon_id** — deleting a team Pokémon deletes its moves
 
+<<<<<<< HEAD
 ### `team_likes`
 
 | Column | Type | Constraints |
@@ -162,6 +218,9 @@ Each row is a specific Pokémon in a specific team with its full competitive con
 | team_id | INTEGER | NOT NULL, FK → teams, ON DELETE CASCADE |
 
 - **PRIMARY KEY (user_id, team_id)** — a user can only like a team once; presence of a row = liked
+=======
+`move_id` references an id in `moves.json`. Validated by the service before insertion.
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ---
 
@@ -171,28 +230,42 @@ Each row is a specific Pokémon in a specific team with its full competitive con
 CREATE INDEX ON teams_pokemons (pokemon_id);
 CREATE INDEX ON teams_pokemons (ability_id);
 CREATE INDEX ON teams_pokemons_moves (move_id);
+<<<<<<< HEAD
 CREATE INDEX ON team_likes (team_id);
 ```
 
 The first three support filtered team queries. The `team_likes(team_id)` index supports the live COUNT used by `?sort=popular`.
+=======
+```
+
+These indexes support filtered team queries. `GET /teams?move=89` uses the index on `move_id` for a B-tree lookup instead of a full table scan.
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ---
 
 ## Delete Behavior
 
 | Relationship | Strategy | Effect |
+<<<<<<< HEAD
 |---|---|---|
 | teams.user_id → users | SET NULL | Teams survive user deletion, shown as "Deleted user" |
 | teams_pokemons.team_id → teams | CASCADE | Deleting a team removes all its Pokémon |
 | teams_pokemons_moves.teams_pokemon_id → teams_pokemons | CASCADE | Deleting a team Pokémon removes its moves |
 | team_likes.user_id → users | CASCADE | Likes are removed when a user deletes their account |
 | team_likes.team_id → teams | CASCADE | Likes are removed when a team is deleted |
+=======
+|-------------|----------|--------|
+| teams.user_id → users | SET NULL | Teams survive user deletion |
+| teams_pokemons.team_id → teams | CASCADE | Deleting a team removes all its Pokémon |
+| teams_pokemons_moves.teams_pokemon_id → teams_pokemons | CASCADE | Deleting a team Pokémon removes its moves |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ---
 
 ## Database vs. Service Enforcement
 
 | Constraint | Enforced by | Why not the other |
+<<<<<<< HEAD
 |---|---|---|
 | IVs 0–31 | Database CHECK | Simple range, native to SQL |
 | EVs 0–252 | Database CHECK | Same |
@@ -211,6 +284,21 @@ The first three support filtered team queries. The `team_likes(team_id)` index s
 | Move not banned in format | Service | Cross-reference against formats.json banned_moves |
 | Item not banned in format | Service | Cross-reference against formats.json banned_items |
 | Level correct for format | Service | Set server-side from formats.json — client value ignored |
+=======
+|-----------|-------------|-------------------|
+| IVs 0-31 | Database CHECK | Simple range, native to SQL |
+| EVs 0-252 | Database CHECK | Same |
+| Unique Pokémon per team | Database UNIQUE | Uniqueness constraint, native to SQL |
+| Unique move per Pokémon | Database PK | Composite primary key handles this |
+| Cascading deletes | Database CASCADE/SET NULL | Referential actions, native to SQL |
+| Max 4 moves per Pokémon | Service (Zod) | SQL cannot constrain row count |
+| Max 6 Pokémon per team | Service (Zod) | Same |
+| Total EVs ≤ 508 | Service (Zod) | Cross-column sum not expressible as CHECK |
+| Pokémon/ability/move/item exists | Service (Zod) | References JSON, not a DB table |
+| Ability legal for Pokémon | Service | Cross-reference against pokemon-abilities.json |
+| Move in learnset | Service | Cross-reference against pokemon-moves.json |
+| Pokémon legal in tier | Service | Cross-reference against pokemons.json + formats.json |
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 
 ---
 
@@ -218,6 +306,7 @@ The first three support filtered team queries. The `team_likes(team_id)` index s
 
 `teams_pokemons` and `teams_pokemons_moves` store integer IDs to enable filtered queries on community teams.
 
+<<<<<<< HEAD
 Example: `GET /teams?move=89&pokemon=445&ability=33&item=22&format=ou&name=rain&user=42&sort=popular&page=1&limit=20`
 
 ```sql
@@ -232,10 +321,21 @@ WHERE teams_pokemons.pokemon_id = 445
   AND teams.name ILIKE '%rain%'
 ORDER BY likes_count DESC
 LIMIT 20 OFFSET 0
+=======
+Example: `GET /teams?move=89&pokemon=445`
+
+```sql
+SELECT DISTINCT teams.* FROM teams
+JOIN teams_pokemons ON teams.id = teams_pokemons.team_id
+JOIN teams_pokemons_moves ON teams_pokemons.id = teams_pokemons_moves.teams_pokemon_id
+WHERE teams_pokemons.pokemon_id = 445
+AND teams_pokemons_moves.move_id = 89
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 ```
 
 The database filters on integers. The frontend translates IDs to display names using its in-memory JSON cache — `445` → Garchomp, `89` → Earthquake.
 
+<<<<<<< HEAD
 **Supported query parameters:**
 
 | Parameter | Description |
@@ -254,6 +354,8 @@ The database filters on integers. The frontend translates IDs to display names u
 
 **Team response shape** includes `likes_count` (live COUNT from `team_likes`) and `liked` (boolean — whether the authenticated user has liked the team, `null` for unauthenticated requests).
 
+=======
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
 ---
 
 ## Static Assets
@@ -261,4 +363,8 @@ The database filters on integers. The frontend translates IDs to display names u
 Static assets (sprites, icons, images) are served from a dedicated server.
 No asset data is stored in the database or JSON files.
 
+<<<<<<< HEAD
 Base URL is defined by the `ASSETS_URL` environment variable.
+=======
+Base URL is defined by the ASSETS_URL environment variable.
+>>>>>>> a2439fd307d09503dede3055120a2b03078a185e
