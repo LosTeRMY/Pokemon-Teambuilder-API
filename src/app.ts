@@ -4,7 +4,6 @@ import router from './routes/auth';
 const app = express();
 
 app.use(express.json());
-console.log('Registering auth router:', typeof router);
 app.use('/auth', router);
 
 app.get('/health', (req, res) => {
