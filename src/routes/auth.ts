@@ -8,15 +8,17 @@ import { z } from "zod";
 
 const router = Router();
 
+const passwordBytes = (val: string) => new TextEncoder().encode(val).length <= 72;
+
 const registerSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(8),
+  password: z.string().min(8).refine(passwordBytes, "password must be at most 72 UTF-8 bytes"),
   username: z.string().min(3).max(60),
 });
 
 const loginSchema = z.object({
   email: z.string().email(),
-  password: z.string().min(1),
+  password: z.string().min(1).refine(passwordBytes, "password must be at most 72 UTF-8 bytes"),
 });
 
 router.post("/register", async (req, res) => {
