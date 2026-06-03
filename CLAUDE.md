@@ -51,7 +51,7 @@ Five tables store dynamic data (`users`, `teams`, `teams_pokemons`, `teams_pokem
 - `team_likes.user_id → users`: **CASCADE** — likes removed when user deletes account
 - `team_likes.team_id → teams`: **CASCADE** — likes removed when team is deleted
 
-`users` has nullable `avatar VARCHAR(255)` (profile picture URL) and `bio VARCHAR(255)`. `pseudo` is immutable after registration.
+`users` has nullable `avatar VARCHAR(255)` (profile picture URL) and `bio VARCHAR(255)`. `username` is immutable after registration.
 
 `team_likes` has `PRIMARY KEY (user_id, team_id)` — presence of a row means the user has liked the team.
 
