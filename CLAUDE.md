@@ -33,7 +33,7 @@ Validation is split between two layers with a clear rationale for each:
 | Happiness 0–255, default 255 | Zod (service) | Gen 4 range; 255 is the competitive standard |
 | Pokémon/move/ability/item validity | Zod + in-memory JSON | References JSON, not a DB table |
 | Ability legal for Pokémon | Service (in-memory cross-ref) | pokemon-abilities.json |
-| Move in learnset | Service (in-memory cross-ref) | pokemon-moves.json |
+| Move in learnset | Service (in-memory cross-ref) | pokemon-moves.json — checks Pokémon + all pre-evolutions via `evolvesFrom` chain |
 | Pokémon legal in tier | Service (in-memory cross-ref) | pokemons.json + formats.json |
 | Move not in format's banned_moves | Service (in-memory cross-ref) | formats.json |
 | Item not in format's banned_items | Service (in-memory cross-ref) | formats.json |
@@ -51,7 +51,7 @@ Five tables store dynamic data (`users`, `teams`, `teams_pokemons`, `teams_pokem
 - `team_likes.user_id → users`: **CASCADE** — likes removed when user deletes account
 - `team_likes.team_id → teams`: **CASCADE** — likes removed when team is deleted
 
-`users` has nullable `avatar VARCHAR(255)` (profile picture URL) and `bio VARCHAR(255)`. `username` is immutable after registration.
+`users` has nullable `avatar VARCHAR(255)` (profile picture URL) and `bio VARCHAR(255)`. `username` is immutable after registration. `pokemons.json` entries include an `evolvesFrom` field (nullable integer ID) used to walk the evolution chain during learnset validation.
 
 `team_likes` has `PRIMARY KEY (user_id, team_id)` — presence of a row means the user has liked the team.
 

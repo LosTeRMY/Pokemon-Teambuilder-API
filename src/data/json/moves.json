@@ -1,0 +1,4812 @@
+[
+  {
+    "id": 1,
+    "name": "Acid Armor",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Defense by 2."
+  },
+  {
+    "id": 2,
+    "name": "Aeroblast",
+    "type": "flying",
+    "category": "special",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 8,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 3,
+    "name": "Agility",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's Speed by 2."
+  },
+  {
+    "id": 4,
+    "name": "Air Slash",
+    "type": "flying",
+    "category": "special",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 32,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 5,
+    "name": "Aqua Jet",
+    "type": "water",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 6,
+    "name": "Aqua Tail",
+    "type": "water",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "No additional effect."
+  },
+  {
+    "id": 7,
+    "name": "Aromatherapy",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Cures the user's party of all status conditions."
+  },
+  {
+    "id": 8,
+    "name": "Attack Order",
+    "type": "bug",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 9,
+    "name": "Aura Sphere",
+    "type": "fighting",
+    "category": "special",
+    "power": 90,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 10,
+    "name": "Avalanche",
+    "type": "ice",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if user is damaged by the target."
+  },
+  {
+    "id": 11,
+    "name": "Baton Pass",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "User switches, passing stat changes and more."
+  },
+  {
+    "id": 12,
+    "name": "Belly Drum",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User loses 50% max HP. Maximizes Attack."
+  },
+  {
+    "id": 13,
+    "name": "Blaze Kick",
+    "type": "fire",
+    "category": "physical",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "High critical hit ratio. 10% chance to burn."
+  },
+  {
+    "id": 14,
+    "name": "Blizzard",
+    "type": "ice",
+    "category": "special",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 8,
+    "description": "10% chance to freeze foe(s). Can't miss in Hail."
+  },
+  {
+    "id": 15,
+    "name": "Body Slam",
+    "type": "normal",
+    "category": "physical",
+    "power": 85,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to paralyze the target."
+  },
+  {
+    "id": 16,
+    "name": "Bonemerang",
+    "type": "ground",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Hits 2 times in one turn."
+  },
+  {
+    "id": 17,
+    "name": "Brave Bird",
+    "type": "flying",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Has 1/3 recoil."
+  },
+  {
+    "id": 18,
+    "name": "Brick Break",
+    "type": "fighting",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Destroys screens, even if the target is immune."
+  },
+  {
+    "id": 19,
+    "name": "Bug Buzz",
+    "type": "bug",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 20,
+    "name": "Bulk Up",
+    "type": "fighting",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Attack and Defense by 1."
+  },
+  {
+    "id": 21,
+    "name": "Bullet Punch",
+    "type": "steel",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 22,
+    "name": "Calm Mind",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Sp. Atk and Sp. Def by 1."
+  },
+  {
+    "id": 23,
+    "name": "Close Combat",
+    "type": "fighting",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Lowers the user's Defense and Sp. Def by 1."
+  },
+  {
+    "id": 24,
+    "name": "Crabhammer",
+    "type": "water",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 25,
+    "name": "Cross Chop",
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 8,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 26,
+    "name": "Crunch",
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "20% chance to lower the target's Defense by 1."
+  },
+  {
+    "id": 27,
+    "name": "Curse",
+    "type": "???",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Curses if Ghost, else -1 Spe, +1 Atk, +1 Def."
+  },
+  {
+    "id": 28,
+    "name": "Dark Pulse",
+    "type": "dark",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "20% chance to make the target flinch."
+  },
+  {
+    "id": 29,
+    "name": "Dark Void",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 80,
+    "pp": 16,
+    "description": "Causes the foe(s) to fall asleep."
+  },
+  {
+    "id": 30,
+    "name": "Defog",
+    "type": "flying",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "-1 evasion; clears target side's hazards/screens."
+  },
+  {
+    "id": 31,
+    "name": "Destiny Bond",
+    "type": "ghost",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "If an opponent knocks out the user, it also faints."
+  },
+  {
+    "id": 32,
+    "name": "Detect",
+    "type": "fighting",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Prevents moves from affecting the user this turn."
+  },
+  {
+    "id": 33,
+    "name": "Disable",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 80,
+    "pp": 32,
+    "description": "For 4-7 turns, disables the target's last move."
+  },
+  {
+    "id": 34,
+    "name": "Discharge",
+    "type": "electric",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to paralyze adjacent Pokemon."
+  },
+  {
+    "id": 35,
+    "name": "Doom Desire",
+    "type": "steel",
+    "category": "special",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 8,
+    "description": "Hits two turns after being used."
+  },
+  {
+    "id": 36,
+    "name": "Double-Edge",
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Has 1/3 recoil."
+  },
+  {
+    "id": 37,
+    "name": "Draco Meteor",
+    "type": "dragon",
+    "category": "special",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "Lowers the user's Sp. Atk by 2."
+  },
+  {
+    "id": 38,
+    "name": "Dragon Claw",
+    "type": "dragon",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 39,
+    "name": "Dragon Dance",
+    "type": "dragon",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Attack and Speed by 1."
+  },
+  {
+    "id": 40,
+    "name": "Dragon Pulse",
+    "type": "dragon",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "No additional effect."
+  },
+  {
+    "id": 41,
+    "name": "Drill Peck",
+    "type": "flying",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "No additional effect."
+  },
+  {
+    "id": 42,
+    "name": "Earth Power",
+    "type": "ground",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 43,
+    "name": "Earthquake",
+    "type": "ground",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Hits adjacent Pokemon. Power doubles on Dig."
+  },
+  {
+    "id": 44,
+    "name": "Encore",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "The target repeats its last move for 4-8 turns."
+  },
+  {
+    "id": 45,
+    "name": "Endeavor",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Lowers the target's HP to the user's HP."
+  },
+  {
+    "id": 46,
+    "name": "Energy Ball",
+    "type": "grass",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 47,
+    "name": "Eruption",
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Less power as user's HP decreases. Hits foe(s)."
+  },
+  {
+    "id": 48,
+    "name": "Explosion",
+    "type": "normal",
+    "category": "physical",
+    "power": 250,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Target's Def halved during damage. User faints."
+  },
+  {
+    "id": 49,
+    "name": "Extrasensory",
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "10% chance to make the target flinch."
+  },
+  {
+    "id": 50,
+    "name": "Extreme Speed",
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 51,
+    "name": "Facade",
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Power doubles if user is burn/poison/paralyzed."
+  },
+  {
+    "id": 52,
+    "name": "Fake Out",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Hits first. First turn out only. 100% flinch chance."
+  },
+  {
+    "id": 53,
+    "name": "Fire Blast",
+    "type": "fire",
+    "category": "special",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 8,
+    "description": "10% chance to burn the target."
+  },
+  {
+    "id": 54,
+    "name": "Fire Fang",
+    "type": "fire",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "10% chance to burn. 10% chance to flinch."
+  },
+  {
+    "id": 55,
+    "name": "Fire Punch",
+    "type": "fire",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to burn the target."
+  },
+  {
+    "id": 56,
+    "name": "Flamethrower",
+    "type": "fire",
+    "category": "special",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to burn the target."
+  },
+  {
+    "id": 57,
+    "name": "Flare Blitz",
+    "type": "fire",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Has 1/3 recoil. 10% chance to burn. Thaws user."
+  },
+  {
+    "id": 58,
+    "name": "Flash Cannon",
+    "type": "steel",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 59,
+    "name": "Focus Blast",
+    "type": "fighting",
+    "category": "special",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 8,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 60,
+    "name": "Focus Punch",
+    "type": "fighting",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Fails if the user takes damage before it hits."
+  },
+  {
+    "id": 61,
+    "name": "Frustration",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Max 102 power at minimum Happiness."
+  },
+  {
+    "id": 62,
+    "name": "Giga Drain",
+    "type": "grass",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "User recovers 50% of the damage dealt."
+  },
+  {
+    "id": 63,
+    "name": "Glare",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 48,
+    "description": "Paralyzes the target."
+  },
+  {
+    "id": 64,
+    "name": "Grass Knot",
+    "type": "grass",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "More power the heavier the target."
+  },
+  {
+    "id": 65,
+    "name": "Gunk Shot",
+    "type": "poison",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 8,
+    "description": "30% chance to poison the target."
+  },
+  {
+    "id": 66,
+    "name": "Hammer Arm",
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Lowers the user's Speed by 1."
+  },
+  {
+    "id": 67,
+    "name": "Haze",
+    "type": "ice",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Eliminates all stat changes."
+  },
+  {
+    "id": 68,
+    "name": "Head Smash",
+    "type": "rock",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 80,
+    "pp": 8,
+    "description": "Has 1/2 recoil."
+  },
+  {
+    "id": 69,
+    "name": "Heal Bell",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Cures the user's party of all status conditions."
+  },
+  {
+    "id": 70,
+    "name": "Healing Wish",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User faints. Replacement is fully healed."
+  },
+  {
+    "id": 71,
+    "name": "Heal Order",
+    "type": "bug",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user by 50% of its max HP."
+  },
+  {
+    "id": 72,
+    "name": "Heart Swap",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Swaps all stat changes with target."
+  },
+  {
+    "id": 73,
+    "name": "Heat Wave",
+    "type": "fire",
+    "category": "special",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "10% chance to burn the foe(s)."
+  },
+  {
+    "id": 74,
+    "name": "Hidden Power Grass",
+    "type": "grass",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 75,
+    "name": "High Jump Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 90,
+    "pp": 32,
+    "description": "If miss, user takes 1/2 damage it would've dealt."
+  },
+  {
+    "id": 76,
+    "name": "Hydro Pump",
+    "type": "water",
+    "category": "special",
+    "power": 120,
+    "accuracy": 80,
+    "pp": 8,
+    "description": "No additional effect."
+  },
+  {
+    "id": 77,
+    "name": "Hyper Voice",
+    "type": "normal",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "No additional effect. Hits adjacent foes."
+  },
+  {
+    "id": 78,
+    "name": "Ice Beam",
+    "type": "ice",
+    "category": "special",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to freeze the target."
+  },
+  {
+    "id": 79,
+    "name": "Ice Fang",
+    "type": "ice",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "10% chance to freeze. 10% chance to flinch."
+  },
+  {
+    "id": 80,
+    "name": "Ice Punch",
+    "type": "ice",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to freeze the target."
+  },
+  {
+    "id": 81,
+    "name": "Ice Shard",
+    "type": "ice",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 82,
+    "name": "Icicle Spear",
+    "type": "ice",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 83,
+    "name": "Iron Head",
+    "type": "steel",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 84,
+    "name": "Judgment",
+    "type": "normal",
+    "category": "special",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Type varies based on the held Plate."
+  },
+  {
+    "id": 85,
+    "name": "Knock Off",
+    "type": "dark",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Target's item is lost and it cannot obtain another."
+  },
+  {
+    "id": 86,
+    "name": "Last Resort",
+    "type": "normal",
+    "category": "physical",
+    "power": 130,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Fails unless each known move has been used."
+  },
+  {
+    "id": 87,
+    "name": "Lava Plume",
+    "type": "fire",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to burn adjacent Pokemon."
+  },
+  {
+    "id": 88,
+    "name": "Leaf Blade",
+    "type": "grass",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 89,
+    "name": "Leaf Storm",
+    "type": "grass",
+    "category": "special",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "Lowers the user's Sp. Atk by 2."
+  },
+  {
+    "id": 90,
+    "name": "Leech Seed",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "1/8 of target's HP is restored to user every turn."
+  },
+  {
+    "id": 91,
+    "name": "Light Screen",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "For 5 turns, special damage to allies is halved."
+  },
+  {
+    "id": 92,
+    "name": "Lovely Kiss",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 16,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 93,
+    "name": "Low Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "More power the heavier the target."
+  },
+  {
+    "id": 94,
+    "name": "Lunar Dance",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User faints. Replacement is fully healed, with PP."
+  },
+  {
+    "id": 95,
+    "name": "Mach Punch",
+    "type": "fighting",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 96,
+    "name": "Magic Coat",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "Bounces back certain non-damaging moves."
+  },
+  {
+    "id": 97,
+    "name": "Magma Storm",
+    "type": "fire",
+    "category": "special",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 8,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 98,
+    "name": "Megahorn",
+    "type": "bug",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "No additional effect."
+  },
+  {
+    "id": 99,
+    "name": "Memento",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Lowers target's Attack, Sp. Atk by 2. User faints."
+  },
+  {
+    "id": 100,
+    "name": "Meteor Mash",
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "20% chance to raise the user's Attack by 1."
+  },
+  {
+    "id": 101,
+    "name": "Milk Drink",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user by 50% of its max HP."
+  },
+  {
+    "id": 102,
+    "name": "Moonlight",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Heals the user by a weather-dependent amount."
+  },
+  {
+    "id": 103,
+    "name": "Morning Sun",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Heals the user by a weather-dependent amount."
+  },
+  {
+    "id": 104,
+    "name": "Nasty Plot",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Sp. Atk by 2."
+  },
+  {
+    "id": 105,
+    "name": "Night Shade",
+    "type": "ghost",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Does damage equal to the user's level."
+  },
+  {
+    "id": 106,
+    "name": "Outrage",
+    "type": "dragon",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Lasts 2-3 turns. Confuses the user afterwards."
+  },
+  {
+    "id": 107,
+    "name": "Overheat",
+    "type": "fire",
+    "category": "special",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "Lowers the user's Sp. Atk by 2."
+  },
+  {
+    "id": 108,
+    "name": "Pain Split",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Shares HP of user and target equally."
+  },
+  {
+    "id": 109,
+    "name": "Perish Song",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "All active Pokemon will faint in 3 turns."
+  },
+  {
+    "id": 110,
+    "name": "Petal Dance",
+    "type": "grass",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lasts 2-3 turns. Confuses the user afterwards."
+  },
+  {
+    "id": 111,
+    "name": "Poison Jab",
+    "type": "poison",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "30% chance to poison the target."
+  },
+  {
+    "id": 112,
+    "name": "Power Whip",
+    "type": "grass",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "No additional effect."
+  },
+  {
+    "id": 113,
+    "name": "Protect",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Prevents moves from affecting the user this turn."
+  },
+  {
+    "id": 114,
+    "name": "Psychic",
+    "type": "psychic",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "10% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 115,
+    "name": "Psycho Boost",
+    "type": "psychic",
+    "category": "special",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "Lowers the user's Sp. Atk by 2."
+  },
+  {
+    "id": 116,
+    "name": "Psycho Cut",
+    "type": "psychic",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 117,
+    "name": "Pursuit",
+    "type": "dark",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "If a foe is switching out, hits it at 2x power."
+  },
+  {
+    "id": 118,
+    "name": "Quick Attack",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 119,
+    "name": "Rapid Spin",
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 64,
+    "description": "Frees user from hazards, binding, Leech Seed."
+  },
+  {
+    "id": 120,
+    "name": "Recover",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user by 50% of its max HP."
+  },
+  {
+    "id": 121,
+    "name": "Reflect",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "For 5 turns, physical damage to allies is halved."
+  },
+  {
+    "id": 122,
+    "name": "Rest",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User sleeps 2 turns and restores HP and status."
+  },
+  {
+    "id": 123,
+    "name": "Return",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Max 102 power at maximum Happiness."
+  },
+  {
+    "id": 124,
+    "name": "Roar",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Forces the target to switch to a random ally."
+  },
+  {
+    "id": 125,
+    "name": "Rock Blast",
+    "type": "rock",
+    "category": "physical",
+    "power": 25,
+    "accuracy": 80,
+    "pp": 16,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 126,
+    "name": "Rock Polish",
+    "type": "rock",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Speed by 2."
+  },
+  {
+    "id": 127,
+    "name": "Rock Slide",
+    "type": "rock",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "30% chance to make the foe(s) flinch."
+  },
+  {
+    "id": 128,
+    "name": "Roost",
+    "type": "flying",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals 50% HP. Flying-type removed 'til turn ends."
+  },
+  {
+    "id": 129,
+    "name": "Sacred Fire",
+    "type": "fire",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 8,
+    "description": "50% chance to burn the target. Thaws user."
+  },
+  {
+    "id": 130,
+    "name": "Seed Bomb",
+    "type": "grass",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 131,
+    "name": "Seed Flare",
+    "type": "grass",
+    "category": "special",
+    "power": 120,
+    "accuracy": 85,
+    "pp": 8,
+    "description": "40% chance to lower the target's Sp. Def by 2."
+  },
+  {
+    "id": 132,
+    "name": "Seismic Toss",
+    "type": "fighting",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Does damage equal to the user's level."
+  },
+  {
+    "id": 133,
+    "name": "Shadow Ball",
+    "type": "ghost",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "20% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 134,
+    "name": "Shadow Claw",
+    "type": "ghost",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 135,
+    "name": "Shadow Sneak",
+    "type": "ghost",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 136,
+    "name": "Signal Beam",
+    "type": "bug",
+    "category": "special",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to confuse the target."
+  },
+  {
+    "id": 137,
+    "name": "Slack Off",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user by 50% of its max HP."
+  },
+  {
+    "id": 138,
+    "name": "Sleep Powder",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 24,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 139,
+    "name": "Sleep Talk",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User must be asleep. Uses another known move."
+  },
+  {
+    "id": 140,
+    "name": "Sludge Bomb",
+    "type": "poison",
+    "category": "special",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "30% chance to poison the target."
+  },
+  {
+    "id": 141,
+    "name": "Soft-Boiled",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user by 50% of its max HP."
+  },
+  {
+    "id": 142,
+    "name": "Spacial Rend",
+    "type": "dragon",
+    "category": "special",
+    "power": 100,
+    "accuracy": 95,
+    "pp": 8,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 143,
+    "name": "Spikes",
+    "type": "ground",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Hurts grounded foes on switch-in. Max 3 layers."
+  },
+  {
+    "id": 144,
+    "name": "Spore",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 145,
+    "name": "Stealth Rock",
+    "type": "rock",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Hurts foes on switch-in. Factors Rock weakness."
+  },
+  {
+    "id": 146,
+    "name": "Stone Edge",
+    "type": "rock",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 80,
+    "pp": 8,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 147,
+    "name": "Substitute",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User takes 1/4 its max HP to put in a substitute."
+  },
+  {
+    "id": 148,
+    "name": "Sucker Punch",
+    "type": "dark",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Usually goes first. Fails if target is not attacking."
+  },
+  {
+    "id": 149,
+    "name": "Super Fang",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Does damage equal to 1/2 target's current HP."
+  },
+  {
+    "id": 150,
+    "name": "Superpower",
+    "type": "fighting",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Lowers the user's Attack and Defense by 1."
+  },
+  {
+    "id": 151,
+    "name": "Surf",
+    "type": "water",
+    "category": "special",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Hits adjacent Pokemon. Power doubles on Dive."
+  },
+  {
+    "id": 152,
+    "name": "Switcheroo",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "User switches its held item with the target's."
+  },
+  {
+    "id": 153,
+    "name": "Swords Dance",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's Attack by 2."
+  },
+  {
+    "id": 154,
+    "name": "Synthesis",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Heals the user by a weather-dependent amount."
+  },
+  {
+    "id": 155,
+    "name": "Tail Glow",
+    "type": "bug",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Sp. Atk by 2."
+  },
+  {
+    "id": 156,
+    "name": "Tailwind",
+    "type": "flying",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "For 3 turns, allies' Speed is doubled."
+  },
+  {
+    "id": 157,
+    "name": "Taunt",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "For 3-5 turns, the target can't use status moves."
+  },
+  {
+    "id": 158,
+    "name": "Thunder",
+    "type": "electric",
+    "category": "special",
+    "power": 120,
+    "accuracy": 70,
+    "pp": 16,
+    "description": "30% chance to paralyze. Can't miss in rain."
+  },
+  {
+    "id": 159,
+    "name": "Thunderbolt",
+    "type": "electric",
+    "category": "special",
+    "power": 95,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to paralyze the target."
+  },
+  {
+    "id": 160,
+    "name": "Thunder Punch",
+    "type": "electric",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "10% chance to paralyze the target."
+  },
+  {
+    "id": 161,
+    "name": "Thunder Wave",
+    "type": "electric",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Paralyzes the target."
+  },
+  {
+    "id": 162,
+    "name": "Toxic",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "Badly poisons the target."
+  },
+  {
+    "id": 163,
+    "name": "Toxic Spikes",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Poisons grounded foes on switch-in. Max 2 layers."
+  },
+  {
+    "id": 164,
+    "name": "Transform",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Copies target's stats, moves, types, and Ability."
+  },
+  {
+    "id": 165,
+    "name": "Tri Attack",
+    "type": "normal",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "20% chance to paralyze or burn or freeze target."
+  },
+  {
+    "id": 166,
+    "name": "Trick",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "User switches its held item with the target's."
+  },
+  {
+    "id": 167,
+    "name": "Trick Room",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Goes last. For 5 turns, turn order is reversed."
+  },
+  {
+    "id": 168,
+    "name": "U-turn",
+    "type": "bug",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "User switches out after damaging the target."
+  },
+  {
+    "id": 169,
+    "name": "Vacuum Wave",
+    "type": "fighting",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Usually goes first."
+  },
+  {
+    "id": 170,
+    "name": "Volt Tackle",
+    "type": "electric",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Has 1/3 recoil. 10% chance to paralyze target."
+  },
+  {
+    "id": 171,
+    "name": "Waterfall",
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "20% chance to make the target flinch."
+  },
+  {
+    "id": 172,
+    "name": "Water Spout",
+    "type": "water",
+    "category": "special",
+    "power": 150,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Less power as user's HP decreases. Hits foe(s)."
+  },
+  {
+    "id": 173,
+    "name": "Weather Ball",
+    "type": "normal",
+    "category": "special",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles and type varies in each weather."
+  },
+  {
+    "id": 174,
+    "name": "Whirlwind",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Forces the target to switch to a random ally."
+  },
+  {
+    "id": 175,
+    "name": "Will-O-Wisp",
+    "type": "fire",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 24,
+    "description": "Burns the target."
+  },
+  {
+    "id": 176,
+    "name": "Wish",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Next turn, heals 50% of the recipient's max HP."
+  },
+  {
+    "id": 177,
+    "name": "Wood Hammer",
+    "type": "grass",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Has 1/3 recoil."
+  },
+  {
+    "id": 178,
+    "name": "X-Scissor",
+    "type": "bug",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 179,
+    "name": "Yawn",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Puts the target to sleep after 1 turn."
+  },
+  {
+    "id": 180,
+    "name": "Zen Headbutt",
+    "type": "psychic",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "20% chance to make the target flinch."
+  },
+  {
+    "id": 181,
+    "name": "Double Slap",
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 182,
+    "name": "Iron Tail",
+    "type": "steel",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 24,
+    "description": "30% chance to lower the target's Defense by 1."
+  },
+  {
+    "id": 183,
+    "name": "Sketch",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 1,
+    "description": "Permanently copies the last move target used."
+  },
+  {
+    "id": 184,
+    "name": "Tail Whip",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Lowers the foe(s) Defense by 1."
+  },
+  {
+    "id": 185,
+    "name": "Absorb",
+    "type": "grass",
+    "category": "special",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "User recovers 50% of the damage dealt."
+  },
+  {
+    "id": 186,
+    "name": "Acid",
+    "type": "poison",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "10% chance to lower the foe(s) Sp. Def by 1."
+  },
+  {
+    "id": 187,
+    "name": "Acupressure",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises a random stat of the user or an ally by 2."
+  },
+  {
+    "id": 188,
+    "name": "Aerial Ace",
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 189,
+    "name": "Air Cutter",
+    "type": "flying",
+    "category": "special",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 40,
+    "description": "High critical hit ratio. Hits adjacent foes."
+  },
+  {
+    "id": 190,
+    "name": "Amnesia",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Sp. Def by 2."
+  },
+  {
+    "id": 191,
+    "name": "Ancient Power",
+    "type": "rock",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "10% chance to raise all stats by 1 (not acc/eva)."
+  },
+  {
+    "id": 192,
+    "name": "Aqua Ring",
+    "type": "water",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "User recovers 1/16 max HP per turn."
+  },
+  {
+    "id": 193,
+    "name": "Arm Thrust",
+    "type": "fighting",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 194,
+    "name": "Assist",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Uses a random move known by a team member."
+  },
+  {
+    "id": 195,
+    "name": "Assurance",
+    "type": "dark",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if target was damaged this turn."
+  },
+  {
+    "id": 196,
+    "name": "Astonish",
+    "type": "ghost",
+    "category": "physical",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 197,
+    "name": "Attract",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "A target of the opposite gender gets infatuated."
+  },
+  {
+    "id": 198,
+    "name": "Aurora Beam",
+    "type": "ice",
+    "category": "special",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "10% chance to lower the target's Attack by 1."
+  },
+  {
+    "id": 199,
+    "name": "Barrage",
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 200,
+    "name": "Barrier",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's Defense by 2."
+  },
+  {
+    "id": 201,
+    "name": "Beat Up",
+    "type": "dark",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "All healthy allies aid in damaging the target."
+  },
+  {
+    "id": 202,
+    "name": "Bide",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Waits 2 turns; deals double the damage taken."
+  },
+  {
+    "id": 203,
+    "name": "Bind",
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 75,
+    "pp": 32,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 204,
+    "name": "Bite",
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 205,
+    "name": "Blast Burn",
+    "type": "fire",
+    "category": "special",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 206,
+    "name": "Block",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Prevents the target from switching out."
+  },
+  {
+    "id": 207,
+    "name": "Bone Club",
+    "type": "ground",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "10% chance to make the target flinch."
+  },
+  {
+    "id": 208,
+    "name": "Bone Rush",
+    "type": "ground",
+    "category": "physical",
+    "power": 25,
+    "accuracy": 80,
+    "pp": 16,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 209,
+    "name": "Bounce",
+    "type": "flying",
+    "category": "physical",
+    "power": 85,
+    "accuracy": 85,
+    "pp": 8,
+    "description": "Bounces turn 1. Hits turn 2. 30% paralyze."
+  },
+  {
+    "id": 210,
+    "name": "Brine",
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if the target's HP is 50% or less."
+  },
+  {
+    "id": 211,
+    "name": "Bubble",
+    "type": "water",
+    "category": "special",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "10% chance to lower the foe(s) Speed by 1."
+  },
+  {
+    "id": 212,
+    "name": "Bubble Beam",
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "10% chance to lower the target's Speed by 1."
+  },
+  {
+    "id": 213,
+    "name": "Bug Bite",
+    "type": "bug",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "User steals and eats the target's Berry."
+  },
+  {
+    "id": 214,
+    "name": "Bullet Seed",
+    "type": "grass",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 215,
+    "name": "Camouflage",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Changes user's type based on terrain. (Normal)"
+  },
+  {
+    "id": 216,
+    "name": "Captivate",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the foe(s) Sp. Atk by 2 if opposite gender."
+  },
+  {
+    "id": 217,
+    "name": "Charge",
+    "type": "electric",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "+1 SpD, user's Electric move next turn 2x power."
+  },
+  {
+    "id": 218,
+    "name": "Charge Beam",
+    "type": "electric",
+    "category": "special",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "70% chance to raise the user's Sp. Atk by 1."
+  },
+  {
+    "id": 219,
+    "name": "Charm",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the target's Attack by 2."
+  },
+  {
+    "id": 220,
+    "name": "Clamp",
+    "type": "water",
+    "category": "physical",
+    "power": 35,
+    "accuracy": 75,
+    "pp": 16,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 221,
+    "name": "Comet Punch",
+    "type": "normal",
+    "category": "physical",
+    "power": 18,
+    "accuracy": 85,
+    "pp": 24,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 222,
+    "name": "Confuse Ray",
+    "type": "ghost",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Confuses the target."
+  },
+  {
+    "id": 223,
+    "name": "Confusion",
+    "type": "psychic",
+    "category": "special",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "10% chance to confuse the target."
+  },
+  {
+    "id": 224,
+    "name": "Constrict",
+    "type": "normal",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "10% chance to lower the target's Speed by 1."
+  },
+  {
+    "id": 225,
+    "name": "Conversion",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Changes user's type to match a known move."
+  },
+  {
+    "id": 226,
+    "name": "Conversion 2",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "User's type changes to resist last move against it."
+  },
+  {
+    "id": 227,
+    "name": "Copycat",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Uses the last move used in the battle."
+  },
+  {
+    "id": 228,
+    "name": "Cosmic Power",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's Defense and Sp. Def by 1."
+  },
+  {
+    "id": 229,
+    "name": "Cotton Spore",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 85,
+    "pp": 64,
+    "description": "Lowers the target's Speed by 2."
+  },
+  {
+    "id": 230,
+    "name": "Counter",
+    "type": "fighting",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "If hit by physical attack, returns double damage."
+  },
+  {
+    "id": 231,
+    "name": "Covet",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 64,
+    "description": "If the user has no item, it steals the target's."
+  },
+  {
+    "id": 232,
+    "name": "Cross Poison",
+    "type": "poison",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "High critical hit ratio. 10% chance to poison."
+  },
+  {
+    "id": 233,
+    "name": "Crush Claw",
+    "type": "normal",
+    "category": "physical",
+    "power": 75,
+    "accuracy": 95,
+    "pp": 16,
+    "description": "50% chance to lower the target's Defense by 1."
+  },
+  {
+    "id": 234,
+    "name": "Crush Grip",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "More power the more HP the target has left."
+  },
+  {
+    "id": 235,
+    "name": "Cut",
+    "type": "normal",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 95,
+    "pp": 48,
+    "description": "No additional effect."
+  },
+  {
+    "id": 236,
+    "name": "Defend Order",
+    "type": "bug",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Raises the user's Defense and Sp. Def by 1."
+  },
+  {
+    "id": 237,
+    "name": "Defense Curl",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Defense by 1."
+  },
+  {
+    "id": 238,
+    "name": "Dig",
+    "type": "ground",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Digs underground turn 1, strikes turn 2."
+  },
+  {
+    "id": 239,
+    "name": "Dive",
+    "type": "water",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Dives underwater turn 1, strikes turn 2."
+  },
+  {
+    "id": 240,
+    "name": "Dizzy Punch",
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "20% chance to confuse the target."
+  },
+  {
+    "id": 241,
+    "name": "Double Hit",
+    "type": "normal",
+    "category": "physical",
+    "power": 35,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Hits 2 times in one turn."
+  },
+  {
+    "id": 242,
+    "name": "Double Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": 30,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Hits 2 times in one turn."
+  },
+  {
+    "id": 243,
+    "name": "Double Team",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "Raises the user's evasiveness by 1."
+  },
+  {
+    "id": 244,
+    "name": "Dragon Breath",
+    "type": "dragon",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "30% chance to paralyze the target."
+  },
+  {
+    "id": 245,
+    "name": "Dragon Rage",
+    "type": "dragon",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Deals 40 HP of damage to the target."
+  },
+  {
+    "id": 246,
+    "name": "Dragon Rush",
+    "type": "dragon",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 16,
+    "description": "20% chance to make the target flinch."
+  },
+  {
+    "id": 247,
+    "name": "Drain Punch",
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "User recovers 50% of the damage dealt."
+  },
+  {
+    "id": 248,
+    "name": "Dream Eater",
+    "type": "psychic",
+    "category": "special",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "User gains 1/2 HP inflicted. Sleeping target only."
+  },
+  {
+    "id": 249,
+    "name": "Dynamic Punch",
+    "type": "fighting",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 50,
+    "pp": 8,
+    "description": "100% chance to confuse the target."
+  },
+  {
+    "id": 250,
+    "name": "Egg Bomb",
+    "type": "normal",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 75,
+    "pp": 16,
+    "description": "No additional effect."
+  },
+  {
+    "id": 251,
+    "name": "Embargo",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "For 5 turns, the target's item has no effect."
+  },
+  {
+    "id": 252,
+    "name": "Ember",
+    "type": "fire",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "10% chance to burn the target."
+  },
+  {
+    "id": 253,
+    "name": "Endure",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User survives attacks this turn with at least 1 HP."
+  },
+  {
+    "id": 254,
+    "name": "Fake Tears",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the target's Sp. Def by 2."
+  },
+  {
+    "id": 255,
+    "name": "False Swipe",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 64,
+    "description": "Always leaves the target with at least 1 HP."
+  },
+  {
+    "id": 256,
+    "name": "Feather Dance",
+    "type": "flying",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Lowers the target's Attack by 2."
+  },
+  {
+    "id": 257,
+    "name": "Feint",
+    "type": "normal",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Breaks protection. Fails if target is not protecting."
+  },
+  {
+    "id": 258,
+    "name": "Feint Attack",
+    "type": "dark",
+    "category": "physical",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 259,
+    "name": "Fire Spin",
+    "type": "fire",
+    "category": "special",
+    "power": 15,
+    "accuracy": 70,
+    "pp": 24,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 260,
+    "name": "Fissure",
+    "type": "ground",
+    "category": "physical",
+    "power": null,
+    "accuracy": 30,
+    "pp": 8,
+    "description": "OHKOs the target. Fails if user is a lower level."
+  },
+  {
+    "id": 261,
+    "name": "Flail",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "More power the less HP the user has left."
+  },
+  {
+    "id": 262,
+    "name": "Flame Wheel",
+    "type": "fire",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "10% chance to burn the target. Thaws user."
+  },
+  {
+    "id": 263,
+    "name": "Flash",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the target's accuracy by 1."
+  },
+  {
+    "id": 264,
+    "name": "Flatter",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Raises the target's Sp. Atk by 1 and confuses it."
+  },
+  {
+    "id": 265,
+    "name": "Fling",
+    "type": "dark",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Flings the user's item at the target. Power varies."
+  },
+  {
+    "id": 266,
+    "name": "Fly",
+    "type": "flying",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "Flies up on first turn, then strikes the next turn."
+  },
+  {
+    "id": 267,
+    "name": "Focus Energy",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's critical hit ratio by 2."
+  },
+  {
+    "id": 268,
+    "name": "Follow Me",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "The foes' moves target the user on the turn used."
+  },
+  {
+    "id": 269,
+    "name": "Force Palm",
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "30% chance to paralyze the target."
+  },
+  {
+    "id": 270,
+    "name": "Foresight",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Fighting, Normal hit Ghost. Evasiveness ignored."
+  },
+  {
+    "id": 271,
+    "name": "Frenzy Plant",
+    "type": "grass",
+    "category": "special",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 272,
+    "name": "Fury Attack",
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 273,
+    "name": "Fury Cutter",
+    "type": "bug",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 95,
+    "pp": 32,
+    "description": "Power doubles with each hit, up to 160."
+  },
+  {
+    "id": 274,
+    "name": "Fury Swipes",
+    "type": "normal",
+    "category": "physical",
+    "power": 18,
+    "accuracy": 80,
+    "pp": 24,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 275,
+    "name": "Future Sight",
+    "type": "psychic",
+    "category": "special",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "Hits two turns after being used."
+  },
+  {
+    "id": 276,
+    "name": "Gastro Acid",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Nullifies the target's Ability."
+  },
+  {
+    "id": 277,
+    "name": "Giga Impact",
+    "type": "normal",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 278,
+    "name": "Grass Whistle",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 55,
+    "pp": 24,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 279,
+    "name": "Gravity",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "5 turns: no Ground immunities, 1.67x accuracy."
+  },
+  {
+    "id": 280,
+    "name": "Growl",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 64,
+    "description": "Lowers the foe(s) Attack by 1."
+  },
+  {
+    "id": 281,
+    "name": "Growth",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Sp. Atk by 1."
+  },
+  {
+    "id": 282,
+    "name": "Grudge",
+    "type": "ghost",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "If the user faints, the attack used loses all its PP."
+  },
+  {
+    "id": 283,
+    "name": "Guard Swap",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Swaps Defense and Sp. Def changes with target."
+  },
+  {
+    "id": 284,
+    "name": "Guillotine",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 30,
+    "pp": 8,
+    "description": "OHKOs the target. Fails if user is a lower level."
+  },
+  {
+    "id": 285,
+    "name": "Gust",
+    "type": "flying",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "Power doubles during Bounce and Fly."
+  },
+  {
+    "id": 286,
+    "name": "Gyro Ball",
+    "type": "steel",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "More power the slower the user than the target."
+  },
+  {
+    "id": 287,
+    "name": "Hail",
+    "type": "ice",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "For 5 turns, hail crashes down."
+  },
+  {
+    "id": 288,
+    "name": "Harden",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's Defense by 1."
+  },
+  {
+    "id": 289,
+    "name": "Headbutt",
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 290,
+    "name": "Heal Block",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "For 5 turns, the foe(s) is prevented from healing."
+  },
+  {
+    "id": 291,
+    "name": "Helping Hand",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "One adjacent ally's move power is 1.5x this turn."
+  },
+  {
+    "id": 292,
+    "name": "Hidden Power",
+    "type": "normal",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Varies in power and type based on the user's IVs."
+  },
+  {
+    "id": 293,
+    "name": "Hidden Power Bug",
+    "type": "bug",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 294,
+    "name": "Hidden Power Dark",
+    "type": "dark",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 295,
+    "name": "Hidden Power Dragon",
+    "type": "dragon",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 296,
+    "name": "Hidden Power Electric",
+    "type": "electric",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 297,
+    "name": "Hidden Power Fighting",
+    "type": "fighting",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 298,
+    "name": "Hidden Power Fire",
+    "type": "fire",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 299,
+    "name": "Hidden Power Flying",
+    "type": "flying",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 300,
+    "name": "Hidden Power Ghost",
+    "type": "ghost",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 301,
+    "name": "Hidden Power Ground",
+    "type": "ground",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 302,
+    "name": "Hidden Power Ice",
+    "type": "ice",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 303,
+    "name": "Hidden Power Poison",
+    "type": "poison",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 304,
+    "name": "Hidden Power Psychic",
+    "type": "psychic",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 305,
+    "name": "Hidden Power Rock",
+    "type": "rock",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 306,
+    "name": "Hidden Power Steel",
+    "type": "steel",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 307,
+    "name": "Hidden Power Water",
+    "type": "water",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 308,
+    "name": "Horn Attack",
+    "type": "normal",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "No additional effect."
+  },
+  {
+    "id": 309,
+    "name": "Horn Drill",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 30,
+    "pp": 8,
+    "description": "OHKOs the target. Fails if user is a lower level."
+  },
+  {
+    "id": 310,
+    "name": "Howl",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Attack by 1."
+  },
+  {
+    "id": 311,
+    "name": "Hydro Cannon",
+    "type": "water",
+    "category": "special",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 312,
+    "name": "Hyper Beam",
+    "type": "normal",
+    "category": "special",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 313,
+    "name": "Hyper Fang",
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "10% chance to make the target flinch."
+  },
+  {
+    "id": 314,
+    "name": "Hypnosis",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": 60,
+    "pp": 32,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 315,
+    "name": "Ice Ball",
+    "type": "ice",
+    "category": "physical",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 32,
+    "description": "Power doubles with each hit. Repeats for 5 turns."
+  },
+  {
+    "id": 316,
+    "name": "Icy Wind",
+    "type": "ice",
+    "category": "special",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "100% chance to lower the foe(s) Speed by 1."
+  },
+  {
+    "id": 317,
+    "name": "Imprison",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "No foe can use any move known by the user."
+  },
+  {
+    "id": 318,
+    "name": "Ingrain",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Traps/grounds user; heals 1/16 max HP per turn."
+  },
+  {
+    "id": 319,
+    "name": "Iron Defense",
+    "type": "steel",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "Raises the user's Defense by 2."
+  },
+  {
+    "id": 320,
+    "name": "Jump Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": 85,
+    "accuracy": 95,
+    "pp": 40,
+    "description": "If miss, user takes 1/2 damage it would've dealt."
+  },
+  {
+    "id": 321,
+    "name": "Karate Chop",
+    "type": "fighting",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 322,
+    "name": "Kinesis",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": 80,
+    "pp": 24,
+    "description": "Lowers the target's accuracy by 1."
+  },
+  {
+    "id": 323,
+    "name": "Leech Life",
+    "type": "bug",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "User recovers 50% of the damage dealt."
+  },
+  {
+    "id": 324,
+    "name": "Leer",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Lowers the foe(s) Defense by 1."
+  },
+  {
+    "id": 325,
+    "name": "Lick",
+    "type": "ghost",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "30% chance to paralyze the target."
+  },
+  {
+    "id": 326,
+    "name": "Lock-On",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "User's next move will not miss the target."
+  },
+  {
+    "id": 327,
+    "name": "Lucky Chant",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "For 5 turns, shields user's party from critical hits."
+  },
+  {
+    "id": 328,
+    "name": "Luster Purge",
+    "type": "psychic",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "50% chance to lower the target's Sp. Def by 1."
+  },
+  {
+    "id": 329,
+    "name": "Magical Leaf",
+    "type": "grass",
+    "category": "special",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 330,
+    "name": "Magnet Bomb",
+    "type": "steel",
+    "category": "physical",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 331,
+    "name": "Magnet Rise",
+    "type": "electric",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "For 5 turns, the user has immunity to Ground."
+  },
+  {
+    "id": 332,
+    "name": "Magnitude",
+    "type": "ground",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "Hits adjacent Pokemon. Power varies; 2x on Dig."
+  },
+  {
+    "id": 333,
+    "name": "Mean Look",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "Prevents the target from switching out."
+  },
+  {
+    "id": 334,
+    "name": "Meditate",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Attack by 1."
+  },
+  {
+    "id": 335,
+    "name": "Me First",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Copies a foe at 1.5x power. User must be faster."
+  },
+  {
+    "id": 336,
+    "name": "Mega Drain",
+    "type": "grass",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "User recovers 50% of the damage dealt."
+  },
+  {
+    "id": 337,
+    "name": "Mega Kick",
+    "type": "normal",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 75,
+    "pp": 8,
+    "description": "No additional effect."
+  },
+  {
+    "id": 338,
+    "name": "Mega Punch",
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "No additional effect."
+  },
+  {
+    "id": 339,
+    "name": "Metal Burst",
+    "type": "steel",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "If hit by an attack, returns 1.5x damage."
+  },
+  {
+    "id": 340,
+    "name": "Metal Claw",
+    "type": "steel",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 95,
+    "pp": 56,
+    "description": "10% chance to raise the user's Attack by 1."
+  },
+  {
+    "id": 341,
+    "name": "Metal Sound",
+    "type": "steel",
+    "category": "status",
+    "power": null,
+    "accuracy": 85,
+    "pp": 64,
+    "description": "Lowers the target's Sp. Def by 2."
+  },
+  {
+    "id": 342,
+    "name": "Metronome",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Picks a random move."
+  },
+  {
+    "id": 343,
+    "name": "Mimic",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "The last move the target used replaces this one."
+  },
+  {
+    "id": 344,
+    "name": "Mind Reader",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "User's next move will not miss the target."
+  },
+  {
+    "id": 345,
+    "name": "Minimize",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises the user's evasiveness by 1."
+  },
+  {
+    "id": 346,
+    "name": "Miracle Eye",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Psychic hits Dark. Evasiveness ignored."
+  },
+  {
+    "id": 347,
+    "name": "Mirror Coat",
+    "type": "psychic",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "If hit by special attack, returns double damage."
+  },
+  {
+    "id": 348,
+    "name": "Mirror Move",
+    "type": "flying",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "User uses the target's last used move against it."
+  },
+  {
+    "id": 349,
+    "name": "Mirror Shot",
+    "type": "steel",
+    "category": "special",
+    "power": 65,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "30% chance to lower the target's accuracy by 1."
+  },
+  {
+    "id": 350,
+    "name": "Mist",
+    "type": "ice",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "For 5 turns, protects user's party from stat drops."
+  },
+  {
+    "id": 351,
+    "name": "Mist Ball",
+    "type": "psychic",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "50% chance to lower the target's Sp. Atk by 1."
+  },
+  {
+    "id": 352,
+    "name": "Mud Bomb",
+    "type": "ground",
+    "category": "special",
+    "power": 65,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "30% chance to lower the target's accuracy by 1."
+  },
+  {
+    "id": 353,
+    "name": "Muddy Water",
+    "type": "water",
+    "category": "special",
+    "power": 95,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "30% chance to lower the foe(s) accuracy by 1."
+  },
+  {
+    "id": 354,
+    "name": "Mud Shot",
+    "type": "ground",
+    "category": "special",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "100% chance to lower the target's Speed by 1."
+  },
+  {
+    "id": 355,
+    "name": "Mud-Slap",
+    "type": "ground",
+    "category": "special",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "100% chance to lower the target's accuracy by 1."
+  },
+  {
+    "id": 356,
+    "name": "Mud Sport",
+    "type": "ground",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "Weakens Electric-type attacks to 1/2 their power."
+  },
+  {
+    "id": 357,
+    "name": "Natural Gift",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Power and type depends on the user's Berry."
+  },
+  {
+    "id": 358,
+    "name": "Nature Power",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Attack changes based on terrain. (Tri Attack)"
+  },
+  {
+    "id": 359,
+    "name": "Needle Arm",
+    "type": "grass",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 360,
+    "name": "Nightmare",
+    "type": "ghost",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "A sleeping target is hurt by 1/4 max HP per turn."
+  },
+  {
+    "id": 361,
+    "name": "Night Slash",
+    "type": "dark",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 362,
+    "name": "Octazooka",
+    "type": "water",
+    "category": "special",
+    "power": 65,
+    "accuracy": 85,
+    "pp": 16,
+    "description": "50% chance to lower the target's accuracy by 1."
+  },
+  {
+    "id": 363,
+    "name": "Odor Sleuth",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Fighting, Normal hit Ghost. Evasiveness ignored."
+  },
+  {
+    "id": 364,
+    "name": "Ominous Wind",
+    "type": "ghost",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "10% chance to raise all stats by 1 (not acc/eva)."
+  },
+  {
+    "id": 365,
+    "name": "Payback",
+    "type": "dark",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if the user moves after the target."
+  },
+  {
+    "id": 366,
+    "name": "Pay Day",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Scatters coins."
+  },
+  {
+    "id": 367,
+    "name": "Peck",
+    "type": "flying",
+    "category": "physical",
+    "power": 35,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "No additional effect."
+  },
+  {
+    "id": 368,
+    "name": "Pin Missile",
+    "type": "bug",
+    "category": "physical",
+    "power": 14,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 369,
+    "name": "Pluck",
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "User steals and eats the target's Berry."
+  },
+  {
+    "id": 370,
+    "name": "Poison Fang",
+    "type": "poison",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "30% chance to badly poison the target."
+  },
+  {
+    "id": 371,
+    "name": "Poison Gas",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": 55,
+    "pp": 64,
+    "description": "Poisons the foe(s)."
+  },
+  {
+    "id": 372,
+    "name": "Poison Powder",
+    "type": "poison",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 56,
+    "description": "Poisons the target."
+  },
+  {
+    "id": 373,
+    "name": "Poison Sting",
+    "type": "poison",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "30% chance to poison the target."
+  },
+  {
+    "id": 374,
+    "name": "Poison Tail",
+    "type": "poison",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "High critical hit ratio. 10% chance to poison."
+  },
+  {
+    "id": 375,
+    "name": "Pound",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "No additional effect."
+  },
+  {
+    "id": 376,
+    "name": "Powder Snow",
+    "type": "ice",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "10% chance to freeze the foe(s)."
+  },
+  {
+    "id": 377,
+    "name": "Power Gem",
+    "type": "rock",
+    "category": "special",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "No additional effect."
+  },
+  {
+    "id": 378,
+    "name": "Power Swap",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Swaps Attack and Sp. Atk stat stages with target."
+  },
+  {
+    "id": 379,
+    "name": "Power Trick",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Switches user's Attack and Defense stats."
+  },
+  {
+    "id": 380,
+    "name": "Present",
+    "type": "normal",
+    "category": "physical",
+    "power": null,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "40, 80, 120 power, or heals target 1/4 max HP."
+  },
+  {
+    "id": 381,
+    "name": "Psybeam",
+    "type": "psychic",
+    "category": "special",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "10% chance to confuse the target."
+  },
+  {
+    "id": 382,
+    "name": "Psycho Shift",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Transfers the user's status ailment to the target."
+  },
+  {
+    "id": 383,
+    "name": "Psych Up",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Copies the target's current stat stages."
+  },
+  {
+    "id": 384,
+    "name": "Psywave",
+    "type": "psychic",
+    "category": "special",
+    "power": null,
+    "accuracy": 80,
+    "pp": 24,
+    "description": "Random damage equal to 0.5x-1.5x user's level."
+  },
+  {
+    "id": 385,
+    "name": "Punishment",
+    "type": "dark",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "60 power +20 for each of the target's stat boosts."
+  },
+  {
+    "id": 386,
+    "name": "Rage",
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Raises the user's Attack by 1 if hit during use."
+  },
+  {
+    "id": 387,
+    "name": "Rain Dance",
+    "type": "water",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "For 5 turns, heavy rain powers Water moves."
+  },
+  {
+    "id": 388,
+    "name": "Razor Leaf",
+    "type": "grass",
+    "category": "physical",
+    "power": 55,
+    "accuracy": 95,
+    "pp": 40,
+    "description": "High critical hit ratio. Hits adjacent foes."
+  },
+  {
+    "id": 389,
+    "name": "Razor Wind",
+    "type": "normal",
+    "category": "special",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Charges, then hits foe(s) turn 2. High crit ratio."
+  },
+  {
+    "id": 390,
+    "name": "Recycle",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Restores the item the user last used."
+  },
+  {
+    "id": 391,
+    "name": "Refresh",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "User cures its burn, poison, or paralysis."
+  },
+  {
+    "id": 392,
+    "name": "Revenge",
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if user is damaged by the target."
+  },
+  {
+    "id": 393,
+    "name": "Reversal",
+    "type": "fighting",
+    "category": "physical",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "More power the less HP the user has left."
+  },
+  {
+    "id": 394,
+    "name": "Roar of Time",
+    "type": "dragon",
+    "category": "special",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 395,
+    "name": "Rock Climb",
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "20% chance to confuse the target."
+  },
+  {
+    "id": 396,
+    "name": "Rock Smash",
+    "type": "fighting",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "50% chance to lower the target's Defense by 1."
+  },
+  {
+    "id": 397,
+    "name": "Rock Throw",
+    "type": "rock",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 398,
+    "name": "Rock Tomb",
+    "type": "rock",
+    "category": "physical",
+    "power": 50,
+    "accuracy": 80,
+    "pp": 16,
+    "description": "100% chance to lower the target's Speed by 1."
+  },
+  {
+    "id": 399,
+    "name": "Rock Wrecker",
+    "type": "rock",
+    "category": "physical",
+    "power": 150,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "User cannot move next turn."
+  },
+  {
+    "id": 400,
+    "name": "Role Play",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User replaces its Ability with the target's."
+  },
+  {
+    "id": 401,
+    "name": "Rolling Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 85,
+    "pp": 24,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 402,
+    "name": "Rollout",
+    "type": "rock",
+    "category": "physical",
+    "power": 30,
+    "accuracy": 90,
+    "pp": 32,
+    "description": "Power doubles with each hit. Repeats for 5 turns."
+  },
+  {
+    "id": 403,
+    "name": "Safeguard",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 40,
+    "description": "For 5 turns, protects user's party from status."
+  },
+  {
+    "id": 404,
+    "name": "Sand Attack",
+    "type": "ground",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Lowers the target's accuracy by 1."
+  },
+  {
+    "id": 405,
+    "name": "Sandstorm",
+    "type": "rock",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "For 5 turns, a sandstorm rages. Rock: 1.5x SpD."
+  },
+  {
+    "id": 406,
+    "name": "Sand Tomb",
+    "type": "ground",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 70,
+    "pp": 24,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 407,
+    "name": "Scary Face",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Lowers the target's Speed by 2."
+  },
+  {
+    "id": 408,
+    "name": "Scratch",
+    "type": "normal",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "No additional effect."
+  },
+  {
+    "id": 409,
+    "name": "Screech",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 85,
+    "pp": 64,
+    "description": "Lowers the target's Defense by 2."
+  },
+  {
+    "id": 410,
+    "name": "Secret Power",
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Effect varies with terrain. (30% paralysis chance)"
+  },
+  {
+    "id": 411,
+    "name": "Self-Destruct",
+    "type": "normal",
+    "category": "physical",
+    "power": 200,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Target's Def halved during damage. User faints."
+  },
+  {
+    "id": 412,
+    "name": "Shadow Force",
+    "type": "ghost",
+    "category": "physical",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "Disappears turn 1. Hits turn 2. Breaks protection."
+  },
+  {
+    "id": 413,
+    "name": "Shadow Punch",
+    "type": "ghost",
+    "category": "physical",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 414,
+    "name": "Sharpen",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 48,
+    "description": "Raises the user's Attack by 1."
+  },
+  {
+    "id": 415,
+    "name": "Sheer Cold",
+    "type": "ice",
+    "category": "special",
+    "power": null,
+    "accuracy": 30,
+    "pp": 8,
+    "description": "OHKOs the target. Fails if user is a lower level."
+  },
+  {
+    "id": 416,
+    "name": "Shock Wave",
+    "type": "electric",
+    "category": "special",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy."
+  },
+  {
+    "id": 417,
+    "name": "Silver Wind",
+    "type": "bug",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "10% chance to raise all stats by 1 (not acc/eva)."
+  },
+  {
+    "id": 418,
+    "name": "Sing",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 55,
+    "pp": 24,
+    "description": "Causes the target to fall asleep."
+  },
+  {
+    "id": 419,
+    "name": "Skill Swap",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "The user and the target trade Abilities."
+  },
+  {
+    "id": 420,
+    "name": "Skull Bash",
+    "type": "normal",
+    "category": "physical",
+    "power": 100,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Raises user's Defense by 1 on turn 1. Hits turn 2."
+  },
+  {
+    "id": 421,
+    "name": "Sky Attack",
+    "type": "flying",
+    "category": "physical",
+    "power": 140,
+    "accuracy": 90,
+    "pp": 8,
+    "description": "Charges, then hits turn 2. 30% flinch. High crit."
+  },
+  {
+    "id": 422,
+    "name": "Sky Uppercut",
+    "type": "fighting",
+    "category": "physical",
+    "power": 85,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "Can hit Pokemon using Bounce or Fly."
+  },
+  {
+    "id": 423,
+    "name": "Slam",
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 75,
+    "pp": 32,
+    "description": "No additional effect."
+  },
+  {
+    "id": 424,
+    "name": "Slash",
+    "type": "normal",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "High critical hit ratio."
+  },
+  {
+    "id": 425,
+    "name": "Sludge",
+    "type": "poison",
+    "category": "special",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "30% chance to poison the target."
+  },
+  {
+    "id": 426,
+    "name": "Smelling Salts",
+    "type": "normal",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if target is paralyzed, and cures it."
+  },
+  {
+    "id": 427,
+    "name": "Smog",
+    "type": "poison",
+    "category": "special",
+    "power": 20,
+    "accuracy": 70,
+    "pp": 32,
+    "description": "40% chance to poison the target."
+  },
+  {
+    "id": 428,
+    "name": "Smokescreen",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the target's accuracy by 1."
+  },
+  {
+    "id": 429,
+    "name": "Snatch",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "User steals certain support moves to use itself."
+  },
+  {
+    "id": 430,
+    "name": "Snore",
+    "type": "normal",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "User must be asleep. 30% chance to flinch target."
+  },
+  {
+    "id": 431,
+    "name": "Solar Beam",
+    "type": "grass",
+    "category": "special",
+    "power": 120,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Charges turn 1. Hits turn 2. No charge in sunlight."
+  },
+  {
+    "id": 432,
+    "name": "Sonic Boom",
+    "type": "normal",
+    "category": "special",
+    "power": null,
+    "accuracy": 90,
+    "pp": 32,
+    "description": "Always does 20 HP of damage."
+  },
+  {
+    "id": 433,
+    "name": "Spark",
+    "type": "electric",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "30% chance to paralyze the target."
+  },
+  {
+    "id": 434,
+    "name": "Spider Web",
+    "type": "bug",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Prevents the target from switching out."
+  },
+  {
+    "id": 435,
+    "name": "Spike Cannon",
+    "type": "normal",
+    "category": "physical",
+    "power": 20,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Hits 2-5 times in one turn."
+  },
+  {
+    "id": 436,
+    "name": "Spite",
+    "type": "ghost",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Lowers the PP of the target's last move by 4."
+  },
+  {
+    "id": 437,
+    "name": "Spit Up",
+    "type": "normal",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "More power with more uses of Stockpile."
+  },
+  {
+    "id": 438,
+    "name": "Splash",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "No competitive use."
+  },
+  {
+    "id": 439,
+    "name": "Steel Wing",
+    "type": "steel",
+    "category": "physical",
+    "power": 70,
+    "accuracy": 90,
+    "pp": 40,
+    "description": "10% chance to raise the user's Defense by 1."
+  },
+  {
+    "id": 440,
+    "name": "Stockpile",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Raises user's Defense, Sp. Def by 1. Max 3 uses."
+  },
+  {
+    "id": 441,
+    "name": "Stomp",
+    "type": "normal",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "30% chance to make the target flinch."
+  },
+  {
+    "id": 442,
+    "name": "Strength",
+    "type": "normal",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 443,
+    "name": "String Shot",
+    "type": "bug",
+    "category": "status",
+    "power": null,
+    "accuracy": 95,
+    "pp": 64,
+    "description": "Lowers the foe(s) Speed by 1."
+  },
+  {
+    "id": 444,
+    "name": "Stun Spore",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 48,
+    "description": "Paralyzes the target."
+  },
+  {
+    "id": 445,
+    "name": "Submission",
+    "type": "fighting",
+    "category": "physical",
+    "power": 80,
+    "accuracy": 80,
+    "pp": 40,
+    "description": "Has 1/4 recoil."
+  },
+  {
+    "id": 446,
+    "name": "Sunny Day",
+    "type": "fire",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "For 5 turns, intense sunlight powers Fire moves."
+  },
+  {
+    "id": 447,
+    "name": "Supersonic",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 55,
+    "pp": 32,
+    "description": "Causes the target to become confused."
+  },
+  {
+    "id": 448,
+    "name": "Swagger",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 90,
+    "pp": 24,
+    "description": "Raises the target's Attack by 2 and confuses it."
+  },
+  {
+    "id": 449,
+    "name": "Swallow",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 16,
+    "description": "Heals the user based on uses of Stockpile."
+  },
+  {
+    "id": 450,
+    "name": "Sweet Kiss",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 75,
+    "pp": 16,
+    "description": "Causes the target to become confused."
+  },
+  {
+    "id": 451,
+    "name": "Sweet Scent",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the foe(s) evasiveness by 1."
+  },
+  {
+    "id": 452,
+    "name": "Swift",
+    "type": "normal",
+    "category": "special",
+    "power": 60,
+    "accuracy": null,
+    "pp": 32,
+    "description": "This move does not check accuracy. Hits foes."
+  },
+  {
+    "id": 453,
+    "name": "Tackle",
+    "type": "normal",
+    "category": "physical",
+    "power": 35,
+    "accuracy": 95,
+    "pp": 56,
+    "description": "No additional effect."
+  },
+  {
+    "id": 454,
+    "name": "Take Down",
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "Has 1/4 recoil."
+  },
+  {
+    "id": 455,
+    "name": "Teeter Dance",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Confuses adjacent Pokemon."
+  },
+  {
+    "id": 456,
+    "name": "Teleport",
+    "type": "psychic",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 32,
+    "description": "Fails when used."
+  },
+  {
+    "id": 457,
+    "name": "Thief",
+    "type": "dark",
+    "category": "physical",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "If the user has no item, it steals the target's."
+  },
+  {
+    "id": 458,
+    "name": "Thrash",
+    "type": "normal",
+    "category": "physical",
+    "power": 90,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lasts 2-3 turns. Confuses the user afterwards."
+  },
+  {
+    "id": 459,
+    "name": "Thunder Fang",
+    "type": "electric",
+    "category": "physical",
+    "power": 65,
+    "accuracy": 95,
+    "pp": 24,
+    "description": "10% chance to paralyze. 10% chance to flinch."
+  },
+  {
+    "id": 460,
+    "name": "Thunder Shock",
+    "type": "electric",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "10% chance to paralyze the target."
+  },
+  {
+    "id": 461,
+    "name": "Tickle",
+    "type": "normal",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Lowers the target's Attack and Defense by 1."
+  },
+  {
+    "id": 462,
+    "name": "Torment",
+    "type": "dark",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "Target can't select the same move twice in a row."
+  },
+  {
+    "id": 463,
+    "name": "Triple Kick",
+    "type": "fighting",
+    "category": "physical",
+    "power": 10,
+    "accuracy": 90,
+    "pp": 16,
+    "description": "Hits 3 times. Each hit can miss, but power rises."
+  },
+  {
+    "id": 464,
+    "name": "Trump Card",
+    "type": "normal",
+    "category": "special",
+    "power": null,
+    "accuracy": null,
+    "pp": 8,
+    "description": "More power the fewer PP this move has left."
+  },
+  {
+    "id": 465,
+    "name": "Twineedle",
+    "type": "bug",
+    "category": "physical",
+    "power": 25,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "Hits 2 times. Each hit has 20% chance to poison."
+  },
+  {
+    "id": 466,
+    "name": "Twister",
+    "type": "dragon",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "20% chance to make the foe(s) flinch."
+  },
+  {
+    "id": 467,
+    "name": "Uproar",
+    "type": "normal",
+    "category": "special",
+    "power": 50,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Lasts 3-6 turns. Active Pokemon cannot sleep."
+  },
+  {
+    "id": 468,
+    "name": "Vine Whip",
+    "type": "grass",
+    "category": "physical",
+    "power": 35,
+    "accuracy": 100,
+    "pp": 24,
+    "description": "No additional effect."
+  },
+  {
+    "id": 469,
+    "name": "Vise Grip",
+    "type": "normal",
+    "category": "physical",
+    "power": 55,
+    "accuracy": 100,
+    "pp": 48,
+    "description": "No additional effect."
+  },
+  {
+    "id": 470,
+    "name": "Vital Throw",
+    "type": "fighting",
+    "category": "physical",
+    "power": 70,
+    "accuracy": null,
+    "pp": 16,
+    "description": "This move does not check accuracy. Goes last."
+  },
+  {
+    "id": 471,
+    "name": "Wake-Up Slap",
+    "type": "fighting",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "Power doubles if target is asleep, and wakes it."
+  },
+  {
+    "id": 472,
+    "name": "Water Gun",
+    "type": "water",
+    "category": "special",
+    "power": 40,
+    "accuracy": 100,
+    "pp": 40,
+    "description": "No additional effect."
+  },
+  {
+    "id": 473,
+    "name": "Water Pulse",
+    "type": "water",
+    "category": "special",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 32,
+    "description": "20% chance to confuse the target."
+  },
+  {
+    "id": 474,
+    "name": "Water Sport",
+    "type": "water",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 24,
+    "description": "Weakens Fire-type attacks to 1/2 their power."
+  },
+  {
+    "id": 475,
+    "name": "Whirlpool",
+    "type": "water",
+    "category": "special",
+    "power": 15,
+    "accuracy": 70,
+    "pp": 24,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 476,
+    "name": "Wing Attack",
+    "type": "flying",
+    "category": "physical",
+    "power": 60,
+    "accuracy": 100,
+    "pp": 56,
+    "description": "No additional effect."
+  },
+  {
+    "id": 477,
+    "name": "Withdraw",
+    "type": "water",
+    "category": "status",
+    "power": null,
+    "accuracy": null,
+    "pp": 64,
+    "description": "Raises the user's Defense by 1."
+  },
+  {
+    "id": 478,
+    "name": "Worry Seed",
+    "type": "grass",
+    "category": "status",
+    "power": null,
+    "accuracy": 100,
+    "pp": 16,
+    "description": "The target's Ability becomes Insomnia."
+  },
+  {
+    "id": 479,
+    "name": "Wrap",
+    "type": "normal",
+    "category": "physical",
+    "power": 15,
+    "accuracy": 85,
+    "pp": 32,
+    "description": "Traps and damages the target for 2-5 turns."
+  },
+  {
+    "id": 480,
+    "name": "Wring Out",
+    "type": "normal",
+    "category": "special",
+    "power": null,
+    "accuracy": 100,
+    "pp": 8,
+    "description": "More power the more HP the target has left."
+  },
+  {
+    "id": 481,
+    "name": "Zap Cannon",
+    "type": "electric",
+    "category": "special",
+    "power": 120,
+    "accuracy": 50,
+    "pp": 8,
+    "description": "100% chance to paralyze the target."
+  }
+]

@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Ubers", "tier": "ubers", "banned_moves": ["Double Team", "Minimize", "Sheer Cold", "Horn Drill", "Fissure", "Swagger", "Acupressure" ], "banned_items": [] },
+  { "id": 2, "name": "OU", "tier": "ou", "banned_moves": [], "banned_items": [] },
+  { "id": 3, "name": "UU", "tier": "uu", "banned_moves": [], "banned_items": [] },
+  { "id": 4, "name": "NU", "tier": "nu", "banned_moves": [], "banned_items": [] },
+  { "id": 5, "name": "PU", "tier": "pu", "banned_moves": [], "banned_items": [] },
+  { "id": 6, "name": "LC", "tier": "lc", "banned_moves": [], "banned_items": [] }
+]

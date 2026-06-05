@@ -74,7 +74,7 @@ When a user publishes or updates a team (`POST /teams`, `PUT /teams/:id`), the A
 | Pokémon exists | pokemons.json | Zod + in-memory lookup |
 | Pokémon is legal in this format's tier | pokemons.json + formats.json | In-memory comparison |
 | Ability belongs to this Pokémon | pokemon-abilities.json | In-memory lookup |
-| Each move is in this Pokémon's learnset | pokemon-moves.json | In-memory lookup |
+| Each move is in this Pokémon's learnset | pokemon-moves.json | In-memory lookup — checks Pokémon + all pre-evolutions via `evolvesFrom` chain in pokemons.json |
 | Move not in format's banned_moves | formats.json | In-memory lookup |
 | Item not in format's banned_items | formats.json | In-memory lookup |
 | No duplicate Pokémon in the team | Request payload | Zod |
@@ -99,7 +99,7 @@ A team in the database is by definition **valid and public**. Drafts are never p
 | id | SERIAL | PRIMARY KEY |
 | email | VARCHAR(255) | NOT NULL, UNIQUE |
 | password | VARCHAR(60) | NOT NULL, hashed with bcrypt |
-| pseudo | VARCHAR(60) | NOT NULL, UNIQUE, immutable after registration |
+| username | VARCHAR(60) | NOT NULL, UNIQUE, immutable after registration |
 | avatar | VARCHAR(255) | Nullable — profile picture URL |
 | bio | VARCHAR(255) | Nullable |
 | created_at | TIMESTAMP | DEFAULT CURRENT_TIMESTAMP |
