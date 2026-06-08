@@ -42,6 +42,9 @@ export function validateTeam(data: TeamData): ValidationResult {
   }
 
   const formatTierIndex = TIER_ORDER.indexOf(format.tier);
+  if (formatTierIndex === -1) {
+    return { valid: false, error: `Unsupported format tier: ${format.tier}` };
+  }
   const level = format.tier === "lc" ? 5 : 100;
 
   for (const pokemon of data.pokemons) {
@@ -52,6 +55,9 @@ export function validateTeam(data: TeamData): ValidationResult {
 
     // Tier legality
     const pokemonTierIndex = TIER_ORDER.indexOf(pokemonData.tier);
+    if (pokemonTierIndex === -1) {
+      return { valid: false, error: `Unsupported tier for ${pokemonData.name}: ${pokemonData.tier}` };
+    }
     if (pokemonTierIndex > formatTierIndex) {
       return {
         valid: false,

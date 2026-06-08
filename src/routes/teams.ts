@@ -8,6 +8,11 @@ import { eq } from "drizzle-orm";
 
 const router = Router();
 
+function parseId(param: string | string[]): number | null {
+  const value = Array.isArray(param) ? param[0] : param;
+  return /^[1-9]\d*$/.test(value) ? Number(value) : null;
+}
+
 router.get("/", async (req, res) => {
   try {
     const allTeams = await db.select().from(teams);
@@ -19,7 +24,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
   try {
-    const teamId = Number(req.params.id);
+    const teamId = parseId(req.params.id);
+    if (!teamId) return res.status(400).json({ error: "Invalid id" });
 
     const [team] = await db.select().from(teams).where(eq(teams.id, teamId));
     if (!team) {
@@ -46,7 +52,8 @@ router.get("/:id", async (req, res) => {
 
 router.put("/:id", authenticateToken, async (req, res) => {
   try {
-    const teamId = Number(req.params.id);
+    const teamId = parseId(req.params.id);
+    if (!teamId) return res.status(400).json({ error: "Invalid id" });
 
     const [team] = await db.select().from(teams).where(eq(teams.id, teamId));
     if (!team) {
@@ -66,47 +73,49 @@ router.put("/:id", authenticateToken, async (req, res) => {
       return res.status(400).json({ error: validation.error });
     }
 
-    await db.update(teams).set({
-      name: parsed.data.name,
-      description: parsed.data.description,
-      format_id: parsed.data.formatId,
-    }).where(eq(teams.id, teamId));
+    await db.transaction(async (tx) => {
+      await tx.update(teams).set({
+        name: parsed.data.name,
+        description: parsed.data.description,
+        format_id: parsed.data.formatId,
+      }).where(eq(teams.id, teamId));
 
-    await db.delete(teams_pokemons).where(eq(teams_pokemons.team_id, teamId));
+      await tx.delete(teams_pokemons).where(eq(teams_pokemons.team_id, teamId));
 
-    for (const pokemon of parsed.data.pokemons) {
-      const [newTeamPokemon] = await db.insert(teams_pokemons).values({
-        team_id: teamId,
-        pokemon_id: pokemon.pokemonId,
-        ability_id: pokemon.abilityId,
-        nature_id: pokemon.natureId,
-        item_id: pokemon.itemId,
-        level: validation.level,
-        gender: pokemon.gender,
-        shiny: pokemon.shiny,
-        happiness: pokemon.happiness,
-        nickname: pokemon.nickname,
-        iv_hp: pokemon.ivs.hp,
-        iv_atk: pokemon.ivs.atk,
-        iv_def: pokemon.ivs.def,
-        iv_sp_atk: pokemon.ivs.sp_atk,
-        iv_sp_def: pokemon.ivs.sp_def,
-        iv_speed: pokemon.ivs.speed,
-        ev_hp: pokemon.evs.hp,
-        ev_atk: pokemon.evs.atk,
-        ev_def: pokemon.evs.def,
-        ev_sp_atk: pokemon.evs.sp_atk,
-        ev_sp_def: pokemon.evs.sp_def,
-        ev_speed: pokemon.evs.speed,
-      }).returning();
+      for (const pokemon of parsed.data.pokemons) {
+        const [newTeamPokemon] = await tx.insert(teams_pokemons).values({
+          team_id: teamId,
+          pokemon_id: pokemon.pokemonId,
+          ability_id: pokemon.abilityId,
+          nature_id: pokemon.natureId,
+          item_id: pokemon.itemId,
+          level: validation.level,
+          gender: pokemon.gender,
+          shiny: pokemon.shiny,
+          happiness: pokemon.happiness,
+          nickname: pokemon.nickname,
+          iv_hp: pokemon.ivs.hp,
+          iv_atk: pokemon.ivs.atk,
+          iv_def: pokemon.ivs.def,
+          iv_sp_atk: pokemon.ivs.sp_atk,
+          iv_sp_def: pokemon.ivs.sp_def,
+          iv_speed: pokemon.ivs.speed,
+          ev_hp: pokemon.evs.hp,
+          ev_atk: pokemon.evs.atk,
+          ev_def: pokemon.evs.def,
+          ev_sp_atk: pokemon.evs.sp_atk,
+          ev_sp_def: pokemon.evs.sp_def,
+          ev_speed: pokemon.evs.speed,
+        }).returning();
 
-      await db.insert(teams_pokemons_moves).values(
-        pokemon.moves.map(moveId => ({
-          teams_pokemon_id: newTeamPokemon.id,
-          move_id: moveId,
-        }))
-      );
-    }
+        await tx.insert(teams_pokemons_moves).values(
+          pokemon.moves.map(moveId => ({
+            teams_pokemon_id: newTeamPokemon.id,
+            move_id: moveId,
+          }))
+        );
+      }
+    });
 
     res.json({ id: teamId });
   } catch (error) {
@@ -116,7 +125,8 @@ router.put("/:id", authenticateToken, async (req, res) => {
 
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
-    const teamId = Number(req.params.id);
+    const teamId = parseId(req.params.id);
+    if (!teamId) return res.status(400).json({ error: "Invalid id" });
 
     const [team] = await db.select().from(teams).where(eq(teams.id, teamId));
     if (!team) {
