@@ -8155,7 +8155,7 @@
       "spd": 90,
       "spe": 125
     },
-    "abilities": ["bad dreams"],
+    "abilities": [122],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8172,7 +8172,7 @@
       "spd": 50,
       "spe": 150
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8189,7 +8189,7 @@
       "spd": 20,
       "spe": 150
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8206,7 +8206,7 @@
       "spd": 160,
       "spe": 90
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8223,7 +8223,7 @@
       "spd": 90,
       "spe": 180
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8240,7 +8240,7 @@
       "spd": 100,
       "spe": 90
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8257,7 +8257,7 @@
       "spd": 85,
       "spe": 102
     },
-    "abilities": ["sand veil"],
+    "abilities": [8],
     "tier": "ubers",
     "evolvesFrom": 446
   },
@@ -8274,7 +8274,7 @@
       "spd": 120,
       "spe": 90
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8291,7 +8291,7 @@
       "spd": 100,
       "spe": 90
     },
-    "abilities": ["levitate"],
+    "abilities": [26],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8308,7 +8308,7 @@
       "spd": 90,
       "spe": 90
     },
-    "abilities": ["drought"],
+    "abilities": [70],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8325,7 +8325,7 @@
       "spd": 154,
       "spe": 90
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8342,7 +8342,7 @@
       "spd": 140,
       "spe": 90
     },
-    "abilities": ["drizzle"],
+    "abilities": [2],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8359,7 +8359,7 @@
       "spd": 110,
       "spe": 110
     },
-    "abilities": ["levitate"],
+    "abilities": [26],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8376,7 +8376,7 @@
       "spd": 154,
       "spe": 110
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8393,7 +8393,7 @@
       "spd": 85,
       "spe": 55
     },
-    "abilities": ["guts", "no guard"],
+    "abilities": [62, 98],
     "tier": "ubers",
     "evolvesFrom": 71
   },
@@ -8410,7 +8410,7 @@
       "spd": 100,
       "spe": 100
     },
-    "abilities": ["hydration"],
+    "abilities": [92],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8427,7 +8427,7 @@
       "spd": 100,
       "spe": 100
     },
-    "abilities": ["synchronize"],
+    "abilities": [28],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8444,7 +8444,7 @@
       "spd": 90,
       "spe": 130
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8461,7 +8461,7 @@
       "spd": 120,
       "spe": 100
     },
-    "abilities": ["pressure"],
+    "abilities": [46],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8478,7 +8478,7 @@
       "spd": 90,
       "spe": 95
     },
-    "abilities": ["air lock"],
+    "abilities": [76],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8495,7 +8495,7 @@
       "spd": 80,
       "spe": 100
     },
-    "abilities": ["intimidate"],
+    "abilities": [22],
     "tier": "ubers",
     "evolvesFrom": 388
   },
@@ -8512,7 +8512,7 @@
       "spd": 75,
       "spe": 127
     },
-    "abilities": ["serene grace"],
+    "abilities": [32],
     "tier": "ubers",
     "evolvesFrom": null
   },
@@ -8529,7 +8529,7 @@
       "spd": 58,
       "spe": 33
     },
-    "abilities": ["shadow tag"],
+    "abilities": [23],
     "tier": "ubers",
     "evolvesFrom": 503
   },
@@ -8546,7 +8546,7 @@
       "spd": 48,
       "spe": 23
     },
-    "abilities": ["shadow tag"],
+    "abilities": [23],
     "tier": "ou",
     "evolvesFrom": null
   }

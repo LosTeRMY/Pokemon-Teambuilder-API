@@ -1,10 +1,14 @@
 import express from 'express';
-import router from './routes/auth';
+import authRouter from './routes/auth';
+import gamedataRouter from './routes/gamedata';
+import teamsRouter from './routes/teams';
 
 const app = express();
 
 app.use(express.json());
-app.use('/auth', router);
+app.use('/auth', authRouter);
+app.use('/gamedata', gamedataRouter);
+app.use('/teams', teamsRouter);
 
 app.get('/health', (req, res) => {
     res.json({status: 'ok'});
