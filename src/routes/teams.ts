@@ -10,8 +10,7 @@ const router = Router();
 
 function parseId(param: string | string[]): number | null {
   const value = Array.isArray(param) ? param[0] : param;
-  const id = parseInt(value, 10);
-  return Number.isInteger(id) && id > 0 ? id : null;
+  return /^[1-9]\d*$/.test(value) ? Number(value) : null;
 }
 
 router.get("/", async (req, res) => {
