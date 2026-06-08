@@ -57,7 +57,7 @@
   {
     "id": 12,
     "name": "Oblivious",
-    "description": "The Pokémon cannot gain the Infatuated or Taunted statuses and is unaffected by Intimidate."
+    "description": "This Pokemon cannot be infatuated. Gaining this Ability while infatuated cures it."
   },
   {
     "id": 13,
@@ -97,7 +97,7 @@
   {
     "id": 20,
     "name": "Own Tempo",
-    "description": "The Pokémon cannot become confused and is unaffected by Intimidate."
+    "description": "The Pokémon cannot be confused."
   },
   {
     "id": 21,
@@ -192,7 +192,7 @@
   {
     "id": 39,
     "name": "Inner Focus",
-    "description": "The Pokémon never flinches when attacked and is unaffected by Intimidate."
+    "description": "This Pokemon cannot be made to flinch."
   },
   {
     "id": 40,
@@ -557,7 +557,7 @@
   {
     "id": 112,
     "name": "Scrappy",
-    "description": "The Pokémon can hit Ghost types with Normal- and Fighting-type moves. It is also unaffected by Intimidate."
+    "description": "This Pokemon can hit Ghost types with Normal- and Fighting-type moves."
   },
   {
     "id": 113,
