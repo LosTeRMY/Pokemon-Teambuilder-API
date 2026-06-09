@@ -1,6 +1,17 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
+export const optionalAuth = (req: Request, _res: Response, next: NextFunction) => {
+    const header = req.headers.authorization;
+    if (header?.startsWith('Bearer ')) {
+        try {
+            const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET!) as { userId: number };
+            req.userId = decoded.userId;
+        } catch {}
+    }
+    next();
+};
+
 export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
 
