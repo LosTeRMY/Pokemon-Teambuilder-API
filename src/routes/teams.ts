@@ -31,7 +31,8 @@ router.get("/", optionalAuth, async (req, res) => {
     let likedByUserId: number | null = null;
     const likedBy = req.query.liked_by as string | undefined;
     if (likedBy === "me") {
-      likedByUserId = req.userId ?? null;
+      if (!req.userId) return res.status(401).json({ error: "Unauthorized" });
+      likedByUserId = req.userId;
     } else if (likedBy) {
       likedByUserId = Number(likedBy) || null;
     }
@@ -52,7 +53,7 @@ router.get("/", optionalAuth, async (req, res) => {
     if (moveFilter) conditions.push(
       sql`EXISTS (SELECT 1 FROM teams_pokemons tp JOIN teams_pokemons_moves tpm ON tpm.teams_pokemon_id = tp.id WHERE tp.team_id = ${teams.id} AND tpm.move_id = ${moveFilter})`
     );
-    if (likedByUserId) conditions.push(
+    if (likedByUserId !== null) conditions.push(
       sql`EXISTS (SELECT 1 FROM team_likes WHERE team_likes.team_id = ${teams.id} AND team_likes.user_id = ${likedByUserId})`
     );
 

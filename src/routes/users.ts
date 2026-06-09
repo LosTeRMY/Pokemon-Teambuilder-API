@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import { db } from '../db';
 import { users, teams } from '../db/schema';
-import { eq, desc } from 'drizzle-orm';
-import { authenticateToken } from '../middleware/auth';
+import { eq, desc, sql } from 'drizzle-orm';
+import { authenticateToken, optionalAuth } from '../middleware/auth';
 import bcrypt from 'bcrypt';
 import z from 'zod';
 
@@ -14,14 +14,17 @@ const patchUserSchema = z.object({
     avatar: z.string().url().optional(),
     bio: z.string().max(255).optional(),
     currentPassword: z.string().optional(),
-}).refine(data => {
+}).superRefine((data, ctx) => {
     if ((data.email || data.password) && !data.currentPassword) {
-        return false;
+        ctx.addIssue({
+            code: z.ZodIssueCode.custom,
+            message: "currentPassword is required when updating email or password",
+            path: ["currentPassword"],
+        });
     }
-    return true;
-}, { message: "currentPassword is required when updating email or password" });
+});
 
-router.get('/:id', async (req, res) => {
+router.get('/:id', optionalAuth, async (req, res) => {
     try {
         const userId = Number(req.params.id);
         if (!Number.isInteger(userId) || userId <= 0) {
@@ -38,12 +41,19 @@ router.get('/:id', async (req, res) => {
 
         if (!user) return res.status(404).json({ error: "User not found" });
 
+        const likesCount = sql<number>`(SELECT COUNT(*) FROM team_likes WHERE team_likes.team_id = ${teams.id})`.as('likes_count');
+        const liked = req.userId
+            ? sql<boolean>`EXISTS (SELECT 1 FROM team_likes WHERE team_likes.team_id = ${teams.id} AND team_likes.user_id = ${req.userId})`.as('liked')
+            : sql<null>`NULL`.as('liked');
+
         const userTeams = await db.select({
             id: teams.id,
             name: teams.name,
             description: teams.description,
             format_id: teams.format_id,
             createdAt: teams.createdAt,
+            likes_count: likesCount,
+            liked,
         }).from(teams).where(eq(teams.userId, userId)).orderBy(desc(teams.createdAt));
 
         res.json({ ...user, teams: userTeams });
@@ -63,6 +73,10 @@ router.patch('/:id', authenticateToken, async (req, res) => {
             return res.status(403).json({ error: "Forbidden" });
         }
 
+        const [existingUser] = await db.select({ id: users.id, password: users.password })
+            .from(users).where(eq(users.id, userId));
+        if (!existingUser) return res.status(404).json({ error: "User not found" });
+
         const parsed = patchUserSchema.safeParse(req.body);
         if (!parsed.success) {
             return res.status(400).json({ error: parsed.error.flatten().fieldErrors });
@@ -71,8 +85,7 @@ router.patch('/:id', authenticateToken, async (req, res) => {
         const { email, password, avatar, bio, currentPassword } = parsed.data;
 
         if (email || password) {
-            const [user] = await db.select({ password: users.password }).from(users).where(eq(users.id, userId));
-            const valid = await bcrypt.compare(currentPassword!, user.password);
+            const valid = await bcrypt.compare(currentPassword!, existingUser.password);
             if (!valid) {
                 return res.status(401).json({ error: "Incorrect current password" });
             }
@@ -91,7 +104,10 @@ router.patch('/:id', authenticateToken, async (req, res) => {
         await db.update(users).set(updates).where(eq(users.id, userId));
 
         res.json({ id: userId });
-    } catch {
+    } catch (error: any) {
+        if (error?.code === "23505") {
+            return res.status(409).json({ error: "Email already in use" });
+        }
         res.status(500).json({ error: "Internal server error" });
     }
 });
