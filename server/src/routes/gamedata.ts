@@ -1,11 +1,11 @@
 import { Router } from "express";
-import abilities from "../data/json/abilities.json";
-import items from "../data/json/items.json";
-import moves from "../data/json/moves.json";
-import pokemons from "../data/json/pokemons.json";
-import natures from "../data/json/natures.json";
-import formats from "../data/json/formats.json";
-import learnsets from "../data/json/learnsets.json";
+import abilities from "../../../data/abilities.json";
+import items from "../../../data/items.json";
+import moves from "../../../data/moves.json";
+import pokemons from "../../../data/pokemons.json";
+import natures from "../../../data/natures.json";
+import formats from "../../../data/formats.json";
+import learnsets from "../../../data/learnsets.json";
 
 const router = Router();
 

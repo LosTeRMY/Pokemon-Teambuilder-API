@@ -1,13 +1,13 @@
-import pokemonsJson from "../data/json/pokemons.json";
-import formats from "../data/json/formats.json";
-import learnsetsJson from "../data/json/learnsets.json";
-import movesJson from "../data/json/moves.json";
-import natures from "../data/json/natures.json";
-import items from "../data/json/items.json";
+import pokemonsJson from "../../../data/pokemons.json";
+import formats from "../../../data/formats.json";
+import learnsetsJson from "../../../data/learnsets.json";
+import movesJson from "../../../data/moves.json";
+import natures from "../../../data/natures.json";
+import items from "../../../data/items.json";
 import { createTeamSchema } from "../schemas/team";
 import z from "zod";
 import { Pokemon } from "../types";
-import abilitiesJson from "../data/json/abilities.json";
+import abilitiesJson from "../../../data/abilities.json";
 
 const pokemonList = pokemonsJson as Pokemon[];
 const abilitiesList = abilitiesJson as { id: number; name: string; description: string }[];
