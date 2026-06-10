@@ -7,7 +7,7 @@ const router = Router();
 
 const patchUserSchema = z.object({
     email: z.string().email().optional(),
-    password: z.string().min(8).max(72).optional(),
+    password: z.string().min(8).refine(val => new TextEncoder().encode(val).length <= 72, "password must be at most 72 UTF-8 bytes").optional(),
     avatar: z.string().url().optional(),
     bio: z.string().max(255).optional(),
     currentPassword: z.string().optional(),
