@@ -125,7 +125,7 @@ function MonSlot({ mon, size }: { mon: BrowserMember; size: number }) {
 
 /* ─── TeamCard ─── */
 function TeamCard({ team, onLike }: { team: BrowserTeam; onLike: (id: number) => void }) {
-  const SIZE = 56;
+  const SIZE = 76;
   return (
     <article className="card">
       <div className="card-head">
@@ -271,7 +271,7 @@ function ComboGroup({ pid, items, active, onEdit, onRemove }: {
   return (
     <div className={"cgroup" + (active ? " cgroup--active" : "")}>
       <button className="cgroup-head" onClick={onEdit}>
-        <PokeToken pid={pid} size={26} />
+        <PokeToken pid={pid} size={32} />
         <strong>{poke ? poke.name : pid}</strong>
         <span className="cgroup-edit">{active ? "editing" : "edit"}</span>
       </button>
@@ -326,7 +326,7 @@ function ComboBuilder({ combos, draftPid, setDraftPid, addCombo, removeCombo }: 
       {draftPoke ? (
         <div className="combo-draft">
           <div className="combo-draft-head">
-            <PokeToken pid={draftPid!} size={28} />
+            <PokeToken pid={draftPid!} size={35} />
             <strong>{draftPoke.name}</strong>
             <button className="combo-done" onMouseDown={(e) => { e.preventDefault(); setDraftPid(null); }}>done</button>
           </div>

@@ -28,7 +28,7 @@ export default function FilterSidebar({ formats, formatCounts }: Props) {
   const [likedByMe, setLikedByMe] = useState(false);
 
   return (
-    <aside className="w-72 shrink-0 flex flex-col gap-6 py-6 px-4">
+    <aside className="w-150 shrink-0 flex flex-col gap-6 py-6 px-4">
       {/* Team name */}
       <div className="flex flex-col gap-2">
         <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Team name</label>
