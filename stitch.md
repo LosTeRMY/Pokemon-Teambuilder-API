@@ -1,4 +1,4 @@
-# Stitch Design Brief — Pokémon Teambuilder
+# Stitch Design Brief — PokéBuild
 
 Paste this file as context when starting a new page in Stitch.
 
@@ -6,7 +6,7 @@ Paste this file as context when starting a new page in Stitch.
 
 ## Project Overview
 
-A community-driven **Gen 4 Pokémon competitive teambuilder**. Users build competitive teams and publish them publicly. Anyone can browse, filter, and like community teams.
+**PokéBuild** — a community-driven **Gen 4 Pokémon competitive teambuilder**. Users build competitive teams and publish them publicly. Anyone can browse, filter, and like community teams.
 
 ---
 
@@ -31,6 +31,8 @@ A community-driven **Gen 4 Pokémon competitive teambuilder**. Users build compe
 | User profile | `/users/[id]` |
 | Login | `/login` |
 | Register | `/register` |
+| Pokédex | `/pokedex` |
+| Builder | `/builder` |
 
 ---
 

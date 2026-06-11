@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Ubers", "tier": "ubers", "banned_moves": [243, 345, 415, 309, 260, 448, 187 ], "banned_items": [] },
+  { "id": 2, "name": "OU", "tier": "ou", "banned_moves": [243, 345, 415, 309, 260], "banned_items": [23, 2, 4] },
+  { "id": 3, "name": "UU", "tier": "uu", "banned_moves": [243, 345, 415, 309, 260], "banned_items": [] },
+  { "id": 4, "name": "NU", "tier": "nu", "banned_moves": [243, 345, 415, 309, 260], "banned_items": [] },
+  { "id": 5, "name": "PU", "tier": "pu", "banned_moves": [243, 345, 415, 309, 260], "banned_items": [] },
+  { "id": 6, "name": "LC", "tier": "lc", "banned_moves": [243, 345, 415, 309, 260], "banned_items": [] }
+]

@@ -133,6 +133,14 @@ A team in the database is by definition valid and public. **Drafts are never per
 **`GET /teams` query params:**
 `?pokemon=&move=&ability=&item=&format=&name=&user=&liked_by=&sort=newest|oldest|popular&page=&limit=`
 
+All of `pokemon`, `move`, `ability`, `item`, and the combo params below accept multiple values (repeat the param) — all must be present on the team (AND logic).
+
+Combo filters (format `pokemonId:valueId`) link a specific Pokémon to a specific attribute:
+- `pokemon_item` — Pokémon holding a specific item
+- `pokemon_move` — Pokémon using a specific move
+- `pokemon_ability` — Pokémon with a specific ability
+- `pokemon_nature` — Pokémon with a specific nature
+
 `liked_by=me` is resolved server-side from the JWT. Team list responses include `likes_count` (live COUNT) and `liked` (boolean for authenticated users, `null` for unauthenticated).
 
 ## Schema Changes
