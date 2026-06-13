@@ -13,14 +13,32 @@ export async function listTeams(query: Record<string, unknown>, requestingUserId
   const limit = Math.min(100, Math.max(1, Number(query.limit) || 20));
   const offset = (page - 1) * limit;
 
-  const pokemonFilter = query.pokemon ? Number(query.pokemon) : null;
-  const moveFilter = query.move ? Number(query.move) : null;
-  const abilityFilter = query.ability ? Number(query.ability) : null;
-  const itemFilter = query.item ? Number(query.item) : null;
   const formatFilter = query.format ? Number(query.format) : null;
   const nameFilter = query.name as string | undefined;
   const userFilter = query.user ? Number(query.user) : null;
   const sort = (query.sort as string) || "newest";
+
+  const toIntArray = (val: unknown): number[] =>
+    (Array.isArray(val) ? val : val ? [val] : [])
+      .map(Number)
+      .filter(n => Number.isInteger(n) && n > 0);
+
+  const pokemonFilters = toIntArray(query.pokemon);
+  const moveFilters = toIntArray(query.move);
+  const abilityFilters = toIntArray(query.ability);
+  const itemFilters = toIntArray(query.item);
+
+  const parsePokemonPairs = (val: unknown) =>
+    (Array.isArray(val) ? val : val ? [val] : [])
+      .flatMap((raw: unknown) => {
+        const [p, v] = String(raw).split(":").map(Number);
+        return Number.isInteger(p) && p > 0 && Number.isInteger(v) && v > 0 ? [{ pokemonId: p, valueId: v }] : [];
+      });
+
+  const pokemonItemFilters = parsePokemonPairs(query.pokemon_item);
+  const pokemonMoveFilters = parsePokemonPairs(query.pokemon_move);
+  const pokemonAbilityFilters = parsePokemonPairs(query.pokemon_ability);
+  const pokemonNatureFilters = parsePokemonPairs(query.pokemon_nature);
 
   let likedByUserId: number | null = null;
   if (query.liked_by === "me") {
@@ -34,20 +52,32 @@ export async function listTeams(query: Record<string, unknown>, requestingUserId
   if (formatFilter) conditions.push(eq(teams.format_id, formatFilter));
   if (nameFilter) conditions.push(ilike(teams.name, `%${nameFilter}%`));
   if (userFilter) conditions.push(eq(teams.userId, userFilter));
-  if (pokemonFilter) conditions.push(
-    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonFilter})`
+  for (const pokemonId of pokemonFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonId})`
   );
-  if (abilityFilter) conditions.push(
-    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.ability_id = ${abilityFilter})`
+  for (const abilityId of abilityFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.ability_id = ${abilityId})`
   );
-  if (itemFilter) conditions.push(
-    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.item_id = ${itemFilter})`
+  for (const itemId of itemFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.item_id = ${itemId})`
   );
-  if (moveFilter) conditions.push(
-    sql`EXISTS (SELECT 1 FROM teams_pokemons tp JOIN teams_pokemons_moves tpm ON tpm.teams_pokemon_id = tp.id WHERE tp.team_id = ${teams.id} AND tpm.move_id = ${moveFilter})`
+  for (const moveId of moveFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons tp JOIN teams_pokemons_moves tpm ON tpm.teams_pokemon_id = tp.id WHERE tp.team_id = ${teams.id} AND tpm.move_id = ${moveId})`
   );
   if (likedByUserId !== null) conditions.push(
     sql`EXISTS (SELECT 1 FROM team_likes WHERE team_likes.team_id = ${teams.id} AND team_likes.user_id = ${likedByUserId})`
+  );
+  for (const { pokemonId, valueId } of pokemonItemFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonId} AND teams_pokemons.item_id = ${valueId})`
+  );
+  for (const { pokemonId, valueId } of pokemonMoveFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons tp JOIN teams_pokemons_moves tpm ON tpm.teams_pokemon_id = tp.id WHERE tp.team_id = ${teams.id} AND tp.pokemon_id = ${pokemonId} AND tpm.move_id = ${valueId})`
+  );
+  for (const { pokemonId, valueId } of pokemonAbilityFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonId} AND teams_pokemons.ability_id = ${valueId})`
+  );
+  for (const { pokemonId, valueId } of pokemonNatureFilters) conditions.push(
+    sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonId} AND teams_pokemons.nature_id = ${valueId})`
   );
 
   const likesCount = sql<number>`(SELECT COUNT(*) FROM team_likes WHERE team_likes.team_id = ${teams.id})`.as('likes_count');

@@ -1,0 +1,8553 @@
+[
+  {
+    "id": 1,
+    "name": "Bulbasaur",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 49,
+      "def": 49,
+      "spa": 65,
+      "spd": 65,
+      "spe": 45
+    },
+    "abilities": [65],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 2,
+    "name": "Ivysaur",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 62,
+      "def": 63,
+      "spa": 80,
+      "spd": 80,
+      "spe": 60
+    },
+    "abilities": [65],
+    "tier": "pu",
+    "evolvesFrom": 1
+  },
+  {
+    "id": 3,
+    "name": "Venusaur",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 82,
+      "def": 83,
+      "spa": 100,
+      "spd": 100,
+      "spe": 80
+    },
+    "abilities": [65],
+    "tier": "uu",
+    "evolvesFrom": 2
+  },
+  {
+    "id": 4,
+    "name": "Charmander",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 39,
+      "atk": 52,
+      "def": 43,
+      "spa": 60,
+      "spd": 50,
+      "spe": 65
+    },
+    "abilities": [66],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 5,
+    "name": "Charmeleon",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 58,
+      "atk": 64,
+      "def": 58,
+      "spa": 80,
+      "spd": 65,
+      "spe": 80
+    },
+    "abilities": [66],
+    "tier": "pu",
+    "evolvesFrom": 4
+  },
+  {
+    "id": 6,
+    "name": "Charizard",
+    "types": ["fire", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 78,
+      "atk": 84,
+      "def": 78,
+      "spa": 109,
+      "spd": 85,
+      "spe": 100
+    },
+    "abilities": [66],
+    "tier": "nu",
+    "evolvesFrom": 5
+  },
+  {
+    "id": 7,
+    "name": "Squirtle",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 44,
+      "atk": 48,
+      "def": 65,
+      "spa": 50,
+      "spd": 64,
+      "spe": 43
+    },
+    "abilities": [67],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 8,
+    "name": "Wartortle",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 59,
+      "atk": 63,
+      "def": 80,
+      "spa": 65,
+      "spd": 80,
+      "spe": 58
+    },
+    "abilities": [67],
+    "tier": "pu",
+    "evolvesFrom": 7
+  },
+  {
+    "id": 9,
+    "name": "Blastoise",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 79,
+      "atk": 83,
+      "def": 100,
+      "spa": 85,
+      "spd": 105,
+      "spe": 78
+    },
+    "abilities": [67],
+    "tier": "uu",
+    "evolvesFrom": 8
+  },
+  {
+    "id": 10,
+    "name": "Caterpie",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 30,
+      "def": 35,
+      "spa": 20,
+      "spd": 20,
+      "spe": 45
+    },
+    "abilities": [19],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 11,
+    "name": "Metapod",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 20,
+      "def": 55,
+      "spa": 25,
+      "spd": 25,
+      "spe": 30
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 10
+  },
+  {
+    "id": 12,
+    "name": "Butterfree",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 45,
+      "def": 50,
+      "spa": 90,
+      "spd": 80,
+      "spe": 70
+    },
+    "abilities": [14],
+    "tier": "pu",
+    "evolvesFrom": 11
+  },
+  {
+    "id": 13,
+    "name": "Weedle",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 35,
+      "def": 30,
+      "spa": 20,
+      "spd": 20,
+      "spe": 50
+    },
+    "abilities": [19],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 14,
+    "name": "Kakuna",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 25,
+      "def": 50,
+      "spa": 25,
+      "spd": 25,
+      "spe": 35
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 13
+  },
+  {
+    "id": 15,
+    "name": "Beedrill",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 90,
+      "def": 40,
+      "spa": 45,
+      "spd": 80,
+      "spe": 75
+    },
+    "abilities": [68],
+    "tier": "pu",
+    "evolvesFrom": 14
+  },
+  {
+    "id": 16,
+    "name": "Pidgey",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 40,
+      "spa": 35,
+      "spd": 35,
+      "spe": 56
+    },
+    "abilities": [51, 77],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 17,
+    "name": "Pidgeotto",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 63,
+      "atk": 60,
+      "def": 55,
+      "spa": 50,
+      "spd": 50,
+      "spe": 71
+    },
+    "abilities": [51, 77],
+    "tier": "pu",
+    "evolvesFrom": 16
+  },
+  {
+    "id": 18,
+    "name": "Pidgeot",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 83,
+      "atk": 80,
+      "def": 75,
+      "spa": 70,
+      "spd": 70,
+      "spe": 91
+    },
+    "abilities": [51, 77],
+    "tier": "pu",
+    "evolvesFrom": 17
+  },
+  {
+    "id": 19,
+    "name": "Rattata",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 56,
+      "def": 35,
+      "spa": 25,
+      "spd": 35,
+      "spe": 72
+    },
+    "abilities": [50, 62],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 20,
+    "name": "Raticate",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 81,
+      "def": 60,
+      "spa": 50,
+      "spd": 70,
+      "spe": 97
+    },
+    "abilities": [50, 62],
+    "tier": "pu",
+    "evolvesFrom": 19
+  },
+  {
+    "id": 21,
+    "name": "Spearow",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 60,
+      "def": 30,
+      "spa": 31,
+      "spd": 31,
+      "spe": 70
+    },
+    "abilities": [51],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 22,
+    "name": "Fearow",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 90,
+      "def": 65,
+      "spa": 61,
+      "spd": 61,
+      "spe": 100
+    },
+    "abilities": [51],
+    "tier": "pu",
+    "evolvesFrom": 21
+  },
+  {
+    "id": 23,
+    "name": "Ekans",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 60,
+      "def": 44,
+      "spa": 40,
+      "spd": 54,
+      "spe": 55
+    },
+    "abilities": [22, 61],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 24,
+    "name": "Arbok",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 85,
+      "def": 69,
+      "spa": 65,
+      "spd": 79,
+      "spe": 80
+    },
+    "abilities": [22, 61],
+    "tier": "pu",
+    "evolvesFrom": 23
+  },
+  {
+    "id": 25,
+    "name": "Pikachu",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 55,
+      "def": 40,
+      "spa": 50,
+      "spd": 50,
+      "spe": 90
+    },
+    "abilities": [9],
+    "tier": "pu",
+    "evolvesFrom": 195
+  },
+  {
+    "id": 26,
+    "name": "Raichu",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 90,
+      "def": 55,
+      "spa": 90,
+      "spd": 80,
+      "spe": 100
+    },
+    "abilities": [9],
+    "tier": "zubl",
+    "evolvesFrom": 25
+  },
+  {
+    "id": 27,
+    "name": "Sandshrew",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 75,
+      "def": 85,
+      "spa": 20,
+      "spd": 30,
+      "spe": 40
+    },
+    "abilities": [8],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 28,
+    "name": "Sandslash",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 100,
+      "def": 110,
+      "spa": 45,
+      "spd": 55,
+      "spe": 65
+    },
+    "abilities": [8],
+    "tier": "nu",
+    "evolvesFrom": 27
+  },
+  {
+    "id": 29,
+    "name": "Nidoran-F",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 47,
+      "def": 52,
+      "spa": 40,
+      "spd": 40,
+      "spe": 41
+    },
+    "abilities": [38, 79],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 30,
+    "name": "Nidorina",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 62,
+      "def": 67,
+      "spa": 55,
+      "spd": 55,
+      "spe": 56
+    },
+    "abilities": [38],
+    "tier": "pu",
+    "evolvesFrom": 29
+  },
+  {
+    "id": 31,
+    "name": "Nidoqueen",
+    "types": ["poison", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 82,
+      "def": 87,
+      "spa": 75,
+      "spd": 85,
+      "spe": 76
+    },
+    "abilities": [38, 79],
+    "tier": "nu",
+    "evolvesFrom": 30
+  },
+  {
+    "id": 32,
+    "name": "Nidoran-M",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 46,
+      "atk": 57,
+      "def": 40,
+      "spa": 40,
+      "spd": 40,
+      "spe": 50
+    },
+    "abilities": [38, 79],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 33,
+    "name": "Nidorino",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 61,
+      "atk": 72,
+      "def": 57,
+      "spa": 55,
+      "spd": 55,
+      "spe": 65
+    },
+    "abilities": [38, 79],
+    "tier": "pu",
+    "evolvesFrom": 32
+  },
+  {
+    "id": 34,
+    "name": "Nidoking",
+    "types": ["poison", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 81,
+      "atk": 92,
+      "def": 77,
+      "spa": 85,
+      "spd": 75,
+      "spe": 85
+    },
+    "abilities": [38, 79],
+    "tier": "uu",
+    "evolvesFrom": 33
+  },
+  {
+    "id": 35,
+    "name": "Cleffa",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 25,
+      "def": 28,
+      "spa": 45,
+      "spd": 55,
+      "spe": 15
+    },
+    "abilities": [56, 97],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 36,
+    "name": "Clefairy",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 45,
+      "def": 48,
+      "spa": 60,
+      "spd": 65,
+      "spe": 35
+    },
+    "abilities": [56, 97],
+    "tier": "pu",
+    "evolvesFrom": 35
+  },
+  {
+    "id": 37,
+    "name": "Clefable",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 70,
+      "def": 73,
+      "spa": 85,
+      "spd": 90,
+      "spe": 60
+    },
+    "abilities": [56, 97],
+    "tier": "uu",
+    "evolvesFrom": 36
+  },
+  {
+    "id": 38,
+    "name": "Vulpix",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 38,
+      "atk": 41,
+      "def": 40,
+      "spa": 50,
+      "spd": 65,
+      "spe": 65
+    },
+    "abilities": [18],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 39,
+    "name": "Ninetales",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 73,
+      "atk": 76,
+      "def": 75,
+      "spa": 81,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [18],
+    "tier": "nu",
+    "evolvesFrom": 38
+  },
+  {
+    "id": 40,
+    "name": "Jigglypuff",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 115,
+      "atk": 45,
+      "def": 20,
+      "spa": 45,
+      "spd": 25,
+      "spe": 20
+    },
+    "abilities": [56],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 41,
+    "name": "Wigglytuff",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 140,
+      "atk": 70,
+      "def": 45,
+      "spa": 75,
+      "spd": 50,
+      "spe": 45
+    },
+    "abilities": [56],
+    "tier": "pu",
+    "evolvesFrom": 40
+  },
+  {
+    "id": 42,
+    "name": "Zubat",
+    "types": ["poison", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 35,
+      "spa": 30,
+      "spd": 40,
+      "spe": 55
+    },
+    "abilities": [39],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 43,
+    "name": "Golbat",
+    "types": ["poison", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 80,
+      "def": 70,
+      "spa": 65,
+      "spd": 75,
+      "spe": 90
+    },
+    "abilities": [39],
+    "tier": "pu",
+    "evolvesFrom": 42
+  },
+  {
+    "id": 44,
+    "name": "Crobat",
+    "types": ["poison", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 90,
+      "def": 80,
+      "spa": 70,
+      "spd": 80,
+      "spe": 130
+    },
+    "abilities": [39],
+    "tier": "ou",
+    "evolvesFrom": 43
+  },
+  {
+    "id": 45,
+    "name": "Oddish",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 50,
+      "def": 55,
+      "spa": 75,
+      "spd": 65,
+      "spe": 30
+    },
+    "abilities": [34],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 46,
+    "name": "Gloom",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 65,
+      "def": 70,
+      "spa": 85,
+      "spd": 75,
+      "spe": 40
+    },
+    "abilities": [34],
+    "tier": "pu",
+    "evolvesFrom": 45
+  },
+  {
+    "id": 47,
+    "name": "Vileplume",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 80,
+      "def": 85,
+      "spa": 100,
+      "spd": 90,
+      "spe": 50
+    },
+    "abilities": [34],
+    "tier": "nu",
+    "evolvesFrom": 46
+  },
+  {
+    "id": 48,
+    "name": "Bellossom",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 80,
+      "def": 85,
+      "spa": 90,
+      "spd": 100,
+      "spe": 50
+    },
+    "abilities": [34],
+    "tier": "pu",
+    "evolvesFrom": 46
+  },
+  {
+    "id": 49,
+    "name": "Paras",
+    "types": ["bug", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 70,
+      "def": 55,
+      "spa": 45,
+      "spd": 55,
+      "spe": 25
+    },
+    "abilities": [27, 86],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 50,
+    "name": "Parasect",
+    "types": ["bug", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 95,
+      "def": 80,
+      "spa": 60,
+      "spd": 80,
+      "spe": 30
+    },
+    "abilities": [27, 86],
+    "tier": "pu",
+    "evolvesFrom": 49
+  },
+  {
+    "id": 51,
+    "name": "Venonat",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 55,
+      "def": 50,
+      "spa": 40,
+      "spd": 55,
+      "spe": 45
+    },
+    "abilities": [14, 109],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 52,
+    "name": "Venomoth",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 65,
+      "def": 60,
+      "spa": 90,
+      "spd": 75,
+      "spe": 90
+    },
+    "abilities": [19, 109],
+    "tier": "nu",
+    "evolvesFrom": 51
+  },
+  {
+    "id": 53,
+    "name": "Diglett",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 10,
+      "atk": 55,
+      "def": 25,
+      "spa": 35,
+      "spd": 45,
+      "spe": 95
+    },
+    "abilities": [8, 71],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 54,
+    "name": "Dugtrio",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 80,
+      "def": 50,
+      "spa": 50,
+      "spd": 70,
+      "spe": 120
+    },
+    "abilities": [8, 71],
+    "tier": "uu",
+    "evolvesFrom": 53
+  },
+  {
+    "id": 55,
+    "name": "Meowth",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 35,
+      "spa": 40,
+      "spd": 40,
+      "spe": 90
+    },
+    "abilities": [53, 100],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 56,
+    "name": "Persian",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 70,
+      "def": 60,
+      "spa": 65,
+      "spd": 65,
+      "spe": 115
+    },
+    "abilities": [7, 100],
+    "tier": "pu",
+    "evolvesFrom": 55
+  },
+  {
+    "id": 57,
+    "name": "Psyduck",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 52,
+      "def": 48,
+      "spa": 65,
+      "spd": 50,
+      "spe": 55
+    },
+    "abilities": [6, 13],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 58,
+    "name": "Golduck",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 82,
+      "def": 78,
+      "spa": 95,
+      "spd": 80,
+      "spe": 85
+    },
+    "abilities": [6, 13],
+    "tier": "pu",
+    "evolvesFrom": 57
+  },
+  {
+    "id": 59,
+    "name": "Mankey",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 80,
+      "def": 35,
+      "spa": 35,
+      "spd": 45,
+      "spe": 70
+    },
+    "abilities": [72, 123],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 60,
+    "name": "Primeape",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 105,
+      "def": 60,
+      "spa": 60,
+      "spd": 70,
+      "spe": 95
+    },
+    "abilities": [72, 123],
+    "tier": "uu",
+    "evolvesFrom": 59
+  },
+  {
+    "id": 61,
+    "name": "Growlithe",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 70,
+      "def": 45,
+      "spa": 70,
+      "spd": 50,
+      "spe": 60
+    },
+    "abilities": [22, 18],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 62,
+    "name": "Arcanine",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 110,
+      "def": 80,
+      "spa": 100,
+      "spd": 80,
+      "spe": 95
+    },
+    "abilities": [22, 18],
+    "tier": "uu",
+    "evolvesFrom": 61
+  },
+  {
+    "id": 63,
+    "name": "Poliwag",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 50,
+      "def": 40,
+      "spa": 40,
+      "spd": 40,
+      "spe": 90
+    },
+    "abilities": [11, 6],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 64,
+    "name": "Poliwhirl",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 65,
+      "def": 65,
+      "spa": 50,
+      "spd": 50,
+      "spe": 90
+    },
+    "abilities": [11, 6],
+    "tier": "pu",
+    "evolvesFrom": 63
+  },
+  {
+    "id": 65,
+    "name": "Poliwrath",
+    "types": ["water", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 85,
+      "def": 95,
+      "spa": 70,
+      "spd": 90,
+      "spe": 70
+    },
+    "abilities": [11, 6],
+    "tier": "nu",
+    "evolvesFrom": 64
+  },
+  {
+    "id": 66,
+    "name": "Politoed",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 75,
+      "def": 75,
+      "spa": 90,
+      "spd": 100,
+      "spe": 70
+    },
+    "abilities": [11, 6],
+    "tier": "pu",
+    "evolvesFrom": 64
+  },
+  {
+    "id": 67,
+    "name": "Abra",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 25,
+      "atk": 20,
+      "def": 15,
+      "spa": 105,
+      "spd": 55,
+      "spe": 90
+    },
+    "abilities": [28, 39],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 68,
+    "name": "Kadabra",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 35,
+      "def": 30,
+      "spa": 120,
+      "spd": 70,
+      "spe": 105
+    },
+    "abilities": [28, 39],
+    "tier": "pu",
+    "evolvesFrom": 67
+  },
+  {
+    "id": 69,
+    "name": "Alakazam",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 50,
+      "def": 45,
+      "spa": 135,
+      "spd": 85,
+      "spe": 120
+    },
+    "abilities": [28, 39],
+    "tier": "uu",
+    "evolvesFrom": 68
+  },
+  {
+    "id": 70,
+    "name": "Machop",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 80,
+      "def": 50,
+      "spa": 35,
+      "spd": 35,
+      "spe": 35
+    },
+    "abilities": [62, 98],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 71,
+    "name": "Machoke",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 100,
+      "def": 70,
+      "spa": 50,
+      "spd": 60,
+      "spe": 45
+    },
+    "abilities": [62, 98],
+    "tier": "pu",
+    "evolvesFrom": 70
+  },
+  {
+    "id": 72,
+    "name": "Bellsprout",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 75,
+      "def": 35,
+      "spa": 70,
+      "spd": 30,
+      "spe": 40
+    },
+    "abilities": [34],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 73,
+    "name": "Weepinbell",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 90,
+      "def": 50,
+      "spa": 85,
+      "spd": 45,
+      "spe": 55
+    },
+    "abilities": [34],
+    "tier": "pu",
+    "evolvesFrom": 72
+  },
+  {
+    "id": 74,
+    "name": "Victreebel",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 105,
+      "def": 65,
+      "spa": 100,
+      "spd": 60,
+      "spe": 70
+    },
+    "abilities": [34],
+    "tier": "pu",
+    "evolvesFrom": 73
+  },
+  {
+    "id": 75,
+    "name": "Tentacool",
+    "types": ["water", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 40,
+      "def": 35,
+      "spa": 50,
+      "spd": 100,
+      "spe": 70
+    },
+    "abilities": [29, 64],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 76,
+    "name": "Tentacruel",
+    "types": ["water", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 70,
+      "def": 65,
+      "spa": 80,
+      "spd": 120,
+      "spe": 100
+    },
+    "abilities": [29, 64],
+    "tier": "ou",
+    "evolvesFrom": 75
+  },
+  {
+    "id": 77,
+    "name": "Geodude",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 80,
+      "def": 100,
+      "spa": 30,
+      "spd": 30,
+      "spe": 20
+    },
+    "abilities": [69, 5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 78,
+    "name": "Graveler",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 95,
+      "def": 115,
+      "spa": 45,
+      "spd": 45,
+      "spe": 35
+    },
+    "abilities": [69, 5],
+    "tier": "pu",
+    "evolvesFrom": 77
+  },
+  {
+    "id": 79,
+    "name": "Golem",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 110,
+      "def": 130,
+      "spa": 55,
+      "spd": 65,
+      "spe": 45
+    },
+    "abilities": [69, 5],
+    "tier": "nu",
+    "evolvesFrom": 78
+  },
+  {
+    "id": 80,
+    "name": "Slowpoke",
+    "types": ["water", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 65,
+      "def": 65,
+      "spa": 40,
+      "spd": 40,
+      "spe": 15
+    },
+    "abilities": [12, 20],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 81,
+    "name": "Slowbro",
+    "types": ["water", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 75,
+      "def": 110,
+      "spa": 100,
+      "spd": 80,
+      "spe": 30
+    },
+    "abilities": [12, 20],
+    "tier": "uu",
+    "evolvesFrom": 80
+  },
+  {
+    "id": 82,
+    "name": "Slowking",
+    "types": ["water", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 75,
+      "def": 80,
+      "spa": 100,
+      "spd": 110,
+      "spe": 30
+    },
+    "abilities": [12, 20],
+    "tier": "nu",
+    "evolvesFrom": 80
+  },
+  {
+    "id": 83,
+    "name": "Magnemite",
+    "types": ["electric", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 25,
+      "atk": 35,
+      "def": 70,
+      "spa": 95,
+      "spd": 55,
+      "spe": 45
+    },
+    "abilities": [42, 5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 84,
+    "name": "Magneton",
+    "types": ["electric", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 60,
+      "def": 95,
+      "spa": 120,
+      "spd": 70,
+      "spe": 70
+    },
+    "abilities": [42, 5],
+    "tier": "nu",
+    "evolvesFrom": 83
+  },
+  {
+    "id": 85,
+    "name": "Magnezone",
+    "types": ["electric", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 70,
+      "def": 115,
+      "spa": 130,
+      "spd": 90,
+      "spe": 60
+    },
+    "abilities": [42, 5],
+    "tier": "ou",
+    "evolvesFrom": 84
+  },
+  {
+    "id": 86,
+    "name": "Farfetch’d",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 52,
+      "atk": 65,
+      "def": 55,
+      "spa": 58,
+      "spd": 62,
+      "spe": 60
+    },
+    "abilities": [51, 39],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 87,
+    "name": "Doduo",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 85,
+      "def": 45,
+      "spa": 35,
+      "spd": 35,
+      "spe": 75
+    },
+    "abilities": [50, 48],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 88,
+    "name": "Dodrio",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 110,
+      "def": 70,
+      "spa": 60,
+      "spd": 60,
+      "spe": 100
+    },
+    "abilities": [50, 48],
+    "tier": "nu",
+    "evolvesFrom": 87
+  },
+  {
+    "id": 89,
+    "name": "Seel",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 45,
+      "def": 55,
+      "spa": 45,
+      "spd": 70,
+      "spe": 45
+    },
+    "abilities": [47],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 90,
+    "name": "Dewgong",
+    "types": ["water", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 70,
+      "def": 80,
+      "spa": 70,
+      "spd": 95,
+      "spe": 70
+    },
+    "abilities": [47],
+    "tier": "pu",
+    "evolvesFrom": 89
+  },
+  {
+    "id": 91,
+    "name": "Grimer",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 80,
+      "def": 50,
+      "spa": 40,
+      "spd": 50,
+      "spe": 25
+    },
+    "abilities": [1, 60],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 92,
+    "name": "Muk",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 105,
+      "atk": 105,
+      "def": 75,
+      "spa": 65,
+      "spd": 100,
+      "spe": 50
+    },
+    "abilities": [1, 60],
+    "tier": "pu",
+    "evolvesFrom": 91
+  },
+  {
+    "id": 93,
+    "name": "Shellder",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 65,
+      "def": 100,
+      "spa": 45,
+      "spd": 25,
+      "spe": 40
+    },
+    "abilities": [75, 91],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 94,
+    "name": "Cloyster",
+    "types": ["water", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 95,
+      "def": 180,
+      "spa": 85,
+      "spd": 45,
+      "spe": 70
+    },
+    "abilities": [75, 91],
+    "tier": "uu",
+    "evolvesFrom": 93
+  },
+  {
+    "id": 95,
+    "name": "Gastly",
+    "types": ["ghost", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 35,
+      "def": 30,
+      "spa": 100,
+      "spd": 35,
+      "spe": 80
+    },
+    "abilities": [26],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 96,
+    "name": "Haunter",
+    "types": ["ghost", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 50,
+      "def": 45,
+      "spa": 115,
+      "spd": 55,
+      "spe": 95
+    },
+    "abilities": [26],
+    "tier": "nu",
+    "evolvesFrom": 95
+  },
+  {
+    "id": 97,
+    "name": "Gengar",
+    "types": ["ghost", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 65,
+      "def": 60,
+      "spa": 130,
+      "spd": 75,
+      "spe": 110
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": 96
+  },
+  {
+    "id": 98,
+    "name": "Onix",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 45,
+      "def": 160,
+      "spa": 30,
+      "spd": 45,
+      "spe": 70
+    },
+    "abilities": [69, 5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 99,
+    "name": "Steelix",
+    "types": ["steel", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 85,
+      "def": 200,
+      "spa": 55,
+      "spd": 65,
+      "spe": 30
+    },
+    "abilities": [69, 5],
+    "tier": "uu",
+    "evolvesFrom": 98
+  },
+  {
+    "id": 100,
+    "name": "Drowzee",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 48,
+      "def": 45,
+      "spa": 43,
+      "spd": 90,
+      "spe": 42
+    },
+    "abilities": [15, 107],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 101,
+    "name": "Hypno",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 73,
+      "def": 70,
+      "spa": 73,
+      "spd": 115,
+      "spe": 67
+    },
+    "abilities": [15, 107],
+    "tier": "nu",
+    "evolvesFrom": 100
+  },
+  {
+    "id": 102,
+    "name": "Krabby",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 105,
+      "def": 90,
+      "spa": 25,
+      "spd": 25,
+      "spe": 50
+    },
+    "abilities": [52, 75],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 103,
+    "name": "Kingler",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 130,
+      "def": 115,
+      "spa": 50,
+      "spd": 50,
+      "spe": 75
+    },
+    "abilities": [52, 75],
+    "tier": "zubl",
+    "evolvesFrom": 102
+  },
+  {
+    "id": 104,
+    "name": "Voltorb",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 30,
+      "def": 50,
+      "spa": 55,
+      "spd": 55,
+      "spe": 100
+    },
+    "abilities": [43, 9],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 105,
+    "name": "Electrode",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 70,
+      "spa": 80,
+      "spd": 80,
+      "spe": 140
+    },
+    "abilities": [43, 9],
+    "tier": "nu",
+    "evolvesFrom": 104
+  },
+  {
+    "id": 106,
+    "name": "Exeggcute",
+    "types": ["grass", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 40,
+      "def": 80,
+      "spa": 60,
+      "spd": 45,
+      "spe": 40
+    },
+    "abilities": [34],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 107,
+    "name": "Exeggutor",
+    "types": ["grass", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 95,
+      "def": 85,
+      "spa": 125,
+      "spd": 65,
+      "spe": 55
+    },
+    "abilities": [34],
+    "tier": "uu",
+    "evolvesFrom": 106
+  },
+  {
+    "id": 108,
+    "name": "Cubone",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 50,
+      "def": 95,
+      "spa": 40,
+      "spd": 50,
+      "spe": 35
+    },
+    "abilities": [69, 31],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 109,
+    "name": "Marowak",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 80,
+      "def": 110,
+      "spa": 50,
+      "spd": 80,
+      "spe": 45
+    },
+    "abilities": [69, 31],
+    "tier": "zubl",
+    "evolvesFrom": 108
+  },
+  {
+    "id": 110,
+    "name": "Tyrogue",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 35,
+      "def": 35,
+      "spa": 35,
+      "spd": 35,
+      "spe": 35
+    },
+    "abilities": [62, 80],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 111,
+    "name": "Hitmonlee",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 120,
+      "def": 53,
+      "spa": 35,
+      "spd": 110,
+      "spe": 87
+    },
+    "abilities": [7, 119],
+    "tier": "uu",
+    "evolvesFrom": 110
+  },
+  {
+    "id": 112,
+    "name": "Hitmonchan",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 105,
+      "def": 79,
+      "spa": 35,
+      "spd": 110,
+      "spe": 76
+    },
+    "abilities": [51, 89],
+    "tier": "nu",
+    "evolvesFrom": 110
+  },
+  {
+    "id": 113,
+    "name": "Hitmontop",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 95,
+      "def": 95,
+      "spa": 35,
+      "spd": 110,
+      "spe": 70
+    },
+    "abilities": [22, 100],
+    "tier": "uu",
+    "evolvesFrom": 110
+  },
+  {
+    "id": 114,
+    "name": "Lickitung",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 55,
+      "def": 75,
+      "spa": 60,
+      "spd": 75,
+      "spe": 30
+    },
+    "abilities": [20, 12],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 115,
+    "name": "Lickilicky",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 110,
+      "atk": 85,
+      "def": 95,
+      "spa": 80,
+      "spd": 95,
+      "spe": 50
+    },
+    "abilities": [20, 12],
+    "tier": "nu",
+    "evolvesFrom": 114
+  },
+  {
+    "id": 116,
+    "name": "Koffing",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 65,
+      "def": 95,
+      "spa": 60,
+      "spd": 45,
+      "spe": 35
+    },
+    "abilities": [26],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 117,
+    "name": "Weezing",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 90,
+      "def": 120,
+      "spa": 85,
+      "spd": 70,
+      "spe": 60
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": 116
+  },
+  {
+    "id": 118,
+    "name": "Rhyhorn",
+    "types": ["ground", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 85,
+      "def": 95,
+      "spa": 30,
+      "spd": 30,
+      "spe": 25
+    },
+    "abilities": [31],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 119,
+    "name": "Rhydon",
+    "types": ["ground", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 105,
+      "atk": 130,
+      "def": 120,
+      "spa": 45,
+      "spd": 45,
+      "spe": 40
+    },
+    "abilities": [31],
+    "tier": "pu",
+    "evolvesFrom": 118
+  },
+  {
+    "id": 120,
+    "name": "Rhyperior",
+    "types": ["ground", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 115,
+      "atk": 140,
+      "def": 130,
+      "spa": 55,
+      "spd": 55,
+      "spe": 40
+    },
+    "abilities": [31, 115],
+    "tier": "uu",
+    "evolvesFrom": 119
+  },
+  {
+    "id": 121,
+    "name": "Happiny",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 5,
+      "def": 5,
+      "spa": 15,
+      "spd": 65,
+      "spe": 30
+    },
+    "abilities": [30, 32],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 122,
+    "name": "Chansey",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 250,
+      "atk": 5,
+      "def": 5,
+      "spa": 35,
+      "spd": 105,
+      "spe": 50
+    },
+    "abilities": [30, 32],
+    "tier": "uu",
+    "evolvesFrom": 121
+  },
+  {
+    "id": 123,
+    "name": "Blissey",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 255,
+      "atk": 10,
+      "def": 10,
+      "spa": 75,
+      "spd": 135,
+      "spe": 55
+    },
+    "abilities": [30, 32],
+    "tier": "ou",
+    "evolvesFrom": 122
+  },
+  {
+    "id": 124,
+    "name": "Tangela",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 55,
+      "def": 115,
+      "spa": 100,
+      "spd": 40,
+      "spe": 60
+    },
+    "abilities": [34, 101],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 125,
+    "name": "Tangrowth",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 125,
+      "spa": 110,
+      "spd": 50,
+      "spe": 50
+    },
+    "abilities": [34, 101],
+    "tier": "uu",
+    "evolvesFrom": 124
+  },
+  {
+    "id": 126,
+    "name": "Kangaskhan",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 105,
+      "atk": 95,
+      "def": 80,
+      "spa": 40,
+      "spd": 80,
+      "spe": 90
+    },
+    "abilities": [48, 112],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 127,
+    "name": "Horsea",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 40,
+      "def": 70,
+      "spa": 70,
+      "spd": 25,
+      "spe": 60
+    },
+    "abilities": [33, 96],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 128,
+    "name": "Seadra",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 65,
+      "def": 95,
+      "spa": 95,
+      "spd": 45,
+      "spe": 85
+    },
+    "abilities": [38, 96],
+    "tier": "pu",
+    "evolvesFrom": 127
+  },
+  {
+    "id": 129,
+    "name": "Kingdra",
+    "types": ["water", "dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 95,
+      "def": 95,
+      "spa": 95,
+      "spd": 95,
+      "spe": 85
+    },
+    "abilities": [33, 96],
+    "tier": "ou",
+    "evolvesFrom": 128
+  },
+  {
+    "id": 130,
+    "name": "Goldeen",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 67,
+      "def": 60,
+      "spa": 35,
+      "spd": 50,
+      "spe": 63
+    },
+    "abilities": [33, 41],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 131,
+    "name": "Seaking",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 92,
+      "def": 65,
+      "spa": 65,
+      "spd": 80,
+      "spe": 68
+    },
+    "abilities": [33, 41],
+    "tier": "pu",
+    "evolvesFrom": 130
+  },
+  {
+    "id": 132,
+    "name": "Staryu",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 45,
+      "def": 55,
+      "spa": 70,
+      "spd": 55,
+      "spe": 85
+    },
+    "abilities": [35, 30],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 133,
+    "name": "Starmie",
+    "types": ["water", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 75,
+      "def": 85,
+      "spa": 100,
+      "spd": 85,
+      "spe": 115
+    },
+    "abilities": [35, 30],
+    "tier": "ou",
+    "evolvesFrom": 132
+  },
+  {
+    "id": 134,
+    "name": "Mime Jr.",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 25,
+      "def": 45,
+      "spa": 70,
+      "spd": 90,
+      "spe": 60
+    },
+    "abilities": [43, 110],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 135,
+    "name": "Mr. Mime",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 65,
+      "spa": 100,
+      "spd": 120,
+      "spe": 90
+    },
+    "abilities": [43, 110],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 136,
+    "name": "Scyther",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 110,
+      "def": 80,
+      "spa": 55,
+      "spd": 80,
+      "spe": 105
+    },
+    "abilities": [68, 100],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 137,
+    "name": "Scizor",
+    "types": ["bug", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 130,
+      "def": 100,
+      "spa": 55,
+      "spd": 80,
+      "spe": 65
+    },
+    "abilities": [68, 100],
+    "tier": "ou",
+    "evolvesFrom": 136
+  },
+  {
+    "id": 138,
+    "name": "Smoochum",
+    "types": ["ice", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 30,
+      "def": 15,
+      "spa": 85,
+      "spd": 65,
+      "spe": 65
+    },
+    "abilities": [12, 107],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 139,
+    "name": "Jynx",
+    "types": ["ice", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 50,
+      "def": 35,
+      "spa": 115,
+      "spd": 95,
+      "spe": 95
+    },
+    "abilities": [12, 107],
+    "tier": "nu",
+    "evolvesFrom": 138
+  },
+  {
+    "id": 140,
+    "name": "Elekid",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 63,
+      "def": 37,
+      "spa": 65,
+      "spd": 55,
+      "spe": 95
+    },
+    "abilities": [9],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 141,
+    "name": "Electabuzz",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 83,
+      "def": 57,
+      "spa": 95,
+      "spd": 85,
+      "spe": 105
+    },
+    "abilities": [9],
+    "tier": "zubl",
+    "evolvesFrom": 140
+  },
+  {
+    "id": 142,
+    "name": "Electivire",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 123,
+      "def": 67,
+      "spa": 95,
+      "spd": 85,
+      "spe": 95
+    },
+    "abilities": [78],
+    "tier": "ou",
+    "evolvesFrom": 141
+  },
+  {
+    "id": 143,
+    "name": "Magby",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 75,
+      "def": 37,
+      "spa": 70,
+      "spd": 55,
+      "spe": 83
+    },
+    "abilities": [49],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 144,
+    "name": "Magmar",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 95,
+      "def": 57,
+      "spa": 100,
+      "spd": 85,
+      "spe": 93
+    },
+    "abilities": [49],
+    "tier": "pu",
+    "evolvesFrom": 143
+  },
+  {
+    "id": 145,
+    "name": "Magmortar",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 95,
+      "def": 67,
+      "spa": 125,
+      "spd": 95,
+      "spe": 83
+    },
+    "abilities": [49],
+    "tier": "nu",
+    "evolvesFrom": 144
+  },
+  {
+    "id": 146,
+    "name": "Pinsir",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 125,
+      "def": 100,
+      "spa": 55,
+      "spd": 70,
+      "spe": 85
+    },
+    "abilities": [52, 103],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 147,
+    "name": "Tauros",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 100,
+      "def": 95,
+      "spa": 40,
+      "spd": 70,
+      "spe": 110
+    },
+    "abilities": [22, 123],
+    "tier": "nu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 148,
+    "name": "Magikarp",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 10,
+      "def": 55,
+      "spa": 15,
+      "spd": 20,
+      "spe": 80
+    },
+    "abilities": [33],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 149,
+    "name": "Gyarados",
+    "types": ["water", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 125,
+      "def": 79,
+      "spa": 60,
+      "spd": 100,
+      "spe": 81
+    },
+    "abilities": [22],
+    "tier": "ou",
+    "evolvesFrom": 148
+  },
+  {
+    "id": 150,
+    "name": "Lapras",
+    "types": ["water", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 130,
+      "atk": 85,
+      "def": 80,
+      "spa": 85,
+      "spd": 95,
+      "spe": 60
+    },
+    "abilities": [11, 75],
+    "tier": "zubl",
+    "evolvesFrom": null
+  },
+  {
+    "id": 151,
+    "name": "Ditto",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 48,
+      "atk": 48,
+      "def": 48,
+      "spa": 48,
+      "spd": 48,
+      "spe": 48
+    },
+    "abilities": [7],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 152,
+    "name": "Eevee",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 55,
+      "def": 50,
+      "spa": 45,
+      "spd": 65,
+      "spe": 55
+    },
+    "abilities": [50],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 153,
+    "name": "Vaporeon",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 130,
+      "atk": 65,
+      "def": 60,
+      "spa": 110,
+      "spd": 95,
+      "spe": 65
+    },
+    "abilities": [11],
+    "tier": "ou",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 154,
+    "name": "Jolteon",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 65,
+      "def": 60,
+      "spa": 110,
+      "spd": 95,
+      "spe": 130
+    },
+    "abilities": [10],
+    "tier": "ou",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 155,
+    "name": "Flareon",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 130,
+      "def": 60,
+      "spa": 95,
+      "spd": 110,
+      "spe": 65
+    },
+    "abilities": [18],
+    "tier": "pu",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 156,
+    "name": "Espeon",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 65,
+      "def": 60,
+      "spa": 130,
+      "spd": 95,
+      "spe": 110
+    },
+    "abilities": [28],
+    "tier": "nubl",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 157,
+    "name": "Umbreon",
+    "types": ["dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 65,
+      "def": 110,
+      "spa": 60,
+      "spd": 130,
+      "spe": 65
+    },
+    "abilities": [28],
+    "tier": "ou",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 158,
+    "name": "Leafeon",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 110,
+      "def": 130,
+      "spa": 60,
+      "spd": 65,
+      "spe": 95
+    },
+    "abilities": [101],
+    "tier": "uu",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 159,
+    "name": "Glaceon",
+    "types": ["ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 60,
+      "def": 110,
+      "spa": 130,
+      "spd": 95,
+      "spe": 65
+    },
+    "abilities": [81],
+    "tier": "pu",
+    "evolvesFrom": 152
+  },
+  {
+    "id": 160,
+    "name": "Porygon",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 60,
+      "def": 70,
+      "spa": 85,
+      "spd": 75,
+      "spe": 40
+    },
+    "abilities": [36, 87],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 161,
+    "name": "Porygon2",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 80,
+      "def": 90,
+      "spa": 105,
+      "spd": 95,
+      "spe": 60
+    },
+    "abilities": [36, 87],
+    "tier": "nu",
+    "evolvesFrom": 160
+  },
+  {
+    "id": 162,
+    "name": "Porygon-Z",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 80,
+      "def": 70,
+      "spa": 135,
+      "spd": 75,
+      "spe": 90
+    },
+    "abilities": [90, 87],
+    "tier": "ou",
+    "evolvesFrom": 161
+  },
+  {
+    "id": 163,
+    "name": "Omanyte",
+    "types": ["rock", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 40,
+      "def": 100,
+      "spa": 90,
+      "spd": 55,
+      "spe": 35
+    },
+    "abilities": [33, 75],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 164,
+    "name": "Omastar",
+    "types": ["rock", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 60,
+      "def": 125,
+      "spa": 115,
+      "spd": 70,
+      "spe": 55
+    },
+    "abilities": [33, 75],
+    "tier": "uu",
+    "evolvesFrom": 163
+  },
+  {
+    "id": 165,
+    "name": "Kabuto",
+    "types": ["rock", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 80,
+      "def": 90,
+      "spa": 55,
+      "spd": 45,
+      "spe": 55
+    },
+    "abilities": [33, 4],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 166,
+    "name": "Kabutops",
+    "types": ["rock", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 115,
+      "def": 105,
+      "spa": 65,
+      "spd": 70,
+      "spe": 80
+    },
+    "abilities": [33, 4],
+    "tier": "uu",
+    "evolvesFrom": 165
+  },
+  {
+    "id": 167,
+    "name": "Aerodactyl",
+    "types": ["rock", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 105,
+      "def": 65,
+      "spa": 60,
+      "spd": 75,
+      "spe": 130
+    },
+    "abilities": [69, 46],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 168,
+    "name": "Munchlax",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 135,
+      "atk": 85,
+      "def": 40,
+      "spa": 40,
+      "spd": 85,
+      "spe": 5
+    },
+    "abilities": [53, 47],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 169,
+    "name": "Snorlax",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 160,
+      "atk": 110,
+      "def": 65,
+      "spa": 65,
+      "spd": 110,
+      "spe": 30
+    },
+    "abilities": [17, 47],
+    "tier": "ou",
+    "evolvesFrom": 168
+  },
+  {
+    "id": 170,
+    "name": "Articuno",
+    "types": ["ice", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 85,
+      "def": 100,
+      "spa": 95,
+      "spd": 125,
+      "spe": 85
+    },
+    "abilities": [46],
+    "tier": "publ",
+    "evolvesFrom": null
+  },
+  {
+    "id": 171,
+    "name": "Zapdos",
+    "types": ["electric", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 90,
+      "def": 85,
+      "spa": 125,
+      "spd": 90,
+      "spe": 100
+    },
+    "abilities": [46],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 172,
+    "name": "Moltres",
+    "types": ["fire", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 100,
+      "def": 90,
+      "spa": 125,
+      "spd": 85,
+      "spe": 90
+    },
+    "abilities": [46],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 173,
+    "name": "Dratini",
+    "types": ["dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 41,
+      "atk": 64,
+      "def": 45,
+      "spa": 50,
+      "spd": 50,
+      "spe": 50
+    },
+    "abilities": [61],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 174,
+    "name": "Dragonair",
+    "types": ["dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 61,
+      "atk": 84,
+      "def": 65,
+      "spa": 70,
+      "spd": 70,
+      "spe": 70
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 173
+  },
+  {
+    "id": 175,
+    "name": "Dragonite",
+    "types": ["dragon", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 91,
+      "atk": 134,
+      "def": 95,
+      "spa": 100,
+      "spd": 100,
+      "spe": 80
+    },
+    "abilities": [39],
+    "tier": "ou",
+    "evolvesFrom": 174
+  },
+  {
+    "id": 176,
+    "name": "Chikorita",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 49,
+      "def": 65,
+      "spa": 49,
+      "spd": 65,
+      "spe": 45
+    },
+    "abilities": [65],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 177,
+    "name": "Bayleef",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 62,
+      "def": 80,
+      "spa": 63,
+      "spd": 80,
+      "spe": 60
+    },
+    "abilities": [65],
+    "tier": "pu",
+    "evolvesFrom": 176
+  },
+  {
+    "id": 178,
+    "name": "Meganium",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 82,
+      "def": 100,
+      "spa": 83,
+      "spd": 100,
+      "spe": 80
+    },
+    "abilities": [65],
+    "tier": "nu",
+    "evolvesFrom": 177
+  },
+  {
+    "id": 179,
+    "name": "Cyndaquil",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 39,
+      "atk": 52,
+      "def": 43,
+      "spa": 60,
+      "spd": 50,
+      "spe": 65
+    },
+    "abilities": [6],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 180,
+    "name": "Quilava",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 58,
+      "atk": 64,
+      "def": 58,
+      "spa": 80,
+      "spd": 65,
+      "spe": 80
+    },
+    "abilities": [6],
+    "tier": "pu",
+    "evolvesFrom": 179
+  },
+  {
+    "id": 181,
+    "name": "Typhlosion",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 78,
+      "atk": 84,
+      "def": 78,
+      "spa": 109,
+      "spd": 85,
+      "spe": 100
+    },
+    "abilities": [6],
+    "tier": "nu",
+    "evolvesFrom": 180
+  },
+  {
+    "id": 182,
+    "name": "Totodile",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 64,
+      "spa": 44,
+      "spd": 48,
+      "spe": 43
+    },
+    "abilities": [67],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 183,
+    "name": "Croconaw",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 80,
+      "def": 80,
+      "spa": 59,
+      "spd": 63,
+      "spe": 58
+    },
+    "abilities": [67],
+    "tier": "pu",
+    "evolvesFrom": 182
+  },
+  {
+    "id": 184,
+    "name": "Feraligatr",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 105,
+      "def": 100,
+      "spa": 79,
+      "spd": 83,
+      "spe": 78
+    },
+    "abilities": [67],
+    "tier": "uu",
+    "evolvesFrom": 183
+  },
+  {
+    "id": 185,
+    "name": "Sentret",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 46,
+      "def": 34,
+      "spa": 35,
+      "spd": 45,
+      "spe": 20
+    },
+    "abilities": [50, 51],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 186,
+    "name": "Furret",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 76,
+      "def": 64,
+      "spa": 45,
+      "spd": 55,
+      "spe": 90
+    },
+    "abilities": [50, 51],
+    "tier": "pu",
+    "evolvesFrom": 185
+  },
+  {
+    "id": 187,
+    "name": "Hoothoot",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 30,
+      "def": 30,
+      "spa": 36,
+      "spd": 56,
+      "spe": 50
+    },
+    "abilities": [15, 51],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 188,
+    "name": "Noctowl",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 50,
+      "def": 50,
+      "spa": 76,
+      "spd": 96,
+      "spe": 70
+    },
+    "abilities": [15, 51],
+    "tier": "pu",
+    "evolvesFrom": 187
+  },
+  {
+    "id": 189,
+    "name": "Ledyba",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 20,
+      "def": 30,
+      "spa": 40,
+      "spd": 80,
+      "spe": 55
+    },
+    "abilities": [68, 48],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 190,
+    "name": "Ledian",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 35,
+      "def": 50,
+      "spa": 55,
+      "spd": 110,
+      "spe": 85
+    },
+    "abilities": [68, 48],
+    "tier": "pu",
+    "evolvesFrom": 189
+  },
+  {
+    "id": 191,
+    "name": "Spinarak",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 60,
+      "def": 40,
+      "spa": 40,
+      "spd": 40,
+      "spe": 30
+    },
+    "abilities": [68, 15],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 192,
+    "name": "Ariados",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 90,
+      "def": 70,
+      "spa": 60,
+      "spd": 60,
+      "spe": 40
+    },
+    "abilities": [68, 15],
+    "tier": "pu",
+    "evolvesFrom": 191
+  },
+  {
+    "id": 193,
+    "name": "Chinchou",
+    "types": ["water", "electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 38,
+      "def": 38,
+      "spa": 56,
+      "spd": 56,
+      "spe": 67
+    },
+    "abilities": [10, 35],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 194,
+    "name": "Lanturn",
+    "types": ["water", "electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 125,
+      "atk": 58,
+      "def": 58,
+      "spa": 76,
+      "spd": 76,
+      "spe": 67
+    },
+    "abilities": [10, 35],
+    "tier": "uu",
+    "evolvesFrom": 193
+  },
+  {
+    "id": 195,
+    "name": "Pichu",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 40,
+      "def": 15,
+      "spa": 35,
+      "spd": 35,
+      "spe": 60
+    },
+    "abilities": [9],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 196,
+    "name": "Pichu-Spiky-eared",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 40,
+      "def": 15,
+      "spa": 35,
+      "spd": 35,
+      "spe": 60
+    },
+    "abilities": [9],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 197,
+    "name": "Togepi",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 20,
+      "def": 65,
+      "spa": 40,
+      "spd": 65,
+      "spe": 20
+    },
+    "abilities": [55, 32],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 198,
+    "name": "Togetic",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 40,
+      "def": 85,
+      "spa": 80,
+      "spd": 105,
+      "spe": 40
+    },
+    "abilities": [55],
+    "tier": "pu",
+    "evolvesFrom": 197
+  },
+  {
+    "id": 199,
+    "name": "Togekiss",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 50,
+      "def": 95,
+      "spa": 120,
+      "spd": 115,
+      "spe": 80
+    },
+    "abilities": [55, 32],
+    "tier": "ou",
+    "evolvesFrom": 198
+  },
+  {
+    "id": 200,
+    "name": "Natu",
+    "types": ["psychic", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 50,
+      "def": 45,
+      "spa": 70,
+      "spd": 45,
+      "spe": 70
+    },
+    "abilities": [25, 48],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 201,
+    "name": "Xatu",
+    "types": ["psychic", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 75,
+      "def": 70,
+      "spa": 95,
+      "spd": 70,
+      "spe": 95
+    },
+    "abilities": [25, 48],
+    "tier": "pu",
+    "evolvesFrom": 200
+  },
+  {
+    "id": 202,
+    "name": "Mareep",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 40,
+      "def": 40,
+      "spa": 65,
+      "spd": 45,
+      "spe": 35
+    },
+    "abilities": [9],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 203,
+    "name": "Flaaffy",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 55,
+      "def": 55,
+      "spa": 80,
+      "spd": 60,
+      "spe": 45
+    },
+    "abilities": [9],
+    "tier": "pu",
+    "evolvesFrom": 202
+  },
+  {
+    "id": 204,
+    "name": "Ampharos",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 75,
+      "def": 75,
+      "spa": 115,
+      "spd": 90,
+      "spe": 55
+    },
+    "abilities": [9],
+    "tier": "pu",
+    "evolvesFrom": 203
+  },
+  {
+    "id": 205,
+    "name": "Marill",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 20,
+      "def": 50,
+      "spa": 20,
+      "spd": 50,
+      "spe": 40
+    },
+    "abilities": [47],
+    "tier": "pu",
+    "evolvesFrom": 310
+  },
+  {
+    "id": 206,
+    "name": "Azumarill",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 50,
+      "def": 80,
+      "spa": 50,
+      "spd": 80,
+      "spe": 50
+    },
+    "abilities": [47, 37],
+    "tier": "uu",
+    "evolvesFrom": 205
+  },
+  {
+    "id": 207,
+    "name": "Sudowoodo",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 100,
+      "def": 115,
+      "spa": 30,
+      "spd": 65,
+      "spe": 30
+    },
+    "abilities": [5, 69],
+    "tier": "pu",
+    "evolvesFrom": 442
+  },
+  {
+    "id": 208,
+    "name": "Hoppip",
+    "types": ["grass", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 35,
+      "def": 40,
+      "spa": 35,
+      "spd": 55,
+      "spe": 50
+    },
+    "abilities": [34, 101],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 209,
+    "name": "Skiploom",
+    "types": ["grass", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 45,
+      "def": 50,
+      "spa": 45,
+      "spd": 65,
+      "spe": 80
+    },
+    "abilities": [34, 101],
+    "tier": "pu",
+    "evolvesFrom": 208
+  },
+  {
+    "id": 210,
+    "name": "Jumpluff",
+    "types": ["grass", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 55,
+      "def": 70,
+      "spa": 55,
+      "spd": 85,
+      "spe": 110
+    },
+    "abilities": [34, 101],
+    "tier": "nu",
+    "evolvesFrom": 209
+  },
+  {
+    "id": 211,
+    "name": "Aipom",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 70,
+      "def": 55,
+      "spa": 40,
+      "spd": 55,
+      "spe": 85
+    },
+    "abilities": [50, 53],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 212,
+    "name": "Ambipom",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 100,
+      "def": 66,
+      "spa": 60,
+      "spd": 66,
+      "spe": 115
+    },
+    "abilities": [100, 53],
+    "tier": "uu",
+    "evolvesFrom": 211
+  },
+  {
+    "id": 213,
+    "name": "Sunkern",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 30,
+      "def": 30,
+      "spa": 30,
+      "spd": 30,
+      "spe": 30
+    },
+    "abilities": [34, 93],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 214,
+    "name": "Sunflora",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 75,
+      "def": 55,
+      "spa": 105,
+      "spd": 85,
+      "spe": 30
+    },
+    "abilities": [34, 93],
+    "tier": "pu",
+    "evolvesFrom": 213
+  },
+  {
+    "id": 215,
+    "name": "Yanma",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 65,
+      "def": 45,
+      "spa": 75,
+      "spd": 45,
+      "spe": 95
+    },
+    "abilities": [3, 14],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 216,
+    "name": "Yanmega",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 86,
+      "atk": 76,
+      "def": 86,
+      "spa": 116,
+      "spd": 56,
+      "spe": 95
+    },
+    "abilities": [3, 109],
+    "tier": "ou",
+    "evolvesFrom": 215
+  },
+  {
+    "id": 217,
+    "name": "Wooper",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 45,
+      "def": 45,
+      "spa": 25,
+      "spd": 25,
+      "spe": 15
+    },
+    "abilities": [6, 11],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 218,
+    "name": "Quagsire",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 85,
+      "def": 85,
+      "spa": 65,
+      "spd": 65,
+      "spe": 35
+    },
+    "abilities": [6],
+    "tier": "pu",
+    "evolvesFrom": 217
+  },
+  {
+    "id": 219,
+    "name": "Murkrow",
+    "types": ["dark", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 85,
+      "def": 42,
+      "spa": 85,
+      "spd": 42,
+      "spe": 91
+    },
+    "abilities": [15, 104],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 220,
+    "name": "Honchkrow",
+    "types": ["dark", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 125,
+      "def": 52,
+      "spa": 105,
+      "spd": 52,
+      "spe": 71
+    },
+    "abilities": [15, 104],
+    "tier": "ou",
+    "evolvesFrom": 219
+  },
+  {
+    "id": 221,
+    "name": "Misdreavus",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 60,
+      "spa": 85,
+      "spd": 85,
+      "spe": 85
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 222,
+    "name": "Mismagius",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 60,
+      "spa": 105,
+      "spd": 105,
+      "spe": 105
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": 221
+  },
+  {
+    "id": 223,
+    "name": "Unown",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 48,
+      "atk": 72,
+      "def": 48,
+      "spa": 72,
+      "spd": 48,
+      "spe": 48
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 224,
+    "name": "Pineco",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 90,
+      "spa": 35,
+      "spd": 35,
+      "spe": 15
+    },
+    "abilities": [5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 225,
+    "name": "Forretress",
+    "types": ["bug", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 90,
+      "def": 140,
+      "spa": 60,
+      "spd": 60,
+      "spe": 40
+    },
+    "abilities": [5],
+    "tier": "ou",
+    "evolvesFrom": 224
+  },
+  {
+    "id": 226,
+    "name": "Dunsparce",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 70,
+      "def": 70,
+      "spa": 65,
+      "spd": 65,
+      "spe": 45
+    },
+    "abilities": [32, 50],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 227,
+    "name": "Gligar",
+    "types": ["ground", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 75,
+      "def": 105,
+      "spa": 35,
+      "spd": 65,
+      "spe": 85
+    },
+    "abilities": [52, 8],
+    "tier": "nu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 228,
+    "name": "Gliscor",
+    "types": ["ground", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 95,
+      "def": 125,
+      "spa": 45,
+      "spd": 75,
+      "spe": 95
+    },
+    "abilities": [52, 8],
+    "tier": "ou",
+    "evolvesFrom": 227
+  },
+  {
+    "id": 229,
+    "name": "Snubbull",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 80,
+      "def": 50,
+      "spa": 40,
+      "spd": 40,
+      "spe": 30
+    },
+    "abilities": [22, 50],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 230,
+    "name": "Granbull",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 120,
+      "def": 75,
+      "spa": 60,
+      "spd": 60,
+      "spe": 45
+    },
+    "abilities": [22, 94],
+    "tier": "pu",
+    "evolvesFrom": 229
+  },
+  {
+    "id": 231,
+    "name": "Qwilfish",
+    "types": ["water", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 95,
+      "def": 75,
+      "spa": 55,
+      "spd": 55,
+      "spe": 85
+    },
+    "abilities": [38, 33],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 232,
+    "name": "Shuckle",
+    "types": ["bug", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 10,
+      "def": 230,
+      "spa": 10,
+      "spd": 230,
+      "spe": 5
+    },
+    "abilities": [5, 82],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 233,
+    "name": "Sneasel",
+    "types": ["dark", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 95,
+      "def": 55,
+      "spa": 35,
+      "spd": 75,
+      "spe": 115
+    },
+    "abilities": [39, 51],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 234,
+    "name": "Weavile",
+    "types": ["dark", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 120,
+      "def": 65,
+      "spa": 45,
+      "spd": 85,
+      "spe": 125
+    },
+    "abilities": [46],
+    "tier": "ou",
+    "evolvesFrom": 233
+  },
+  {
+    "id": 235,
+    "name": "Teddiursa",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 80,
+      "def": 50,
+      "spa": 50,
+      "spd": 50,
+      "spe": 40
+    },
+    "abilities": [53, 94],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 236,
+    "name": "Ursaring",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 130,
+      "def": 75,
+      "spa": 75,
+      "spd": 75,
+      "spe": 55
+    },
+    "abilities": [62, 94],
+    "tier": "uu",
+    "evolvesFrom": 235
+  },
+  {
+    "id": 237,
+    "name": "Slugma",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 40,
+      "def": 40,
+      "spa": 70,
+      "spd": 40,
+      "spe": 20
+    },
+    "abilities": [40, 49],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 238,
+    "name": "Magcargo",
+    "types": ["fire", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 50,
+      "def": 120,
+      "spa": 80,
+      "spd": 80,
+      "spe": 30
+    },
+    "abilities": [40, 49],
+    "tier": "pu",
+    "evolvesFrom": 237
+  },
+  {
+    "id": 239,
+    "name": "Swinub",
+    "types": ["ice", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 50,
+      "def": 40,
+      "spa": 30,
+      "spd": 30,
+      "spe": 50
+    },
+    "abilities": [12, 81],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 240,
+    "name": "Piloswine",
+    "types": ["ice", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 80,
+      "spa": 60,
+      "spd": 60,
+      "spe": 50
+    },
+    "abilities": [12, 81],
+    "tier": "nu",
+    "evolvesFrom": 239
+  },
+  {
+    "id": 241,
+    "name": "Mamoswine",
+    "types": ["ice", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 110,
+      "atk": 130,
+      "def": 80,
+      "spa": 70,
+      "spd": 60,
+      "spe": 80
+    },
+    "abilities": [12, 81],
+    "tier": "ou",
+    "evolvesFrom": 240
+  },
+  {
+    "id": 242,
+    "name": "Corsola",
+    "types": ["water", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 55,
+      "def": 85,
+      "spa": 65,
+      "spd": 85,
+      "spe": 35
+    },
+    "abilities": [55, 30],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 243,
+    "name": "Remoraid",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 65,
+      "def": 35,
+      "spa": 65,
+      "spd": 35,
+      "spe": 65
+    },
+    "abilities": [55, 96],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 244,
+    "name": "Octillery",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 105,
+      "def": 75,
+      "spa": 105,
+      "spd": 75,
+      "spe": 45
+    },
+    "abilities": [21, 96],
+    "tier": "pu",
+    "evolvesFrom": 243
+  },
+  {
+    "id": 245,
+    "name": "Delibird",
+    "types": ["ice", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 55,
+      "def": 45,
+      "spa": 65,
+      "spd": 45,
+      "spe": 75
+    },
+    "abilities": [72],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 246,
+    "name": "Mantine",
+    "types": ["water", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 40,
+      "def": 70,
+      "spa": 80,
+      "spd": 140,
+      "spe": 70
+    },
+    "abilities": [33, 11],
+    "tier": "pu",
+    "evolvesFrom": 247
+  },
+  {
+    "id": 247,
+    "name": "Mantyke",
+    "types": ["water", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 20,
+      "def": 50,
+      "spa": 60,
+      "spd": 120,
+      "spe": 50
+    },
+    "abilities": [33, 11],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 248,
+    "name": "Skarmory",
+    "types": ["steel", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 80,
+      "def": 140,
+      "spa": 40,
+      "spd": 70,
+      "spe": 70
+    },
+    "abilities": [51, 5],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 249,
+    "name": "Houndour",
+    "types": ["dark", "fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 60,
+      "def": 30,
+      "spa": 80,
+      "spd": 50,
+      "spe": 65
+    },
+    "abilities": [48, 18],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 250,
+    "name": "Houndoom",
+    "types": ["dark", "fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 90,
+      "def": 50,
+      "spa": 110,
+      "spd": 80,
+      "spe": 95
+    },
+    "abilities": [48, 18],
+    "tier": "uu",
+    "evolvesFrom": 249
+  },
+  {
+    "id": 251,
+    "name": "Phanpy",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 60,
+      "def": 60,
+      "spa": 40,
+      "spd": 40,
+      "spe": 40
+    },
+    "abilities": [53],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 252,
+    "name": "Donphan",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 120,
+      "def": 120,
+      "spa": 60,
+      "spd": 60,
+      "spe": 50
+    },
+    "abilities": [5],
+    "tier": "uu",
+    "evolvesFrom": 251
+  },
+  {
+    "id": 253,
+    "name": "Stantler",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 73,
+      "atk": 95,
+      "def": 62,
+      "spa": 85,
+      "spd": 65,
+      "spe": 85
+    },
+    "abilities": [22, 118],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 254,
+    "name": "Smeargle",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 20,
+      "def": 35,
+      "spa": 20,
+      "spd": 45,
+      "spe": 75
+    },
+    "abilities": [20, 100],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 255,
+    "name": "Miltank",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 80,
+      "def": 105,
+      "spa": 40,
+      "spd": 70,
+      "spe": 100
+    },
+    "abilities": [47, 112],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 256,
+    "name": "Raikou",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 85,
+      "def": 75,
+      "spa": 115,
+      "spd": 100,
+      "spe": 115
+    },
+    "abilities": [46],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 257,
+    "name": "Entei",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 115,
+      "atk": 115,
+      "def": 85,
+      "spa": 90,
+      "spd": 75,
+      "spe": 100
+    },
+    "abilities": [46],
+    "tier": "nubl",
+    "evolvesFrom": null
+  },
+  {
+    "id": 258,
+    "name": "Suicune",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 75,
+      "def": 115,
+      "spa": 90,
+      "spd": 115,
+      "spe": 85
+    },
+    "abilities": [46],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 259,
+    "name": "Larvitar",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 64,
+      "def": 50,
+      "spa": 45,
+      "spd": 50,
+      "spe": 41
+    },
+    "abilities": [62],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 260,
+    "name": "Pupitar",
+    "types": ["rock", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 84,
+      "def": 70,
+      "spa": 65,
+      "spd": 70,
+      "spe": 51
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 259
+  },
+  {
+    "id": 261,
+    "name": "Tyranitar",
+    "types": ["rock", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 134,
+      "def": 110,
+      "spa": 95,
+      "spd": 100,
+      "spe": 61
+    },
+    "abilities": [45],
+    "tier": "ou",
+    "evolvesFrom": 260
+  },
+  {
+    "id": 262,
+    "name": "Celebi",
+    "types": ["psychic", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "spa": 100,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [30],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 263,
+    "name": "Treecko",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 35,
+      "spa": 65,
+      "spd": 55,
+      "spe": 70
+    },
+    "abilities": [65],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 264,
+    "name": "Grovyle",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 45,
+      "spa": 85,
+      "spd": 65,
+      "spe": 95
+    },
+    "abilities": [65],
+    "tier": "pu",
+    "evolvesFrom": 263
+  },
+  {
+    "id": 265,
+    "name": "Sceptile",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 85,
+      "def": 65,
+      "spa": 105,
+      "spd": 85,
+      "spe": 120
+    },
+    "abilities": [65],
+    "tier": "uu",
+    "evolvesFrom": 264
+  },
+  {
+    "id": 266,
+    "name": "Torchic",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 60,
+      "def": 40,
+      "spa": 70,
+      "spd": 50,
+      "spe": 45
+    },
+    "abilities": [6],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 267,
+    "name": "Combusken",
+    "types": ["fire", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 85,
+      "def": 60,
+      "spa": 85,
+      "spd": 60,
+      "spe": 55
+    },
+    "abilities": [6],
+    "tier": "pu",
+    "evolvesFrom": 266
+  },
+  {
+    "id": 268,
+    "name": "Blaziken",
+    "types": ["fire", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 120,
+      "def": 70,
+      "spa": 110,
+      "spd": 70,
+      "spe": 80
+    },
+    "abilities": [6],
+    "tier": "uu",
+    "evolvesFrom": 267
+  },
+  {
+    "id": 269,
+    "name": "Mudkip",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 70,
+      "def": 50,
+      "spa": 50,
+      "spd": 50,
+      "spe": 40
+    },
+    "abilities": [67],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 270,
+    "name": "Marshtomp",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 85,
+      "def": 70,
+      "spa": 60,
+      "spd": 70,
+      "spe": 50
+    },
+    "abilities": [67],
+    "tier": "pu",
+    "evolvesFrom": 269
+  },
+  {
+    "id": 271,
+    "name": "Swampert",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 110,
+      "def": 90,
+      "spa": 85,
+      "spd": 90,
+      "spe": 60
+    },
+    "abilities": [67],
+    "tier": "ou",
+    "evolvesFrom": 270
+  },
+  {
+    "id": 272,
+    "name": "Poochyena",
+    "types": ["dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 55,
+      "def": 35,
+      "spa": 30,
+      "spd": 30,
+      "spe": 35
+    },
+    "abilities": [50, 94],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 273,
+    "name": "Mightyena",
+    "types": ["dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 90,
+      "def": 70,
+      "spa": 60,
+      "spd": 60,
+      "spe": 70
+    },
+    "abilities": [22, 94],
+    "tier": "pu",
+    "evolvesFrom": 272
+  },
+  {
+    "id": 274,
+    "name": "Zigzagoon",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 38,
+      "atk": 30,
+      "def": 41,
+      "spa": 30,
+      "spd": 41,
+      "spe": 60
+    },
+    "abilities": [53, 82],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 275,
+    "name": "Linoone",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 78,
+      "atk": 70,
+      "def": 61,
+      "spa": 50,
+      "spd": 61,
+      "spe": 100
+    },
+    "abilities": [53, 82],
+    "tier": "publ",
+    "evolvesFrom": 274
+  },
+  {
+    "id": 276,
+    "name": "Wurmple",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 45,
+      "def": 35,
+      "spa": 20,
+      "spd": 30,
+      "spe": 20
+    },
+    "abilities": [19],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 277,
+    "name": "Silcoon",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 35,
+      "def": 55,
+      "spa": 25,
+      "spd": 25,
+      "spe": 15
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 276
+  },
+  {
+    "id": 278,
+    "name": "Beautifly",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 70,
+      "def": 50,
+      "spa": 90,
+      "spd": 50,
+      "spe": 65
+    },
+    "abilities": [68],
+    "tier": "pu",
+    "evolvesFrom": 277
+  },
+  {
+    "id": 279,
+    "name": "Cascoon",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 35,
+      "def": 55,
+      "spa": 25,
+      "spd": 25,
+      "spe": 15
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": 276
+  },
+  {
+    "id": 280,
+    "name": "Dustox",
+    "types": ["bug", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 70,
+      "spa": 50,
+      "spd": 90,
+      "spe": 65
+    },
+    "abilities": [19],
+    "tier": "pu",
+    "evolvesFrom": 279
+  },
+  {
+    "id": 281,
+    "name": "Lotad",
+    "types": ["water", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 30,
+      "def": 30,
+      "spa": 40,
+      "spd": 50,
+      "spe": 30
+    },
+    "abilities": [33, 44],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 282,
+    "name": "Lombre",
+    "types": ["water", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 50,
+      "spa": 60,
+      "spd": 70,
+      "spe": 50
+    },
+    "abilities": [33, 44],
+    "tier": "pu",
+    "evolvesFrom": 281
+  },
+  {
+    "id": 283,
+    "name": "Ludicolo",
+    "types": ["water", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 70,
+      "def": 70,
+      "spa": 90,
+      "spd": 100,
+      "spe": 70
+    },
+    "abilities": [33, 44],
+    "tier": "uu",
+    "evolvesFrom": 282
+  },
+  {
+    "id": 284,
+    "name": "Seedot",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 40,
+      "def": 50,
+      "spa": 30,
+      "spd": 30,
+      "spe": 30
+    },
+    "abilities": [34, 48],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 285,
+    "name": "Nuzleaf",
+    "types": ["grass", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 70,
+      "def": 40,
+      "spa": 60,
+      "spd": 40,
+      "spe": 60
+    },
+    "abilities": [34, 48],
+    "tier": "pu",
+    "evolvesFrom": 284
+  },
+  {
+    "id": 286,
+    "name": "Shiftry",
+    "types": ["grass", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 100,
+      "def": 60,
+      "spa": 90,
+      "spd": 60,
+      "spe": 80
+    },
+    "abilities": [34, 48],
+    "tier": "nu",
+    "evolvesFrom": 285
+  },
+  {
+    "id": 287,
+    "name": "Taillow",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 55,
+      "def": 30,
+      "spa": 30,
+      "spd": 30,
+      "spe": 85
+    },
+    "abilities": [62],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 288,
+    "name": "Swellow",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 85,
+      "def": 60,
+      "spa": 50,
+      "spd": 50,
+      "spe": 125
+    },
+    "abilities": [62],
+    "tier": "uu",
+    "evolvesFrom": 287
+  },
+  {
+    "id": 289,
+    "name": "Wingull",
+    "types": ["water", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 30,
+      "def": 30,
+      "spa": 55,
+      "spd": 30,
+      "spe": 85
+    },
+    "abilities": [51],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 290,
+    "name": "Pelipper",
+    "types": ["water", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 100,
+      "spa": 85,
+      "spd": 70,
+      "spe": 65
+    },
+    "abilities": [51],
+    "tier": "pu",
+    "evolvesFrom": 289
+  },
+  {
+    "id": 291,
+    "name": "Ralts",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 28,
+      "atk": 25,
+      "def": 25,
+      "spa": 45,
+      "spd": 35,
+      "spe": 40
+    },
+    "abilities": [28, 36],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 292,
+    "name": "Kirlia",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 38,
+      "atk": 35,
+      "def": 35,
+      "spa": 65,
+      "spd": 55,
+      "spe": 50
+    },
+    "abilities": [28, 36],
+    "tier": "pu",
+    "evolvesFrom": 291
+  },
+  {
+    "id": 293,
+    "name": "Gardevoir",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 68,
+      "atk": 65,
+      "def": 65,
+      "spa": 125,
+      "spd": 115,
+      "spe": 80
+    },
+    "abilities": [28, 36],
+    "tier": "nu",
+    "evolvesFrom": 292
+  },
+  {
+    "id": 294,
+    "name": "Gallade",
+    "types": ["psychic", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 68,
+      "atk": 125,
+      "def": 65,
+      "spa": 65,
+      "spd": 115,
+      "spe": 80
+    },
+    "abilities": [80],
+    "tier": "ou",
+    "evolvesFrom": 292
+  },
+  {
+    "id": 295,
+    "name": "Surskit",
+    "types": ["bug", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 30,
+      "def": 32,
+      "spa": 50,
+      "spd": 52,
+      "spe": 65
+    },
+    "abilities": [33],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 296,
+    "name": "Masquerain",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 60,
+      "def": 62,
+      "spa": 80,
+      "spd": 82,
+      "spe": 60
+    },
+    "abilities": [22],
+    "tier": "pu",
+    "evolvesFrom": 295
+  },
+  {
+    "id": 297,
+    "name": "Shroomish",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 40,
+      "def": 60,
+      "spa": 40,
+      "spd": 60,
+      "spe": 35
+    },
+    "abilities": [27, 89],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 298,
+    "name": "Breloom",
+    "types": ["grass", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 130,
+      "def": 80,
+      "spa": 60,
+      "spd": 60,
+      "spe": 70
+    },
+    "abilities": [27, 89],
+    "tier": "ou",
+    "evolvesFrom": 297
+  },
+  {
+    "id": 299,
+    "name": "Slakoth",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 60,
+      "spa": 35,
+      "spd": 35,
+      "spe": 30
+    },
+    "abilities": [54],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 300,
+    "name": "Vigoroth",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 80,
+      "def": 80,
+      "spa": 55,
+      "spd": 55,
+      "spe": 90
+    },
+    "abilities": [72],
+    "tier": "pu",
+    "evolvesFrom": 299
+  },
+  {
+    "id": 301,
+    "name": "Slaking",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 150,
+      "atk": 160,
+      "def": 100,
+      "spa": 95,
+      "spd": 65,
+      "spe": 100
+    },
+    "abilities": [54],
+    "tier": "pu",
+    "evolvesFrom": 300
+  },
+  {
+    "id": 302,
+    "name": "Nincada",
+    "types": ["bug", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 31,
+      "atk": 45,
+      "def": 90,
+      "spa": 30,
+      "spd": 30,
+      "spe": 40
+    },
+    "abilities": [14],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 303,
+    "name": "Ninjask",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 61,
+      "atk": 90,
+      "def": 45,
+      "spa": 50,
+      "spd": 50,
+      "spe": 160
+    },
+    "abilities": "Speed Boost",
+    "tier": "ou",
+    "evolvesFrom": 302
+  },
+  {
+    "id": 304,
+    "name": "Shedinja",
+    "types": ["bug", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 1,
+      "atk": 90,
+      "def": 45,
+      "spa": 30,
+      "spd": 30,
+      "spe": 40
+    },
+    "abilities": [25],
+    "tier": "pu",
+    "evolvesFrom": 302
+  },
+  {
+    "id": 305,
+    "name": "Whismur",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 64,
+      "atk": 51,
+      "def": 23,
+      "spa": 51,
+      "spd": 23,
+      "spe": 28
+    },
+    "abilities": [43],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 306,
+    "name": "Loudred",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 84,
+      "atk": 71,
+      "def": 43,
+      "spa": 71,
+      "spd": 43,
+      "spe": 48
+    },
+    "abilities": [43],
+    "tier": "pu",
+    "evolvesFrom": 305
+  },
+  {
+    "id": 307,
+    "name": "Exploud",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 104,
+      "atk": 91,
+      "def": 63,
+      "spa": 91,
+      "spd": 63,
+      "spe": 68
+    },
+    "abilities": [43],
+    "tier": "pu",
+    "evolvesFrom": 306
+  },
+  {
+    "id": 308,
+    "name": "Makuhita",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 72,
+      "atk": 60,
+      "def": 30,
+      "spa": 20,
+      "spd": 30,
+      "spe": 25
+    },
+    "abilities": [47, 62],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 309,
+    "name": "Hariyama",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 144,
+      "atk": 120,
+      "def": 60,
+      "spa": 40,
+      "spd": 60,
+      "spe": 50
+    },
+    "abilities": [47, 62],
+    "tier": "uu",
+    "evolvesFrom": 308
+  },
+  {
+    "id": 310,
+    "name": "Azurill",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 20,
+      "def": 40,
+      "spa": 20,
+      "spd": 40,
+      "spe": 20
+    },
+    "abilities": [47, 37],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 311,
+    "name": "Nosepass",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 45,
+      "def": 135,
+      "spa": 45,
+      "spd": 90,
+      "spe": 30
+    },
+    "abilities": [5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 312,
+    "name": "Probopass",
+    "types": ["rock", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 55,
+      "def": 145,
+      "spa": 75,
+      "spd": 150,
+      "spe": 40
+    },
+    "abilities": [5],
+    "tier": "pu",
+    "evolvesFrom": 311
+  },
+  {
+    "id": 313,
+    "name": "Skitty",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 45,
+      "def": 45,
+      "spa": 35,
+      "spd": 35,
+      "spe": 50
+    },
+    "abilities": [56],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 314,
+    "name": "Delcatty",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 65,
+      "def": 65,
+      "spa": 55,
+      "spd": 55,
+      "spe": 70
+    },
+    "abilities": [56],
+    "tier": "pu",
+    "evolvesFrom": 313
+  },
+  {
+    "id": 315,
+    "name": "Sableye",
+    "types": ["dark", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 75,
+      "def": 75,
+      "spa": 65,
+      "spd": 65,
+      "spe": 50
+    },
+    "abilities": [51],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 316,
+    "name": "Mawile",
+    "types": ["steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 85,
+      "def": 85,
+      "spa": 55,
+      "spd": 55,
+      "spe": 50
+    },
+    "abilities": [52],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 317,
+    "name": "Aron",
+    "types": ["steel", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 70,
+      "def": 100,
+      "spa": 40,
+      "spd": 40,
+      "spe": 30
+    },
+    "abilities": [5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 318,
+    "name": "Lairon",
+    "types": ["steel", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 90,
+      "def": 140,
+      "spa": 50,
+      "spd": 50,
+      "spe": 40
+    },
+    "abilities": [5],
+    "tier": "pu",
+    "evolvesFrom": 317
+  },
+  {
+    "id": 319,
+    "name": "Aggron",
+    "types": ["steel", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 110,
+      "def": 180,
+      "spa": 60,
+      "spd": 60,
+      "spe": 50
+    },
+    "abilities": [5],
+    "tier": "uu",
+    "evolvesFrom": 318
+  },
+  {
+    "id": 320,
+    "name": "Meditite",
+    "types": ["fighting", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 40,
+      "def": 55,
+      "spa": 40,
+      "spd": 55,
+      "spe": 60
+    },
+    "abilities": [74],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 321,
+    "name": "Medicham",
+    "types": ["fighting", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 75,
+      "spa": 60,
+      "spd": 75,
+      "spe": 80
+    },
+    "abilities": [74],
+    "tier": "nu",
+    "evolvesFrom": 320
+  },
+  {
+    "id": 322,
+    "name": "Electrike",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 45,
+      "def": 40,
+      "spa": 65,
+      "spd": 40,
+      "spe": 65
+    },
+    "abilities": [9, 31],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 323,
+    "name": "Manectric",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 75,
+      "def": 60,
+      "spa": 105,
+      "spd": 60,
+      "spe": 105
+    },
+    "abilities": [9, 31],
+    "tier": "nu",
+    "evolvesFrom": 322
+  },
+  {
+    "id": 324,
+    "name": "Plusle",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 50,
+      "def": 40,
+      "spa": 85,
+      "spd": 75,
+      "spe": 95
+    },
+    "abilities": [57],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 325,
+    "name": "Minun",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 40,
+      "def": 50,
+      "spa": 75,
+      "spd": 85,
+      "spe": 95
+    },
+    "abilities": [58],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 326,
+    "name": "Volbeat",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 73,
+      "def": 55,
+      "spa": 47,
+      "spd": 75,
+      "spe": 85
+    },
+    "abilities": [35, 68],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 327,
+    "name": "Illumise",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 47,
+      "def": 55,
+      "spa": 73,
+      "spd": 75,
+      "spe": 85
+    },
+    "abilities": [12, 109],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 328,
+    "name": "Roselia",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 60,
+      "def": 45,
+      "spa": 100,
+      "spd": 80,
+      "spe": 65
+    },
+    "abilities": [30, 38],
+    "tier": "publ",
+    "evolvesFrom": 415
+  },
+  {
+    "id": 329,
+    "name": "Roserade",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 70,
+      "def": 55,
+      "spa": 125,
+      "spd": 105,
+      "spe": 90
+    },
+    "abilities": [30, 38],
+    "tier": "ou",
+    "evolvesFrom": 328
+  },
+  {
+    "id": 330,
+    "name": "Gulpin",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 43,
+      "def": 53,
+      "spa": 43,
+      "spd": 53,
+      "spe": 40
+    },
+    "abilities": [64, 60],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 331,
+    "name": "Swalot",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 73,
+      "def": 83,
+      "spa": 73,
+      "spd": 83,
+      "spe": 55
+    },
+    "abilities": [64, 60],
+    "tier": "pu",
+    "evolvesFrom": 330
+  },
+  {
+    "id": 332,
+    "name": "Carvanha",
+    "types": ["water", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 90,
+      "def": 20,
+      "spa": 65,
+      "spd": 20,
+      "spe": 65
+    },
+    "abilities": [24],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 333,
+    "name": "Sharpedo",
+    "types": ["water", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 120,
+      "def": 40,
+      "spa": 95,
+      "spd": 40,
+      "spe": 95
+    },
+    "abilities": [24],
+    "tier": "nu",
+    "evolvesFrom": 332
+  },
+  {
+    "id": 334,
+    "name": "Wailmer",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 130,
+      "atk": 70,
+      "def": 35,
+      "spa": 70,
+      "spd": 35,
+      "spe": 60
+    },
+    "abilities": [41, 12],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 335,
+    "name": "Wailord",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 170,
+      "atk": 90,
+      "def": 45,
+      "spa": 90,
+      "spd": 45,
+      "spe": 60
+    },
+    "abilities": [41, 12],
+    "tier": "pu",
+    "evolvesFrom": 334
+  },
+  {
+    "id": 336,
+    "name": "Numel",
+    "types": ["fire", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 40,
+      "spa": 65,
+      "spd": 45,
+      "spe": 35
+    },
+    "abilities": [12],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 337,
+    "name": "Camerupt",
+    "types": ["fire", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 100,
+      "def": 70,
+      "spa": 105,
+      "spd": 75,
+      "spe": 40
+    },
+    "abilities": [40, 115],
+    "tier": "pu",
+    "evolvesFrom": 336
+  },
+  {
+    "id": 338,
+    "name": "Torkoal",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 85,
+      "def": 140,
+      "spa": 85,
+      "spd": 70,
+      "spe": 20
+    },
+    "abilities": [73],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 339,
+    "name": "Spoink",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 25,
+      "def": 35,
+      "spa": 70,
+      "spd": 80,
+      "spe": 60
+    },
+    "abilities": [47],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 340,
+    "name": "Grumpig",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 45,
+      "def": 65,
+      "spa": 90,
+      "spd": 110,
+      "spe": 80
+    },
+    "abilities": [47, 20],
+    "tier": "nu",
+    "evolvesFrom": 339
+  },
+  {
+    "id": 341,
+    "name": "Spinda",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 60,
+      "def": 60,
+      "spa": 60,
+      "spd": 60,
+      "spe": 60
+    },
+    "abilities": [20, 77],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 342,
+    "name": "Trapinch",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 100,
+      "def": 45,
+      "spa": 45,
+      "spd": 45,
+      "spe": 10
+    },
+    "abilities": [52, 71],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 343,
+    "name": "Vibrava",
+    "types": ["ground", "dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 70,
+      "def": 50,
+      "spa": 50,
+      "spd": 50,
+      "spe": 70
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": 342
+  },
+  {
+    "id": 344,
+    "name": "Flygon",
+    "types": ["ground", "dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 100,
+      "def": 80,
+      "spa": 80,
+      "spd": 80,
+      "spe": 100
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": 343
+  },
+  {
+    "id": 345,
+    "name": "Cacnea",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 85,
+      "def": 40,
+      "spa": 85,
+      "spd": 40,
+      "spe": 35
+    },
+    "abilities": [8],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 346,
+    "name": "Cacturne",
+    "types": ["grass", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 115,
+      "def": 60,
+      "spa": 115,
+      "spd": 60,
+      "spe": 55
+    },
+    "abilities": [8],
+    "tier": "nu",
+    "evolvesFrom": 345
+  },
+  {
+    "id": 347,
+    "name": "Swablu",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 40,
+      "def": 60,
+      "spa": 40,
+      "spd": 75,
+      "spe": 50
+    },
+    "abilities": [30],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 348,
+    "name": "Altaria",
+    "types": ["dragon", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 70,
+      "def": 90,
+      "spa": 70,
+      "spd": 105,
+      "spe": 80
+    },
+    "abilities": [30],
+    "tier": "uu",
+    "evolvesFrom": 347
+  },
+  {
+    "id": 349,
+    "name": "Zangoose",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 73,
+      "atk": 115,
+      "def": 60,
+      "spa": 60,
+      "spd": 60,
+      "spe": 90
+    },
+    "abilities": [17],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 350,
+    "name": "Seviper",
+    "types": ["poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 73,
+      "atk": 100,
+      "def": 60,
+      "spa": 100,
+      "spd": 60,
+      "spe": 65
+    },
+    "abilities": [61],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 351,
+    "name": "Lunatone",
+    "types": ["rock", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 55,
+      "def": 65,
+      "spa": 95,
+      "spd": 85,
+      "spe": 70
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 352,
+    "name": "Solrock",
+    "types": ["rock", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 95,
+      "def": 85,
+      "spa": 55,
+      "spd": 65,
+      "spe": 70
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 353,
+    "name": "Barboach",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 48,
+      "def": 43,
+      "spa": 46,
+      "spd": 41,
+      "spe": 60
+    },
+    "abilities": [12, 106],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 354,
+    "name": "Whiscash",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 110,
+      "atk": 78,
+      "def": 73,
+      "spa": 76,
+      "spd": 71,
+      "spe": 60
+    },
+    "abilities": [12, 106],
+    "tier": "pu",
+    "evolvesFrom": 353
+  },
+  {
+    "id": 355,
+    "name": "Corphish",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 43,
+      "atk": 80,
+      "def": 65,
+      "spa": 50,
+      "spd": 35,
+      "spe": 35
+    },
+    "abilities": [52, 75],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 356,
+    "name": "Crawdaunt",
+    "types": ["water", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 63,
+      "atk": 120,
+      "def": 85,
+      "spa": 90,
+      "spd": 55,
+      "spe": 55
+    },
+    "abilities": [52, 75],
+    "tier": "pu",
+    "evolvesFrom": 355
+  },
+  {
+    "id": 357,
+    "name": "Baltoy",
+    "types": ["ground", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 40,
+      "def": 55,
+      "spa": 40,
+      "spd": 70,
+      "spe": 55
+    },
+    "abilities": [26],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 358,
+    "name": "Claydol",
+    "types": ["ground", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 70,
+      "def": 105,
+      "spa": 70,
+      "spd": 120,
+      "spe": 75
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": 357
+  },
+  {
+    "id": 359,
+    "name": "Lileep",
+    "types": ["rock", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 66,
+      "atk": 41,
+      "def": 77,
+      "spa": 61,
+      "spd": 87,
+      "spe": 23
+    },
+    "abilities": [21],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 360,
+    "name": "Cradily",
+    "types": ["rock", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 86,
+      "atk": 81,
+      "def": 97,
+      "spa": 81,
+      "spd": 107,
+      "spe": 43
+    },
+    "abilities": [21],
+    "tier": "nu",
+    "evolvesFrom": 359
+  },
+  {
+    "id": 361,
+    "name": "Anorith",
+    "types": ["rock", "bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 95,
+      "def": 50,
+      "spa": 40,
+      "spd": 50,
+      "spe": 75
+    },
+    "abilities": [4],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 362,
+    "name": "Armaldo",
+    "types": ["rock", "bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 125,
+      "def": 100,
+      "spa": 70,
+      "spd": 80,
+      "spe": 45
+    },
+    "abilities": [4],
+    "tier": "pu",
+    "evolvesFrom": 361
+  },
+  {
+    "id": 363,
+    "name": "Feebas",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 15,
+      "def": 20,
+      "spa": 10,
+      "spd": 55,
+      "spe": 80
+    },
+    "abilities": [33],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 364,
+    "name": "Milotic",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 60,
+      "def": 79,
+      "spa": 100,
+      "spd": 125,
+      "spe": 81
+    },
+    "abilities": [63],
+    "tier": "uu",
+    "evolvesFrom": 363
+  },
+  {
+    "id": 365,
+    "name": "Castform",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 70,
+      "def": 70,
+      "spa": 70,
+      "spd": 70,
+      "spe": 70
+    },
+    "abilities": [59],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 366,
+    "name": "Kecleon",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 90,
+      "def": 70,
+      "spa": 60,
+      "spd": 120,
+      "spe": 40
+    },
+    "abilities": [16],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 367,
+    "name": "Shuppet",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 44,
+      "atk": 75,
+      "def": 35,
+      "spa": 63,
+      "spd": 33,
+      "spe": 45
+    },
+    "abilities": [15, 118],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 368,
+    "name": "Banette",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 64,
+      "atk": 115,
+      "def": 65,
+      "spa": 83,
+      "spd": 63,
+      "spe": 65
+    },
+    "abilities": [15, 118],
+    "tier": "pu",
+    "evolvesFrom": 367
+  },
+  {
+    "id": 369,
+    "name": "Duskull",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 20,
+      "atk": 40,
+      "def": 90,
+      "spa": 30,
+      "spd": 90,
+      "spe": 25
+    },
+    "abilities": [26],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 370,
+    "name": "Dusclops",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 70,
+      "def": 130,
+      "spa": 60,
+      "spd": 130,
+      "spe": 25
+    },
+    "abilities": [46],
+    "tier": "nu",
+    "evolvesFrom": 369
+  },
+  {
+    "id": 371,
+    "name": "Dusknoir",
+    "types": ["ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 100,
+      "def": 135,
+      "spa": 65,
+      "spd": 135,
+      "spe": 45
+    },
+    "abilities": [46],
+    "tier": "ou",
+    "evolvesFrom": 370
+  },
+  {
+    "id": 372,
+    "name": "Tropius",
+    "types": ["grass", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 99,
+      "atk": 68,
+      "def": 83,
+      "spa": 72,
+      "spd": 87,
+      "spe": 51
+    },
+    "abilities": [34, 93],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 373,
+    "name": "Chimecho",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 50,
+      "def": 70,
+      "spa": 95,
+      "spd": 80,
+      "spe": 65
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": 374
+  },
+  {
+    "id": 374,
+    "name": "Chingling",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 30,
+      "def": 50,
+      "spa": 65,
+      "spd": 50,
+      "spe": 45
+    },
+    "abilities": [26],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 375,
+    "name": "Absol",
+    "types": ["dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 130,
+      "def": 60,
+      "spa": 75,
+      "spd": 60,
+      "spe": 75
+    },
+    "abilities": [46, 104],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 376,
+    "name": "Snorunt",
+    "types": ["ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 50,
+      "def": 50,
+      "spa": 50,
+      "spd": 50,
+      "spe": 50
+    },
+    "abilities": [39, 114],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 377,
+    "name": "Glalie",
+    "types": ["ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 80,
+      "def": 80,
+      "spa": 80,
+      "spd": 80,
+      "spe": 80
+    },
+    "abilities": [39, 114],
+    "tier": "pu",
+    "evolvesFrom": 376
+  },
+  {
+    "id": 378,
+    "name": "Froslass",
+    "types": ["ice", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 80,
+      "def": 70,
+      "spa": 80,
+      "spd": 70,
+      "spe": 110
+    },
+    "abilities": [81],
+    "tier": "ou",
+    "evolvesFrom": 376
+  },
+  {
+    "id": 379,
+    "name": "Spheal",
+    "types": ["ice", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 40,
+      "def": 50,
+      "spa": 55,
+      "spd": 50,
+      "spe": 25
+    },
+    "abilities": [47, 114],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 380,
+    "name": "Sealeo",
+    "types": ["ice", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 60,
+      "def": 70,
+      "spa": 75,
+      "spd": 70,
+      "spe": 45
+    },
+    "abilities": [47, 114],
+    "tier": "pu",
+    "evolvesFrom": 379
+  },
+  {
+    "id": 381,
+    "name": "Walrein",
+    "types": ["ice", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 110,
+      "atk": 80,
+      "def": 90,
+      "spa": 95,
+      "spd": 90,
+      "spe": 65
+    },
+    "abilities": [47, 114],
+    "tier": "zubl",
+    "evolvesFrom": 380
+  },
+  {
+    "id": 382,
+    "name": "Clamperl",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 35,
+      "atk": 64,
+      "def": 85,
+      "spa": 74,
+      "spd": 55,
+      "spe": 32
+    },
+    "abilities": [75],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 383,
+    "name": "Huntail",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 104,
+      "def": 105,
+      "spa": 94,
+      "spd": 75,
+      "spe": 52
+    },
+    "abilities": [33],
+    "tier": "pu",
+    "evolvesFrom": 382
+  },
+  {
+    "id": 384,
+    "name": "Gorebyss",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 84,
+      "def": 105,
+      "spa": 114,
+      "spd": 75,
+      "spe": 52
+    },
+    "abilities": [33],
+    "tier": "zubl",
+    "evolvesFrom": 382
+  },
+  {
+    "id": 385,
+    "name": "Relicanth",
+    "types": ["water", "rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 90,
+      "def": 130,
+      "spa": 45,
+      "spd": 65,
+      "spe": 55
+    },
+    "abilities": [33],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 386,
+    "name": "Luvdisc",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 43,
+      "atk": 30,
+      "def": 55,
+      "spa": 40,
+      "spd": 65,
+      "spe": 97
+    },
+    "abilities": [33],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 387,
+    "name": "Bagon",
+    "types": ["dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 75,
+      "def": 60,
+      "spa": 40,
+      "spd": 30,
+      "spe": 50
+    },
+    "abilities": [69],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 388,
+    "name": "Shelgon",
+    "types": ["dragon"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 95,
+      "def": 100,
+      "spa": 60,
+      "spd": 50,
+      "spe": 50
+    },
+    "abilities": [69],
+    "tier": "pu",
+    "evolvesFrom": 387
+  },
+  {
+    "id": 389,
+    "name": "Beldum",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 55,
+      "def": 80,
+      "spa": 35,
+      "spd": 60,
+      "spe": 30
+    },
+    "abilities": [29],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 390,
+    "name": "Metang",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 75,
+      "def": 100,
+      "spa": 55,
+      "spd": 80,
+      "spe": 50
+    },
+    "abilities": [29],
+    "tier": "pu",
+    "evolvesFrom": 389
+  },
+  {
+    "id": 391,
+    "name": "Metagross",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 135,
+      "def": 130,
+      "spa": 95,
+      "spd": 90,
+      "spe": 70
+    },
+    "abilities": [29],
+    "tier": "ou",
+    "evolvesFrom": 390
+  },
+  {
+    "id": 392,
+    "name": "Regirock",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 100,
+      "def": 200,
+      "spa": 50,
+      "spd": 100,
+      "spe": 50
+    },
+    "abilities": [29],
+    "tier": "nu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 393,
+    "name": "Regice",
+    "types": ["ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 50,
+      "def": 100,
+      "spa": 100,
+      "spd": 200,
+      "spe": 50
+    },
+    "abilities": [29],
+    "tier": "nu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 394,
+    "name": "Registeel",
+    "types": ["steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 75,
+      "def": 150,
+      "spa": 75,
+      "spd": 150,
+      "spe": 50
+    },
+    "abilities": [29],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 395,
+    "name": "Latias",
+    "types": ["dragon", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 80,
+      "def": 90,
+      "spa": 110,
+      "spd": 130,
+      "spe": 110
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 396,
+    "name": "Turtwig",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 68,
+      "def": 64,
+      "spa": 45,
+      "spd": 55,
+      "spe": 31
+    },
+    "abilities": [65],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 397,
+    "name": "Grotle",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 89,
+      "def": 85,
+      "spa": 55,
+      "spd": 65,
+      "spe": 36
+    },
+    "abilities": [65],
+    "tier": "pu",
+    "evolvesFrom": 396
+  },
+  {
+    "id": 398,
+    "name": "Torterra",
+    "types": ["grass", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 109,
+      "def": 105,
+      "spa": 75,
+      "spd": 85,
+      "spe": 56
+    },
+    "abilities": [65],
+    "tier": "uu",
+    "evolvesFrom": 397
+  },
+  {
+    "id": 399,
+    "name": "Chimchar",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 44,
+      "atk": 58,
+      "def": 44,
+      "spa": 58,
+      "spd": 44,
+      "spe": 61
+    },
+    "abilities": [6],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 400,
+    "name": "Monferno",
+    "types": ["fire", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 64,
+      "atk": 78,
+      "def": 52,
+      "spa": 78,
+      "spd": 52,
+      "spe": 81
+    },
+    "abilities": [6],
+    "tier": "pu",
+    "evolvesFrom": 399
+  },
+  {
+    "id": 401,
+    "name": "Infernape",
+    "types": ["fire", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 76,
+      "atk": 104,
+      "def": 71,
+      "spa": 104,
+      "spd": 71,
+      "spe": 108
+    },
+    "abilities": [6],
+    "tier": "ou",
+    "evolvesFrom": 400
+  },
+  {
+    "id": 402,
+    "name": "Piplup",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 53,
+      "atk": 51,
+      "def": 53,
+      "spa": 61,
+      "spd": 56,
+      "spe": 40
+    },
+    "abilities": [67],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 403,
+    "name": "Prinplup",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 64,
+      "atk": 66,
+      "def": 68,
+      "spa": 81,
+      "spd": 76,
+      "spe": 50
+    },
+    "abilities": [67],
+    "tier": "pu",
+    "evolvesFrom": 402
+  },
+  {
+    "id": 404,
+    "name": "Empoleon",
+    "types": ["water", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 84,
+      "atk": 86,
+      "def": 88,
+      "spa": 111,
+      "spd": 101,
+      "spe": 60
+    },
+    "abilities": [67],
+    "tier": "ou",
+    "evolvesFrom": 403
+  },
+  {
+    "id": 405,
+    "name": "Starly",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 55,
+      "def": 30,
+      "spa": 30,
+      "spd": 30,
+      "spe": 60
+    },
+    "abilities": [51],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 406,
+    "name": "Staravia",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 75,
+      "def": 50,
+      "spa": 40,
+      "spd": 40,
+      "spe": 80
+    },
+    "abilities": [22],
+    "tier": "pu",
+    "evolvesFrom": 405
+  },
+  {
+    "id": 407,
+    "name": "Staraptor",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 120,
+      "def": 70,
+      "spa": 50,
+      "spd": 50,
+      "spe": 100
+    },
+    "abilities": [22],
+    "tier": "ou",
+    "evolvesFrom": 406
+  },
+  {
+    "id": 408,
+    "name": "Bidoof",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 59,
+      "atk": 45,
+      "def": 40,
+      "spa": 35,
+      "spd": 40,
+      "spe": 31
+    },
+    "abilities": [86],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 409,
+    "name": "Bibarel",
+    "types": ["normal", "water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 79,
+      "atk": 85,
+      "def": 60,
+      "spa": 55,
+      "spd": 60,
+      "spe": 71
+    },
+    "abilities": [86],
+    "tier": "pu",
+    "evolvesFrom": 408
+  },
+  {
+    "id": 410,
+    "name": "Kricketot",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 37,
+      "atk": 25,
+      "def": 41,
+      "spa": 25,
+      "spd": 41,
+      "spe": 25
+    },
+    "abilities": [61],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 411,
+    "name": "Kricketune",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 77,
+      "atk": 85,
+      "def": 51,
+      "spa": 55,
+      "spd": 51,
+      "spe": 65
+    },
+    "abilities": [68],
+    "tier": "pu",
+    "evolvesFrom": 410
+  },
+  {
+    "id": 412,
+    "name": "Shinx",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 65,
+      "def": 34,
+      "spa": 40,
+      "spd": 34,
+      "spe": 45
+    },
+    "abilities": [79],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 413,
+    "name": "Luxio",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 85,
+      "def": 49,
+      "spa": 60,
+      "spd": 49,
+      "spe": 60
+    },
+    "abilities": [79],
+    "tier": "pu",
+    "evolvesFrom": 412
+  },
+  {
+    "id": 414,
+    "name": "Luxray",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 120,
+      "def": 79,
+      "spa": 95,
+      "spd": 79,
+      "spe": 70
+    },
+    "abilities": [79],
+    "tier": "pu",
+    "evolvesFrom": 413
+  },
+  {
+    "id": 415,
+    "name": "Budew",
+    "types": ["grass", "poison"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 30,
+      "def": 35,
+      "spa": 50,
+      "spd": 70,
+      "spe": 55
+    },
+    "abilities": [30, 38],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 416,
+    "name": "Cranidos",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 67,
+      "atk": 125,
+      "def": 40,
+      "spa": 30,
+      "spd": 30,
+      "spe": 58
+    },
+    "abilities": [103],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 417,
+    "name": "Rampardos",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 97,
+      "atk": 165,
+      "def": 60,
+      "spa": 65,
+      "spd": 50,
+      "spe": 58
+    },
+    "abilities": [103],
+    "tier": "zubl",
+    "evolvesFrom": 416
+  },
+  {
+    "id": 418,
+    "name": "Shieldon",
+    "types": ["rock", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 42,
+      "def": 118,
+      "spa": 42,
+      "spd": 88,
+      "spe": 30
+    },
+    "abilities": [5],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 419,
+    "name": "Bastiodon",
+    "types": ["rock", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 52,
+      "def": 168,
+      "spa": 47,
+      "spd": 138,
+      "spe": 30
+    },
+    "abilities": [5],
+    "tier": "pu",
+    "evolvesFrom": 418
+  },
+  {
+    "id": 420,
+    "name": "Burmy",
+    "types": ["bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 29,
+      "def": 45,
+      "spa": 29,
+      "spd": 45,
+      "spe": 36
+    },
+    "abilities": [61],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 421,
+    "name": "Wormadam",
+    "types": ["bug", "grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 59,
+      "def": 85,
+      "spa": 79,
+      "spd": 105,
+      "spe": 36
+    },
+    "abilities": [106],
+    "tier": "pu",
+    "evolvesFrom": 420
+  },
+  {
+    "id": 422,
+    "name": "Wormadam-Sandy",
+    "types": ["bug", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 79,
+      "def": 105,
+      "spa": 59,
+      "spd": 85,
+      "spe": 36
+    },
+    "abilities": [106],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 423,
+    "name": "Wormadam-Trash",
+    "types": ["bug", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 69,
+      "def": 95,
+      "spa": 69,
+      "spd": 95,
+      "spe": 36
+    },
+    "abilities": [106],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 424,
+    "name": "Mothim",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 94,
+      "def": 50,
+      "spa": 94,
+      "spd": 50,
+      "spe": 66
+    },
+    "abilities": [68],
+    "tier": "pu",
+    "evolvesFrom": 420
+  },
+  {
+    "id": 425,
+    "name": "Combee",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 30,
+      "atk": 30,
+      "def": 42,
+      "spa": 30,
+      "spd": 42,
+      "spe": 70
+    },
+    "abilities": "Honey Gather",
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 426,
+    "name": "Vespiquen",
+    "types": ["bug", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 80,
+      "def": 102,
+      "spa": 80,
+      "spd": 102,
+      "spe": 40
+    },
+    "abilities": [46],
+    "tier": "pu",
+    "evolvesFrom": 425
+  },
+  {
+    "id": 427,
+    "name": "Pachirisu",
+    "types": ["electric"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 45,
+      "def": 70,
+      "spa": 45,
+      "spd": 90,
+      "spe": 95
+    },
+    "abilities": [50, 53],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 428,
+    "name": "Buizel",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 65,
+      "def": 35,
+      "spa": 60,
+      "spd": 30,
+      "spe": 85
+    },
+    "abilities": [33],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 429,
+    "name": "Floatzel",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 85,
+      "atk": 105,
+      "def": 55,
+      "spa": 85,
+      "spd": 50,
+      "spe": 115
+    },
+    "abilities": [33],
+    "tier": "nu",
+    "evolvesFrom": 428
+  },
+  {
+    "id": 430,
+    "name": "Cherubi",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 45,
+      "atk": 35,
+      "def": 45,
+      "spa": 62,
+      "spd": 53,
+      "spe": 35
+    },
+    "abilities": [34],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 431,
+    "name": "Cherrim",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 60,
+      "def": 70,
+      "spa": 87,
+      "spd": 78,
+      "spe": 85
+    },
+    "abilities": "Flower Gift",
+    "tier": "pu",
+    "evolvesFrom": 430
+  },
+  {
+    "id": 432,
+    "name": "Shellos",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 76,
+      "atk": 48,
+      "def": 48,
+      "spa": 57,
+      "spd": 62,
+      "spe": 34
+    },
+    "abilities": [60, 113],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 433,
+    "name": "Gastrodon",
+    "types": ["water", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 111,
+      "atk": 83,
+      "def": 68,
+      "spa": 92,
+      "spd": 82,
+      "spe": 39
+    },
+    "abilities": [60, 113],
+    "tier": "pu",
+    "evolvesFrom": 432
+  },
+  {
+    "id": 434,
+    "name": "Buneary",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 55,
+      "atk": 66,
+      "def": 44,
+      "spa": 44,
+      "spd": 56,
+      "spe": 85
+    },
+    "abilities": [50],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 435,
+    "name": "Lopunny",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 76,
+      "def": 84,
+      "spa": 54,
+      "spd": 96,
+      "spe": 105
+    },
+    "abilities": [56],
+    "tier": "pu",
+    "evolvesFrom": 434
+  },
+  {
+    "id": 436,
+    "name": "Glameow",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 49,
+      "atk": 55,
+      "def": 42,
+      "spa": 42,
+      "spd": 37,
+      "spe": 85
+    },
+    "abilities": [7, 20],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 437,
+    "name": "Purugly",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 71,
+      "atk": 82,
+      "def": 64,
+      "spa": 64,
+      "spd": 59,
+      "spe": 112
+    },
+    "abilities": [47, 20],
+    "tier": "pu",
+    "evolvesFrom": 436
+  },
+  {
+    "id": 438,
+    "name": "Stunky",
+    "types": ["poison", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 63,
+      "atk": 63,
+      "def": 47,
+      "spa": 41,
+      "spd": 41,
+      "spe": 74
+    },
+    "abilities": [1, 105],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 439,
+    "name": "Skuntank",
+    "types": ["poison", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 103,
+      "atk": 93,
+      "def": 67,
+      "spa": 71,
+      "spd": 61,
+      "spe": 84
+    },
+    "abilities": [1, 105],
+    "tier": "nu",
+    "evolvesFrom": 438
+  },
+  {
+    "id": 440,
+    "name": "Bronzor",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 57,
+      "atk": 24,
+      "def": 86,
+      "spa": 24,
+      "spd": 86,
+      "spe": 23
+    },
+    "abilities": [26, 84],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 441,
+    "name": "Bronzong",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 67,
+      "atk": 89,
+      "def": 116,
+      "spa": 79,
+      "spd": 116,
+      "spe": 33
+    },
+    "abilities": [26, 84],
+    "tier": "ou",
+    "evolvesFrom": 440
+  },
+  {
+    "id": 442,
+    "name": "Bonsly",
+    "types": ["rock"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 80,
+      "def": 95,
+      "spa": 10,
+      "spd": 45,
+      "spe": 10
+    },
+    "abilities": [5, 69],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 443,
+    "name": "Chatot",
+    "types": ["normal", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 76,
+      "atk": 65,
+      "def": 45,
+      "spa": 92,
+      "spd": 42,
+      "spe": 91
+    },
+    "abilities": [51, 77],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 444,
+    "name": "Spiritomb",
+    "types": ["ghost", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 92,
+      "def": 108,
+      "spa": 92,
+      "spd": 108,
+      "spe": 35
+    },
+    "abilities": [46],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 445,
+    "name": "Gible",
+    "types": ["dragon", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 58,
+      "atk": 70,
+      "def": 45,
+      "spa": 40,
+      "spd": 45,
+      "spe": 42
+    },
+    "abilities": [8],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 446,
+    "name": "Gabite",
+    "types": ["dragon", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 68,
+      "atk": 90,
+      "def": 65,
+      "spa": 50,
+      "spd": 55,
+      "spe": 82
+    },
+    "abilities": [8],
+    "tier": "pu",
+    "evolvesFrom": 445
+  },
+  {
+    "id": 447,
+    "name": "Riolu",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 70,
+      "def": 40,
+      "spa": 35,
+      "spd": 40,
+      "spe": 60
+    },
+    "abilities": [80, 39],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 448,
+    "name": "Lucario",
+    "types": ["fighting", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 110,
+      "def": 70,
+      "spa": 115,
+      "spd": 70,
+      "spe": 90
+    },
+    "abilities": [80, 39],
+    "tier": "ou",
+    "evolvesFrom": 447
+  },
+  {
+    "id": 449,
+    "name": "Hippopotas",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 68,
+      "atk": 72,
+      "def": 78,
+      "spa": 38,
+      "spd": 42,
+      "spe": 32
+    },
+    "abilities": [45],
+    "tier": "nubl",
+    "evolvesFrom": null
+  },
+  {
+    "id": 450,
+    "name": "Hippowdon",
+    "types": ["ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 108,
+      "atk": 112,
+      "def": 118,
+      "spa": 68,
+      "spd": 72,
+      "spe": 47
+    },
+    "abilities": [45],
+    "tier": "ou",
+    "evolvesFrom": 449
+  },
+  {
+    "id": 451,
+    "name": "Skorupi",
+    "types": ["poison", "bug"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 40,
+      "atk": 50,
+      "def": 90,
+      "spa": 30,
+      "spd": 55,
+      "spe": 65
+    },
+    "abilities": [4, 96],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 452,
+    "name": "Drapion",
+    "types": ["poison", "dark"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 90,
+      "def": 110,
+      "spa": 60,
+      "spd": 75,
+      "spe": 95
+    },
+    "abilities": [4, 96],
+    "tier": "uu",
+    "evolvesFrom": 451
+  },
+  {
+    "id": 453,
+    "name": "Croagunk",
+    "types": ["poison", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 48,
+      "atk": 61,
+      "def": 40,
+      "spa": 61,
+      "spd": 40,
+      "spe": 50
+    },
+    "abilities": [106, 86],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 454,
+    "name": "Toxicroak",
+    "types": ["poison", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 83,
+      "atk": 106,
+      "def": 65,
+      "spa": 86,
+      "spd": 65,
+      "spe": 85
+    },
+    "abilities": [106, 86],
+    "tier": "uu",
+    "evolvesFrom": 453
+  },
+  {
+    "id": 455,
+    "name": "Carnivine",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 74,
+      "atk": 100,
+      "def": 72,
+      "spa": 90,
+      "spd": 72,
+      "spe": 46
+    },
+    "abilities": [26],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 456,
+    "name": "Finneon",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 49,
+      "atk": 49,
+      "def": 56,
+      "spa": 49,
+      "spd": 61,
+      "spe": 66
+    },
+    "abilities": [33, 113],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 457,
+    "name": "Lumineon",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 69,
+      "atk": 69,
+      "def": 76,
+      "spa": 69,
+      "spd": 86,
+      "spe": 91
+    },
+    "abilities": [33, 113],
+    "tier": "pu",
+    "evolvesFrom": 456
+  },
+  {
+    "id": 458,
+    "name": "Snover",
+    "types": ["grass", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 60,
+      "atk": 62,
+      "def": 50,
+      "spa": 62,
+      "spd": 60,
+      "spe": 40
+    },
+    "abilities": "Snow Warning",
+    "tier": "nubl",
+    "evolvesFrom": null
+  },
+  {
+    "id": 459,
+    "name": "Abomasnow",
+    "types": ["grass", "ice"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 92,
+      "def": 75,
+      "spa": 92,
+      "spd": 85,
+      "spe": 60
+    },
+    "abilities": "Snow Warning",
+    "tier": "ou",
+    "evolvesFrom": 458
+  },
+  {
+    "id": 460,
+    "name": "Rotom",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 50,
+      "def": 77,
+      "spa": 95,
+      "spd": 77,
+      "spe": 91
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 461,
+    "name": "Rotom-Fan",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 462,
+    "name": "Rotom-Frost",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 463,
+    "name": "Rotom-Heat",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 464,
+    "name": "Rotom-Mow",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 465,
+    "name": "Rotom-Wash",
+    "types": ["electric", "ghost"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 65,
+      "def": 107,
+      "spa": 105,
+      "spd": 107,
+      "spe": 86
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 466,
+    "name": "Uxie",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 75,
+      "atk": 75,
+      "def": 130,
+      "spa": 75,
+      "spd": 130,
+      "spe": 95
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 467,
+    "name": "Mesprit",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 105,
+      "def": 105,
+      "spa": 105,
+      "spd": 105,
+      "spe": 80
+    },
+    "abilities": [26],
+    "tier": "uu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 468,
+    "name": "Cresselia",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 120,
+      "atk": 70,
+      "def": 120,
+      "spa": 75,
+      "spd": 130,
+      "spe": 85
+    },
+    "abilities": [26],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 469,
+    "name": "Phione",
+    "types": ["water"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 80,
+      "def": 80,
+      "spa": 80,
+      "spd": 80,
+      "spe": 80
+    },
+    "abilities": [92],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 470,
+    "name": "Regigigas",
+    "types": ["normal"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 110,
+      "atk": 160,
+      "def": 110,
+      "spa": 80,
+      "spd": 110,
+      "spe": 100
+    },
+    "abilities": [111],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 471,
+    "name": "Shaymin",
+    "types": ["grass"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "spa": 100,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [30],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 472,
+    "name": "Jirachi",
+    "types": ["steel", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "spa": 100,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [32],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 473,
+    "name": "Heatran",
+    "types": ["fire", "steel"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 91,
+      "atk": 90,
+      "def": 106,
+      "spa": 130,
+      "spd": 106,
+      "spe": 77
+    },
+    "abilities": [18],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 474,
+    "name": "Heracross",
+    "types": ["bug", "fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 80,
+      "atk": 125,
+      "def": 75,
+      "spa": 40,
+      "spd": 95,
+      "spe": 86
+    },
+    "abilities": [68, 62],
+    "tier": "ou",
+    "evolvesFrom": null
+  },
+  {
+    "id": 475,
+    "name": "Ponyta",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 50,
+      "atk": 85,
+      "def": 55,
+      "spa": 65,
+      "spd": 65,
+      "spe": 90
+    },
+    "abilities": [50, 18],
+    "tier": "lc",
+    "evolvesFrom": null
+  },
+  {
+    "id": 476,
+    "name": "Rapidash",
+    "types": ["fire"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 65,
+      "atk": 100,
+      "def": 70,
+      "spa": 80,
+      "spd": 80,
+      "spe": 105
+    },
+    "abilities": [50, 18],
+    "tier": "pu",
+    "evolvesFrom": 475
+  },
+  {
+    "id": 477,
+    "name": "Girafarig",
+    "types": ["normal", "psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 70,
+      "atk": 80,
+      "def": 65,
+      "spa": 90,
+      "spd": 65,
+      "spe": 85
+    },
+    "abilities": [39, 48],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 478,
+    "name": "Drifloon",
+    "types": ["ghost", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 50,
+      "def": 34,
+      "spa": 60,
+      "spd": 44,
+      "spe": 70
+    },
+    "abilities": [105, 83],
+    "tier": "pu",
+    "evolvesFrom": null
+  },
+  {
+    "id": 479,
+    "name": "Drifblim",
+    "types": ["ghost", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 150,
+      "atk": 80,
+      "def": 44,
+      "spa": 90,
+      "spd": 54,
+      "spe": 80
+    },
+    "abilities": [105, 83],
+    "tier": "pu",
+    "evolvesFrom": 478
+  },
+  {
+    "id": 480,
+    "name": "Darkrai",
+    "types": ["dark"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 70,
+      "atk": 90,
+      "def": 90,
+      "spa": 135,
+      "spd": 90,
+      "spe": 125
+    },
+    "abilities": [122],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 481,
+    "name": "Deoxys",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 50,
+      "atk": 150,
+      "def": 50,
+      "spa": 150,
+      "spd": 50,
+      "spe": 150
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 482,
+    "name": "Deoxys-Attack",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 50,
+      "atk": 180,
+      "def": 20,
+      "spa": 180,
+      "spd": 20,
+      "spe": 150
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 483,
+    "name": "Deoxys-Defense",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 50,
+      "atk": 70,
+      "def": 160,
+      "spa": 70,
+      "spd": 160,
+      "spe": 90
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 484,
+    "name": "Deoxys-Speed",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 50,
+      "atk": 95,
+      "def": 90,
+      "spa": 95,
+      "spd": 90,
+      "spe": 180
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 485,
+    "name": "Dialga",
+    "types": ["steel", "dragon"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 120,
+      "def": 120,
+      "spa": 150,
+      "spd": 100,
+      "spe": 90
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 486,
+    "name": "Garchomp",
+    "types": ["dragon", "ground"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 108,
+      "atk": 130,
+      "def": 95,
+      "spa": 80,
+      "spd": 85,
+      "spe": 102
+    },
+    "abilities": [8],
+    "tier": "ubers",
+    "evolvesFrom": 446
+  },
+  {
+    "id": 487,
+    "name": "Giratina",
+    "types": ["ghost", "dragon"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 150,
+      "atk": 100,
+      "def": 120,
+      "spa": 100,
+      "spd": 120,
+      "spe": 90
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 488,
+    "name": "Giratina-Origin",
+    "types": ["ghost", "dragon"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 150,
+      "atk": 120,
+      "def": 100,
+      "spa": 120,
+      "spd": 100,
+      "spe": 90
+    },
+    "abilities": [26],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 489,
+    "name": "Groudon",
+    "types": ["ground"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 150,
+      "def": 140,
+      "spa": 100,
+      "spd": 90,
+      "spe": 90
+    },
+    "abilities": [70],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 490,
+    "name": "Ho-Oh",
+    "types": ["fire", "flying"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 106,
+      "atk": 130,
+      "def": 90,
+      "spa": 110,
+      "spd": 154,
+      "spe": 90
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 491,
+    "name": "Kyogre",
+    "types": ["water"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 90,
+      "spa": 150,
+      "spd": 140,
+      "spe": 90
+    },
+    "abilities": [2],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 492,
+    "name": "Latios",
+    "types": ["dragon", "psychic"],
+    "genderType": "male_only",
+    "baseStats": {
+      "hp": 80,
+      "atk": 90,
+      "def": 80,
+      "spa": 130,
+      "spd": 110,
+      "spe": 110
+    },
+    "abilities": [26],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 493,
+    "name": "Lugia",
+    "types": ["psychic", "flying"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 106,
+      "atk": 90,
+      "def": 130,
+      "spa": 90,
+      "spd": 154,
+      "spe": 110
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 494,
+    "name": "Machamp",
+    "types": ["fighting"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 90,
+      "atk": 130,
+      "def": 80,
+      "spa": 65,
+      "spd": 85,
+      "spe": 55
+    },
+    "abilities": [62, 98],
+    "tier": "ubers",
+    "evolvesFrom": 71
+  },
+  {
+    "id": 495,
+    "name": "Manaphy",
+    "types": ["water"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "spa": 100,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [92],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 496,
+    "name": "Mew",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 100,
+      "def": 100,
+      "spa": 100,
+      "spd": 100,
+      "spe": 100
+    },
+    "abilities": [28],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 497,
+    "name": "Mewtwo",
+    "types": ["psychic"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 106,
+      "atk": 110,
+      "def": 90,
+      "spa": 154,
+      "spd": 90,
+      "spe": 130
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 498,
+    "name": "Palkia",
+    "types": ["water", "dragon"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 90,
+      "atk": 120,
+      "def": 100,
+      "spa": 150,
+      "spd": 120,
+      "spe": 100
+    },
+    "abilities": [46],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 499,
+    "name": "Rayquaza",
+    "types": ["dragon", "flying"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 105,
+      "atk": 150,
+      "def": 90,
+      "spa": 150,
+      "spd": 90,
+      "spe": 95
+    },
+    "abilities": [76],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 500,
+    "name": "Salamence",
+    "types": ["dragon", "flying"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 135,
+      "def": 80,
+      "spa": 110,
+      "spd": 80,
+      "spe": 100
+    },
+    "abilities": [22],
+    "tier": "ubers",
+    "evolvesFrom": 388
+  },
+  {
+    "id": 501,
+    "name": "Shaymin-Sky",
+    "types": ["grass", "flying"],
+    "genderType": "genderless",
+    "baseStats": {
+      "hp": 100,
+      "atk": 103,
+      "def": 75,
+      "spa": 120,
+      "spd": 75,
+      "spe": 127
+    },
+    "abilities": [32],
+    "tier": "ubers",
+    "evolvesFrom": null
+  },
+  {
+    "id": 502,
+    "name": "Wobbuffet",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 190,
+      "atk": 33,
+      "def": 58,
+      "spa": 33,
+      "spd": 58,
+      "spe": 33
+    },
+    "abilities": [23],
+    "tier": "ubers",
+    "evolvesFrom": 503
+  },
+  {
+    "id": 503,
+    "name": "Wynaut",
+    "types": ["psychic"],
+    "genderType": "both",
+    "baseStats": {
+      "hp": 95,
+      "atk": 23,
+      "def": 48,
+      "spa": 23,
+      "spd": 48,
+      "spe": 23
+    },
+    "abilities": [23],
+    "tier": "ou",
+    "evolvesFrom": null
+  }
+]

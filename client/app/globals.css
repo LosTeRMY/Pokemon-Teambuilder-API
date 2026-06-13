@@ -1,26 +1,365 @@
 @import "tailwindcss";
 
+/* ===== PokéBuild design system ===== */
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --accent: #2f6fe0;
+  --accent-soft: #2f6fe01a;
+  --bg: #f3f5f9;
+  --surface: #ffffff;
+  --surface-2: #f7f9fc;
+  --input-bg: #fafbfc;
+  --tile: #f4f6f9;
+  --chip-bg: #f1f4f9;
+  --ink: #1a2332;
+  --muted: #6b7688;
+  --faint: #95a0b0;
+  --line: #e4e8ee;
+  --line-soft: #eef1f5;
+  --like-bg: #fdeef1;
+  --like-fg: #e23a59;
+  --like-bd: #f4c4ce;
+  --shadow-pop: rgba(26, 35, 50, 0.3);
+  --shadow-card: rgba(26, 35, 50, 0.22);
+  --radius: 12px;
+  --sans: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+  --mono: ui-monospace, "SF Mono", "JetBrains Mono", Menlo, monospace;
+  /* tier text/bg mix weights — overridden in dark for contrast */
+  --tier-bg-w: 14%;
+  --tier-bg-base: #ffffff;
+  --tier-bd-w: 30%;
+  --tier-text-mix: black;
+  --tier-text-w: 12%;
+}
+[data-theme="dark"] {
+  --bg: #0f1622;
+  --surface: #18212f;
+  --surface-2: #1f2937;
+  --input-bg: #131c28;
+  --tile: #222d3d;
+  --chip-bg: #232f40;
+  --ink: #e8edf4;
+  --muted: #9aa7b8;
+  --faint: #6b7a8d;
+  --line: #2a3647;
+  --line-soft: #222d3b;
+  --like-bg: #3a1f27;
+  --like-fg: #ff6b85;
+  --like-bd: #5e3540;
+  --shadow-pop: rgba(0, 0, 0, 0.55);
+  --shadow-card: rgba(0, 0, 0, 0.45);
+  --tier-bg-w: 24%;
+  --tier-bg-base: var(--surface);
+  --tier-bd-w: 38%;
+  --tier-text-mix: white;
+  --tier-text-w: 42%;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-input-bg: var(--input-bg);
+  --color-tile: var(--tile);
+  --color-chip-bg: var(--chip-bg);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-line: var(--line);
+  --color-line-soft: var(--line-soft);
+  --color-like-bg: var(--like-bg);
+  --color-like-fg: var(--like-fg);
+  --color-like-bd: var(--like-bd);
+  --font-sans: var(--sans);
+  --font-mono: var(--mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
 }
-
+html[data-theme="dark"] {
+  color-scheme: dark;
+}
+/* instant, flicker-free theme flip */
+html.theme-switching * {
+  transition: none !important;
+}
+* {
+  box-sizing: border-box;
+}
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
+body {
+  font-family: var(--sans);
+  background: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+/* UI chrome elements should not inherit the body line-height of 1.5 */
+button, input, select, textarea, label {
+  line-height: 1;
+}
+input::placeholder {
+  color: var(--muted);
+}
+a {
+  text-decoration: none;
+  line-height: normal;
+}
+
+/* ===== Residual CSS — cannot be expressed as Tailwind utilities ===== */
+
+/* Format chips — color-mix() with dynamic --th custom property */
+.fchip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 11px;
+  border: 1px solid;
+  border-radius: 8px;
+  background: var(--surface);
+  font-size: 13px;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--th), var(--tier-text-mix) var(--tier-text-w));
+  border-color: color-mix(in srgb, var(--th) var(--tier-bd-w), var(--tier-bg-base));
+  transition: all 0.12s;
+}
+.fchip--on {
+  background: var(--th);
+  border-color: var(--th);
+  color: #fff;
+}
+.fchip:hover {
+  filter: brightness(0.97);
+}
+.fchip-n {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1;
+  opacity: 0.65;
+  font-weight: 600;
+}
+
+/* Tier badge — color-mix() with dynamic --th */
+.tier-badge {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  flex: 0 0 auto;
+  background: color-mix(in srgb, var(--th) var(--tier-bg-w), var(--tier-bg-base));
+  color: color-mix(in srgb, var(--th), var(--tier-text-mix) var(--tier-text-w));
+  border: 1px solid color-mix(in srgb, var(--th) var(--tier-bd-w), var(--tier-bg-base));
+}
+
+/* Active-filter pill combo variant — color-mix() */
+.apill--combo {
+  background: color-mix(in srgb, #7a3fd0 12%, var(--surface));
+  border-color: color-mix(in srgb, #7a3fd0 28%, var(--surface));
+  color: color-mix(in srgb, #7a3fd0, var(--ink) 8%);
+  font-weight: 700;
+}
+
+/* Copy-link "copied" state — color-mix() */
+.link-btn--ok {
+  color: #2f9a5a;
+  border-color: color-mix(in srgb, #2f9a5a 35%, var(--surface));
+  background: color-mix(in srgb, #2f9a5a 12%, var(--surface));
+}
+
+/* Rail divider — pseudo-element flex line */
+.rail-divider {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: -4px 0 -6px;
+  font-size: 10px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.rail-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: var(--line);
+}
+
+/* Pokémon tooltip — pseudo-element triangle + child selectors */
+.mon-pop {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 210px;
+  background: #1c2433;
+  color: #e8ecf2;
+  border-radius: 10px;
+  padding: 11px 12px;
+  z-index: 20;
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.45);
+  pointer-events: none;
+}
+.mon-pop::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 6px solid transparent;
+  border-top-color: #1c2433;
+}
+.mon-pop-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 7px;
+}
+.mon-pop-head strong {
+  font-size: 13px;
+  line-height: 1;
+}
+.mon-pop-types {
+  display: flex;
+  gap: 3px;
+}
+.mon-pop-types em {
+  font-style: normal;
+  font-size: 8.5px;
+  line-height: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+  padding: 2px 5px;
+  border-radius: 4px;
+}
+.mon-pop-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  font-size: 11px;
+  line-height: 1;
+  color: #9fb0c6;
+  margin-bottom: 7px;
+  font-family: var(--mono);
+}
+.mon-pop-moves {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3px 10px;
+}
+.mon-pop-moves li {
+  font-size: 11px;
+  line-height: 1;
+  color: #cdd6e2;
+  position: relative;
+  padding-left: 9px;
+}
+.mon-pop-moves li::before {
+  content: "·";
+  position: absolute;
+  left: 1px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Sprite image — vendor-prefixed image-rendering */
+.spr-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: var(--tile);
+  transform: scale(1.14);
+  image-rendering: -webkit-optimize-contrast;
+  transition: opacity 0.25s;
+}
+
+/* Team card description — text-wrap: pretty has no Tailwind utility */
+.card-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: -4px 0 2px;
+  max-width: 110ch;
+  text-wrap: pretty;
+}
+
+/* Checkbox accent color */
+.checkrow input {
+  width: 17px;
+  height: 17px;
+  accent-color: var(--accent);
+}
+
+/* Combo kind badges — hardcoded hex background colors */
+.cgroup-kind {
+  flex: 0 0 auto;
+  min-width: 18px;
+  text-align: center;
+  font-size: 9.5px;
+  line-height: 1;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #fff;
+  background: var(--faint);
+  border-radius: 4px;
+  padding: 2px 5px;
+}
+.cgroup-kind--move    { background: #3a7bd0; }
+.cgroup-kind--item    { background: #b6863a; }
+.cgroup-kind--ability { background: #6a3fc0; }
+.cgroup-kind--nature  { background: #2f8a4a; }
+
+/* Child button selectors */
+.vchip button { background: none; border: none; color: var(--faint); font-size: 10px; padding: 0 2px; }
+.vchip button:hover { color: var(--ink); }
+.cgroup-list li button { background: none; border: none; color: var(--faint); font-size: 10px; padding: 0 2px; }
+.cgroup-list li button:hover { color: var(--like-fg); }
+.apill button { background: none; border: none; color: var(--faint); font-size: 11px; padding: 0 3px; }
+.apill button:hover { color: var(--ink); }
+
+/* Sort control — child element selectors */
+.sort label { font-size: 10.5px; line-height: 1; color: var(--faint); letter-spacing: 0.08em; }
+.sort select { font-family: inherit; font-size: 14px; font-weight: 600; color: var(--ink); border: 1px solid var(--line); border-radius: 8px; padding: 9px 12px; background: var(--surface); }
+.sort select:focus { outline: none; border-color: var(--accent); }
+
+/* Slide-in animation for mobile filter drawer */
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0); }
+}
+
+/* spr--round sets tile background on child spr-img */
+.spr--round .spr-img {
+  background: var(--tile);
+}
+
+/* Parent-child hover: mon frame lifts on mon hover */
+.mon:hover .mon-frame {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px -6px var(--shadow-card);
+}
+
+/* Compact card variant — child element overrides */
+.card--compact .card-title  { font-size: 14.5px; line-height: 1; }
+.card--compact .mon-row     { gap: 5px; }
+.card--compact .mon-frame   { border-radius: 7px; }
