@@ -1,45 +1,33 @@
-import { pokeByName, moveByName, abilByName, itemByName, natByName } from './lookups';
+/* Gen 4 Teambuilder — static mock feed for the team browser.
+ * Real game data lives in ../data; here we curate a believable browse feed.
+ * Sprites are served locally from /public/sprites/gen4 (slug-named PNGs). */
+export const spriteUrl = (slug: string) => `/sprites/gen4/${slug}.png`;
 
-type RawMember = {
+export const TYPE_COLORS: Record<string, string> = {
+  normal: "#9b9a6e", fire: "#e8702a", water: "#4b7bd8", electric: "#e8c020",
+  grass: "#5aa83e", ice: "#5cc0c0", fighting: "#c0392b", poison: "#9b3f9b",
+  ground: "#cba84a", flying: "#8a7be0", psychic: "#e84d7a", bug: "#8a9a18",
+  rock: "#a08a2e", ghost: "#5e4a86", dragon: "#5a2fd8", dark: "#5a4a3f",
+  steel: "#8a8aa8",
+};
+
+/* member: n=name, s=sprite slug, t=types, item, abil, nat=nature, moves */
+export type RawMember = {
   n: string; s: string; t: string[];
   item: string; abil: string; nat: string; moves: string[];
 };
-
-export type BrowserMember = RawMember & {
-  pid: number | null;
-  moveIds: number[];
-  abilId: number | null;
-  itemId: number | null;
-  natId: number | null;
-};
-
-export type BrowserTeam = {
-  id: number;
-  name: string;
-  format: number;
+export type RawTeam = {
+  id: number; name: string; format: number;
   author: { id: number; name: string };
-  createdAt: string;
-  likes: number;
-  liked: boolean;
-  description: string;
-  members: BrowserMember[];
+  createdAt: string; likes: number; liked: boolean;
+  description: string; members: RawMember[];
 };
 
-const m = (n: string, s: string, t: string[], item: string, abil: string, nat: string, moves: string[]): RawMember =>
-  ({ n, s, t, item, abil, nat, moves });
+const m = (
+  n: string, s: string, t: string[], item: string, abil: string, nat: string, moves: string[],
+): RawMember => ({ n, s, t, item, abil, nat, moves });
 
-function resolve(raw: RawMember): BrowserMember {
-  return {
-    ...raw,
-    pid:    pokeByName.get(raw.n.toLowerCase()) ?? null,
-    moveIds: raw.moves.map((mv) => moveByName.get(mv.toLowerCase())).filter((x): x is number => x != null),
-    abilId: abilByName.get(raw.abil.toLowerCase()) ?? null,
-    itemId: raw.item ? (itemByName.get(raw.item.toLowerCase()) ?? null) : null,
-    natId:  natByName.get(raw.nat.toLowerCase()) ?? null,
-  };
-}
-
-const RAW_TEAMS: Array<Omit<BrowserTeam, 'members'> & { members: RawMember[] }> = [
+export const TEAMS: RawTeam[] = [
   {
     id: 1, name: "Standard Sand Balance", format: 2,
     author: { id: 11, name: "azureblade" },
@@ -237,8 +225,3 @@ const RAW_TEAMS: Array<Omit<BrowserTeam, 'members'> & { members: RawMember[] }> 
     ],
   },
 ];
-
-export const MOCK_TEAMS: BrowserTeam[] = RAW_TEAMS.map((team) => ({
-  ...team,
-  members: team.members.map(resolve),
-}));

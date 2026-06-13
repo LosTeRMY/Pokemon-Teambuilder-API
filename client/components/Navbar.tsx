@@ -1,59 +1,87 @@
-import Link from "next/link";
+"use client";
 
-export default function Navbar() {
+import { avatarColor } from "@/lib/browserUtils";
+
+export default function Navbar({
+  theme,
+  onThemeToggle,
+}: {
+  theme: "light" | "dark";
+  onThemeToggle: () => void;
+}) {
   return (
-    <header className="h-14 bg-white border-b border-gray-200 flex items-center px-6 gap-6 sticky top-0 z-50">
-      {/* Logo */}
-      <Link href="/" className="flex items-center gap-2 shrink-0">
-        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
-          <polygon points="11,2 20,18 2,18" fill="#3b82f6" />
-        </svg>
-        <span className="font-bold text-gray-900 text-lg leading-none">PokéBuild</span>
-        <span className="text-xs text-gray-400 font-medium tracking-wide">GEN 4 · DPP</span>
-      </Link>
-
-      {/* Nav tabs */}
-      <nav className="flex items-center gap-1">
-        <Link
-          href="/"
-          className="px-4 py-1.5 rounded-full text-sm font-medium bg-blue-600 text-white"
+    <header className="sticky top-0 z-30 flex items-center gap-[34px] h-[72px] px-[34px] bg-surface border-b border-line max-[560px]:gap-[14px] max-[560px]:px-[14px]">
+      <div className="flex items-baseline gap-[9px]">
+        <span className="text-accent text-[22px] translate-y-px">▲</span>
+        <span className="text-[22px] font-extrabold tracking-[-0.02em]">PokéBuild</span>
+        <span className="font-mono tabular-nums text-[10px] text-faint tracking-[0.12em] max-[560px]:hidden">GEN 4 · DPP</span>
+      </div>
+      <nav className="flex gap-1 max-[900px]:hidden">
+        <a
+          className="text-[15.5px] font-semibold text-accent bg-accent-soft px-[15px] py-[9px] rounded-[9px]"
+          href="#"
         >
           Teams
-        </Link>
-        <Link
-          href="/pokedex"
-          className="px-4 py-1.5 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100"
+        </a>
+        <a
+          className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
+          href="#"
         >
           Pokédex
-        </Link>
-        <Link
-          href="/builder"
-          className="px-4 py-1.5 rounded-full text-sm font-medium text-gray-600 hover:bg-gray-100"
+        </a>
+        <a
+          className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
+          href="#"
         >
           Builder
-        </Link>
+        </a>
       </nav>
-
-      {/* Right side */}
-      <div className="ml-auto flex items-center gap-3">
+      <div className="ml-auto flex items-center gap-[14px]">
         <button
-          aria-label="Toggle dark mode"
-          className="p-2 rounded-full text-gray-500 hover:bg-gray-100"
+          className="grid place-items-center w-10 h-10 bg-surface border border-line rounded-[10px] text-muted transition-all duration-150 hover:text-ink hover:border-muted hover:bg-surface-2 active:scale-[0.93]"
+          onClick={onThemeToggle}
+          aria-label="Toggle light or dark theme"
+          title={theme === "dark" ? "Switch to light" : "Switch to dark"}
         >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
+          {theme === "dark" ? (
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.9"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <circle cx="12" cy="12" r="4.2" />
+              <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
+            </svg>
+          ) : (
+            <svg
+              viewBox="0 0 24 24"
+              width="18"
+              height="18"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="1.9"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M20 14.5A8 8 0 1 1 9.5 4a6.3 6.3 0 0 0 10.5 10.5z" />
+            </svg>
+          )}
         </button>
-        <Link
-          href="/teams/new"
-          className="px-4 py-2 rounded-full text-sm font-semibold bg-blue-600 text-white hover:bg-blue-700"
-        >
+        <button className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-[19px] py-[11px] rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-[11px] max-[560px]:py-[8px]">
           + New team
-        </Link>
-        {/* User avatar — placeholder */}
-        <button className="w-8 h-8 rounded-full bg-green-500 text-white text-sm font-bold flex items-center justify-center">
-          A
         </button>
+        <span
+          className="w-[38px] h-[38px] rounded-full text-white grid place-items-center font-bold text-[16px]"
+          style={{ background: avatarColor("azureblade") }}
+          title="azureblade"
+        >
+          A
+        </span>
       </div>
     </header>
   );
