@@ -14,7 +14,7 @@ export type GBMove = { id: number; name: string };
 export type GBAbility = { id: number; name: string };
 export type GBItem = { id: number; name: string };
 export type GBNature = { id: number; name: string };
-export type GBFormat = { id: number; name: string; tier: string };
+export type GBFormat = { id: number; name: string; tier: string; banned_moves: number[]; banned_items: number[] };
 
 /* learnsets.json is [{ pokemonId, moves }]; reshape into a pokemonId -> moveIds map. */
 const learnsets: Record<number, number[]> = {};

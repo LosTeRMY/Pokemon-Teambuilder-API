@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { cn } from "@/lib/cn";
 
 export default function Chip({
@@ -28,7 +29,7 @@ export default function Chip({
         )}
       >
         {label}
-        <button onMouseDown={handleRemove} aria-label="remove">✕</button>
+        <button onMouseDown={handleRemove} aria-label={`Remove ${label}`}>✕</button>
       </span>
     );
   }

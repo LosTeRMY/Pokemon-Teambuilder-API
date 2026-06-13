@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { avatarColor } from "@/lib/browserUtils";
 
 export default function Navbar({
@@ -17,24 +18,24 @@ export default function Navbar({
         <span className="font-mono tabular-nums text-[10px] text-faint tracking-[0.12em] max-[560px]:hidden">GEN 4 · DPP</span>
       </div>
       <nav className="flex gap-1 max-[900px]:hidden">
-        <a
+        <Link
           className="text-[15.5px] font-semibold text-accent bg-accent-soft px-[15px] py-[9px] rounded-[9px]"
-          href="#"
+          href="/"
         >
           Teams
-        </a>
-        <a
+        </Link>
+        <Link
           className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
-          href="#"
+          href="/pokédex"
         >
           Pokédex
-        </a>
-        <a
+        </Link>
+        <Link
           className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
-          href="#"
+          href="/builder"
         >
           Builder
-        </a>
+        </Link>
       </nav>
       <div className="ml-auto flex items-center gap-[14px]">
         <button
@@ -77,7 +78,7 @@ export default function Navbar({
         </button>
         <span
           className="w-[38px] h-[38px] rounded-full text-white grid place-items-center font-bold text-[16px]"
-          style={{ background: avatarColor("azureblade") }}
+          style={{ background: avatarColor("azureblade") }} // TODO: replace with auth context user once auth is implemented
           title="azureblade"
         >
           A

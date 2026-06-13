@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useRef, useEffect } from "react";
 import type { Named } from "@/lib/browserUtils";
 import { cn } from "@/lib/cn";
 import Input from "./Input";
@@ -21,8 +21,14 @@ export default function AutoComplete({
   const [q, setQ] = useState("");
   const [open, setOpen] = useState(false);
   const [hi, setHi] = useState(0);
-  const ex = exclude || new Set<number>();
+  const blurTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    return () => { if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current); };
+  }, []);
+
   const matches = useMemo(() => {
+    const ex = exclude || new Set<number>();
     const s = q.trim().toLowerCase();
     let list = options.filter((o) => !ex.has(o.id));
     if (s) {
@@ -35,7 +41,6 @@ export default function AutoComplete({
         });
     }
     return list.slice(0, 8);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [q, options, exclude]);
 
   const pick = (o?: Named) => {
@@ -57,8 +62,13 @@ export default function AutoComplete({
           setOpen(true);
           setHi(0);
         }}
-        onFocus={() => setOpen(true)}
-        onBlur={() => setTimeout(() => setOpen(false), 130)}
+        onFocus={() => {
+          if (blurTimeoutRef.current) clearTimeout(blurTimeoutRef.current);
+          setOpen(true);
+        }}
+        onBlur={() => {
+          blurTimeoutRef.current = setTimeout(() => setOpen(false), 130);
+        }}
         onKeyDown={(e) => {
           if (e.key === "ArrowDown") {
             e.preventDefault();

@@ -43,7 +43,7 @@ export default function TeamBrowser() {
   }, [theme]);
 
   const [teams, setTeams] = useState<BrowserTeam[]>(LK.teams);
-  const loggedIn = true;
+  const loggedIn = true; // TODO: replace with real auth hook once auth is implemented
   const filter = useFilterState();
   const { s, set, removeFromList, removeCombo, activeCount, onClear } = filter;
 

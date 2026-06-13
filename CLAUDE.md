@@ -10,7 +10,7 @@ PokéBuild — a community-driven Gen 4 Pokémon competitive teambuilder. Users 
 
 Two independent Node projects that share a read-only game-data directory:
 
-```
+```text
 data/           # shared immutable game data (JSON) — source of truth
   sprites/      # gen4 Pokémon sprites (PNG, named by slug)
 server/         # Express + Drizzle API — see server/CLAUDE.md

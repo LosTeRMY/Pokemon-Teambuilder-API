@@ -23,7 +23,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev
 
 ## Environment Variables
 
-```
+```text
 NEXT_PUBLIC_API_URL=   # Express API base URL (no trailing slash)
 ```
 
@@ -37,6 +37,6 @@ Sprites are served from `public/sprites/gen4/<slug>.png`. Slug format is produce
 
 - **App Router** — pages under `app/`, shared layouts via `layout.tsx`
 - **TanStack Query** — all server state fetched via query hooks
-- **Auth** — httpOnly-cookie JWT issued through Next.js API routes (proxies to Express); not yet implemented; see root CLAUDE.md for flow details
+- **Auth** — httpOnly-cookie JWT issued through Next.js API routes (proxies to Express); JS never touches the token directly; see root CLAUDE.md for full flow
 - **Game data** — imported directly from `../data/*.json` at build time for client-side validation; also available from the server via `GET /gamedata/*` for runtime use
 - **Draft teams** — never sent to the server until publication; stored in `localStorage`

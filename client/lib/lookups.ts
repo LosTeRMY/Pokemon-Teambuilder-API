@@ -71,13 +71,13 @@ export const opts = {
 /* Moves a given Pokémon can legally learn (constrains the combo move picker). */
 export const movesForPokemon = (pid: number): GBMove[] => {
   const ids = GAMEDATA.learnsets[pid];
-  if (!ids || !ids.length) return opts.moves;
+  if (!ids || !ids.length) return [];
   return ids.map((id) => moveById.get(id)).filter((m): m is GBMove => Boolean(m)).sort(sortByName);
 };
 /* Abilities a given Pokémon can have. */
 export const abilitiesForPokemon = (pid: number): GBAbility[] => {
   const p = pokeById.get(pid);
-  if (!p || !p.abilities || !p.abilities.length) return opts.abilities;
+  if (!p || !p.abilities || !p.abilities.length) return [];
   return p.abilities.map((id) => abilById.get(id)).filter((a): a is GBAbility => Boolean(a)).sort(sortByName);
 };
 

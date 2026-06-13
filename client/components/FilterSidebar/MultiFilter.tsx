@@ -1,5 +1,6 @@
 "use client";
 
+import { useMemo } from "react";
 import type { Named } from "@/lib/browserUtils";
 import AutoComplete from "@/components/ui/AutoComplete";
 import Chip from "@/components/ui/Chip";
@@ -22,6 +23,7 @@ export default function MultiFilter({
   onAdd: (id: number) => void;
   onRemove: (id: number) => void;
 }) {
+  const excludeSet = useMemo(() => new Set(ids), [ids]);
   return (
     <div className="flex flex-col gap-2">
       <Label>
@@ -35,7 +37,7 @@ export default function MultiFilter({
       <AutoComplete
         placeholder={placeholder}
         options={options}
-        exclude={new Set(ids)}
+        exclude={excludeSet}
         onPick={(id) => onAdd(id)}
       />
       {ids.length > 0 && (

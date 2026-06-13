@@ -43,7 +43,7 @@ export const comboValName = (c: Combo): string => {
 };
 
 export const relDate = (iso: string): string => {
-  const d = new Date(iso + "T00:00:00");
+  const d = /^\d{4}-\d{2}-\d{2}$/.test(iso) ? new Date(iso + "T00:00:00") : new Date(iso);
   const days = Math.round((Date.now() - d.getTime()) / 86400000);
   if (days <= 0) return "today";
   if (days === 1) return "1d ago";
