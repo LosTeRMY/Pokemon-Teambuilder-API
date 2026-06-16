@@ -1,6 +1,6 @@
 "use client";
 
-import type { FilterControls } from "@/lib/useFilterState";
+import type { FilterControls } from "@/hooks/useFilterState";
 import * as LK from "@/lib/lookups";
 import MultiFilter from "./MultiFilter";
 import FormatPicker from "./FormatPicker";
@@ -19,7 +19,7 @@ export default function FilterRail({
 }) {
   const { s, set, addToList, removeFromList, combo, activeCount, onClear } = filter;
   return (
-    <div className="px-6 pt-6 pb-7 flex flex-col gap-[14px] justify-between min-h-full box-border">
+    <div className="px-6 pt-6 pb-7 flex flex-col gap-3.5 justify-between min-h-full box-border">
       {/* Search by name */}
       <div className="flex flex-col gap-2">
         <Label>
@@ -53,7 +53,7 @@ export default function FilterRail({
         />
       </div>
         {/* Contains filters */}
-      <div className="flex flex-col gap-[2px] pt-[10px] border-t border-line mt-[2px]">
+      <div className="flex flex-col gap-0.5 pt-2.5 border-t border-line mt-0.5">
         <span className="text-[13.5px] font-extrabold tracking-[-0.01em] text-ink">
           Contains
         </span>
@@ -98,7 +98,7 @@ export default function FilterRail({
         onRemove={(id) => removeFromList("item", id)}
       />
       {/* Search by specific set */}
-      <div className="flex flex-col gap-[2px] pt-[10px] border-t border-line mt-[2px]">
+      <div className="flex flex-col gap-0.5 pt-2.5 border-t border-line mt-0.5">
         <span className="text-[13.5px] font-extrabold tracking-[-0.01em] text-ink">
           Specific sets
         </span>
@@ -123,7 +123,7 @@ export default function FilterRail({
       {/* Clear filters */}
       {activeCount > 0 && (
         <button
-          className="bg-accent-soft text-accent border-none p-[9px] rounded-[8px] text-[12.5px] font-bold"
+          className="bg-accent-soft text-accent border-none p-2.25 rounded-lg text-[12.5px] font-bold"
           onClick={onClear}
         >
           Clear all filters ({activeCount})

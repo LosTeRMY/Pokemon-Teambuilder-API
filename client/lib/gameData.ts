@@ -9,7 +9,15 @@ import naturesData from "../data/natures.json";
 import formatsData from "../data/formats.json";
 import learnsetsData from "../data/learnsets.json";
 
-export type GBPokemon = { id: number; name: string; types: string[]; tier: string; abilities: number[] };
+export type GBPokemon = {
+  id: number;
+  name: string;
+  types: string[];
+  tier: string;
+  abilities: number[];
+  dexNum?: number;
+  baseStats: { hp: number; atk: number; def: number; spa: number; spd: number; spe: number };
+};
 export type GBMove = { id: number; name: string };
 export type GBAbility = { id: number; name: string };
 export type GBItem = { id: number; name: string };

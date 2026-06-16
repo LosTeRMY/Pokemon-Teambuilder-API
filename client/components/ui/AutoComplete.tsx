@@ -85,12 +85,12 @@ export default function AutoComplete({
         }}
       />
       {open && matches.length > 0 && (
-        <ul className="absolute top-[calc(100%+4px)] left-0 right-0 z-40 list-none m-0 p-1 bg-surface border border-line rounded-[9px] shadow-[0_14px_32px_-10px_var(--shadow-pop)] max-h-[260px] overflow-y-auto">
+        <ul className="absolute top-[calc(100%+4px)] left-0 right-0 z-40 list-none m-0 p-1 bg-surface border border-line rounded-[9px] shadow-[0_14px_32px_-10px_var(--shadow-pop)] max-h-65 overflow-y-auto">
           {matches.map((o, i) => (
             <li
               key={o.id}
               className={cn(
-                "px-[9px] py-[7px] rounded-[6px] text-[13px] cursor-pointer text-ink whitespace-nowrap overflow-hidden text-ellipsis",
+                "px-2.25 py-1.75 rounded-md text-[13px] cursor-pointer text-ink whitespace-nowrap overflow-hidden text-ellipsis",
                 i === hi && "bg-accent-soft text-accent",
               )}
               onMouseDown={(e) => {

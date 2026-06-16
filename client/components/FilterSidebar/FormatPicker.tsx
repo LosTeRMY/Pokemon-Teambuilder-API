@@ -15,7 +15,7 @@ export default function FormatPicker({
   onSet: (id: number | null) => void;
 }) {
   return (
-    <div className="flex flex-wrap gap-[7px]">
+    <div className="flex flex-wrap gap-1.75">
       {GAMEDATA.formats.map((f) => {
         const on = value === f.id;
         return (

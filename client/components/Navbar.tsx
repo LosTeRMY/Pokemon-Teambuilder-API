@@ -1,6 +1,8 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { cn } from "@/lib/cn";
 import { avatarColor } from "@/lib/browserUtils";
 
 export default function Navbar({
@@ -10,34 +12,35 @@ export default function Navbar({
   theme: "light" | "dark";
   onThemeToggle: () => void;
 }) {
+  const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-30 flex items-center gap-[34px] h-[72px] px-[34px] bg-surface border-b border-line max-[560px]:gap-[14px] max-[560px]:px-[14px]">
-      <div className="flex items-baseline gap-[9px]">
+    <header className="sticky top-0 z-30 flex items-center gap-8.5 h-18 px-8.5 bg-surface border-b border-line max-[560px]:gap-3.5 max-[560px]:px-3.5">
+      <div className="flex items-baseline gap-2.25">
         <span className="text-accent text-[22px] translate-y-px">▲</span>
         <span className="text-[22px] font-extrabold tracking-[-0.02em]">PokéBuild</span>
         <span className="font-mono tabular-nums text-[10px] text-faint tracking-[0.12em] max-[560px]:hidden">GEN 4 · DPP</span>
       </div>
       <nav className="flex gap-1 max-[900px]:hidden">
-        <Link
-          className="text-[15.5px] font-semibold text-accent bg-accent-soft px-[15px] py-[9px] rounded-[9px]"
-          href="/"
-        >
-          Teams
-        </Link>
-        <Link
-          className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
-          href="/pokédex"
-        >
-          Pokédex
-        </Link>
-        <Link
-          className="text-[15.5px] font-semibold text-muted px-[15px] py-[9px] rounded-[9px] hover:bg-line-soft hover:text-ink"
-          href="/builder"
-        >
-          Builder
-        </Link>
+        {[
+          { href: "/", label: "Teams" },
+          { href: "/pokedex", label: "Pokédex" },
+          { href: "/builder", label: "Builder" },
+        ].map(({ href, label }) => (
+          <Link
+            key={href}
+            href={href}
+            className={cn(
+              "text-[15.5px] font-semibold px-3.75 py-2.25 rounded-[9px]",
+              pathname === href || pathname.startsWith(href + "/")
+                ? "text-accent bg-accent-soft"
+                : "text-muted hover:bg-line-soft hover:text-ink",
+            )}
+          >
+            {label}
+          </Link>
+        ))}
       </nav>
-      <div className="ml-auto flex items-center gap-[14px]">
+      <div className="ml-auto flex items-center gap-3.5">
         <button
           className="grid place-items-center w-10 h-10 bg-surface border border-line rounded-[10px] text-muted transition-all duration-150 hover:text-ink hover:border-muted hover:bg-surface-2 active:scale-[0.93]"
           onClick={onThemeToggle}
@@ -73,11 +76,11 @@ export default function Navbar({
             </svg>
           )}
         </button>
-        <button className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-[19px] py-[11px] rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-[11px] max-[560px]:py-[8px]">
+        <button className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-4.75 py-2.75 rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-2.75 max-[560px]:py-2">
           + New team
         </button>
         <span
-          className="w-[38px] h-[38px] rounded-full text-white grid place-items-center font-bold text-[16px]"
+          className="w-9.5 h-9.5 rounded-full text-white grid place-items-center font-bold text-[16px]"
           style={{ background: avatarColor("azureblade") }} // TODO: replace with auth context user once auth is implemented
           title="azureblade"
         >

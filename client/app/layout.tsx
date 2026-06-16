@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,22 +15,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* set the theme before first paint to avoid a light->dark flash */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-          try {
-            var s = localStorage.getItem('pb-theme');
-            if (s === 'light' || s === 'dark') document.documentElement.setAttribute('data-theme', s);
-            else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
-              document.documentElement.setAttribute('data-theme', 'dark');
-          } catch(e) {}
-        `,
-          }}
-        />
-      </head>
-      <body>{children}</body>
+      <head />
+      <body>
+        <Script src="/theme-init.js" strategy="beforeInteractive" />
+        {children}
+      </body>
     </html>
   );
 }

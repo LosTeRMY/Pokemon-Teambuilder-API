@@ -11,8 +11,8 @@ export default function Input({
   return (
     <input
       className={cn(
-        "w-full px-[13px] py-[11px] border border-line rounded-[9px] text-[14.5px] font-[inherit] text-ink bg-input-bg focus:outline-none focus:border-accent focus:bg-surface focus:shadow-[0_0_0_3px_var(--accent-soft)]",
-        small && "px-[9px] py-[7px] text-[12.5px]",
+        "w-full px-3.25 py-2.75 border border-line rounded-[9px] text-[14.5px] font-[inherit] text-ink bg-input-bg focus:outline-none focus:border-accent focus:bg-surface focus:shadow-[0_0_0_3px_var(--accent-soft)]",
+        small && "px-2.25 py-1.75 text-[12.5px]",
         className,
       )}
       {...props}
