@@ -29,7 +29,7 @@ export default function MultiFilter({
       <Label>
         {label}
         {ids.length > 0 && (
-          <span className="ml-[6px] font-mono tabular-nums text-[10px] font-bold bg-accent text-white rounded-[20px] px-[6px] py-px align-middle">
+          <span className="ml-1.5 font-mono tabular-nums text-[10px] font-bold bg-accent text-white rounded-[20px] px-1.5 py-px align-middle">
             {ids.length}
           </span>
         )}
@@ -41,7 +41,7 @@ export default function MultiFilter({
         onPick={(id) => onAdd(id)}
       />
       {ids.length > 0 && (
-        <div className="flex flex-wrap gap-[5px] mt-[7px]">
+        <div className="flex flex-wrap gap-1.25 mt-1.75">
           {ids.map((id) => (
             <Chip
               key={id}

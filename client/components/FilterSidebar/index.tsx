@@ -1,6 +1,6 @@
 "use client";
 
-import type { FilterControls } from "@/lib/useFilterState";
+import type { FilterControls } from "@/hooks/useFilterState";
 import FilterRail from "./FilterRail";
 
 export default function FilterSidebar({
@@ -21,7 +21,7 @@ export default function FilterSidebar({
   );
   return (
     <>
-      <aside className="sticky top-[72px] w-[340px] shrink-0 h-[calc(100vh-72px)] overflow-y-auto border-r border-line bg-surface max-[900px]:hidden">
+      <aside className="sticky top-18 w-85 shrink-0 h-[calc(100vh-72px)] overflow-y-auto border-r border-line bg-surface max-[900px]:hidden">
         {rail}
       </aside>
       {drawer && (
@@ -30,10 +30,10 @@ export default function FilterSidebar({
           onClick={() => setDrawer(false)}
         >
           <div
-            className="w-[300px] max-w-[86vw] bg-surface h-full overflow-y-auto [animation:slideIn_0.2s_ease]"
+            className="w-75 max-w-[86vw] bg-surface h-full overflow-y-auto animate-[slideIn_0.2s_ease]"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex justify-between items-center px-[18px] py-4 border-b border-line sticky top-0 bg-surface">
+            <div className="flex justify-between items-center px-4.5 py-4 border-b border-line sticky top-0 bg-surface">
               <strong>Filters</strong>
               <button
                 className="bg-transparent border-none text-[16px] text-muted"

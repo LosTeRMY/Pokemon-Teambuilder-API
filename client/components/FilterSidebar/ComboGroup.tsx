@@ -28,7 +28,7 @@ export default function ComboGroup({
       )}
     >
       <button
-        className="flex items-center gap-2 w-full px-[9px] py-[7px] bg-surface-2 border-none border-b border-line-soft text-[13px] font-bold text-ink cursor-pointer text-left"
+        className="flex items-center gap-2 w-full px-2.25 py-1.75 bg-surface-2 border-none border-b border-line-soft text-[13px] font-bold text-ink cursor-pointer text-left"
         onClick={onEdit}
       >
         <PokeToken pid={pid} size={26} />
@@ -39,7 +39,7 @@ export default function ComboGroup({
       </button>
       <ul className="cgroup-list list-none m-0 px-2 pt-1.25 pb-1.75 flex flex-col gap-0.75">
         {items.map((c, i) => (
-          <li key={i} className="flex items-center gap-[7px] text-[12.5px]">
+          <li key={i} className="flex items-center gap-1.75 text-[12.5px]">
             <span className={"cgroup-kind cgroup-kind--" + c.kind}>
               {c.kind === "item" ? "@" : KIND_LABEL[c.kind]}
             </span>
