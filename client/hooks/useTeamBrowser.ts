@@ -83,9 +83,12 @@ export function useTeamBrowser() {
       window.location.href.includes("?") || !queryString
         ? window.location.href
         : window.location.href.split("?")[0] + "?" + queryString;
-    try { navigator.clipboard.writeText(link); } catch { /* ignore */ }
-    setCopied(true);
-    setTimeout(() => setCopied(false), 1400);
+    navigator.clipboard.writeText(link)
+      .then(() => {
+        setCopied(true);
+        setTimeout(() => setCopied(false), 1400);
+      })
+      .catch(() => {});
   };
 
   return {

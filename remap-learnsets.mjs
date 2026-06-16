@@ -1,7 +1,8 @@
 import { readFileSync, writeFileSync } from "fs";
 
-const POKE_PATH  = "C:/Users/ttran/Desktop/Pokemon-Teambuilder-API/client/data/pokemons.json";
-const LEARN_PATH = "C:/Users/ttran/Desktop/Pokemon-Teambuilder-API/client/data/learnsets.json";
+const POKE_PATH    = "./client/data/pokemons.json";
+const LEARN_PATH   = "./data/learnsets.json";
+const LEARN_CLIENT = "./client/data/learnsets.json";
 
 const ALTERNATE_FORMS = new Set([
   "Deoxys-Attack", "Deoxys-Defense", "Deoxys-Speed",
@@ -38,6 +39,7 @@ for (const entry of learnsets) {
   }
 }
 
-writeFileSync(LEARN_PATH, JSON.stringify(learnsets, null, 2));
+writeFileSync(LEARN_PATH,   JSON.stringify(learnsets, null, 2));
+writeFileSync(LEARN_CLIENT, JSON.stringify(learnsets, null, 2));
 console.log(`Done — ${updated} learnsets remapped.`);
 if (skipped.length) console.warn("No pokemon found for old pokemonIds:", skipped);

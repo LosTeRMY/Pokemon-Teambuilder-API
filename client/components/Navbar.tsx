@@ -31,7 +31,7 @@ export default function Navbar({
             href={href}
             className={cn(
               "text-[15.5px] font-semibold px-3.75 py-2.25 rounded-[9px]",
-              pathname === href
+              pathname === href || pathname.startsWith(href + "/")
                 ? "text-accent bg-accent-soft"
                 : "text-muted hover:bg-line-soft hover:text-ink",
             )}

@@ -1,6 +1,8 @@
 "use client";
 
+import "./page.css";
 import { useState, useMemo, useEffect, useRef } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { useTheme } from "@/hooks/useTheme";
 import { GAMEDATA } from "@/lib/gameData";
@@ -18,7 +20,7 @@ type DxPokemon = {
   baseStats: { hp: number; atk: number; def: number; spa: number; spd: number; spe: number };
 };
 
-const DEX = GAMEDATA.pokemons as unknown as DxPokemon[];
+const DEX = GAMEDATA.pokemons as DxPokemon[];
 
 /* ── Constants ──────────────────────────────────────────────────────────────── */
 
@@ -100,10 +102,8 @@ function DexCard({ mon }: { mon: DxPokemon }) {
   const tierLabel = TIER_LABEL[mon.tier] ?? mon.tier.toUpperCase();
 
   return (
-    <a
+    <Link
       className="dx-card"
-      tabIndex={0}
-      role="button"
       href={`/pokemon/${sp}`}
       aria-label={`${mon.name}, ${tierLabel}, ${mon.types.join(" ")}, base stat total ${total}`}
     >
@@ -147,7 +147,7 @@ function DexCard({ mon }: { mon: DxPokemon }) {
         </div>
         <div className="dx-bst mono">BST <b>{total}</b></div>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -250,89 +250,6 @@ export default function PokedexPage() {
 
   return (
     <>
-      <style>{`
-        /* ── Pokédex-specific classes (not yet in globals.css) ── */
-        .dx-page { max-width: 1340px; margin: 0 auto; padding: 34px 40px 110px; }
-        .dx-head { margin-bottom: 22px; }
-        .dx-head h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.025em; margin: 0 0 4px; }
-        .dx-head p  { margin: 0; font-size: 14.5px; color: var(--muted); }
-        .dx-head p b { color: var(--ink); font-weight: 700; }
-
-        .dx-filters { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-
-        .dx-search { position: relative; flex: 1 1 280px; min-width: 220px; }
-        .dx-search svg { position: absolute; left: 14px; top: 50%; transform: translateY(-50%); color: var(--faint); pointer-events: none; }
-        .dx-search input { width: 100%; padding: 12px 14px 12px 40px; border: 1px solid var(--line); border-radius: 10px; font-size: 15px; font-family: inherit; color: var(--ink); background: var(--input-bg); outline: none; transition: border-color .15s, box-shadow .15s; }
-        .dx-search input::placeholder { color: var(--faint); }
-        .dx-search input:focus { border-color: var(--accent); background: var(--surface); box-shadow: 0 0 0 3px var(--accent-soft); }
-
-        .dx-tiers { display: flex; gap: 6px; }
-        .dx-tier { padding: 9px 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); font-size: 13.5px; font-weight: 700; color: var(--muted); transition: all .13s; line-height: 1; cursor: pointer; }
-        .dx-tier:hover { border-color: var(--muted); color: var(--ink); }
-        .dx-tier--on { color: #fff; border-color: var(--th); background: var(--th); }
-
-        .dx-typewrap { position: relative; }
-        .dx-typebtn { display: inline-flex; align-items: center; gap: 8px; white-space: nowrap; padding: 9px 14px; border: 1px solid var(--line); border-radius: 9px; background: var(--surface); font-size: 13.5px; font-weight: 700; color: var(--ink); transition: all .13s; line-height: 1; cursor: pointer; }
-        .dx-typebtn:hover { border-color: var(--muted); }
-        .dx-typebtn--on { border-color: var(--accent); color: var(--accent); background: var(--accent-soft); }
-        .dx-typebtn-n { background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; border-radius: 20px; padding: 1px 7px; }
-        .dx-typemenu { position: absolute; top: calc(100% + 8px); right: 0; z-index: 40; width: 320px; padding: 14px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 18px 40px -14px var(--shadow-pop); }
-        .dx-typemenu-head { display: flex; align-items: center; justify-content: space-between; margin-bottom: 11px; }
-        .dx-typemenu-head span { font-size: 11.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--faint); }
-        .dx-typemenu-head button { background: none; border: none; color: var(--accent); font-size: 12px; font-weight: 700; padding: 0; cursor: pointer; }
-        .dx-typegrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; }
-        .dx-typechip { display: flex; align-items: center; gap: 7px; padding: 7px 9px; border-radius: 8px; border: 1.5px solid transparent; background: var(--surface-2); font-size: 12.5px; font-weight: 700; color: var(--muted); text-transform: capitalize; cursor: pointer; transition: all .12s; }
-        .dx-typechip i { width: 11px; height: 11px; border-radius: 50%; flex: 0 0 auto; display: inline-block; }
-        .dx-typechip:hover { background: var(--chip-bg); }
-        .dx-typechip--on { color: #fff; }
-
-        .dx-sort { display: flex; align-items: center; gap: 7px; }
-        .dx-sort label { font-size: 10.5px; color: var(--faint); letter-spacing: 0.08em; }
-        .dx-sort select { font-family: inherit; font-size: 13.5px; font-weight: 600; color: var(--ink); border: 1px solid var(--line); border-radius: 9px; padding: 9px 11px; background: var(--surface); cursor: pointer; }
-        .dx-sort select:focus { outline: none; border-color: var(--accent); }
-
-        .dx-active { display: flex; flex-wrap: wrap; gap: 7px; align-items: center; margin-bottom: 16px; }
-        .dx-active-pill { display: inline-flex; align-items: center; gap: 6px; color: #fff; border-radius: 20px; padding: 4px 7px 4px 11px; font-size: 12px; font-weight: 700; text-transform: capitalize; }
-        .dx-active-pill button { background: none; border: none; color: rgba(255,255,255,.8); font-size: 11px; padding: 0 2px; line-height: 1; cursor: pointer; }
-        .dx-active-pill button:hover { color: #fff; }
-
-        .dx-count { font-size: 13.5px; color: var(--faint); margin-bottom: 14px; }
-        .dx-count b { color: var(--ink); font-weight: 700; }
-
-        .dx-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(198px, 1fr)); gap: 16px; }
-
-        .dx-card { display: flex; flex-direction: column; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; cursor: pointer; transition: border-color .15s, box-shadow .15s, transform .15s; text-decoration: none; color: inherit; }
-        .dx-card:hover { border-color: var(--muted); box-shadow: 0 10px 26px -14px var(--shadow-card); transform: translateY(-3px); }
-        .dx-card:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-
-        .dx-art { position: relative; display: grid; place-items: center; border-bottom: 1px solid var(--line-soft); }
-        .dx-num { position: absolute; top: 11px; left: 13px; font-size: 12px; font-weight: 700; color: var(--faint); }
-        .dx-sprite { position: relative; }
-        .dx-sprite-ph { position: absolute; inset: 0; display: grid; place-items: center; border-radius: 12px; color: #fff; font-weight: 800; text-align: center; line-height: 1.1; text-shadow: 0 1px 2px rgba(0,0,0,.32); padding: 6px; transition: opacity .25s; }
-        .dx-sprite-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transform: scale(1.18); image-rendering: -webkit-optimize-contrast; transition: opacity .25s; }
-
-        .dx-body { padding: 13px 16px 15px; display: flex; flex-direction: column; gap: 9px; }
-        .dx-titlerow { display: flex; align-items: center; gap: 8px; }
-        .dx-name { font-size: 17px; font-weight: 700; letter-spacing: -0.01em; margin: 0; flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .dx-types { display: flex; gap: 6px; }
-        .dx-type { color: #fff; font-size: 11px; font-weight: 700; letter-spacing: 0.01em; padding: 3px 9px; border-radius: 6px; text-transform: capitalize; }
-        .dx-bst { font-size: 12.5px; color: var(--faint); letter-spacing: 0.02em; margin-top: 1px; }
-        .dx-bst b { color: var(--muted); font-weight: 700; }
-
-        .dx-empty { grid-column: 1 / -1; text-align: center; padding: 70px 20px; color: var(--muted); display: flex; flex-direction: column; align-items: center; gap: 14px; }
-        .dx-empty p { margin: 0; font-size: 15px; }
-        .dx-empty-sub { font-size: 13px !important; color: var(--faint); }
-
-        @media (max-width: 900px) {
-          .dx-page { padding: 22px 16px 90px; }
-          .dx-typemenu { right: auto; left: 0; }
-        }
-        @media (max-width: 560px) {
-          .dx-filters { gap: 9px; }
-          .dx-sort { display: none; }
-        }
-      `}</style>
-
       <Navbar theme={theme} onThemeToggle={toggle} />
 
       <main className="dx-page">
