@@ -26,6 +26,10 @@ export const abilByName = byName(GAMEDATA.abilities);
 export const itemByName = byName(GAMEDATA.items);
 export const natByName = byName(GAMEDATA.natures);
 
+// Reverse of slug() — resolves a sprite/URL slug (e.g. from curated content
+// like handles/threats lists) back to its real GAMEDATA Pokémon.
+export const pokeBySlug = new Map<string, GBPokemon>(GAMEDATA.pokemons.map((p) => [slug(p.name), p]));
+
 export const pokeById = byId(GAMEDATA.pokemons);
 export const moveById = byId(GAMEDATA.moves);
 export const abilById = byId(GAMEDATA.abilities);
@@ -68,11 +72,19 @@ export const opts = {
   natures: [...GAMEDATA.natures].sort(sortByName) as GBNature[],
 };
 
-/* Moves a given Pokémon can legally learn (constrains the combo move picker). */
+/* Moves a given Pokémon can legally learn (constrains the combo move picker).
+ * Walks the evolvesFrom chain so an evolved Pokémon also gets moves it inherited
+ * from its pre-evolutions — mirrors server/src/services/teamValidation.ts#getPokemonLearnset. */
 export const movesForPokemon = (pid: number): GBMove[] => {
-  const ids = GAMEDATA.learnsets[pid];
-  if (!ids || !ids.length) return [];
-  return ids.map((id) => moveById.get(id)).filter((m): m is GBMove => Boolean(m)).sort(sortByName);
+  const visited = new Set<number>();
+  const ids = new Set<number>();
+  let currentId: number | null = pid;
+  while (currentId !== null && !visited.has(currentId)) {
+    visited.add(currentId);
+    (GAMEDATA.learnsets[currentId] || []).forEach((id) => ids.add(id));
+    currentId = pokeById.get(currentId)?.evolvesFrom ?? null;
+  }
+  return Array.from(ids).map((id) => moveById.get(id)).filter((m): m is GBMove => Boolean(m)).sort(sortByName);
 };
 /* Abilities a given Pokémon can have. */
 export const abilitiesForPokemon = (pid: number): GBAbility[] => {

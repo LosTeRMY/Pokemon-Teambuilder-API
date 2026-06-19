@@ -25,10 +25,9 @@ No test runner is configured (`npm test` exits 1).
 Create `.env` with:
 
 ```
-DATABASE_URL=   # postgres connection string (local or Neon)
-JWT_SECRET=     # any secret string
+DATABASE_URL=   # postgres connection string (local or Neon) — required, process exits if missing
+JWT_SECRET=     # any secret string — required, process exits if missing
 PORT=3000       # optional, defaults to 3000
-ASSETS_URL=     # base URL for sprites/icons — not stored in DB or JSON
 ```
 
 ## Code Structure
@@ -37,6 +36,7 @@ ASSETS_URL=     # base URL for sprites/icons — not stored in DB or JSON
 src/
   index.ts            # entry: env validation, starts server
   app.ts              # express app, route mounting
+  errors.ts           # AppError(status, message) — thrown by services, caught in app.ts
   db/
     index.ts          # drizzle Pool + db instance
     schema.ts         # all Drizzle table/enum definitions
@@ -46,11 +46,14 @@ src/
     auth.ts           # POST /auth/register, POST /auth/login
     gamedata.ts       # GET /gamedata/{pokemons,moves,abilities,items,natures,formats,learnsets}
     teams.ts          # CRUD /teams, POST/DELETE /teams/:id/likes
-    users.ts          # GET/PATCH/DELETE /users/:id
+    users.ts          # GET/PATCH /users/:id
   schemas/
     team.ts           # Zod: pokemonSchema, createTeamSchema
   services/
+    authService.ts    # register(), login() — bcrypt hashing, JWT issuance
+    teamService.ts    # list/get/create/update/delete teams, like/unlike
     teamValidation.ts # validateTeam() — in-memory cross-ref logic
+    userService.ts    # getUser(), updateUser()
   types/
     index.ts          # Pokemon type, Express Request augmentation (req.userId)
   data/json/          # immutable game data — abilities, formats, items, learnsets,
@@ -77,11 +80,11 @@ Validation is split between two layers:
 
 | What | Where | Why |
 |---|---|---|
-| IVs 0–31, EVs 0–252 | DB `CHECK` constraints | Native to SQL |
-| Unique Pokémon per team | DB `UNIQUE (team_id, pokemon_id)` | Uniqueness constraint |
-| Cascading deletes | DB `CASCADE` / `SET NULL` | Referential integrity |
+| IVs 0–31, EVs 0–252 | Zod (`pokemonSchema`) | No DB `CHECK` constraints exist — range is app-level only |
+| Cascading deletes | DB `CASCADE` / `SET NULL` (`schema.ts`) | Referential integrity |
 | Max 4 moves, exactly 6 Pokémon | Zod (`createTeamSchema`) | SQL can't constrain row count |
-| Total EVs ≤ 508 | Zod `superRefine` | Cross-column sum |
+| Total EVs ≤ 508 | Zod `.refine()` on the `evs` object | Cross-column sum |
+| No duplicate move on one Pokémon | `validateTeam()` | Checked per-Pokémon against `pokemon.moves` |
 | Happiness 0–255, default 255 | Zod | Gen 4 range |
 | Pokémon/move/ability/item/nature validity | Zod + in-memory JSON | References JSON, not a DB table |
 | Ability legal for Pokémon | `validateTeam()` | `pokemon.abilities[]` array in pokemons.json |
@@ -91,6 +94,8 @@ Validation is split between two layers:
 | Level | Set server-side in `validateTeam()` | 5 for LC, 100 for all others — client value ignored |
 
 A team in the database is by definition valid and public. **Drafts are never persisted** — they live in the client's localStorage until publication.
+
+**Gap:** nothing — not Zod, not `validateTeam()`, not a DB constraint — currently rejects the same Pokémon species appearing twice on one team. Be aware of this if you touch team creation/update; don't assume uniqueness is enforced elsewhere.
 
 ## Key Database Relationships
 
@@ -102,7 +107,7 @@ A team in the database is by definition valid and public. **Drafts are never per
 
 `team_likes` has `PRIMARY KEY (user_id, team_id)`. Duplicate like attempts return 409 via pg error code `23505`.
 
-`teams_pokemons` and `teams_pokemons_moves` store integer IDs (not names) to enable indexed B-tree lookups on filtered `GET /teams` queries. Indexes exist on `teams_pokemons(pokemon_id)`, `teams_pokemons(ability_id)`, `teams_pokemons_moves(move_id)`, and `team_likes(team_id)`.
+`teams_pokemons` and `teams_pokemons_moves` store integer IDs (not names) so filtering in `teamService.listTeams()` can match against `pokemon_id`/`move_id`/etc. directly via `EXISTS` subqueries. No explicit indexes are defined on these columns today (only the PKs/FKs in `schema.ts`) — something to revisit if `GET /teams` filtering gets slow at scale.
 
 `username` is immutable after registration. `pokemons.json` entries include an `evolvesFrom` field (nullable integer ID) used to walk the evolution chain during learnset validation.
 
@@ -128,7 +133,6 @@ A team in the database is by definition valid and public. **Drafts are never per
 **Users**:
 - `GET /users/:id` — public profile + teams
 - `PATCH /users/:id` — update email, password, avatar, or bio (auth, own account; email/password require `currentPassword`)
-- `DELETE /users/:id` (auth, own account)
 
 **`GET /teams` query params:**
 `?pokemon=&move=&ability=&item=&format=&name=&user=&liked_by=&sort=newest|oldest|popular&page=&limit=`

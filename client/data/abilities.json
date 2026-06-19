@@ -222,7 +222,7 @@
   {
     "id": 45,
     "name": "Sand Stream",
-    "description": "Summons a sandstorm for 5 turns when the Pokémon enters a battle."
+    "description": "Summons a permanent sandstorm on switch-in; chips non-Rock/Ground/Steel for 1⁄16 HP per turn and Rock-types gain a 50% Sp. Def boost."
   },
   {
     "id": 46,

@@ -3,7 +3,7 @@
 import { useTeamBrowser } from "@/hooks/useTeamBrowser";
 import Navbar from "@/components/Navbar";
 import FilterSidebar from "@/components/FilterSidebar";
-import TeamDisplay from "@/components/TeamDisplay/TeamDisplay";
+import TeamDisplay from "@/components/TeamsBrowser/TeamDisplay";
 
 export default function Page() {
   const {

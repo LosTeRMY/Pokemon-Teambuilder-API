@@ -3505,7 +3505,7 @@
       "spe": 110
     },
     "abilities": [28],
-    "tier": "nubl",
+    "tier": "uu",
     "evolvesFrom": 152,
     "dexNum": 196
   },
@@ -4405,7 +4405,7 @@
       "spe": 100
     },
     "abilities": [46],
-    "tier": "nubl",
+    "tier": "uu",
     "evolvesFrom": null,
     "dexNum": 244
   },
@@ -8167,7 +8167,7 @@
       "spe": 32
     },
     "abilities": [45],
-    "tier": "nubl",
+    "tier": "uu",
     "evolvesFrom": null,
     "dexNum": 449
   },
@@ -8329,7 +8329,7 @@
       "spe": 40
     },
     "abilities": "Snow Warning",
-    "tier": "nubl",
+    "tier": "uu",
     "evolvesFrom": null,
     "dexNum": 459
   },

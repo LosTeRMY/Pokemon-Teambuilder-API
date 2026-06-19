@@ -8,16 +8,17 @@ PokéBuild — a community-driven Gen 4 Pokémon competitive teambuilder. Users 
 
 ## Monorepo Layout
 
-Two independent Node projects that share a read-only game-data directory:
+Two independent Node projects (no root `package.json`/workspaces — each has its own) that share a read-only game-data directory:
 
 ```text
 data/           # shared immutable game data (JSON) — source of truth
-  sprites/      # gen4 Pokémon sprites (PNG, named by slug)
 server/         # Express + Drizzle API — see server/CLAUDE.md
 client/         # Next.js frontend — see client/CLAUDE.md (currently being rebuilt)
 ```
 
 Each workspace has its own `package.json`, `node_modules`, and `CLAUDE.md` with stack details, commands, and architecture notes. Read the relevant sub-file before working in that workspace.
+
+A handful of one-off `.mjs` scripts at the repo root (`reindex.mjs`, `remap-learnsets.mjs`, `extract-gen4-learnsets.mjs`) were used to bulk-edit `data/*.json` during the Gen 4 data buildout (reindexing IDs, remapping learnsets). They write to both `data/` and `client/data/` directly — treat them as scratch tooling, not part of the runtime app.
 
 ## Running Both Sides
 
@@ -44,7 +45,7 @@ NEXT_PUBLIC_API_URL=http://localhost:3001 npm run dev
 
 ## Sprites
 
-Pokémon sprites live in `data/sprites/<slug>.png` at the repo root. When setting up the client, copy or symlink these into `client/public/sprites/gen4/`. Sprite filenames are the slug produced by the client's `lookups.ts#slug()` function.
+Pokémon sprites live only in `client/public/sprites/gen4/<slug>.png` (not under `data/`). Sprite filenames are the slug produced by the client's `lookups.ts#slug()` function.
 
 ## Auth Architecture
 
@@ -63,9 +64,9 @@ Teams are **never persisted until published**. While a user is building a team, 
 
 ## Styling
 
-The client uses a **custom CSS property design system** in `app/globals.css` — not pure Tailwind utilities. CSS variables define color tokens (`--accent`, `--surface`, `--ink`, etc.) with separate `:root` (light) and `[data-theme="dark"]` blocks. Theme is toggled by setting `data-theme` on `<html>`, and the class `theme-switching` is briefly applied to suppress transition flicker during the switch.
+The client is styled with **Tailwind v4 utility classes bound to a CSS custom property token set** in `app/globals.css` — not hand-written CSS per component. CSS variables define color tokens (`--accent`, `--surface`, `--ink`, etc.) with separate `:root` (light) and `[data-theme="dark"]` blocks; a Tailwind `@theme` block maps each one to a `--color-*` variable, so `bg-surface`, `text-ink`, `border-line` etc. are ordinary Tailwind utilities that resolve to the live theme value. Theme is toggled by setting `data-theme` on `<html>`, and the class `theme-switching` is briefly applied to suppress transition flicker during the switch. A small "Residual CSS" section at the bottom of `globals.css` holds hand-written classes only for what Tailwind utilities can't express — `color-mix()` with a dynamic `--th`/`--cp`-style custom property, `text-wrap: pretty`, pseudo-elements, and parent/child selectors.
 
 ## Current Status
 
 - **Server** (`server/`) — fully implemented. Express + Drizzle + PostgreSQL. No test runner. See `server/CLAUDE.md` for API surface, validation strategy, and schema details.
-- **Client** (`client/`) — currently being rebuilt. Stack: Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · TanStack Query 5. App Router, no test runner.
+- **Client** (`client/`) — partially implemented. Team browser (`/`), Pokédex (`/pokedex`), and the team builder (`/builder`) pages are working. Auth and TanStack Query wiring are not yet implemented — the team browser runs against `mockData.ts` (curated static teams) with client-side filtering, and `loggedIn` is hardcoded `true`. See `client/CLAUDE.md` for component and hook architecture.

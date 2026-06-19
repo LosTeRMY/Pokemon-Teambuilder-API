@@ -43,6 +43,7 @@ export function SpriteTile({
         style={{
           background: grad,
           fontSize: Math.max(7, Math.round(size * 0.17)),
+          opacity: loaded ? 0 : 1,
         }}
       >
         {size >= 36 && <span>{name}</span>}
