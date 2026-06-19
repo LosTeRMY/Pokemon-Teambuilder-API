@@ -1,6 +1,15 @@
 import * as LK from "@/lib/lookups";
 import type { Combo, ComboKind } from "@/lib/lookups";
-import { TYPE_COLORS } from "@/lib/mockData";
+import { TIER_HUE } from "@/components/ui/TierBadge";
+export { TIER_HUE };
+
+const TYPE_COLORS: Record<string, string> = {
+  normal: "#9b9a6e", fire: "#e8702a", water: "#4b7bd8", electric: "#e8c020",
+  grass: "#5aa83e", ice: "#5cc0c0", fighting: "#c0392b", poison: "#9b3f9b",
+  ground: "#cba84a", flying: "#8a7be0", psychic: "#e84d7a", bug: "#8a9a18",
+  rock: "#a08a2e", ghost: "#5e4a86", dragon: "#5a2fd8", dark: "#5a4a3f",
+  steel: "#8a8aa8",
+};
 
 export type Named = { id: number; name: string };
 
@@ -9,15 +18,6 @@ export type ComboHandlers = {
   setDraftPid: (pid: number | null) => void;
   addCombo: (c: Combo) => void;
   removeCombo: (c: Combo) => void;
-};
-
-export const TIER_HUE: Record<string, string> = {
-  ubers: "#7a3fd0",
-  ou: "#2f6fe0",
-  uu: "#2f9a55",
-  nu: "#d07f2a",
-  pu: "#64748b",
-  lc: "#2a9aa0",
 };
 
 export const tc = (t: string) => TYPE_COLORS[t] || "#888";
