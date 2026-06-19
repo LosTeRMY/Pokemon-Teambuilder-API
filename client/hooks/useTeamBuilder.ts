@@ -5,7 +5,7 @@ import { GAMEDATA } from "@/lib/gameData";
 import type { GBPokemon } from "@/lib/gameData";
 import {
   type DraftTeam, type DraftMember, type DraftNotes,
-  createBlankTeam, createBlankMember,
+  createBlankTeam, createBlankMember, sanitizeTeam,
   loadBuilderState, saveBuilderState,
 } from "@/lib/teamBuilder";
 import { useTheme } from "@/hooks/useTheme";
@@ -32,8 +32,8 @@ export function useTeamBuilder() {
   useEffect(() => {
     const stored = loadBuilderState();
     if (stored) {
-      setSavedTeams(stored.savedTeams);
-      setTeam(stored.workingTeam);
+      setSavedTeams(stored.savedTeams.map(sanitizeTeam));
+      setTeam(sanitizeTeam(stored.workingTeam));
     }
   }, []);
 
@@ -49,9 +49,16 @@ export function useTeamBuilder() {
     saveBuilderState({ savedTeams, workingTeam: team });
   }, [savedTeams, team]);
 
+  // Tracked by id rather than message text, so two identical toasts in quick
+  // succession (e.g. clicking Save twice) don't have the first one's timer
+  // clear the second toast early just because the text matches.
+  const toastId = useRef(0);
   const notify = (msg: string) => {
+    const id = ++toastId.current;
     setToast(msg);
-    setTimeout(() => setToast((cur) => (cur === msg ? null : cur)), 2600);
+    setTimeout(() => {
+      if (toastId.current === id) setToast(null);
+    }, 2600);
   };
 
   const newTeam = () => {

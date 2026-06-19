@@ -35,7 +35,7 @@ function proposalToSet(p: Proposal): AnalysisSet {
     matchupNote: p.matchupNote ?? "",
     handles: [],
     threats: [],
-    provenance: { kind: "human", author: p.author, updated: p.when },
+    provenance: { kind: "human", author: p.author, reviewers: 0, updated: p.when },
   };
 }
 

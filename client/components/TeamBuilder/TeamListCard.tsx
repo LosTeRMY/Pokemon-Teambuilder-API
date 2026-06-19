@@ -25,24 +25,27 @@ export default function TeamListCard({
   const filled = team.members.filter(Boolean) as NonNullable<DraftTeam["members"][number]>[];
 
   return (
-    <button
+    <div
       className={cn(
         "group relative text-left w-full flex flex-col gap-2.25 bg-surface border rounded-[10px] pl-3.25 pr-3 py-2.75 transition-[border-color,box-shadow,transform] duration-140 hover:shadow-[0_6px_16px_-10px_var(--shadow-card)] hover:-translate-y-px",
         active ? "border-accent shadow-[0_0_0_2px_var(--accent-soft)]" : "border-line",
       )}
       style={{ "--th": fmtColor(team.formatId), borderLeft: `3px solid var(--th, var(--accent))` } as React.CSSProperties}
-      onClick={onOpen}
     >
+      {/* Fills the whole card as the primary click target; sits below the delete/lock
+          button in paint order (flex items paint in DOM order) so that button stays
+          independently clickable instead of being nested inside this one. */}
+      <button type="button" className="absolute inset-0 rounded-[10px]" onClick={onOpen} aria-label={`Open ${team.name}`} />
       {!team.published ? (
-        <span
-          role="button"
+        <button
+          type="button"
           aria-label="Delete draft"
           title="Delete draft"
           className="absolute top-2 right-2 w-6 h-6 grid place-items-center rounded-md bg-surface-2 border border-line text-faint opacity-0 group-hover:opacity-100 transition-opacity duration-120 hover:text-like-fg hover:bg-like-bg hover:border-like-bd"
-          onClick={(e) => { e.stopPropagation(); onDelete(); }}
+          onClick={onDelete}
         >
           <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /></svg>
-        </span>
+        </button>
       ) : (
         <span
           title="Published — protected from deletion"
@@ -92,6 +95,6 @@ export default function TeamListCard({
           </span>
         )}
       </div>
-    </button>
+    </div>
   );
 }

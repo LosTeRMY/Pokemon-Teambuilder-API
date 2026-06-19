@@ -1,5 +1,6 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import * as LK from "@/lib/lookups";
 import { tc } from "@/lib/browserUtils";
 import { genderOptions, type DraftMember, type DraftNotes, type StatKey } from "@/lib/teamBuilder";
@@ -14,6 +15,40 @@ import NotesTab from "./NotesTab";
 import { cn } from "@/lib/cn";
 
 const GLYPH = { M: "♂", F: "♀", N: "⚲" };
+
+/* Buffers raw input text locally so the field can be cleared/retyped freely —
+ * a plain controlled <input> that falls back to a default on every keystroke
+ * (`parseInt(v) || fallback`) snaps back before the user can finish typing.
+ * The clamped/fallback value only commits to the parent on blur. */
+function NumberField({
+  value, min, max, fallback, onCommit, className,
+}: {
+  value: number; min: number; max: number; fallback: number;
+  onCommit: (v: number) => void; className?: string;
+}) {
+  const [text, setText] = useState(String(value));
+  useEffect(() => setText(String(value)), [value]);
+
+  const clamp = (n: number) => Math.max(min, Math.min(max, n));
+
+  return (
+    <input
+      type="number" min={min} max={max} value={text}
+      onChange={(e) => {
+        setText(e.target.value);
+        const n = parseInt(e.target.value, 10);
+        if (!Number.isNaN(n)) onCommit(clamp(n));
+      }}
+      onBlur={() => {
+        const n = parseInt(text, 10);
+        const next = Number.isNaN(n) ? fallback : clamp(n);
+        setText(String(next));
+        onCommit(next);
+      }}
+      className={className}
+    />
+  );
+}
 
 export default function Editor({
   member,
@@ -140,9 +175,9 @@ export default function Editor({
             <div className="flex flex-col gap-2">
               <span className="text-[11px] font-extrabold tracking-[0.07em] uppercase text-faint">Happiness</span>
               <div className="flex items-center gap-2">
-                <input
-                  type="number" min={0} max={255} value={member.happiness}
-                  onChange={(e) => onChange({ happiness: Math.max(0, Math.min(255, parseInt(e.target.value, 10) || 0)) })}
+                <NumberField
+                  value={member.happiness} min={0} max={255} fallback={0}
+                  onCommit={(happiness) => onChange({ happiness })}
                   className="w-18.5 font-mono text-[13.5px] text-center text-ink bg-input-bg border border-line rounded-lg px-1.75 py-1.75 focus:outline-none focus:border-accent"
                 />
                 <span className="text-[12px] text-faint">/ 255 {member.happiness >= 255 ? "(max)" : member.happiness === 0 ? "(min)" : ""}</span>
@@ -151,9 +186,9 @@ export default function Editor({
             <div className="flex flex-col gap-2">
               <span className="text-[11px] font-extrabold tracking-[0.07em] uppercase text-faint">Level</span>
               <div className="flex items-center gap-2">
-                <input
-                  type="number" min={1} max={100} value={member.level}
-                  onChange={(e) => onChange({ level: Math.max(1, Math.min(100, parseInt(e.target.value, 10) || 100)) })}
+                <NumberField
+                  value={member.level} min={1} max={100} fallback={100}
+                  onCommit={(level) => onChange({ level })}
                   className="w-18.5 font-mono text-[13.5px] text-center text-ink bg-input-bg border border-line rounded-lg px-1.75 py-1.75 focus:outline-none focus:border-accent"
                 />
                 <span className="text-[12px] text-faint">std 100</span>

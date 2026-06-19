@@ -44,7 +44,7 @@ export default function EvIvEditor({
   return (
     <div className="flex flex-col gap-2">
       <span className="text-[11px] font-extrabold tracking-[0.07em] uppercase text-faint flex items-center justify-between">
-        EV spread <em className="font-semibold not-italic normal-case tracking-normal text-muted text-[11.5px]">at Lv 100</em>
+        EV spread <em className="font-semibold not-italic normal-case tracking-normal text-muted text-[11.5px]">at Lv {level}</em>
       </span>
       <div className="flex items-center justify-between text-[11.5px]">
         <span>Spent <b className="font-mono font-bold">{total}</b> / {EV_BUDGET}</span>

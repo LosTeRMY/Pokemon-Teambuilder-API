@@ -7,7 +7,7 @@ import type { Usage, UsageRow } from "@/app/pokedex/[slug]/data";
 // `max` is the highest pct in that card's own list, so the longest bar always
 // fills the track — bars are relative within a card, not against 100%.
 function URow({ lead, name, pct, max, color }: { lead?: React.ReactNode; name: string; pct: number; max: number; color?: string }) {
-  const w = Math.max(3, (pct / max) * 100);
+  const w = max > 0 ? Math.max(3, (pct / max) * 100) : 3;
   return (
     <div className="grid grid-cols-[minmax(0,1fr)_minmax(56px,1fr)_48px] items-center gap-2.75 py-1.25">
       <div className="flex items-center gap-2 min-w-0">

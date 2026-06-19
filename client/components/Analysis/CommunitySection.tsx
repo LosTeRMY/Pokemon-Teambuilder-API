@@ -9,7 +9,7 @@ function CommunityBanner({ contributors, revisions, sets }: { contributors: Cont
   const aiSets = sets.filter((s) => s.provenance.kind === "ai").length;
   // "Human-reviewed" = share of sets that aren't still sitting as an
   // unreviewed AI draft — not a count of edits that went through review.
-  const reviewedPct = Math.round(((sets.length - aiSets) / sets.length) * 100);
+  const reviewedPct = sets.length === 0 ? 0 : Math.round(((sets.length - aiSets) / sets.length) * 100);
   return (
     <div className="flex items-center gap-5.5 flex-wrap bg-surface border border-line rounded-2xl px-6 py-4.5">
       <div className="flex items-center gap-3.25 flex-1 min-w-60">

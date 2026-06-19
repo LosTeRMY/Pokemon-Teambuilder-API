@@ -151,6 +151,17 @@ export function createBlankTeam(): DraftTeam {
   };
 }
 
+/* Drops any member whose pid no longer resolves to a real Pokémon (e.g. stale
+ * localStorage from before a game-data update) back to an empty slot, so a
+ * draft loaded from storage degrades to "missing Pokémon" instead of being
+ * silently unrenderable by every component that looks the member up. */
+export function sanitizeTeam(team: DraftTeam): DraftTeam {
+  return {
+    ...team,
+    members: team.members.map((m) => (m && LK.pokeById.get(m.pid) ? m : null)),
+  };
+}
+
 /* Pokémon Showdown text export format. */
 export function exportShowdown(team: DraftTeam): string {
   return team.members
@@ -194,10 +205,26 @@ const STORAGE_KEY = "pb-builder-state-v1";
  * persisting both together means a reload doesn't lose in-progress work. */
 export type BuilderStorage = { savedTeams: DraftTeam[]; workingTeam: DraftTeam };
 
+/* Minimal structural check — enough to catch corrupted/unrelated JSON before
+ * it reaches .map/.filter calls downstream, without re-validating every field
+ * (sanitizeTeam() already drops members with stale/invalid pids). */
+function isBuilderStorage(x: unknown): x is BuilderStorage {
+  if (!x || typeof x !== "object") return false;
+  const obj = x as Record<string, unknown>;
+  return (
+    Array.isArray(obj.savedTeams) &&
+    !!obj.workingTeam &&
+    typeof obj.workingTeam === "object" &&
+    Array.isArray((obj.workingTeam as Record<string, unknown>).members)
+  );
+}
+
 export function loadBuilderState(): BuilderStorage | null {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw ? (JSON.parse(raw) as BuilderStorage) : null;
+    if (!raw) return null;
+    const parsed = JSON.parse(raw);
+    return isBuilderStorage(parsed) ? parsed : null;
   } catch {
     return null;
   }

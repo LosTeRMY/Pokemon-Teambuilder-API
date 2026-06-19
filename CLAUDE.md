@@ -18,7 +18,7 @@ client/         # Next.js frontend — see client/CLAUDE.md (currently being reb
 
 Each workspace has its own `package.json`, `node_modules`, and `CLAUDE.md` with stack details, commands, and architecture notes. Read the relevant sub-file before working in that workspace.
 
-A handful of one-off `.mjs` scripts at the repo root (`reindex.mjs`, `remap-learnsets.mjs`, `add-dex-num.mjs`, `extract-gen4-learnsets.mjs`) were used to bulk-edit `data/*.json` during the Gen 4 data buildout (reindexing IDs, remapping learnsets, adding dex numbers). They write to both `data/` and `client/data/` directly — treat them as scratch tooling, not part of the runtime app.
+A handful of one-off `.mjs` scripts at the repo root (`reindex.mjs`, `remap-learnsets.mjs`, `extract-gen4-learnsets.mjs`) were used to bulk-edit `data/*.json` during the Gen 4 data buildout (reindexing IDs, remapping learnsets). They write to both `data/` and `client/data/` directly — treat them as scratch tooling, not part of the runtime app.
 
 ## Running Both Sides
 
@@ -69,4 +69,4 @@ The client is styled with **Tailwind v4 utility classes bound to a CSS custom pr
 ## Current Status
 
 - **Server** (`server/`) — fully implemented. Express + Drizzle + PostgreSQL. No test runner. See `server/CLAUDE.md` for API surface, validation strategy, and schema details.
-- **Client** (`client/`) — partially implemented. Team browser (`/`) and Pokédex (`/pokedex`) pages are working. Team builder (`/builder`) is a stub. Auth and TanStack Query wiring are not yet implemented — the team browser runs against `mockData.ts` (curated static teams) with client-side filtering, and `loggedIn` is hardcoded `true`. See `client/CLAUDE.md` for component and hook architecture.
+- **Client** (`client/`) — partially implemented. Team browser (`/`), Pokédex (`/pokedex`), and the team builder (`/builder`) pages are working. Auth and TanStack Query wiring are not yet implemented — the team browser runs against `mockData.ts` (curated static teams) with client-side filtering, and `loggedIn` is hardcoded `true`. See `client/CLAUDE.md` for component and hook architecture.

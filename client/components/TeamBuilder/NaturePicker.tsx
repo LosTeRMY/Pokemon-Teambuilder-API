@@ -22,6 +22,7 @@ export default function NaturePicker({
           value={value ?? ""}
           onChange={(e) => onChange(e.target.value ? Number(e.target.value) : null)}
         >
+          <option value="">Select a nature…</option>
           {GAMEDATA.natures.map((n) => {
             const tag = n.boostedStat
               ? ` (+${STAT_LABEL[n.boostedStat as StatKey]} / -${STAT_LABEL[n.reducedStat as StatKey]})`

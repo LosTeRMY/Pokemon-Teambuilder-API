@@ -1,25 +1,10 @@
-const TYPE_COLORS: Record<string, string> = {
-  normal:   "#a0a29f",
-  fire:     "#e8554e",
-  water:    "#538cce",
-  electric: "#eed535",
-  grass:    "#5db85c",
-  ice:      "#74c5c5",
-  fighting: "#cc3f3a",
-  poison:   "#a55fa5",
-  ground:   "#d97845",
-  flying:   "#90a8dc",
-  psychic:  "#e95e7d",
-  bug:      "#91a119",
-  rock:     "#c5b488",
-  ghost:    "#5269ac",
-  dragon:   "#5462d6",
-  dark:     "#595761",
-  steel:    "#5d93a5",
-};
+// Type colors and the canonical type list live in lib/browserUtils.ts and
+// lib/typeChart.ts respectively — re-exported here so existing imports of
+// `tc`/`ALL_TYPES` from this module keep working from a single source of truth.
+import { tc } from "@/lib/browserUtils";
+import { ALL_TYPES } from "@/lib/typeChart";
 
-export const ALL_TYPES = Object.keys(TYPE_COLORS);
-export const tc = (t: string) => TYPE_COLORS[t] ?? "#888";
+export { tc, ALL_TYPES };
 
 export default function TypeBadge({ type }: { type: string }) {
   return (

@@ -42,7 +42,7 @@ export default function AiReviewList({ sets }: { sets: AnalysisSet[] }) {
                 <span className="flex-none w-5 h-5 rounded-full bg-ai text-white grid place-items-center text-[10px]">
                   ✦
                 </span>
-                Drafted by Claude · {s.provenance.updated}
+                Drafted by {s.provenance.author} · {s.provenance.updated}
               </div>
             </div>
           ))}

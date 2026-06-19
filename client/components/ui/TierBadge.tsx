@@ -1,17 +1,7 @@
 import type { CSSProperties } from "react";
+import { TIER_HUE, TIER_LABEL } from "@/lib/browserUtils";
 
-export const TIER_HUE: Record<string, string> = {
-  ubers: "#7a3fd0",
-  ou:    "#2f6fe0",
-  uu:    "#2f9a55",
-  nu:    "#d07f2a",
-  pu:    "#8e6bbf",
-  lc:    "#2a9dbf",
-};
-
-export const TIER_LABEL: Record<string, string> = {
-  ubers: "Uber", ou: "OU", uu: "UU", nu: "NU", pu: "PU", lc: "LC",
-};
+export { TIER_HUE, TIER_LABEL };
 
 export default function TierBadge({ hue, children }: { hue: string; children: React.ReactNode }) {
   return (

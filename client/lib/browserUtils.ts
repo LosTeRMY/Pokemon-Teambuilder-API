@@ -1,7 +1,18 @@
 import * as LK from "@/lib/lookups";
 import type { Combo, ComboKind } from "@/lib/lookups";
-import { TIER_HUE } from "@/components/ui/TierBadge";
-export { TIER_HUE };
+
+export const TIER_HUE: Record<string, string> = {
+  ubers: "#7a3fd0",
+  ou:    "#2f6fe0",
+  uu:    "#2f9a55",
+  nu:    "#d07f2a",
+  pu:    "#8e6bbf",
+  lc:    "#2a9dbf",
+};
+
+export const TIER_LABEL: Record<string, string> = {
+  ubers: "Uber", ou: "OU", uu: "UU", nu: "NU", pu: "PU", lc: "LC",
+};
 
 const TYPE_COLORS: Record<string, string> = {
   normal: "#9b9a6e", fire: "#e8702a", water: "#4b7bd8", electric: "#e8c020",

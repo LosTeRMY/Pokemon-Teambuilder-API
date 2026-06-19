@@ -30,13 +30,18 @@ const TYPE_CHART: Record<PokeType, Partial<Record<PokeType, number>>> = {
   steel:    { fire: 0.5, water: 0.5, electric: 0.5, ice: 2, rock: 2, steel: 0.5 },
 };
 
+const isPokeType = (t: string): t is PokeType => (ALL_TYPES as readonly string[]).includes(t);
+
 /* Multiplier received by a Pokémon with the given 1–2 types from each
  * attacking type — e.g. defenseProfile(["rock","dark"]).fighting === 4. */
 export function defenseProfile(types: string[]): Record<PokeType, number> {
   const result = {} as Record<PokeType, number>;
   for (const atk of ALL_TYPES) {
     let mult = 1;
-    for (const def of types) mult *= TYPE_CHART[atk]?.[def as PokeType] ?? 1;
+    for (const def of types) {
+      if (!isPokeType(def)) continue; // unrecognized type token — no effect rather than a guessed multiplier
+      mult *= TYPE_CHART[atk]?.[def] ?? 1;
+    }
     result[atk] = mult;
   }
   return result;

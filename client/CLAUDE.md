@@ -40,13 +40,13 @@ Sprites are served from `public/sprites/gen4/<slug>.png`. Slug format is produce
 | `/` | `app/page.tsx` | Team browser — FilterSidebar + TeamsBrowser/TeamDisplay |
 | `/pokedex` | `app/pokedex/page.tsx` | Pokédex grid with search, tier, type, and sort filters |
 | `/pokedex/[slug]` | `app/pokedex/[slug]/page.tsx` | Per-Pokémon analysis page (stats, sets, usage, community) |
-| `/builder` | `app/builder/page.tsx` | Team builder — stub, not yet implemented |
+| `/builder` | `app/builder/page.tsx` | Team builder — species/item/ability/move/EV-IV editor, drafts persisted to `localStorage` |
 
 `app/builder/Teambuilder v2 (offline).html` and `app/offline delete later/Pokémon Analysis v2 (offline).html` are Stitch AI design-export mockups kept for reference — scratch files, not part of the runtime app.
 
 ## Component Architecture
 
-```
+```text
 components/
   FilterSidebar/      # filter rail: format picker, multi-selects, combo builder
     index.tsx         # drawer/rail wrapper
@@ -72,6 +72,17 @@ components/
     ActivityTimeline.tsx # revision history list
     AiReviewList.tsx     # AI-authored content pending human review
     ProposalsList.tsx    # pending "suggest a new set" proposals
+  TeamBuilder/        # team builder page (`/builder`)
+    Sidebar.tsx        # "My teams" rail/drawer: search, draft/published filter, team cards
+    TeamListCard.tsx    # one saved-team card in the sidebar
+    WorkArea.tsx        # header (name/format/save/publish/export), member grid + editor split
+    MemberTile.tsx      # one team slot summary; AddTile.tsx for empty slots
+    Editor.tsx          # per-member editor shell (sprite, nickname, gender/shiny, notes)
+    ItemPicker.tsx / AbilityPicker.tsx / NaturePicker.tsx / MovesEditor.tsx / EvIvEditor.tsx
+                        # field-level pickers/editors used inside Editor.tsx
+    NotesTab.tsx        # role tags + free-text notes per member
+    SpeciesPicker.tsx   # modal: search/pick a Pokémon to add or swap into a slot
+    Modal.tsx / ExportModal.tsx # generic modal shell + Showdown-format export
   ui/                 # primitive reusable components
     AutoComplete.tsx  # text input with filtered dropdown
     Chip.tsx          # dismissible filter chip
@@ -85,7 +96,7 @@ components/
 
 ## Lib / Hooks Architecture
 
-```
+```text
 lib/
   gameData.ts     # GAMEDATA singleton: typed wrappers around JSON imports;
                   # learnsets.json reshaped from [{pokemonId, moves}] to Record<id, id[]>
@@ -97,10 +108,13 @@ lib/
                   # to Gen 4 DPP (Steel still resists Ghost/Dark)
   mockData.ts     # curated static teams (name-based); used until API wiring is complete
   cn.ts           # re-exports `clsx` as `cn`
+  teamBuilder.ts  # DraftTeam/DraftMember types, stat calc, Showdown export,
+                  # localStorage load/save (with runtime shape validation)
 
 hooks/
   useFilterState.ts  # FilterState + URL sync; exposes add/remove helpers and activeCount
   useTeamBrowser.ts  # composes theme + filter state + mock teams; client-side filtering
+  useTeamBuilder.ts  # owns builder page state: saved/working teams, selection, modals, toast
   useTheme.ts        # reads/writes localStorage "pb-theme"; sets data-theme on <html>
 ```
 
@@ -108,7 +122,6 @@ hooks/
 
 - **Mock data**: `useTeamBrowser` filters against `mockData.ts`, not `GET /teams`. Replace with a TanStack Query call to the API when wiring server state.
 - **Auth stub**: `loggedIn` in `useTeamBrowser` is hardcoded `true`. The `/api/auth/*` Next.js proxy routes and `useAuth` hook do not exist yet.
-- **Builder page**: `app/builder/page.tsx` is an empty stub.
 - **Analysis content**: `app/pokedex/[slug]/data.ts` hand-curates `ANALYSIS_BY_SLUG` (sets, usage stats, community activity) — none of it comes from real game data or an API. Only the `tyranitar` slug has an entry today; every other slug 404s via `notFound()` until more are curated.
 
 ## Styling
