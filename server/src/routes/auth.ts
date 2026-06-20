@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { z } from "zod";
 import * as authService from "../services/authService";
+import { authenticateToken } from "../middleware/auth";
 
 const router = Router();
 
@@ -36,6 +37,15 @@ router.post("/login", async (req, res, next) => {
   try {
     const result = await authService.login(parsed.data);
     res.json(result);
+  } catch (err) {
+    next(err);
+  }
+});
+
+router.get("/me", authenticateToken, async (req, res, next) => {
+  try {
+    const user = await authService.getCurrentUser(req.userId!);
+    res.json({ user });
   } catch (err) {
     next(err);
   }

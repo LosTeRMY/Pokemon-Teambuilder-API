@@ -1,6 +1,6 @@
 import { db } from "../db";
-import { teams, teams_pokemons, teams_pokemons_moves, team_likes } from "../db/schema";
-import { eq, and, ilike, sql, desc, asc } from "drizzle-orm";
+import { teams, teams_pokemons, teams_pokemons_moves, team_likes, users } from "../db/schema";
+import { eq, and, ilike, sql, desc, asc, inArray } from "drizzle-orm";
 import { createTeamSchema } from "../schemas/team";
 import { validateTeam } from "./teamValidation";
 import { AppError } from "../errors";
@@ -91,22 +91,69 @@ export async function listTeams(query: Record<string, unknown>, requestingUserId
       ? desc(sql`(SELECT COUNT(*) FROM team_likes WHERE team_likes.team_id = ${teams.id})`)
       : desc(teams.createdAt);
 
-  return db
+  const rows = await db
     .select({
       id: teams.id,
       name: teams.name,
       description: teams.description,
       userId: teams.userId,
+      username: users.username,
       format_id: teams.format_id,
       createdAt: teams.createdAt,
       likes_count: likesCount,
       liked,
     })
     .from(teams)
+    .leftJoin(users, eq(teams.userId, users.id))
     .where(conditions.length > 0 ? and(...conditions) : undefined)
     .orderBy(orderBy)
     .limit(limit)
     .offset(offset);
+
+  if (rows.length === 0) return rows.map((t) => ({ ...t, pokemons: [] }));
+
+  const teamIds = rows.map((t) => t.id);
+  const pokemonRows = await db.select().from(teams_pokemons).where(inArray(teams_pokemons.team_id, teamIds));
+  const pokemonIds = pokemonRows.map((p) => p.id);
+  const moveRows = pokemonIds.length > 0
+    ? await db.select().from(teams_pokemons_moves).where(inArray(teams_pokemons_moves.teams_pokemon_id, pokemonIds))
+    : [];
+
+  const movesByPokemonId = new Map<number, number[]>();
+  for (const m of moveRows) {
+    const list = movesByPokemonId.get(m.teams_pokemon_id) ?? [];
+    list.push(m.move_id);
+    movesByPokemonId.set(m.teams_pokemon_id, list);
+  }
+
+  const pokemonsByTeamId = new Map<number, ReturnType<typeof summarizePokemon>[]>();
+  function summarizePokemon(p: typeof pokemonRows[number]) {
+    return {
+      pokemon_id: p.pokemon_id,
+      ability_id: p.ability_id,
+      item_id: p.item_id,
+      nature_id: p.nature_id,
+      moves: movesByPokemonId.get(p.id) ?? [],
+    };
+  }
+  for (const p of pokemonRows) {
+    const list = pokemonsByTeamId.get(p.team_id) ?? [];
+    list.push(summarizePokemon(p));
+    pokemonsByTeamId.set(p.team_id, list);
+  }
+
+  return rows.map((t) => ({ ...t, pokemons: pokemonsByTeamId.get(t.id) ?? [] }));
+}
+
+export async function getFormatCounts(): Promise<Record<number, number>> {
+  const rows = await db
+    .select({ format_id: teams.format_id, count: sql<number>`COUNT(*)` })
+    .from(teams)
+    .groupBy(teams.format_id);
+
+  const counts: Record<number, number> = {};
+  for (const r of rows) counts[r.format_id] = Number(r.count);
+  return counts;
 }
 
 export async function getTeam(teamId: number) {
@@ -117,7 +164,8 @@ export async function getTeam(teamId: number) {
   const pokemons = await Promise.all(
     pokemonRows.map(async (p) => {
       const moveRows = await db.select().from(teams_pokemons_moves).where(eq(teams_pokemons_moves.teams_pokemon_id, p.id));
-      return { ...p, moves: moveRows.map((m) => m.move_id) };
+      const { notes, roles, ...rest } = p;
+      return { ...rest, moves: moveRows.map((m) => m.move_id), notes: { roles: roles ?? [], text: notes ?? "" } };
     })
   );
 
@@ -160,6 +208,8 @@ export async function createTeam(data: TeamData, userId: number) {
         ev_sp_atk: pokemon.evs.sp_atk,
         ev_sp_def: pokemon.evs.sp_def,
         ev_speed: pokemon.evs.speed,
+        notes: pokemon.notes?.text,
+        roles: pokemon.notes?.roles ?? [],
       }).returning();
 
       await tx.insert(teams_pokemons_moves).values(
@@ -212,6 +262,8 @@ export async function updateTeam(teamId: number, data: TeamData, userId: number)
         ev_sp_atk: pokemon.evs.sp_atk,
         ev_sp_def: pokemon.evs.sp_def,
         ev_speed: pokemon.evs.speed,
+        notes: pokemon.notes?.text,
+        roles: pokemon.notes?.roles ?? [],
       }).returning();
 
       await tx.insert(teams_pokemons_moves).values(

@@ -106,23 +106,32 @@ lib/
   dex-sort.ts     # weightedDexSort() — tier-weighted "featured" ordering for the Pokédex
   typeChart.ts    # Gen 1–5 (pre-Fairy) type effectiveness chart — the version that applies
                   # to Gen 4 DPP (Steel still resists Ghost/Dark)
-  mockData.ts     # curated static teams (name-based); used until API wiring is complete
+  mockData.ts     # spriteUrl() helper only now — the curated TEAMS data it used to export
+                  # was removed once useTeamBrowser switched to GET /teams
   cn.ts           # re-exports `clsx` as `cn`
-  teamBuilder.ts  # DraftTeam/DraftMember types, stat calc, Showdown export,
+  teamBuilder.ts  # DraftTeam/DraftMember types (incl. serverId), stat calc, Showdown export,
                   # localStorage load/save (with runtime shape validation)
+  api.ts          # apiFetch() — the one place client code calls the Express API, routed
+                  # through app/api/proxy/ (see root CLAUDE.md "Auth Architecture")
+  sessionCookie.ts   # httpOnly cookie get/set/clear helpers shared by app/api/auth/* routes
+  teamBrowserMap.ts  # GET /teams row -> BrowserTeam/BrowserMember (display shape for TeamCard/MonSlot)
+  teamPublishMap.ts  # DraftTeam <-> POST/PUT /teams payload, incl. gender enum and EV/IV key remap
 
 hooks/
   useFilterState.ts  # FilterState + URL sync; exposes add/remove helpers and activeCount
-  useTeamBrowser.ts  # composes theme + filter state + mock teams; client-side filtering
-  useTeamBuilder.ts  # owns builder page state: saved/working teams, selection, modals, toast
+  useTeamBrowser.ts  # composes theme + filter state + GET /teams via TanStack Query; server
+                     # does all filtering/sorting (see teamBrowserMap.ts)
+  useTeamBuilder.ts  # owns builder page state: saved/working teams, selection, modals, toast;
+                     # reconciles local drafts with server-published teams (GET /teams?user=<id>),
+                     # local copy wins when both exist; publishTeam() calls POST/PUT /teams
+  useAuth.ts         # TanStack Query wrapper around app/api/auth/* — { user, login, register, logout }
   useTheme.ts        # reads/writes localStorage "pb-theme"; sets data-theme on <html>
 ```
 
 ## Current Limitations (important before adding features)
 
-- **Mock data**: `useTeamBrowser` filters against `mockData.ts`, not `GET /teams`. Replace with a TanStack Query call to the API when wiring server state.
-- **Auth stub**: `loggedIn` in `useTeamBrowser` is hardcoded `true`. The `/api/auth/*` Next.js proxy routes and `useAuth` hook do not exist yet.
 - **Analysis content**: `app/pokedex/[slug]/data.ts` hand-curates `ANALYSIS_BY_SLUG` (sets, usage stats, community activity) — none of it comes from real game data or an API. Only the `tyranitar` slug has an entry today; every other slug 404s via `notFound()` until more are curated.
+- **Builder's "Save" vs "Publish"**: `saveTeam()` always upserts the open team into the local list regardless of whether it's published — this is intentional, not a bug. `useTeamBuilder`'s `savedTeams` merges that local list with `GET /teams?user=<id>` by `serverId`, and the local copy always wins when both exist, so an in-progress edit on a published team survives a refresh without waiting on a server round trip.
 
 ## Styling
 

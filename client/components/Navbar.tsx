@@ -4,6 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
 import { avatarColor } from "@/lib/browserUtils";
+import { useAuth } from "@/hooks/useAuth";
 
 export default function Navbar({
   theme,
@@ -13,6 +14,7 @@ export default function Navbar({
   onThemeToggle: () => void;
 }) {
   const pathname = usePathname();
+  const { user, logout } = useAuth();
   return (
     <header className="sticky top-0 z-30 flex items-center gap-8.5 h-18 px-8.5 bg-surface border-b border-line max-[560px]:gap-3.5 max-[560px]:px-3.5">
       <div className="flex items-baseline gap-2.25">
@@ -79,13 +81,30 @@ export default function Navbar({
         <button className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-4.75 py-2.75 rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-2.75 max-[560px]:py-2">
           + New team
         </button>
-        <span
-          className="w-9.5 h-9.5 rounded-full text-white grid place-items-center font-bold text-[16px]"
-          style={{ background: avatarColor("azureblade") }} // TODO: replace with auth context user once auth is implemented
-          title="azureblade"
-        >
-          A
-        </span>
+        {user ? (
+          <>
+            <button
+              className="text-[14px] font-semibold text-muted hover:text-ink whitespace-nowrap"
+              onClick={() => logout()}
+            >
+              Log out
+            </button>
+            <span
+              className="w-9.5 h-9.5 rounded-full text-white grid place-items-center font-bold text-[16px]"
+              style={{ background: avatarColor(user.username) }}
+              title={user.username}
+            >
+              {user.username.charAt(0).toUpperCase()}
+            </span>
+          </>
+        ) : (
+          <Link
+            href="/login"
+            className="text-[15px] font-bold text-muted hover:text-ink whitespace-nowrap px-3.75 py-2.25"
+          >
+            Log in
+          </Link>
+        )}
       </div>
     </header>
   );

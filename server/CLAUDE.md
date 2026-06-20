@@ -25,9 +25,10 @@ No test runner is configured (`npm test` exits 1).
 Create `.env` with:
 
 ```
-DATABASE_URL=   # postgres connection string (local or Neon) — required, process exits if missing
-JWT_SECRET=     # any secret string — required, process exits if missing
-PORT=3000       # optional, defaults to 3000
+DATABASE_URL=    # postgres connection string (local or Neon) — required, process exits if missing
+JWT_SECRET=      # any secret string — required, process exits if missing
+PORT=3000        # optional, defaults to 3000
+CLIENT_ORIGIN=   # browser origin allowed by CORS (e.g. http://localhost:3000) — required for the client to call this API directly
 ```
 
 ## Code Structure

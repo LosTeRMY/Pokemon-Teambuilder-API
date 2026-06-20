@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import authRouter from './routes/auth';
 import gamedataRouter from './routes/gamedata';
 import teamsRouter from './routes/teams';
@@ -7,6 +8,7 @@ import { AppError } from './errors';
 
 const app = express();
 
+app.use(cors({ origin: process.env.CLIENT_ORIGIN, credentials: true }));
 app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/gamedata', gamedataRouter);

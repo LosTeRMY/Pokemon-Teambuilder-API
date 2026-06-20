@@ -19,6 +19,15 @@ router.get("/", optionalAuth, async (req, res, next) => {
   }
 });
 
+router.get("/format-counts", async (req, res, next) => {
+  try {
+    const counts = await teamService.getFormatCounts();
+    res.json(counts);
+  } catch (err) {
+    next(err);
+  }
+});
+
 router.get("/:id", async (req, res, next) => {
   const teamId = parseId(req.params.id);
   if (!teamId) return res.status(400).json({ error: "Invalid id" });

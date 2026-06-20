@@ -28,6 +28,10 @@ const pokemonSchema = z.object({
   }).refine(evs => Object.values(evs).reduce((sum, val) => sum + val, 0) <= 508, {
     message: "Total EVs cannot exceed 508",
   }),
+  notes: z.object({
+    roles: z.array(z.string()).default([]),
+    text: z.string().max(500).default(""),
+  }).optional(),
 });
 
 const createTeamSchema = z.object({

@@ -13,12 +13,10 @@ Two independent Node projects (no root `package.json`/workspaces — each has it
 ```text
 data/           # shared immutable game data (JSON) — source of truth
 server/         # Express + Drizzle API — see server/CLAUDE.md
-client/         # Next.js frontend — see client/CLAUDE.md (currently being rebuilt)
+client/         # Next.js frontend — see client/CLAUDE.md
 ```
 
 Each workspace has its own `package.json`, `node_modules`, and `CLAUDE.md` with stack details, commands, and architecture notes. Read the relevant sub-file before working in that workspace.
-
-A handful of one-off `.mjs` scripts at the repo root (`reindex.mjs`, `remap-learnsets.mjs`, `extract-gen4-learnsets.mjs`) were used to bulk-edit `data/*.json` during the Gen 4 data buildout (reindexing IDs, remapping learnsets). They write to both `data/` and `client/data/` directly — treat them as scratch tooling, not part of the runtime app.
 
 ## Running Both Sides
 
@@ -53,10 +51,11 @@ The client never stores JWTs in JavaScript-accessible storage. The flow:
 
 1. Client POSTs credentials to a **Next.js API route** (`app/api/auth/login/route.ts`)
 2. The route proxies to `POST /auth/login` on the Express server
-3. The route sets the JWT in an **httpOnly cookie** — unreachable by JS
-4. All subsequent fetch calls use `credentials: 'include'` to send the cookie
+3. The route sets the JWT in an **httpOnly cookie** (`pb_token`, see `client/lib/sessionCookie.ts`) — unreachable by JS
 
-The Express server must validate the token on every authenticated request. The Next.js proxy exists solely to set/clear the httpOnly cookie.
+The Express server validates the token on every authenticated request, but it **only ever checks the `Authorization: Bearer <token>` header — it never reads cookies.** Since the cookie is httpOnly, client-side JS has no way to read the token and attach that header itself. So every call to the Express API, not just login/logout, goes through **`client/app/api/proxy/[...path]/route.ts`** — a generic Next.js route handler that reads the httpOnly cookie server-side and forwards it as `Authorization: Bearer` to Express. `client/lib/api.ts#apiFetch()` is the one place that calls this proxy; nothing in client code should call the Express origin (`NEXT_PUBLIC_API_URL`) directly except the proxy route itself and the `app/api/auth/*` routes.
+
+If you add a new authenticated (or even optionally-authenticated) Express endpoint, calling it via `apiFetch()` is enough — no new proxy route needed, the catch-all already covers it.
 
 ## Draft Teams
 
@@ -69,4 +68,4 @@ The client is styled with **Tailwind v4 utility classes bound to a CSS custom pr
 ## Current Status
 
 - **Server** (`server/`) — fully implemented. Express + Drizzle + PostgreSQL. No test runner. See `server/CLAUDE.md` for API surface, validation strategy, and schema details.
-- **Client** (`client/`) — partially implemented. Team browser (`/`), Pokédex (`/pokedex`), and the team builder (`/builder`) pages are working. Auth and TanStack Query wiring are not yet implemented — the team browser runs against `mockData.ts` (curated static teams) with client-side filtering, and `loggedIn` is hardcoded `true`. See `client/CLAUDE.md` for component and hook architecture.
+- **Client** (`client/`) — fully wired to the live API. Auth (login/register/logout/session restore), the team browser (`GET /teams`, replacing the old `mockData.ts` feed), and the builder's publish/save flow (`POST`/`PUT /teams`, including the gender-enum and EV/IV key mapping in `client/lib/teamPublishMap.ts`) all hit the real Express server through the proxy described above. TanStack Query (`app/providers.tsx`) backs all of it. See `client/CLAUDE.md` for component and hook architecture.

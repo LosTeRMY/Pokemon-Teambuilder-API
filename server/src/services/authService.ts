@@ -27,5 +27,20 @@ export async function login(data: { email: string; password: string }) {
   if (!isMatch) throw new AppError(400, "Invalid email or password");
 
   const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: "7d" });
-  return { token };
+  return {
+    token,
+    user: { id: user.id, username: user.username, email: user.email, avatar: user.avatar, bio: user.bio },
+  };
+}
+
+export async function getCurrentUser(userId: number) {
+  const [user] = await db.select({
+    id: users.id,
+    username: users.username,
+    email: users.email,
+    avatar: users.avatar,
+    bio: users.bio,
+  }).from(users).where(eq(users.id, userId));
+  if (!user) throw new AppError(404, "User not found");
+  return user;
 }
