@@ -1,17 +1,17 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 import * as LK from "@/lib/lookups";
 import { apiFetch } from "@/lib/api";
 import { mapServerTeam, type ServerTeam } from "@/lib/teamBrowserMap";
 import { useFilterState } from "@/hooks/useFilterState";
 import { useTheme } from "@/hooks/useTheme";
 import { useAuth } from "@/hooks/useAuth";
+import { useLikeToggle } from "@/hooks/useLikeToggle";
 
 export function useTeamBrowser() {
   const { theme, toggle } = useTheme();
-  const queryClient = useQueryClient();
 
   const { user } = useAuth();
   const loggedIn = !!user;
@@ -32,16 +32,23 @@ export function useTeamBrowser() {
     } catch { /* sandboxed origin */ }
   }, [queryString]);
 
-  // limit=100 mirrors the old client-side filtering's "show everything that
-  // matches" behavior — there's no pager UI yet, and 100 is the server's cap.
+  const PAGE_SIZE = 20; // matches the server's own default limit, made explicit
+
   const teamsQuery = useQuery({
     queryKey: ["teams", queryString],
     queryFn: () =>
-      apiFetch<ServerTeam[]>(`/teams?${queryString}${queryString ? "&" : ""}limit=100`).then((rows) =>
+      apiFetch<ServerTeam[]>(`/teams?${queryString}${queryString ? "&" : ""}limit=${PAGE_SIZE}`).then((rows) =>
         rows.map(mapServerTeam),
       ),
   });
   const filtered = teamsQuery.data ?? [];
+
+  const totalQuery = useQuery({
+    queryKey: ["teams", "count", queryString],
+    queryFn: () => apiFetch<{ total: number }>(`/teams/count${queryString ? "?" + queryString : ""}`),
+  });
+  const total = totalQuery.data?.total ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
   const countsQuery = useQuery({
     queryKey: ["teams", "format-counts"],
@@ -50,14 +57,10 @@ export function useTeamBrowser() {
   });
   const counts = countsQuery.data ?? {};
 
+  const toggleLike = useLikeToggle(["teams", queryString]);
   const onLike = (id: number) => {
     if (!loggedIn) return;
-    const team = filtered.find((tm) => tm.id === id);
-    if (!team) return;
-    const method = team.liked ? "DELETE" : "POST";
-    apiFetch(`/teams/${id}/likes`, { method })
-      .then(() => queryClient.invalidateQueries({ queryKey: ["teams", queryString] }))
-      .catch(() => {});
+    toggleLike(filtered, id);
   };
 
   const copyLink = () => {
@@ -78,5 +81,6 @@ export function useTeamBrowser() {
     filter, counts, loggedIn, drawer, setDrawer,
     filtered, s, set, removeFromList, removeCombo, activeCount, onLike, onClear,
     copied, copyLink, size, compact,
+    total, totalPages,
   };
 }

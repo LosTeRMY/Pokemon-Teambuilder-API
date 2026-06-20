@@ -16,24 +16,34 @@ async function forward(req: NextRequest, path: string[]) {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;
   const url = `${API_URL}/${path.join("/")}${req.nextUrl.search}`;
 
+  const controller = new AbortController();
+  const timeoutId = setTimeout(() => controller.abort(), 30_000);
+
   const init: RequestInit = {
     method: req.method,
     headers: {
-      "Content-Type": "application/json",
+      "Content-Type": req.headers.get("content-type") ?? "application/json",
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
     },
+    signal: controller.signal,
   };
   if (req.method !== "GET" && req.method !== "HEAD") {
     const body = await req.text();
     if (body) init.body = body;
   }
 
-  const apiRes = await fetch(url, init);
-  const text = await apiRes.text();
-  return new NextResponse(apiRes.status === 204 ? null : text, {
-    status: apiRes.status,
-    headers: { "Content-Type": apiRes.headers.get("Content-Type") ?? "application/json" },
-  });
+  try {
+    const apiRes = await fetch(url, init);
+    const text = await apiRes.text();
+    return new NextResponse(apiRes.status === 204 ? null : text, {
+      status: apiRes.status,
+      headers: { "Content-Type": apiRes.headers.get("Content-Type") ?? "application/json" },
+    });
+  } catch {
+    return NextResponse.json({ error: "Upstream request failed or timed out" }, { status: 502 });
+  } finally {
+    clearTimeout(timeoutId);
+  }
 }
 
 type RouteParams = { params: Promise<{ path: string[] }> };
@@ -45,6 +55,9 @@ export async function POST(req: NextRequest, { params }: RouteParams) {
   return forward(req, (await params).path);
 }
 export async function PUT(req: NextRequest, { params }: RouteParams) {
+  return forward(req, (await params).path);
+}
+export async function PATCH(req: NextRequest, { params }: RouteParams) {
   return forward(req, (await params).path);
 }
 export async function DELETE(req: NextRequest, { params }: RouteParams) {

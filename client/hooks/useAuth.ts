@@ -8,6 +8,7 @@ export type AuthUser = {
   email: string;
   avatar: string | null;
   bio: string | null;
+  createdAt: string;
 };
 
 const ME_KEY = ["auth", "me"];
@@ -18,9 +19,11 @@ async function postJson<T>(path: string, body?: unknown): Promise<T> {
     headers: { "Content-Type": "application/json" },
     body: body ? JSON.stringify(body) : undefined,
   });
-  const data = await res.json();
-  if (!res.ok) throw new Error(typeof data?.error === "string" ? data.error : "Request failed");
-  return data;
+  if (!res.ok) {
+    const data = await res.json().catch(() => null);
+    throw new Error(typeof data?.error === "string" ? data.error : "Request failed");
+  }
+  return res.json();
 }
 
 export function useAuth() {

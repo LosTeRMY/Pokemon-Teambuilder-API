@@ -3,8 +3,8 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/cn";
-import { avatarColor } from "@/lib/browserUtils";
 import { useAuth } from "@/hooks/useAuth";
+import Avatar from "@/components/ui/Avatar";
 
 export default function Navbar({
   theme,
@@ -78,24 +78,40 @@ export default function Navbar({
             </svg>
           )}
         </button>
-        <button className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-4.75 py-2.75 rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-2.75 max-[560px]:py-2">
+        <Link
+          href="/builder"
+          className="bg-accent text-white border-none whitespace-nowrap text-[15px] font-bold px-4.75 py-2.75 rounded-[10px] transition-[filter] duration-150 hover:brightness-[1.07] max-[560px]:px-2.75 max-[560px]:py-2"
+        >
           + New team
-        </button>
+        </Link>
         {user ? (
           <>
             <button
               className="text-[14px] font-semibold text-muted hover:text-ink whitespace-nowrap"
-              onClick={() => logout()}
+              onClick={async () => {
+                try {
+                  await logout();
+                } catch (err) {
+                  console.error("Logout failed:", err);
+                }
+              }}
             >
               Log out
             </button>
-            <span
-              className="w-9.5 h-9.5 rounded-full text-white grid place-items-center font-bold text-[16px]"
-              style={{ background: avatarColor(user.username) }}
-              title={user.username}
+            <Link
+              href="/profile/settings"
+              className="grid place-items-center w-10 h-10 bg-surface border border-line rounded-[10px] text-muted transition-all duration-150 hover:text-ink hover:border-muted hover:bg-surface-2 active:scale-[0.93]"
+              aria-label="Account settings"
+              title="Account settings"
             >
-              {user.username.charAt(0).toUpperCase()}
-            </span>
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="12" cy="12" r="3.2" />
+                <path d="M19.4 13.5a7.7 7.7 0 0 0 0-3l1.9-1.5-2-3.4-2.3.7a7.6 7.6 0 0 0-2.6-1.5L14 2h-4l-.4 2.3a7.6 7.6 0 0 0-2.6 1.5l-2.3-.7-2 3.4L4.6 10a7.7 7.7 0 0 0 0 3l-1.9 1.5 2 3.4 2.3-.7c.76.66 1.64 1.17 2.6 1.5L10 22h4l.4-2.3a7.6 7.6 0 0 0 2.6-1.5l2.3.7 2-3.4z" />
+              </svg>
+            </Link>
+            <Link href={`/profile/${user.id}`} title="View your profile">
+              <Avatar name={user.username} src={user.avatar} size={38} />
+            </Link>
           </>
         ) : (
           <Link

@@ -24,7 +24,7 @@ export function fmtColor(formatId: number | null): string {
   return (tier && TIER_COLOR[tier]) || "var(--accent)";
 }
 
-export const EV_BUDGET = 510;
+export const EV_BUDGET = 508; // matches server/src/schemas/team.ts's total-EV cap
 export const EV_MAX = 252;
 export const IV_MAX = 31;
 export const DEFAULT_LEVEL = 100;

@@ -23,6 +23,7 @@ export default function Sidebar({
   onNew,
   onOpen,
   onDelete,
+  onRequestDelete,
   drawer,
   onCloseDrawer,
 }: {
@@ -36,6 +37,7 @@ export default function Sidebar({
   onNew: () => void;
   onOpen: (id: string) => void;
   onDelete: (id: string) => void;
+  onRequestDelete: (id: string) => void;
   drawer: boolean;
   onCloseDrawer: () => void;
 }) {
@@ -159,6 +161,7 @@ export default function Sidebar({
                 notesCount={t.members.filter((m) => m && (m.notes.text.trim() || m.notes.roles.length)).length}
                 onOpen={() => onOpen(t.id)}
                 onDelete={() => onDelete(t.id)}
+                onRequestDelete={() => onRequestDelete(t.id)}
               />
             ))}
           </div>

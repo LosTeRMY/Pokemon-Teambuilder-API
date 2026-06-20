@@ -11,6 +11,7 @@ export default function Page() {
     filter, counts, loggedIn, drawer, setDrawer,
     filtered, s, set, removeFromList, removeCombo, activeCount, onLike, onClear,
     copied, copyLink, size, compact,
+    total, totalPages,
   } = useTeamBrowser();
 
   return (
@@ -26,6 +27,8 @@ export default function Page() {
         />
         <TeamDisplay
           filtered={filtered}
+          total={total}
+          totalPages={totalPages}
           s={s}
           set={set}
           removeFromList={removeFromList}

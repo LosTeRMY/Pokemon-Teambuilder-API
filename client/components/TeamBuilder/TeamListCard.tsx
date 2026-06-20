@@ -14,6 +14,7 @@ export default function TeamListCard({
   notesCount,
   onOpen,
   onDelete,
+  onRequestDelete,
 }: {
   team: DraftTeam;
   active: boolean;
@@ -21,6 +22,7 @@ export default function TeamListCard({
   notesCount: number;
   onOpen: () => void;
   onDelete: () => void;
+  onRequestDelete: () => void;
 }) {
   const filled = team.members.filter(Boolean) as NonNullable<DraftTeam["members"][number]>[];
 
@@ -32,28 +34,19 @@ export default function TeamListCard({
       )}
       style={{ "--th": fmtColor(team.formatId), borderLeft: `3px solid var(--th, var(--accent))` } as React.CSSProperties}
     >
-      {/* Fills the whole card as the primary click target; sits below the delete/lock
+      {/* Fills the whole card as the primary click target; sits below the delete
           button in paint order (flex items paint in DOM order) so that button stays
           independently clickable instead of being nested inside this one. */}
       <button type="button" className="absolute inset-0 rounded-[10px]" onClick={onOpen} aria-label={`Open ${team.name}`} />
-      {!team.published ? (
-        <button
-          type="button"
-          aria-label="Delete draft"
-          title="Delete draft"
-          className="absolute top-2 right-2 w-6 h-6 grid place-items-center rounded-md bg-surface-2 border border-line text-faint opacity-0 group-hover:opacity-100 transition-opacity duration-120 hover:text-like-fg hover:bg-like-bg hover:border-like-bd"
-          onClick={onDelete}
-        >
-          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /></svg>
-        </button>
-      ) : (
-        <span
-          title="Published — protected from deletion"
-          className="absolute top-2.25 right-2.25 w-5.5 h-5.5 grid place-items-center rounded-md text-[#8a52e0] bg-[color-mix(in_srgb,#7a3fd0_13%,var(--surface))]"
-        >
-          <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" strokeWidth="2.1" strokeLinecap="round" strokeLinejoin="round"><rect x="5" y="11" width="14" height="9" rx="2" /><path d="M8 11V7a4 4 0 0 1 8 0v4" /></svg>
-        </span>
-      )}
+      <button
+        type="button"
+        aria-label={team.published ? "Delete published team" : "Delete draft"}
+        title={team.published ? "Delete published team" : "Delete draft"}
+        className="absolute top-2 right-2 w-6 h-6 grid place-items-center rounded-md bg-surface-2 border border-line text-faint opacity-0 group-hover:opacity-100 transition-opacity duration-120 hover:text-like-fg hover:bg-like-bg hover:border-like-bd"
+        onClick={team.published ? onRequestDelete : onDelete}
+      >
+        <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6" /></svg>
+      </button>
       <div className="flex items-start gap-2">
         <span className="flex-1 min-w-0 text-[13.5px] font-extrabold tracking-[-0.01em] leading-[1.25] line-clamp-2">{team.name}</span>
         {team.formatId != null && <span className="tb2-tcard-fmt">{fmtName(team.formatId)}</span>}

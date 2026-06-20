@@ -37,6 +37,7 @@ export function useTeamBuilder() {
   const [drawer, setDrawer] = useState(false);
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>("all");
   const [sidebarQuery, setSidebarQuery] = useState("");
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   // Load persisted state once on mount.
   useEffect(() => {
@@ -146,6 +147,39 @@ export function useTeamBuilder() {
     notify("Team deleted");
   };
 
+  // Drafts delete instantly (nothing exists server-side); a published team
+  // routes through a confirmation modal first since the delete is irreversible.
+  const requestDelete = (id: string) => {
+    const found = savedTeams.find((t) => t.id === id);
+    if (found && found.published) {
+      setPendingDeleteId(id);
+    } else {
+      deleteTeam(id);
+    }
+  };
+
+  const cancelDelete = () => setPendingDeleteId(null);
+
+  const confirmDelete = async () => {
+    const id = pendingDeleteId;
+    const found = id ? savedTeams.find((t) => t.id === id) : null;
+    if (!id || !found || found.serverId == null) {
+      setPendingDeleteId(null);
+      return;
+    }
+    try {
+      await apiFetch(`/teams/${found.serverId}`, { method: "DELETE" });
+      setLocalTeams((ts) => ts.filter((t) => t.id !== id));
+      if (team.id === id) newTeam();
+      queryClient.invalidateQueries({ queryKey: ["teams", "mine", user?.id] });
+      notify("Team deleted");
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't delete that team");
+    } finally {
+      setPendingDeleteId(null);
+    }
+  };
+
   const publishTeam = async () => {
     if (!loggedIn) {
       notify("Log in to publish a team");
@@ -218,6 +252,7 @@ export function useTeamBuilder() {
     drawer, setDrawer,
     sidebarFilter, setSidebarFilter,
     sidebarQuery, setSidebarQuery,
+    pendingDeleteId, requestDelete, cancelDelete, confirmDelete,
     formats: GAMEDATA.formats,
     newTeam, loadTeam, saveTeam, deleteTeam, publishTeam,
     updateMember, updateNotes, pickSpecies,

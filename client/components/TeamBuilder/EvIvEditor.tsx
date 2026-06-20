@@ -38,7 +38,13 @@ export default function EvIvEditor({
   const remaining = EV_BUDGET - total;
   const over = remaining < 0;
 
-  const setEv = (k: StatKey, raw: string) => onEv(k, Math.max(0, Math.min(EV_MAX, parseInt(raw, 10) || 0)));
+  // Clamp the committed value to whatever's left of the shared 508 budget
+  // once the other stats' EVs are accounted for — not just the per-stat 252
+  // max — without touching the slider's visible 0-252 range. (Shrinking the
+  // `max` attribute itself made near-empty-looking sliders that were
+  // actually maxed out, since the browser doesn't refill the track to match.)
+  const capFor = (k: StatKey) => Math.max(0, Math.min(EV_MAX, (evs[k] || 0) + remaining));
+  const setEv = (k: StatKey, raw: string) => onEv(k, Math.max(0, Math.min(capFor(k), parseInt(raw, 10) || 0)));
   const setIv = (k: StatKey, raw: string) => onIv(k, Math.max(0, Math.min(IV_MAX, parseInt(raw, 10) || 0)));
 
   return (

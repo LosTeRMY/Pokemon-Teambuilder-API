@@ -8,15 +8,12 @@ import z from "zod";
 
 type TeamData = z.infer<typeof createTeamSchema>;
 
-export async function listTeams(query: Record<string, unknown>, requestingUserId?: number) {
-  const page = Math.max(1, Number(query.page) || 1);
-  const limit = Math.min(100, Math.max(1, Number(query.limit) || 20));
-  const offset = (page - 1) * limit;
-
+/* Shared by listTeams() and countTeams() so the count of "how many pages"
+ * can never drift out of sync with what the list query actually filters by. */
+function buildTeamConditions(query: Record<string, unknown>, requestingUserId?: number) {
   const formatFilter = query.format ? Number(query.format) : null;
   const nameFilter = query.name as string | undefined;
   const userFilter = query.user ? Number(query.user) : null;
-  const sort = (query.sort as string) || "newest";
 
   const toIntArray = (val: unknown): number[] =>
     (Array.isArray(val) ? val : val ? [val] : [])
@@ -79,6 +76,17 @@ export async function listTeams(query: Record<string, unknown>, requestingUserId
   for (const { pokemonId, valueId } of pokemonNatureFilters) conditions.push(
     sql`EXISTS (SELECT 1 FROM teams_pokemons WHERE teams_pokemons.team_id = ${teams.id} AND teams_pokemons.pokemon_id = ${pokemonId} AND teams_pokemons.nature_id = ${valueId})`
   );
+
+  return conditions;
+}
+
+export async function listTeams(query: Record<string, unknown>, requestingUserId?: number) {
+  const page = Math.max(1, Number(query.page) || 1);
+  const limit = Math.min(100, Math.max(1, Number(query.limit) || 20));
+  const offset = (page - 1) * limit;
+  const sort = (query.sort as string) || "newest";
+
+  const conditions = buildTeamConditions(query, requestingUserId);
 
   const likesCount = sql<number>`(SELECT COUNT(*) FROM team_likes WHERE team_likes.team_id = ${teams.id})`.as('likes_count');
   const liked = requestingUserId
@@ -154,6 +162,15 @@ export async function getFormatCounts(): Promise<Record<number, number>> {
   const counts: Record<number, number> = {};
   for (const r of rows) counts[r.format_id] = Number(r.count);
   return counts;
+}
+
+export async function countTeams(query: Record<string, unknown>, requestingUserId?: number): Promise<number> {
+  const conditions = buildTeamConditions(query, requestingUserId);
+  const [row] = await db
+    .select({ count: sql<number>`COUNT(*)` })
+    .from(teams)
+    .where(conditions.length > 0 ? and(...conditions) : undefined);
+  return Number(row?.count ?? 0);
 }
 
 export async function getTeam(teamId: number) {

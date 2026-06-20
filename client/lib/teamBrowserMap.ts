@@ -20,7 +20,8 @@ export type ServerTeam = {
   username: string | null;
   format_id: number;
   createdAt: string;
-  likes_count: number;
+  // node-postgres returns COUNT() aggregates as a string (bigint-safe), not a number
+  likes_count: number | string;
   liked: boolean | null;
   pokemons: ServerPokemon[];
 };
@@ -54,7 +55,7 @@ export function mapServerTeam(row: ServerTeam): BrowserTeam {
     format: row.format_id,
     author: { id: row.userId ?? 0, name: row.username ?? "Deleted user" },
     createdAt: row.createdAt,
-    likes: row.likes_count,
+    likes: Number(row.likes_count),
     liked: row.liked ?? false,
     description: row.description ?? "",
     members: row.pokemons.map(mapMember),

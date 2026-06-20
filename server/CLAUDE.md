@@ -28,7 +28,9 @@ Create `.env` with:
 DATABASE_URL=    # postgres connection string (local or Neon) — required, process exits if missing
 JWT_SECRET=      # any secret string — required, process exits if missing
 PORT=3000        # optional, defaults to 3000
-CLIENT_ORIGIN=   # browser origin allowed by CORS (e.g. http://localhost:3000) — required for the client to call this API directly
+CLIENT_ORIGIN=   # browser origin allowed by CORS (e.g. http://localhost:3000) — required, process exits if missing
+                 # (cors() silently falls back to Access-Control-Allow-Origin: * when origin is falsy, so
+                 # app.ts fails loudly instead of allowing any origin to make credentialed requests)
 ```
 
 ## Code Structure
@@ -115,13 +117,15 @@ A team in the database is by definition valid and public. **Drafts are never per
 ## API Surface
 
 **Auth** (JWT access token, 7-day expiry — `Authorization: Bearer <token>`):
-- `POST /auth/register`, `POST /auth/login`
+- `POST /auth/register`, `POST /auth/login` — both resolve to the same `{ token, user }` shape (`register` internally logs in); `user` includes `id`, `username`, `email`, `avatar`, `bio`, `createdAt`
+- `GET /auth/me` — returns `{ user }` in the same shape, from the bearer token's `userId`
 
 **Static data** (JSON-backed, no DB queries — all under `/gamedata`):
 - `GET /gamedata/pokemons`, `/gamedata/moves`, `/gamedata/abilities`, `/gamedata/items`, `/gamedata/natures`, `/gamedata/formats`, `/gamedata/learnsets`
 
 **Teams**:
-- `GET /teams` — browse with filters
+- `GET /teams` — browse with filters, paginated
+- `GET /teams/count` — total matching rows for the same filters (drives client-side `totalPages`)
 - `POST /teams` — publish (auth required)
 - `GET /teams/:id`
 - `PUT /teams/:id` — full team replacement (auth, owner only)
@@ -132,8 +136,8 @@ A team in the database is by definition valid and public. **Drafts are never per
 - `DELETE /teams/:id/likes` — unlike (auth required)
 
 **Users**:
-- `GET /users/:id` — public profile + teams
-- `PATCH /users/:id` — update email, password, avatar, or bio (auth, own account; email/password require `currentPassword`)
+- `GET /users/:id` — public profile + a lean teams array (id/name/format/likes only, no pokemons — the client fetches `GET /teams?user=<id>` instead for the full display shape, see client/CLAUDE.md's `useUserProfile`)
+- `PATCH /users/:id` — update email, password, avatar, or bio (auth, own account; email/password require `currentPassword`). `avatar: ""` is a sentinel for "clear the avatar" (stored as `NULL`) — distinct from omitting the field, which leaves the existing avatar untouched
 
 **`GET /teams` query params:**
 `?pokemon=&move=&ability=&item=&format=&name=&user=&liked_by=&sort=newest|oldest|popular&page=&limit=`
@@ -147,6 +151,8 @@ Combo filters (format `pokemonId:valueId`) link a specific Pokémon to a specifi
 - `pokemon_nature` — Pokémon with a specific nature
 
 `liked_by=me` is resolved server-side from the JWT. Team list responses include `likes_count` (live COUNT) and `liked` (boolean for authenticated users, `null` for unauthenticated).
+
+`teamService.ts` factors filter-building into `buildTeamConditions()`, shared by `listTeams()` and `countTeams()` — if you add a new filter param, add it there so the list and the count can never drift out of sync.
 
 ## Schema Changes
 

@@ -3,6 +3,10 @@
  * Sprites are served locally from /public/sprites/gen4 (slug-named PNGs). */
 export const spriteUrl = (slug: string) => `/sprites/gen4/${slug}.png`;
 
+// Held-item icons, sliced once from Pokémon Showdown's itemicons-sheet.png
+// via scripts/fetch-item-sprites.mjs — see client/CLAUDE.md.
+export const itemSpriteUrl = (slug: string) => `/sprites/items/${slug}.png`;
+
 /* member: n=name, s=sprite slug, t=types, item, abil, nat=nature, moves */
 export type RawMember = {
   n: string; s: string; t: string[];
