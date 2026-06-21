@@ -23,6 +23,19 @@ const TIER_FORMAT = { ubers: "gen4ubers", ou: "gen4ou", uu: "gen4uu", nu: "gen4n
 const CUTOFFS = [1760, 1630, 1500, 0]; // highest first
 const MIN_BATTLES = 200; // fall back to a lower cutoff if the high-cutoff sample is too thin
 const MAX_MONTHS_BACK = 72;
+const FETCH_TIMEOUT_MS = 15_000;
+
+// Bounds every request so one stalled connection can't hang the whole script —
+// findLatestMonth() makes dozens of these probing for the right month.
+async function fetchWithTimeout(url, init) {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), FETCH_TIMEOUT_MS);
+  try {
+    return await fetch(url, { ...init, signal: controller.signal });
+  } finally {
+    clearTimeout(timer);
+  }
+}
 
 const TIER_LABEL = { ubers: "Ubers", ou: "OU", uu: "UU", nu: "NU", pu: "PU", lc: "LC" };
 
@@ -50,13 +63,19 @@ function monthString(date) {
   return `${date.getUTCFullYear()}-${String(date.getUTCMonth() + 1).padStart(2, "0")}`;
 }
 
+// Network hiccups here just mean "treat this month as unavailable and keep
+// searching" — never let a transient failure abort the whole script.
 async function urlExists(url) {
-  const res = await fetch(url, { method: "HEAD" });
-  return res.ok;
+  try {
+    const res = await fetchWithTimeout(url, { method: "HEAD" });
+    return res.ok;
+  } catch {
+    return false;
+  }
 }
 
 async function fetchJson(url) {
-  const res = await fetch(url);
+  const res = await fetchWithTimeout(url);
   if (!res.ok) throw new Error(`${url} -> ${res.status}`);
   return res.json();
 }

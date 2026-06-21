@@ -12,8 +12,18 @@ type PageData = z.infer<typeof analysisPageSchema>;
 async function getOrCreateAnalysis(pokemonId: number, userId: number | null) {
   const [existing] = await db.select().from(pokemonAnalyses).where(eq(pokemonAnalyses.pokemonId, pokemonId));
   if (existing) return existing;
-  const [created] = await db.insert(pokemonAnalyses).values({ pokemonId, createdBy: userId ?? undefined }).returning();
-  return created;
+
+  // Two requests can both miss the select above for the same brand-new
+  // pokemonId; onConflictDoNothing makes the loser's insert a no-op instead
+  // of a thrown 23505, and the re-select below fetches what the winner created.
+  const [created] = await db.insert(pokemonAnalyses)
+    .values({ pokemonId, createdBy: userId ?? undefined })
+    .onConflictDoNothing({ target: pokemonAnalyses.pokemonId })
+    .returning();
+  if (created) return created;
+
+  const [raceWinner] = await db.select().from(pokemonAnalyses).where(eq(pokemonAnalyses.pokemonId, pokemonId));
+  return raceWinner;
 }
 
 /* Contributors are derived live from analysis_revisions, not stored — same
@@ -185,41 +195,56 @@ export async function upsertAnalysisPage(pokemonId: number, data: PageData, user
 export async function createSet(pokemonId: number, data: SetData, userId: number) {
   const analysis = await getOrCreateAnalysis(pokemonId, userId);
 
-  const [{ maxOrder }] = await db
-    .select({ maxOrder: sql<number>`COALESCE(MAX(${analysisSets.orderIndex}), -1)` })
-    .from(analysisSets)
-    .where(eq(analysisSets.analysisId, analysis.id));
+  // Wrapped in a transaction so the maxOrder read and the insert that depends
+  // on it are at least consistent within one connection; the (analysisId,
+  // orderIndex) unique constraint (schema.ts) is the actual safety net against
+  // two concurrent "add a set" requests landing on the same position — that
+  // race is rare enough here that surfacing a clear 409 to retry is an
+  // acceptable trade-off against a full retry-loop.
+  try {
+    return await db.transaction(async (tx) => {
+      const [{ maxOrder }] = await tx
+        .select({ maxOrder: sql<number>`COALESCE(MAX(${analysisSets.orderIndex}), -1)` })
+        .from(analysisSets)
+        .where(eq(analysisSets.analysisId, analysis.id));
 
-  const [newSet] = await db.insert(analysisSets).values({
-    analysisId: analysis.id,
-    name: data.name,
-    role: data.role,
-    itemId: data.itemId,
-    abilityId: data.abilityId,
-    natureId: data.natureId,
-    evs: data.evs,
-    moves: data.moves,
-    analysis: data.analysis,
-    evNote: data.evNote,
-    teambuilding: data.teambuilding,
-    matchupNote: data.matchupNote,
-    handles: data.handles ?? [],
-    threats: data.threats ?? [],
-    orderIndex: maxOrder + 1,
-    createdBy: userId,
-    updatedBy: userId,
-  }).returning();
+      const [newSet] = await tx.insert(analysisSets).values({
+        analysisId: analysis.id,
+        name: data.name,
+        role: data.role,
+        itemId: data.itemId,
+        abilityId: data.abilityId,
+        natureId: data.natureId,
+        evs: data.evs,
+        moves: data.moves,
+        analysis: data.analysis,
+        evNote: data.evNote,
+        teambuilding: data.teambuilding,
+        matchupNote: data.matchupNote,
+        handles: data.handles ?? [],
+        threats: data.threats ?? [],
+        orderIndex: maxOrder + 1,
+        createdBy: userId,
+        updatedBy: userId,
+      }).returning();
 
-  await db.insert(analysisRevisions).values({
-    analysisId: analysis.id,
-    setId: newSet.id,
-    authorId: userId,
-    isAi: false,
-    status: "merged",
-    summary: `Added the "${data.name}" set`,
-  });
+      await tx.insert(analysisRevisions).values({
+        analysisId: analysis.id,
+        setId: newSet.id,
+        authorId: userId,
+        isAi: false,
+        status: "merged",
+        summary: `Added the "${data.name}" set`,
+      });
 
-  return newSet;
+      return newSet;
+    });
+  } catch (error: any) {
+    if ((error?.cause?.code ?? error?.code) === "23505") {
+      throw new AppError(409, "Another set was just added — try again");
+    }
+    throw error;
+  }
 }
 
 export async function updateSet(setId: number, data: SetData, userId: number) {
@@ -282,6 +307,7 @@ export async function createProposal(pokemonId: number, data: ProposalData, user
 export async function voteProposal(proposalId: number, userId: number) {
   const [proposal] = await db.select().from(analysisProposals).where(eq(analysisProposals.id, proposalId));
   if (!proposal) throw new AppError(404, "Proposal not found");
+  if (proposal.status !== "pending") throw new AppError(409, "Proposal already resolved");
   try {
     await db.insert(proposalVotes).values({ proposal_id: proposalId, user_id: userId });
   } catch (error: any) {
@@ -296,14 +322,28 @@ export async function unvoteProposal(proposalId: number, userId: number) {
   );
 }
 
-export async function acceptProposal(proposalId: number, moderatorId: number) {
-  const [proposal] = await db.select().from(analysisProposals).where(eq(analysisProposals.id, proposalId));
-  if (!proposal) throw new AppError(404, "Proposal not found");
-  if (proposal.status !== "pending") throw new AppError(409, "Proposal already resolved");
-  const moves = proposal.moves;
-  if (!moves || moves.length === 0) throw new AppError(400, "Proposal has no moves — can't promote to a set");
+// Looks up why a proposal isn't claimable, only called after a conditional
+// update already found nothing to update — keeps the 404-vs-409 distinction
+// without a second round trip on the (much more common) success path.
+async function explainUnclaimable(proposalId: number): Promise<never> {
+  const [existing] = await db.select({ id: analysisProposals.id }).from(analysisProposals).where(eq(analysisProposals.id, proposalId));
+  if (!existing) throw new AppError(404, "Proposal not found");
+  throw new AppError(409, "Proposal already resolved");
+}
 
+export async function acceptProposal(proposalId: number, moderatorId: number) {
   return db.transaction(async (tx) => {
+    // The status flip is the actual claim — WHERE status='pending' makes it
+    // atomic, so only one of two concurrent accept/reject calls can win it.
+    const [proposal] = await tx.update(analysisProposals)
+      .set({ status: "accepted" })
+      .where(and(eq(analysisProposals.id, proposalId), eq(analysisProposals.status, "pending")))
+      .returning();
+    if (!proposal) await explainUnclaimable(proposalId);
+
+    const moves = proposal.moves;
+    if (!moves || moves.length === 0) throw new AppError(400, "Proposal has no moves — can't promote to a set");
+
     const [{ maxOrder }] = await tx
       .select({ maxOrder: sql<number>`COALESCE(MAX(${analysisSets.orderIndex}), -1)` })
       .from(analysisSets)
@@ -336,15 +376,14 @@ export async function acceptProposal(proposalId: number, moderatorId: number) {
       summary: `Promoted the proposed "${proposal.targetName}" set`,
     });
 
-    await tx.update(analysisProposals).set({ status: "accepted" }).where(eq(analysisProposals.id, proposalId));
-
     return newSet;
   });
 }
 
 export async function rejectProposal(proposalId: number) {
-  const [proposal] = await db.select().from(analysisProposals).where(eq(analysisProposals.id, proposalId));
-  if (!proposal) throw new AppError(404, "Proposal not found");
-  if (proposal.status !== "pending") throw new AppError(409, "Proposal already resolved");
-  await db.update(analysisProposals).set({ status: "rejected" }).where(eq(analysisProposals.id, proposalId));
+  const [proposal] = await db.update(analysisProposals)
+    .set({ status: "rejected" })
+    .where(and(eq(analysisProposals.id, proposalId), eq(analysisProposals.status, "pending")))
+    .returning();
+  if (!proposal) await explainUnclaimable(proposalId);
 }

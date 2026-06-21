@@ -71,7 +71,7 @@ export default function PokemonAnalysisPage() {
   const mon = LK.pokeBySlug.get(slug);
   if (!mon) notFound();
 
-  const { analysis: data, updateOverview, addSet, editSet, proposeSet, vote, acceptProposal, rejectProposal } = usePokemonAnalysis(mon);
+  const { analysis: data, isLoading, updateOverview, addSet, editSet, proposeSet, vote, acceptProposal, rejectProposal } = usePokemonAnalysis(mon);
   const usage = usageBySlug.get(slug);
 
   const abilities = useMemo(() => LK.abilitiesForPokemon(mon.id), [mon.id]);
@@ -189,7 +189,7 @@ export default function PokemonAnalysisPage() {
             ))}
           </div>
         ) : (
-          <EmptySection message="No competitive movesets documented yet for this Pokémon." />
+          <EmptySection message={isLoading ? "Loading…" : "No competitive movesets documented yet for this Pokémon."} />
         )}
 
         <div className="flex items-end justify-between gap-4 mt-10 mb-4 flex-wrap">
@@ -217,11 +217,25 @@ export default function PokemonAnalysisPage() {
             onOpenProposed={openProposed}
             onVote={loggedIn ? (id, voted) => vote({ proposalId: id, voted }) : undefined}
             isModerator={isModerator}
-            onAccept={async (id) => { await acceptProposal(id); setToast("Proposal accepted."); }}
-            onReject={async (id) => { await rejectProposal(id); setToast("Proposal rejected."); }}
+            onAccept={isModerator ? async (id) => {
+              try {
+                await acceptProposal(id);
+                setToast("Proposal accepted.");
+              } catch (err) {
+                setToast(err instanceof Error ? err.message : "Couldn't accept the proposal.");
+              }
+            } : undefined}
+            onReject={isModerator ? async (id) => {
+              try {
+                await rejectProposal(id);
+                setToast("Proposal rejected.");
+              } catch (err) {
+                setToast(err instanceof Error ? err.message : "Couldn't reject the proposal.");
+              }
+            } : undefined}
           />
         ) : (
-          <EmptySection message="No community activity yet for this Pokémon." />
+          <EmptySection message={isLoading ? "Loading…" : "No community activity yet for this Pokémon."} />
         )}
       </main>
 

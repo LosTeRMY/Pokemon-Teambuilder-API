@@ -174,6 +174,7 @@ export default function ProposalsList({
                       : "border-line bg-surface text-muted hover:border-accent hover:text-accent",
                   )}
                   title={p.hasVoted ? "Remove your vote" : "Vote for this proposal"}
+                  aria-pressed={p.hasVoted}
                   onClick={() => onVote?.(p.id, p.hasVoted)}
                   disabled={!onVote}
                 >

@@ -67,6 +67,10 @@ export function usePokemonAnalysis(mon: GBPokemon) {
     mutationFn: ({ proposalId, voted }: { proposalId: number; voted: boolean }) =>
       apiFetch(`/pokemon-analyses/proposals/${proposalId}/votes`, { method: voted ? "DELETE" : "POST" }),
     onMutate: async ({ proposalId, voted }) => {
+      // Stop any in-flight GET for this analysis from resolving after the
+      // optimistic write and clobbering it with stale data before onSettled's
+      // invalidate gets a chance to refetch.
+      await queryClient.cancelQueries({ queryKey });
       const previous = queryClient.getQueryData<RawAnalysis | null>(queryKey);
       queryClient.setQueryData<RawAnalysis | null>(queryKey, (old) =>
         old && {

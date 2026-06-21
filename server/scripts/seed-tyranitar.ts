@@ -134,62 +134,70 @@ async function main() {
     return;
   }
 
-  const [analysis] = await db.insert(pokemonAnalyses).values({
-    pokemonId,
-    role: PAGE.role,
-    overview: PAGE.overview,
-    createdBy: null,
-  }).returning();
-
-  await db.insert(analysisRevisions).values({
-    analysisId: analysis.id,
-    setId: null,
-    authorId: null,
-    isAi: true,
-    status: "pending",
-    summary: "Seeded the initial overview as an AI baseline",
-  });
-
-  for (const [i, set] of SETS.entries()) {
-    const itemId = itemIdByName.get(set.item);
-    const abilityId = abilityIdByName.get(set.ability);
-    const natureId = natureIdByName.get(set.nature);
-    if (!itemId || !abilityId || !natureId) {
-      throw new Error(`Unresolved item/ability/nature for set "${set.name}"`);
-    }
-
-    const [newSet] = await db.insert(analysisSets).values({
-      analysisId: analysis.id,
-      name: set.name,
-      role: set.role,
-      itemId,
-      abilityId,
-      natureId,
-      evs: set.evs,
-      moves: set.moves,
-      analysis: set.analysis,
-      evNote: set.evNote,
-      teambuilding: set.teambuilding,
-      matchupNote: set.matchupNote,
-      handles: resolveSlugs(set.handles),
-      threats: resolveSlugs(set.threats),
-      isAiDraft: true,
-      orderIndex: i,
+  // Wrapped in one transaction so a failure partway through (e.g. an
+  // unresolved item name) rolls back entirely — otherwise the next run's
+  // idempotency check would see the partial pokemonAnalyses row and skip,
+  // leaving Tyranitar permanently half-seeded.
+  const analysisId = await db.transaction(async (tx) => {
+    const [analysis] = await tx.insert(pokemonAnalyses).values({
+      pokemonId,
+      role: PAGE.role,
+      overview: PAGE.overview,
       createdBy: null,
-      updatedBy: null,
     }).returning();
 
-    await db.insert(analysisRevisions).values({
+    await tx.insert(analysisRevisions).values({
       analysisId: analysis.id,
-      setId: newSet.id,
+      setId: null,
       authorId: null,
       isAi: true,
       status: "pending",
-      summary: `Seeded the "${set.name}" set as an AI baseline`,
+      summary: "Seeded the initial overview as an AI baseline",
     });
-  }
 
-  console.log(`Seeded Tyranitar (pokemon_id=${pokemonId}, analysis_id=${analysis.id}) with ${SETS.length} AI-baseline sets.`);
+    for (const [i, set] of SETS.entries()) {
+      const itemId = itemIdByName.get(set.item);
+      const abilityId = abilityIdByName.get(set.ability);
+      const natureId = natureIdByName.get(set.nature);
+      if (!itemId || !abilityId || !natureId) {
+        throw new Error(`Unresolved item/ability/nature for set "${set.name}"`);
+      }
+
+      const [newSet] = await tx.insert(analysisSets).values({
+        analysisId: analysis.id,
+        name: set.name,
+        role: set.role,
+        itemId,
+        abilityId,
+        natureId,
+        evs: set.evs,
+        moves: set.moves,
+        analysis: set.analysis,
+        evNote: set.evNote,
+        teambuilding: set.teambuilding,
+        matchupNote: set.matchupNote,
+        handles: resolveSlugs(set.handles),
+        threats: resolveSlugs(set.threats),
+        isAiDraft: true,
+        orderIndex: i,
+        createdBy: null,
+        updatedBy: null,
+      }).returning();
+
+      await tx.insert(analysisRevisions).values({
+        analysisId: analysis.id,
+        setId: newSet.id,
+        authorId: null,
+        isAi: true,
+        status: "pending",
+        summary: `Seeded the "${set.name}" set as an AI baseline`,
+      });
+    }
+
+    return analysis.id;
+  });
+
+  console.log(`Seeded Tyranitar (pokemon_id=${pokemonId}, analysis_id=${analysisId}) with ${SETS.length} AI-baseline sets.`);
 }
 
 main()

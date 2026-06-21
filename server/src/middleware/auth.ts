@@ -38,7 +38,10 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
 // grant moderator/admin yet — set users.role directly in the DB for now.
 export const requireRole = (...roles: Array<'moderator' | 'admin'>) =>
     async (req: Request, res: Response, next: NextFunction) => {
-        const [user] = await db.select({ role: users.role }).from(users).where(eq(users.id, req.userId!));
+        if (!req.userId) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
+        const [user] = await db.select({ role: users.role }).from(users).where(eq(users.id, req.userId));
         if (!user || !roles.includes(user.role as 'moderator' | 'admin')) {
             return res.status(403).json({ error: 'Forbidden' });
         }

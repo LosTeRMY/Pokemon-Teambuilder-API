@@ -1,0 +1,1 @@
+ALTER TABLE "analysis_sets" ADD CONSTRAINT "analysis_sets_analysis_id_order_index_unique" UNIQUE("analysis_id","order_index");

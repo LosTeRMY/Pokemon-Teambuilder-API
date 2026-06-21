@@ -1,4 +1,4 @@
-import { pgTable, serial, varchar, timestamp, text, integer, boolean, pgEnum, primaryKey, jsonb } from 'drizzle-orm/pg-core';
+import { pgTable, serial, varchar, timestamp, text, integer, boolean, pgEnum, primaryKey, jsonb, unique } from 'drizzle-orm/pg-core';
 
 export const genderEnum = pgEnum('gender', ['male', 'female', 'random', 'genderless']);
 export const userRoleEnum = pgEnum('user_role', ['user', 'moderator', 'admin']);
@@ -105,7 +105,11 @@ export const analysisSets = pgTable('analysis_sets', {
     createdBy: integer('created_by').references(() => users.id, { onDelete: 'set null' }),
     updatedBy: integer('updated_by').references(() => users.id, { onDelete: 'set null' }),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
-});
+}, (table) => [
+  // Guards against two concurrent "add a set" requests silently landing on
+  // the same display position — see createSet()'s transaction in analysisService.ts.
+  unique().on(table.analysisId, table.orderIndex),
+]);
 
 /* Append-only audit log — the source of truth for both the Activity Timeline
  * and the live-computed Contributors strip (role = Creator/Editor/AI draft,

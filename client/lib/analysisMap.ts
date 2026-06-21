@@ -80,6 +80,10 @@ function mapSet(s: RawSet, mon: GBPokemon): AnalysisSet {
   };
 }
 
+function mapContributor(c: RawContributor): Contributor {
+  return { name: c.name, edits: c.edits, role: c.role, ai: c.ai };
+}
+
 function mapRevision(r: RawRevision): Revision {
   return {
     author: r.author,
@@ -126,7 +130,7 @@ export function mapAnalysis(raw: RawAnalysis, mon: GBPokemon): MonAnalysis {
     overview: raw.overview ?? "",
     sets: raw.sets.map((s) => mapSet(s, mon)),
     community: {
-      contributors: raw.community.contributors as Contributor[],
+      contributors: raw.community.contributors.map(mapContributor),
       revisions: raw.community.revisions.map(mapRevision),
       proposals: raw.community.proposals.map(mapProposal),
     },
