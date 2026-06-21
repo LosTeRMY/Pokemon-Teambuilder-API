@@ -6,7 +6,13 @@ import { cn } from "@/lib/cn";
 
 /* Renders the user's hosted avatar image, falling back to the same
  * initial-letter token used everywhere else (Navbar, TeamCard byline) if
- * there's no avatar URL or the image fails to load (dead link, etc.). */
+ * there's no avatar URL or the image fails to load (dead link, etc.).
+ *
+ * Keyed remount on `src` (see ItemIcon.tsx for the same pattern): callers
+ * like ProfileForm's live preview reuse the same Avatar instance as the user
+ * edits the URL field, so a stale `failed` flag from a previous bad URL must
+ * reset before trying a new one — doing that via an effect would trip this
+ * project's react-hooks/set-state-in-effect rule for no benefit. */
 export default function Avatar({
   name,
   src,
@@ -17,6 +23,22 @@ export default function Avatar({
   name: string;
   src?: string | null;
   size?: number;
+  className?: string;
+  title?: string;
+}) {
+  return <AvatarInner key={src ?? "none"} name={name} src={src} size={size} className={className} title={title} />;
+}
+
+function AvatarInner({
+  name,
+  src,
+  size,
+  className,
+  title,
+}: {
+  name: string;
+  src?: string | null;
+  size: number;
   className?: string;
   title?: string;
 }) {

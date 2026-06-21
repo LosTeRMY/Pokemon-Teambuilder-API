@@ -34,7 +34,7 @@ export default function ProfileTeamRow({
           team.liked && "text-like-fg",
         )}
         onClick={() => onLike(team.id)}
-        aria-label="Like team"
+        aria-label={team.liked ? "Unlike team" : "Like team"}
       >
         <svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
           <path d={HEART_PATH} fill={team.liked ? "currentColor" : "none"} stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" />

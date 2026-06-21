@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
@@ -11,8 +11,14 @@ import { useAuth } from "@/hooks/useAuth";
 
 export default function RegisterPage() {
   const { theme, toggle } = useTheme();
-  const { register, registerPending, registerError } = useAuth();
+  const { user, register, registerPending, registerError } = useAuth();
   const router = useRouter();
+
+  // Already signed in — bounce to the team browser instead of showing a
+  // stale signup form (mirrors settings page's logged-out redirect).
+  useEffect(() => {
+    if (user) router.replace("/");
+  }, [user, router]);
 
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
