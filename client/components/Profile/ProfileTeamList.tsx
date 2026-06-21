@@ -29,8 +29,8 @@ export default function ProfileTeamList({
         </h2>
         {teams.length > 0 && (
           <div className="sort flex items-center gap-1.75">
-            <label className="font-mono tabular-nums">SORT</label>
-            <select value={sort} onChange={(e) => setSort(e.target.value as ProfileSort)}>
+            <label htmlFor="profile-sort" className="font-mono tabular-nums">SORT</label>
+            <select id="profile-sort" value={sort} onChange={(e) => setSort(e.target.value as ProfileSort)}>
               <option value="newest">Newest</option>
               <option value="oldest">Oldest</option>
               <option value="popular">Most liked</option>

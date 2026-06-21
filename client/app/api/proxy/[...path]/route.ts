@@ -11,6 +11,9 @@ import { SESSION_COOKIE } from "@/lib/sessionCookie";
  * "authenticated" ones — see root CLAUDE.md "Auth Architecture". */
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL;
+if (!API_URL) {
+  throw new Error("Missing required env var: NEXT_PUBLIC_API_URL");
+}
 
 async function forward(req: NextRequest, path: string[]) {
   const token = (await cookies()).get(SESSION_COOKIE)?.value;

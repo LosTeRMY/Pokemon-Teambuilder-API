@@ -158,9 +158,17 @@ export function createBlankTeam(): DraftTeam {
  * draft loaded from storage degrades to "missing Pokémon" instead of being
  * silently unrenderable by every component that looks the member up. */
 export function sanitizeTeam(team: DraftTeam): DraftTeam {
+  // Legacy localStorage entries predate the serverId field. A team that was
+  // published before serverId existed would otherwise end up serverId: null
+  // + published: true — useTeamBuilder's savedTeams filters drafts by
+  // `!published` and local-published teams by `serverId != null`, so that
+  // combination matches neither and the team silently disappears from the
+  // sidebar. Treat a serverId-less legacy team as a draft instead.
+  const serverId = team.serverId ?? null;
   return {
     ...team,
-    serverId: team.serverId ?? null, // legacy localStorage entries predate this field
+    serverId,
+    published: serverId != null && team.published,
     members: team.members.map((m) => (m && LK.pokeById.get(m.pid) ? m : null)),
   };
 }

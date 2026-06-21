@@ -37,21 +37,33 @@ export function useAuth() {
     },
   });
 
+  // Cancel any in-flight meQuery before writing the mutation's fresh result —
+  // otherwise a slow GET /api/auth/me that started before login/logout could
+  // resolve afterward and clobber the just-set session state with stale data.
   const loginMutation = useMutation({
     mutationFn: (data: { email: string; password: string }) =>
       postJson<{ user: AuthUser }>("/api/auth/login", data),
-    onSuccess: ({ user }) => queryClient.setQueryData(ME_KEY, { user }),
+    onSuccess: async ({ user }) => {
+      await queryClient.cancelQueries({ queryKey: ME_KEY });
+      queryClient.setQueryData(ME_KEY, { user });
+    },
   });
 
   const registerMutation = useMutation({
     mutationFn: (data: { username: string; email: string; password: string }) =>
       postJson<{ user: AuthUser }>("/api/auth/register", data),
-    onSuccess: ({ user }) => queryClient.setQueryData(ME_KEY, { user }),
+    onSuccess: async ({ user }) => {
+      await queryClient.cancelQueries({ queryKey: ME_KEY });
+      queryClient.setQueryData(ME_KEY, { user });
+    },
   });
 
   const logoutMutation = useMutation({
     mutationFn: () => postJson<{ ok: true }>("/api/auth/logout"),
-    onSuccess: () => queryClient.setQueryData(ME_KEY, { user: null }),
+    onSuccess: async () => {
+      await queryClient.cancelQueries({ queryKey: ME_KEY });
+      queryClient.setQueryData(ME_KEY, { user: null });
+    },
   });
 
   return {
