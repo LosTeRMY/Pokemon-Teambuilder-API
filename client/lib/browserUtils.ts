@@ -68,3 +68,6 @@ export function avatarColor(name: string): string {
   for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
   return `oklch(0.7 0.11 ${h})`;
 }
+
+const MEMBER_SINCE_FMT = new Intl.DateTimeFormat("en-US", { month: "short", year: "numeric" });
+export const memberSince = (iso: string): string => MEMBER_SINCE_FMT.format(new Date(iso));

@@ -1,10 +1,11 @@
 "use client";
 
 import * as LK from "@/lib/lookups";
-import { tc, avatarColor } from "@/lib/browserUtils";
+import { tc } from "@/lib/browserUtils";
 import { evSummary } from "@/lib/teamBuilder";
 import type { DraftMember } from "@/lib/teamBuilder";
 import { SpriteTile } from "@/components/ui/PokeToken";
+import { ItemIcon } from "@/components/ui/ItemIcon";
 import TypeBadge from "@/components/ui/TypeBadge";
 import { cn } from "@/lib/cn";
 
@@ -52,12 +53,7 @@ export default function MemberTile({
         </div>
         {item && (
           <span className="flex items-center gap-1.5 text-[11.5px] text-muted ml-auto max-w-[46%]">
-            <span
-              className="w-4.5 h-4.5 rounded-[5px] grid place-items-center text-[8px] font-extrabold text-white shrink-0"
-              style={{ background: avatarColor(item.name) }}
-            >
-              {item.name[0].toUpperCase()}
-            </span>
+            <ItemIcon itemId={member.itemId} size={18} />
             <b className="text-ink font-semibold truncate">{item.name}</b>
           </span>
         )}

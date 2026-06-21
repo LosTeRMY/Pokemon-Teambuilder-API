@@ -3,10 +3,13 @@
 import type { Combo, FilterState, BrowserTeam } from "@/lib/lookups";
 import TeamCard from "./TeamCard";
 import SummaryPills from "./SummaryPills";
+import Pager from "./Pager";
 import { cn } from "@/lib/cn";
 
 export default function TeamDisplay({
   filtered,
+  total,
+  totalPages,
   s,
   set,
   removeFromList,
@@ -21,6 +24,8 @@ export default function TeamDisplay({
   setDrawer,
 }: {
   filtered: BrowserTeam[];
+  total: number;
+  totalPages: number;
   s: FilterState;
   set: (patch: Partial<FilterState>) => void;
   removeFromList: (key: "pokemon" | "move" | "ability" | "item", id: number) => void;
@@ -42,7 +47,7 @@ export default function TeamDisplay({
             Community teams
           </h1>
           <span className="text-[14px] text-faint font-mono tabular-nums">
-            {filtered.length} {filtered.length === 1 ? "team" : "teams"}
+            {total} {total === 1 ? "team" : "teams"}
           </span>
         </div>
         <div className="flex items-center gap-3">
@@ -121,6 +126,10 @@ export default function TeamDisplay({
             />
           ))}
         </div>
+      )}
+
+      {totalPages > 1 && (
+        <Pager page={s.page} totalPages={totalPages} onChange={(page) => set({ page })} />
       )}
     </main>
   );

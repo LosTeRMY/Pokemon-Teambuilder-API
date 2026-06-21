@@ -1,16 +1,20 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import { useQuery } from "@tanstack/react-query";
 import * as LK from "@/lib/lookups";
-import type { BrowserTeam } from "@/lib/lookups";
+import { apiFetch } from "@/lib/api";
+import { mapServerTeam, type ServerTeam } from "@/lib/teamBrowserMap";
 import { useFilterState } from "@/hooks/useFilterState";
 import { useTheme } from "@/hooks/useTheme";
+import { useAuth } from "@/hooks/useAuth";
+import { useLikeToggle } from "@/hooks/useLikeToggle";
 
 export function useTeamBrowser() {
   const { theme, toggle } = useTheme();
 
-  const [teams, setTeams] = useState<BrowserTeam[]>(LK.teams);
-  const loggedIn = true; // TODO: replace with real auth hook once auth is implemented
+  const { user } = useAuth();
+  const loggedIn = !!user;
   const filter = useFilterState();
   const { s, set, removeFromList, removeCombo, activeCount, onClear } = filter;
 
@@ -28,55 +32,36 @@ export function useTeamBrowser() {
     } catch { /* sandboxed origin */ }
   }, [queryString]);
 
-  const counts = useMemo(() => {
-    const c: Record<number, number> = {};
-    teams.forEach((tm) => { c[tm.format] = (c[tm.format] || 0) + 1; });
-    return c;
-  }, [teams]);
+  const PAGE_SIZE = 20; // matches the server's own default limit, made explicit
 
-  const filtered = useMemo(() => {
-    const r = teams.filter((tm) => {
-      if (s.name && !tm.name.toLowerCase().includes(s.name.toLowerCase())) return false;
-      if (s.format != null && tm.format !== s.format) return false;
-      if (s.likedBy && !tm.liked) return false;
-      for (const pid of s.pokemon)
-        if (!tm.members.some((m) => m.pid === pid)) return false;
-      for (const mid of s.move)
-        if (!tm.members.some((m) => m.moveIds.includes(mid))) return false;
-      for (const aid of s.ability)
-        if (!tm.members.some((m) => m.abilId === aid)) return false;
-      for (const iid of s.item)
-        if (!tm.members.some((m) => m.itemId === iid)) return false;
-      for (const c of s.combos) {
-        const ok = tm.members.some((m) => {
-          if (m.pid !== c.pid) return false;
-          if (c.kind === "move") return m.moveIds.includes(c.vid);
-          if (c.kind === "item") return m.itemId === c.vid;
-          if (c.kind === "ability") return m.abilId === c.vid;
-          if (c.kind === "nature") return m.natId === c.vid;
-          return false;
-        });
-        if (!ok) return false;
-      }
-      return true;
-    });
-    return [...r].sort((a, b) =>
-      s.sort === "popular"
-        ? b.likes - a.likes
-        : s.sort === "oldest"
-          ? a.createdAt.localeCompare(b.createdAt)
-          : b.createdAt.localeCompare(a.createdAt),
-    );
-  }, [teams, s]);
-
-  const onLike = (id: number) =>
-    setTeams((ts) =>
-      ts.map((tm) =>
-        tm.id === id
-          ? { ...tm, liked: !tm.liked, likes: tm.likes + (tm.liked ? -1 : 1) }
-          : tm,
+  const teamsQuery = useQuery({
+    queryKey: ["teams", queryString],
+    queryFn: () =>
+      apiFetch<ServerTeam[]>(`/teams?${queryString}${queryString ? "&" : ""}limit=${PAGE_SIZE}`).then((rows) =>
+        rows.map(mapServerTeam),
       ),
-    );
+  });
+  const filtered = teamsQuery.data ?? [];
+
+  const totalQuery = useQuery({
+    queryKey: ["teams", "count", queryString],
+    queryFn: () => apiFetch<{ total: number }>(`/teams/count${queryString ? "?" + queryString : ""}`),
+  });
+  const total = totalQuery.data?.total ?? 0;
+  const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
+
+  const countsQuery = useQuery({
+    queryKey: ["teams", "format-counts"],
+    queryFn: () => apiFetch<Record<number, number>>("/teams/format-counts"),
+    staleTime: 5 * 60 * 1000,
+  });
+  const counts = countsQuery.data ?? {};
+
+  const toggleLike = useLikeToggle(["teams", queryString]);
+  const onLike = (id: number) => {
+    if (!loggedIn) return;
+    toggleLike(filtered, id);
+  };
 
   const copyLink = () => {
     const link =
@@ -96,5 +81,6 @@ export function useTeamBrowser() {
     filter, counts, loggedIn, drawer, setDrawer,
     filtered, s, set, removeFromList, removeCombo, activeCount, onLike, onClear,
     copied, copyLink, size, compact,
+    total, totalPages,
   };
 }

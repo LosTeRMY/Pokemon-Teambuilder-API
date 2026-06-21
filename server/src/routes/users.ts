@@ -8,7 +8,9 @@ const router = Router();
 const patchUserSchema = z.object({
     email: z.string().email().optional(),
     password: z.string().min(8).refine(val => new TextEncoder().encode(val).length <= 72, "password must be at most 72 UTF-8 bytes").optional(),
-    avatar: z.string().url().optional(),
+    // "" is a deliberate sentinel for "clear the avatar" (falls back to the
+    // initial-letter avatar client-side) — distinct from omitting the field.
+    avatar: z.union([z.string().url(), z.literal("")]).optional(),
     bio: z.string().max(255).optional(),
     currentPassword: z.string().optional(),
 }).superRefine((data, ctx) => {

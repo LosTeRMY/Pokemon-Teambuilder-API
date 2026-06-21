@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef, useMemo } from "react";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { GAMEDATA } from "@/lib/gameData";
 import type { GBPokemon } from "@/lib/gameData";
 import {
@@ -8,15 +9,24 @@ import {
   createBlankTeam, createBlankMember, sanitizeTeam,
   loadBuilderState, saveBuilderState,
 } from "@/lib/teamBuilder";
+import {
+  type ServerTeamDetail, type ServerTeamSummary,
+  toCreateTeamPayload, fromTeamDetail, fromTeamSummary,
+} from "@/lib/teamPublishMap";
 import { useTheme } from "@/hooks/useTheme";
+import { useAuth } from "@/hooks/useAuth";
+import { apiFetch, ApiError } from "@/lib/api";
 
 export type SidebarFilter = "all" | "draft" | "published";
 export type ModalKind = "export" | "species" | null;
 
 export function useTeamBuilder() {
   const { theme, toggle } = useTheme();
+  const { user } = useAuth();
+  const loggedIn = !!user;
+  const queryClient = useQueryClient();
 
-  const [savedTeams, setSavedTeams] = useState<DraftTeam[]>([]);
+  const [localTeams, setLocalTeams] = useState<DraftTeam[]>([]);
   const [team, setTeam] = useState<DraftTeam>(createBlankTeam);
   const [dirty, setDirty] = useState(false);
 
@@ -27,17 +37,18 @@ export function useTeamBuilder() {
   const [drawer, setDrawer] = useState(false);
   const [sidebarFilter, setSidebarFilter] = useState<SidebarFilter>("all");
   const [sidebarQuery, setSidebarQuery] = useState("");
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
 
   // Load persisted state once on mount.
   useEffect(() => {
     const stored = loadBuilderState();
     if (stored) {
-      setSavedTeams(stored.savedTeams.map(sanitizeTeam));
+      setLocalTeams(stored.savedTeams.map(sanitizeTeam));
       setTeam(sanitizeTeam(stored.workingTeam));
     }
   }, []);
 
-  // Persist savedTeams + the working team together. Skip the very first run
+  // Persist localTeams + the working team together. Skip the very first run
   // (mount) so we don't clobber storage with blank state before the load
   // effect above has a chance to populate it.
   const firstPersist = useRef(true);
@@ -46,8 +57,8 @@ export function useTeamBuilder() {
       firstPersist.current = false;
       return;
     }
-    saveBuilderState({ savedTeams, workingTeam: team });
-  }, [savedTeams, team]);
+    saveBuilderState({ savedTeams: localTeams, workingTeam: team });
+  }, [localTeams, team]);
 
   // Tracked by id rather than message text, so two identical toasts in quick
   // succession (e.g. clicking Save twice) don't have the first one's timer
@@ -61,23 +72,68 @@ export function useTeamBuilder() {
     }, 2600);
   };
 
+  // The "Published" sidebar tab is reconciled from the server rather than
+  // trusted purely from localStorage — but a local copy of a published team
+  // (e.g. mid-edit) wins over the server's version until the next publish, so
+  // in-progress edits survive a refresh without a round trip or flicker.
+  const minePublishedQuery = useQuery({
+    queryKey: ["teams", "mine", user?.id],
+    queryFn: () =>
+      apiFetch<ServerTeamSummary[]>(`/teams?user=${user!.id}&limit=100`).then((rows) =>
+        rows.map(fromTeamSummary),
+      ),
+    enabled: !!user,
+  });
+  const minePublishedData = minePublishedQuery.data;
+  const minePublished = minePublishedData ?? [];
+
+  const savedTeams = useMemo(() => {
+    const mine = minePublishedData ?? [];
+    const drafts = localTeams.filter((t) => !t.published);
+    const localPublished = localTeams.filter((t) => t.published && t.serverId != null);
+    const reconciled = mine.map(
+      (summary) => localPublished.find((t) => t.serverId === summary.serverId) ?? summary,
+    );
+    // A team that was just published may not be in minePublished yet (the
+    // query hasn't refetched) — surface it anyway so it doesn't disappear.
+    const knownIds = new Set(reconciled.map((t) => t.serverId));
+    const justPublished = localPublished.filter((t) => !knownIds.has(t.serverId));
+    return [...drafts, ...reconciled, ...justPublished];
+  }, [localTeams, minePublishedData]);
+
   const newTeam = () => {
     setTeam(createBlankTeam());
     setSelected(null);
     setDirty(false);
   };
 
-  const loadTeam = (id: string) => {
-    const found = savedTeams.find((t) => t.id === id);
-    if (!found) return;
-    setTeam(found);
-    setSelected(null);
-    setDirty(false);
-    setDrawer(false);
+  const loadTeam = async (id: string) => {
+    const local = localTeams.find((t) => t.id === id);
+    if (local) {
+      setTeam(local);
+      setSelected(null);
+      setDirty(false);
+      setDrawer(false);
+      return;
+    }
+    // Falls back to a server-only summary — fetch full detail so editing
+    // operates on accurate data (nickname/gender/ivs/evs/notes etc., which
+    // the lean summary doesn't carry).
+    const summary = minePublished.find((t) => t.id === id);
+    if (!summary || summary.serverId == null) return;
+    try {
+      const detail = await apiFetch<ServerTeamDetail>(`/teams/${summary.serverId}`);
+      setTeam(fromTeamDetail(detail));
+      setSelected(null);
+      setDirty(false);
+      setDrawer(false);
+    } catch {
+      notify("Couldn't load that team");
+    }
   };
 
   const saveTeam = () => {
-    setSavedTeams((ts) => {
+    setLocalTeams((ts) => {
       const exists = ts.some((t) => t.id === team.id);
       return exists ? ts.map((t) => (t.id === team.id ? team : t)) : [...ts, team];
     });
@@ -86,19 +142,68 @@ export function useTeamBuilder() {
   };
 
   const deleteTeam = (id: string) => {
-    setSavedTeams((ts) => ts.filter((t) => t.id !== id));
+    setLocalTeams((ts) => ts.filter((t) => t.id !== id));
     if (team.id === id) newTeam();
     notify("Team deleted");
   };
 
-  const publishTeam = () => {
-    // Local-only stub for now — no backend yet (see root CLAUDE.md draft/publish
-    // flow). Real publish will be a POST /teams call once the API is wired up.
-    setTeam((t) => ({ ...t, published: true }));
-    setSavedTeams((ts) =>
-      ts.map((t) => (t.id === team.id ? { ...t, published: true } : t)),
-    );
-    notify("Team published");
+  // Drafts delete instantly (nothing exists server-side); a published team
+  // routes through a confirmation modal first since the delete is irreversible.
+  const requestDelete = (id: string) => {
+    const found = savedTeams.find((t) => t.id === id);
+    if (found && found.published) {
+      setPendingDeleteId(id);
+    } else {
+      deleteTeam(id);
+    }
+  };
+
+  const cancelDelete = () => setPendingDeleteId(null);
+
+  const confirmDelete = async () => {
+    const id = pendingDeleteId;
+    const found = id ? savedTeams.find((t) => t.id === id) : null;
+    if (!id || !found || found.serverId == null) {
+      setPendingDeleteId(null);
+      return;
+    }
+    try {
+      await apiFetch(`/teams/${found.serverId}`, { method: "DELETE" });
+      setLocalTeams((ts) => ts.filter((t) => t.id !== id));
+      if (team.id === id) newTeam();
+      queryClient.invalidateQueries({ queryKey: ["teams", "mine", user?.id] });
+      notify("Team deleted");
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't delete that team");
+    } finally {
+      setPendingDeleteId(null);
+    }
+  };
+
+  const publishTeam = async () => {
+    if (!loggedIn) {
+      notify("Log in to publish a team");
+      return;
+    }
+    try {
+      const payload = toCreateTeamPayload(team);
+      const result =
+        team.serverId == null
+          ? await apiFetch<{ id: number }>("/teams", { method: "POST", body: JSON.stringify(payload) })
+          : await apiFetch<{ id: number }>(`/teams/${team.serverId}`, { method: "PUT", body: JSON.stringify(payload) });
+
+      const published: DraftTeam = { ...team, serverId: team.serverId ?? result.id, published: true };
+      setTeam(published);
+      setLocalTeams((ts) => {
+        const exists = ts.some((t) => t.id === published.id);
+        return exists ? ts.map((t) => (t.id === published.id ? published : t)) : [...ts, published];
+      });
+      setDirty(false);
+      queryClient.invalidateQueries({ queryKey: ["teams", "mine", user?.id] });
+      notify("Team published");
+    } catch (err) {
+      notify(err instanceof ApiError ? err.message : "Couldn't publish that team");
+    }
   };
 
   const markDirty = () => setDirty(true);
@@ -147,6 +252,7 @@ export function useTeamBuilder() {
     drawer, setDrawer,
     sidebarFilter, setSidebarFilter,
     sidebarQuery, setSidebarQuery,
+    pendingDeleteId, requestDelete, cancelDelete, confirmDelete,
     formats: GAMEDATA.formats,
     newTeam, loadTeam, saveTeam, deleteTeam, publishTeam,
     updateMember, updateNotes, pickSpecies,

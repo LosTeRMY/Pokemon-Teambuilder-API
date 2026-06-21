@@ -55,7 +55,7 @@ export async function updateUser(userId: number, data: UpdateUserData, requestin
 
   const updates: Record<string, unknown> = {};
   if (data.email) updates.email = data.email;
-  if (data.avatar !== undefined) updates.avatar = data.avatar;
+  if (data.avatar !== undefined) updates.avatar = data.avatar === "" ? null : data.avatar;
   if (data.bio !== undefined) updates.bio = data.bio;
   if (data.password) updates.password = await bcrypt.hash(data.password, 12);
 

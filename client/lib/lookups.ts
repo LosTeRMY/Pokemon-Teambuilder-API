@@ -1,30 +1,17 @@
-/* lookups.ts — builds name<->ID maps from GAMEDATA, resolves the curated TEAMS to
- * integer IDs, and serializes filter state to/from the URL query string exactly as
- * the REST API expects. */
+/* lookups.ts — builds ID-keyed lookup maps from GAMEDATA and serializes filter
+ * state to/from the URL query string exactly as the REST API expects. */
 import { GAMEDATA } from "./gameData";
 import type { GBPokemon, GBMove, GBAbility, GBItem, GBNature } from "./gameData";
-import { TEAMS } from "./mockData";
 import type { RawMember, RawTeam } from "./mockData";
 
 export const slug = (name: string) =>
   name.toLowerCase().replace(/['’.:]/g, "").replace(/\s+/g, "").replace(/[^a-z0-9-]/g, "");
 
-function byName<T extends { id: number; name: string }>(arr: T[]) {
-  const m = new Map<string, number>();
-  arr.forEach((x) => m.set(x.name.toLowerCase(), x.id));
-  return m;
-}
 function byId<T extends { id: number }>(arr: T[]) {
   const m = new Map<number, T>();
   arr.forEach((x) => m.set(x.id, x));
   return m;
 }
-
-export const pokeByName = byName(GAMEDATA.pokemons);
-export const moveByName = byName(GAMEDATA.moves);
-export const abilByName = byName(GAMEDATA.abilities);
-export const itemByName = byName(GAMEDATA.items);
-export const natByName = byName(GAMEDATA.natures);
 
 // Reverse of slug() — resolves a sprite/URL slug (e.g. from curated content
 // like handles/threats lists) back to its real GAMEDATA Pokémon.
@@ -37,7 +24,8 @@ export const itemById = byId(GAMEDATA.items);
 export const natById = byId(GAMEDATA.natures);
 export const fmtById = byId(GAMEDATA.formats);
 
-/* A team member with both display fields (raw) and resolved canonical IDs. */
+/* A team member with both display fields (raw) and resolved canonical IDs.
+ * Built by client/lib/teamBrowserMap.ts from GET /teams rows. */
 export type BrowserMember = RawMember & {
   pid: number | null;
   moveIds: number[];
@@ -46,21 +34,6 @@ export type BrowserMember = RawMember & {
   natId: number | null;
 };
 export type BrowserTeam = Omit<RawTeam, "members"> & { members: BrowserMember[] };
-
-/* Resolve curated TEAMS (name-based) to canonical IDs so all filtering is by ID. */
-export const teams: BrowserTeam[] = TEAMS.map((tm) => {
-  const members: BrowserMember[] = tm.members.map((mo) => ({
-    ...mo,
-    pid: pokeByName.get(mo.n.toLowerCase()) ?? null,
-    moveIds: mo.moves
-      .map((mv) => moveByName.get(mv.toLowerCase()))
-      .filter((x): x is number => x != null),
-    abilId: abilByName.get((mo.abil || "").toLowerCase()) ?? null,
-    itemId: mo.item ? (itemByName.get(mo.item.toLowerCase()) ?? null) : null,
-    natId: natByName.get((mo.nat || "").toLowerCase()) ?? null,
-  }));
-  return { ...tm, members };
-});
 
 /* Option lists for the autocompletes (sorted by name). */
 const sortByName = <T extends { name: string }>(a: T, b: T) => a.name.localeCompare(b.name);

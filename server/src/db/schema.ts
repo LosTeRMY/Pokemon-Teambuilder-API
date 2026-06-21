@@ -46,6 +46,8 @@ export const teams_pokemons = pgTable('teams_pokemons', {
     ev_sp_atk: integer('ev_sp_atk').default(0).notNull(),
     ev_sp_def: integer('ev_sp_def').default(0).notNull(),
     ev_speed: integer('ev_speed').default(0).notNull(),
+    notes: text('notes'),
+    roles: text('roles').array(),
 });
 
 export const team_likes = pgTable('team_likes', {

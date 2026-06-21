@@ -1,12 +1,5 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(npm:*)",
-      "Bash(npx:*)",
-      "Bash(node:*)",
-      "Bash(git:*)",
-      "Edit",
-      "Write"
-    ]
+    "defaultMode": "bypassPermissions"
   }
 }

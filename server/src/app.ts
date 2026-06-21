@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import cors from 'cors';
 import authRouter from './routes/auth';
 import gamedataRouter from './routes/gamedata';
 import teamsRouter from './routes/teams';
@@ -7,6 +8,13 @@ import { AppError } from './errors';
 
 const app = express();
 
+// cors() silently falls back to Access-Control-Allow-Origin: * when origin is
+// falsy — fail loudly instead of allowing any origin to make credentialed requests.
+if (!process.env.CLIENT_ORIGIN) {
+    console.error('Missing required env var: CLIENT_ORIGIN');
+    process.exit(1);
+}
+app.use(cors({ origin: process.env.CLIENT_ORIGIN, credentials: true }));
 app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/gamedata', gamedataRouter);

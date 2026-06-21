@@ -24,7 +24,7 @@ export function fmtColor(formatId: number | null): string {
   return (tier && TIER_COLOR[tier]) || "var(--accent)";
 }
 
-export const EV_BUDGET = 510;
+export const EV_BUDGET = 508; // matches server/src/schemas/team.ts's total-EV cap
 export const EV_MAX = 252;
 export const IV_MAX = 31;
 export const DEFAULT_LEVEL = 100;
@@ -56,6 +56,7 @@ export type DraftMember = {
 
 export type DraftTeam = {
   id: string;
+  serverId: number | null;
   name: string;
   formatId: number | null;
   published: boolean;
@@ -143,6 +144,7 @@ export function createBlankMember(pokemon: GBPokemon): DraftMember {
 export function createBlankTeam(): DraftTeam {
   return {
     id: `u${Date.now()}`,
+    serverId: null,
     name: "New team",
     formatId: GAMEDATA.formats[0]?.id ?? null,
     published: false,
@@ -158,6 +160,7 @@ export function createBlankTeam(): DraftTeam {
 export function sanitizeTeam(team: DraftTeam): DraftTeam {
   return {
     ...team,
+    serverId: team.serverId ?? null, // legacy localStorage entries predate this field
     members: team.members.map((m) => (m && LK.pokeById.get(m.pid) ? m : null)),
   };
 }

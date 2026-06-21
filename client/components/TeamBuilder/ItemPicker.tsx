@@ -2,19 +2,8 @@
 
 import { useState, useMemo, useRef, useEffect } from "react";
 import * as LK from "@/lib/lookups";
-import { avatarColor } from "@/lib/browserUtils";
+import { ItemIcon } from "@/components/ui/ItemIcon";
 import { cn } from "@/lib/cn";
-
-function ItemFallback({ name, size = 26 }: { name: string; size?: number }) {
-  return (
-    <span
-      className="rounded-[7px] grid place-items-center text-[11px] font-extrabold text-white shrink-0"
-      style={{ width: size, height: size, background: avatarColor(name) }}
-    >
-      {name[0].toUpperCase()}
-    </span>
-  );
-}
 
 export default function ItemPicker({
   value,
@@ -61,7 +50,7 @@ export default function ItemPicker({
             className="flex items-center gap-2.5 flex-1 min-w-0 text-left bg-transparent border-0 p-0"
             onClick={() => setOpen((o) => !o)}
           >
-            {item ? <ItemFallback name={item.name} /> : <ItemFallback name=" " />}
+            <ItemIcon itemId={value} />
             <span className="flex-1 min-w-0 flex flex-col gap-0.5">
               {item ? (
                 <>
@@ -122,7 +111,7 @@ export default function ItemPicker({
                   )}
                   onClick={() => pick(i.id)}
                 >
-                  <ItemFallback name={i.name} size={24} />
+                  <ItemIcon itemId={i.id} size={24} />
                   <span className="flex flex-col gap-0.25 min-w-0">
                     <b className="text-[13.5px] font-bold truncate">{i.name}</b>
                     <small className="text-[11px] text-muted truncate">{i.description}</small>

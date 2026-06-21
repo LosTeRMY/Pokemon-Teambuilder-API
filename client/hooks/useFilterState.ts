@@ -38,20 +38,23 @@ export function useFilterState(): FilterControls {
     setS((p) => ({ ...p, ...LK.decode(window.location.search) }));
   }, []);
 
+  // Any filter mutation resets to page 1 (unless the patch itself sets page,
+  // which only the pager does) — otherwise narrowing the result set while on
+  // page 3+ can land on an out-of-range/empty page.
   const set = (patch: Partial<FilterState>) =>
-    setS((p) => ({ ...p, ...patch }));
+    setS((p) => ({ ...p, ...patch, page: patch.page ?? 1 }));
 
   const addToList = (key: FilterListKey, id: number) =>
-    setS((p) => ({ ...p, [key]: [...p[key], id] }));
+    setS((p) => ({ ...p, [key]: [...p[key], id], page: 1 }));
 
   const removeFromList = (key: FilterListKey, id: number) =>
-    setS((p) => ({ ...p, [key]: p[key].filter((x) => x !== id) }));
+    setS((p) => ({ ...p, [key]: p[key].filter((x) => x !== id), page: 1 }));
 
   const addCombo = (c: Combo) =>
     setS((p) => {
       if (p.combos.some((x) => x.pid === c.pid && x.kind === c.kind && x.vid === c.vid))
         return p;
-      return { ...p, combos: [...p.combos, c] };
+      return { ...p, combos: [...p.combos, c], page: 1 };
     });
 
   const removeCombo = (c: Combo) =>
@@ -60,6 +63,7 @@ export function useFilterState(): FilterControls {
       combos: p.combos.filter(
         (x) => !(x.pid === c.pid && x.kind === c.kind && x.vid === c.vid),
       ),
+      page: 1,
     }));
 
   const onClear = () => {
