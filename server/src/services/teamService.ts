@@ -121,10 +121,13 @@ export async function listTeams(query: Record<string, unknown>, requestingUserId
   if (rows.length === 0) return rows.map((t) => ({ ...t, pokemons: [] }));
 
   const teamIds = rows.map((t) => t.id);
-  const pokemonRows = await db.select().from(teams_pokemons).where(inArray(teams_pokemons.team_id, teamIds));
+  // teams_pokemons.id ascending matches insertion order (createTeam/updateTeam
+  // insert each team's pokemons in array order) — without this, Postgres can
+  // return the join rows in any order, scrambling a team's display slots.
+  const pokemonRows = await db.select().from(teams_pokemons).where(inArray(teams_pokemons.team_id, teamIds)).orderBy(asc(teams_pokemons.id));
   const pokemonIds = pokemonRows.map((p) => p.id);
   const moveRows = pokemonIds.length > 0
-    ? await db.select().from(teams_pokemons_moves).where(inArray(teams_pokemons_moves.teams_pokemon_id, pokemonIds))
+    ? await db.select().from(teams_pokemons_moves).where(inArray(teams_pokemons_moves.teams_pokemon_id, pokemonIds)).orderBy(asc(teams_pokemons_moves.move_id))
     : [];
 
   const movesByPokemonId = new Map<number, number[]>();
@@ -177,10 +180,12 @@ export async function getTeam(teamId: number) {
   const [team] = await db.select().from(teams).where(eq(teams.id, teamId));
   if (!team) throw new AppError(404, "Team not found");
 
-  const pokemonRows = await db.select().from(teams_pokemons).where(eq(teams_pokemons.team_id, teamId));
+  // Same ordering rationale as listTeams() above — teams_pokemons.id and
+  // teams_pokemons_moves.move_id keep slot/move order deterministic.
+  const pokemonRows = await db.select().from(teams_pokemons).where(eq(teams_pokemons.team_id, teamId)).orderBy(asc(teams_pokemons.id));
   const pokemons = await Promise.all(
     pokemonRows.map(async (p) => {
-      const moveRows = await db.select().from(teams_pokemons_moves).where(eq(teams_pokemons_moves.teams_pokemon_id, p.id));
+      const moveRows = await db.select().from(teams_pokemons_moves).where(eq(teams_pokemons_moves.teams_pokemon_id, p.id)).orderBy(asc(teams_pokemons_moves.move_id));
       const { notes, roles, ...rest } = p;
       return { ...rest, moves: moveRows.map((m) => m.move_id), notes: { roles: roles ?? [], text: notes ?? "" } };
     })
