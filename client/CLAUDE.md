@@ -6,6 +6,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Next.js 16 · React 19 · TypeScript · Tailwind CSS 4 · TanStack Query 5 · App Router
 
+**Next.js 16 has breaking changes vs. training-data knowledge of Next.js.** Before writing App Router code, check the bundled docs at `node_modules/next/dist/docs/` (per `AGENTS.md`) rather than assuming older conventions still apply.
+
 ## Commands
 
 ```bash
@@ -35,6 +37,8 @@ Sprites are served from `public/sprites/gen4/<slug>.png`. Slug format is produce
 
 Held-item icons are served from `public/sprites/items/<slug>.png` (same slug convention). They're sliced once from Pokémon Showdown's `itemicons-sheet.png` via `npm run fetch:item-sprites` (`scripts/fetch-item-sprites.mjs`) — idempotent (skips files that already exist), keyed against Showdown's server-side `data/items.ts` `spritenum` field (fetched and parsed as plain text, never executed). `sharp` is a devDependency scoped to this one script; it isn't part of the app bundle. A handful of item names may not resolve a `spritenum` — those items just keep showing `components/ui/ItemIcon.tsx`'s colored-letter-square fallback (also used while an icon is loading, or if its file 404s).
 
+`data/usage-stats.json` holds real Gen 4 ladder usage stats fetched from Smogon's public chaos stats archive (`smogon.com/stats`) via `npm run fetch:usage-stats` (`scripts/fetch-usage-stats.mjs`) — see that file's header comment for the full mechanics (per-tier format mapping, cutoff selection, species/item/ability/move name resolution against `data/*.json`). Re-run it occasionally to refresh; it's not wired into any build step. Only `gen4ou` reliably has a fresh file every month — `gen4ubers`/`uu`/`nu`/`pu`/`lc` ladder activity is sporadic, so each tier's snapshot can be a month or well over a year stale, and many Pokémon (especially in PU/LC) have no entry at all because they saw zero usage in their tier's latest available sample. `lib/usageStats.ts` exposes this as `usageBySlug: Map<slug, Usage>` and `app/pokedex/[slug]/page.tsx` reads it directly — usage stats are unrelated to the database-backed community analysis described below (Current Limitations), so there's no curated override to fall back from anymore.
+
 ## Pages
 
 | Route | File | Status |
@@ -46,7 +50,7 @@ Held-item icons are served from `public/sprites/items/<slug>.png` (same slug con
 | `/profile/[id]` | `app/profile/[id]/page.tsx` | Public profile — any user's avatar/bio/stats + published teams (GET `/users/:id` + GET `/teams?user=`) |
 | `/profile/settings` | `app/profile/settings/page.tsx` | Own-account editor — profile/email/password forms (PATCH `/users/:id`); redirects to `/login` if signed out |
 
-`app/profile/Account Settings (offline).html` and `app/profile/User Profile (offline).html` are Stitch AI design-export mockups kept intentionally as the pixel-reference for `/profile/[id]` and `/profile/settings` — unlike the `/builder` mockup (deleted once that page shipped), **do not delete these**.
+The Stitch AI design-export mockups for `/profile/[id]` and `/profile/settings` (`Account Settings (offline).html` / `User Profile (offline).html`) have been deleted now that those pages match them, same as the `/builder` mockup before them.
 
 ## Component Architecture
 
@@ -165,7 +169,7 @@ hooks/
 
 ## Current Limitations (important before adding features)
 
-- **Analysis content**: `app/pokedex/[slug]/data.ts` hand-curates `ANALYSIS_BY_SLUG` (sets, usage stats, community activity) — none of it comes from real game data or an API. Only the `tyranitar` slug has an entry today; every other slug 404s via `notFound()` until more are curated.
+- **Analysis content**: sets and community activity (contributors, revisions, proposals, votes) are real, database-backed content — `server/src/services/analysisService.ts` owns the `pokemon_analyses`/`analysis_sets`/`analysis_revisions`/`analysis_proposals`/`proposal_votes` tables, and `lib/analysisMap.ts` maps the API response into the display shapes in `app/pokedex/[slug]/data.ts` (now just type definitions — no static fixture). `hooks/usePokemonAnalysis.ts` wires the query and all the mutations (edit overview, add/edit a set, propose, vote, moderator accept/reject). Only `tyranitar` has any content today (seeded via `server/scripts/seed-tyranitar.ts`); every other Pokémon's sets/community sections are genuinely empty until someone contributes. Usage stats are a separate, unrelated real source (`data/usage-stats.json` / `lib/usageStats.ts`, Smogon ladder data) for whichever Pokémon had ladder activity in their tier's latest snapshot — everyone else's usage section is empty, not fabricated. The page itself renders for every real Pokémon regardless (stats/abilities/type defenses are always real game data); `notFound()` only fires for slugs that aren't a real Pokémon at all.
 - **Builder's "Save" vs "Publish"**: `saveTeam()` always upserts the open team into the local list regardless of whether it's published — this is intentional, not a bug. `useTeamBuilder`'s `savedTeams` merges that local list with `GET /teams?user=<id>` by `serverId`, and the local copy always wins when both exist, so an in-progress edit on a published team survives a refresh without waiting on a server round trip.
 - **Profile page has no team detail link**: rows in `ProfileTeamList` aren't clickable — there's no `/teams/:id` page yet, matching the team browser's own cards (also non-navigational).
 - **Two static placeholders on the profile/settings pages**: the "permanent" badge next to a username (`ProfileHeader`, and the summary card in `app/profile/settings/page.tsx`) and the "Pokédex pages" row in `ProfileStats` are hardcoded — there's no account-tier column on `users` and no wiki-edit-tracking table, so every profile shows the same `28` / `142 edits`. They exist purely to match the Stitch mockup pixel-for-pixel; wire them to real columns/tables before this ships.

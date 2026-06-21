@@ -1,4 +1,5 @@
 import type { GBPokemon } from "@/lib/gameData";
+import { statRating, bulkRating } from "@/lib/browserUtils";
 
 const STAT_META = [
   { key: "hp", label: "HP", color: "#df5a52" },
@@ -9,39 +10,6 @@ const STAT_META = [
   { key: "spe", label: "Spe", color: "#e07da4" },
 ] as const;
 const STAT_MAX = 200; // bar-fill scale, not a real in-game cap — just keeps the longest bars from clipping
-
-// Arbitrary flavor thresholds for the word shown next to each stat bar.
-const statRating = (v: number) =>
-  v >= 130
-    ? "Excellent"
-    : v >= 110
-      ? "Great"
-      : v >= 95
-        ? "Good"
-        : v >= 80
-          ? "Decent"
-          : v >= 65
-            ? "Average"
-            : v >= 50
-              ? "Mediocre"
-              : "Poor";
-
-// Same flavor-text idea as statRating, but over HP + Def + SpD combined —
-// a rough "how hard is this thing to kill" read, not a precise game stat.
-const bulkRating = (hp: number, def: number, spd: number) => {
-  const bulk = hp + def + spd;
-  return bulk >= 320
-    ? "Top-tier bulk"
-    : bulk >= 280
-      ? "Great bulk"
-      : bulk >= 240
-        ? "Good bulk"
-        : bulk >= 200
-          ? "Decent bulk"
-          : bulk >= 160
-            ? "Average bulk"
-            : "Below-average bulk";
-};
 
 export default function BaseStats({ mon }: { mon: GBPokemon }) {
   const s = mon.baseStats;

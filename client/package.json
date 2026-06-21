@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "fetch:item-sprites": "node scripts/fetch-item-sprites.mjs"
+    "fetch:item-sprites": "node scripts/fetch-item-sprites.mjs",
+    "fetch:usage-stats": "node scripts/fetch-usage-stats.mjs"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.101.0",

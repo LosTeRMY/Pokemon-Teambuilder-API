@@ -587,7 +587,7 @@
     "abilities": [
       9
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 25,
     "dexNum": 26
   },
@@ -2279,7 +2279,7 @@
       52,
       75
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 102,
     "dexNum": 99
   },
@@ -2417,7 +2417,7 @@
       69,
       31
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 108,
     "dexNum": 105
   },
@@ -2877,7 +2877,7 @@
     "abilities": [
       9
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 140,
     "dexNum": 125
   },
@@ -3014,7 +3014,7 @@
       11,
       75
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": null,
     "dexNum": 131
   },
@@ -3313,7 +3313,7 @@
     "abilities": [
       46
     ],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": null,
     "dexNum": 144
   },
@@ -6096,7 +6096,7 @@
       53,
       82
     ],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": 274,
     "dexNum": 264
   },
@@ -7259,7 +7259,7 @@
       30,
       38
     ],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": 415,
     "dexNum": 315
   },
@@ -8404,7 +8404,7 @@
       47,
       114
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 380,
     "dexNum": 365
   },
@@ -8470,7 +8470,7 @@
     "abilities": [
       33
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 382,
     "dexNum": 368
   },
@@ -9459,7 +9459,7 @@
     "abilities": [
       103
     ],
-    "tier": "zubl",
+    "tier": "pu",
     "evolvesFrom": 416,
     "dexNum": 409
   },
@@ -11244,7 +11244,7 @@
     "abilities": [
       36
     ],
-    "tier": "ubers",
+    "tier": "ou",
     "evolvesFrom": null,
     "dexNum": 482
   },

@@ -1,6 +1,7 @@
-import { pgTable, serial, varchar, timestamp, text, integer, boolean, pgEnum, primaryKey } from 'drizzle-orm/pg-core';
+import { pgTable, serial, varchar, timestamp, text, integer, boolean, pgEnum, primaryKey, jsonb, unique } from 'drizzle-orm/pg-core';
 
 export const genderEnum = pgEnum('gender', ['male', 'female', 'random', 'genderless']);
+export const userRoleEnum = pgEnum('user_role', ['user', 'moderator', 'admin']);
 
 export const users = pgTable('users', {
     id: serial('id').primaryKey(),
@@ -9,6 +10,7 @@ export const users = pgTable('users', {
     email: varchar('email', { length: 255 }).notNull().unique(),
     avatar: varchar('avatar', { length: 255 }),
     bio: varchar('bio', { length: 255 }),
+    role: userRoleEnum('role').notNull().default('user'),
     createdAt: timestamp('created_at').defaultNow(),
 });
 
@@ -62,4 +64,91 @@ export const teams_pokemons_moves = pgTable('teams_pokemons_moves', {
     move_id: integer('move_id').notNull(),
 }, (table) => [
   primaryKey({ columns: [table.teams_pokemon_id, table.move_id] }),
+]);
+
+export const revisionStatusEnum = pgEnum('revision_status', ['merged', 'pending']);
+export const proposalStatusEnum = pgEnum('proposal_status', ['pending', 'accepted', 'rejected']);
+
+/* One row per Pokémon (by the static game-data id in data/pokemons.json — not
+ * a DB FK, same convention as teams_pokemons.pokemon_id) that has any
+ * community-contributed analysis. Created on first contribution. */
+export const pokemonAnalyses = pgTable('pokemon_analyses', {
+    id: serial('id').primaryKey(),
+    pokemonId: integer('pokemon_id').notNull().unique(),
+    role: varchar('role', { length: 120 }),
+    overview: text('overview'),
+    createdBy: integer('created_by').references(() => users.id, { onDelete: 'set null' }),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+/* A competitive moveset attached to an analysis. updatedBy/updatedAt are the
+ * "last edit by" pointer shown in the UI; analysisRevisions below is the full
+ * append-only history. */
+export const analysisSets = pgTable('analysis_sets', {
+    id: serial('id').primaryKey(),
+    analysisId: integer('analysis_id').references(() => pokemonAnalyses.id, { onDelete: 'cascade' }).notNull(),
+    name: varchar('name', { length: 80 }).notNull(),
+    role: varchar('role', { length: 120 }),
+    itemId: integer('item_id'),
+    abilityId: integer('ability_id'),
+    natureId: integer('nature_id'),
+    evs: varchar('evs', { length: 60 }), // formatted display string, e.g. "4 HP / 252 Atk / 252 Spe" — matches AnalysisSet.evs in client/app/pokedex/[slug]/data.ts
+    moves: jsonb('moves').$type<string[]>().notNull(),
+    analysis: text('analysis'),
+    evNote: text('ev_note'),
+    teambuilding: text('teambuilding'),
+    matchupNote: text('matchup_note'),
+    handles: jsonb('handles').$type<number[]>().default([]),
+    threats: jsonb('threats').$type<number[]>().default([]),
+    isAiDraft: boolean('is_ai_draft').notNull().default(false),
+    orderIndex: integer('order_index').notNull().default(0),
+    createdBy: integer('created_by').references(() => users.id, { onDelete: 'set null' }),
+    updatedBy: integer('updated_by').references(() => users.id, { onDelete: 'set null' }),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+}, (table) => [
+  // Guards against two concurrent "add a set" requests silently landing on
+  // the same display position — see createSet()'s transaction in analysisService.ts.
+  unique().on(table.analysisId, table.orderIndex),
+]);
+
+/* Append-only audit log — the source of truth for both the Activity Timeline
+ * and the live-computed Contributors strip (role = Creator/Editor/AI draft,
+ * derived from these rows; no stored contributor table or edit counters). */
+export const analysisRevisions = pgTable('analysis_revisions', {
+    id: serial('id').primaryKey(),
+    analysisId: integer('analysis_id').references(() => pokemonAnalyses.id, { onDelete: 'cascade' }).notNull(),
+    setId: integer('set_id').references(() => analysisSets.id, { onDelete: 'set null' }),
+    authorId: integer('author_id').references(() => users.id, { onDelete: 'set null' }),
+    isAi: boolean('is_ai').notNull().default(false),
+    status: revisionStatusEnum('status').notNull().default('merged'),
+    summary: text('summary').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+/* A pending "suggest a set" submission. Promotion into a real analysisSets
+ * row (and a matching analysisRevisions entry) is moderator/admin-gated. */
+export const analysisProposals = pgTable('analysis_proposals', {
+    id: serial('id').primaryKey(),
+    analysisId: integer('analysis_id').references(() => pokemonAnalyses.id, { onDelete: 'cascade' }).notNull(),
+    authorId: integer('author_id').references(() => users.id, { onDelete: 'set null' }),
+    targetName: varchar('target_name', { length: 80 }).notNull(),
+    note: text('note').notNull(),
+    itemId: integer('item_id'),
+    abilityId: integer('ability_id'),
+    natureId: integer('nature_id'),
+    evs: varchar('evs', { length: 60 }),
+    moves: jsonb('moves').$type<string[]>(),
+    analysis: text('analysis'),
+    evNote: text('ev_note'),
+    teambuilding: text('teambuilding'),
+    matchupNote: text('matchup_note'),
+    status: proposalStatusEnum('status').notNull().default('pending'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+});
+
+export const proposalVotes = pgTable('proposal_votes', {
+    proposal_id: integer('proposal_id').references(() => analysisProposals.id, { onDelete: 'cascade' }).notNull(),
+    user_id: integer('user_id').references(() => users.id, { onDelete: 'cascade' }).notNull(),
+}, (table) => [
+  primaryKey({ columns: [table.proposal_id, table.user_id] }),
 ]);

@@ -310,7 +310,7 @@ export async function likeTeam(teamId: number, userId: number) {
   try {
     await db.insert(team_likes).values({ user_id: userId, team_id: teamId });
   } catch (error: any) {
-    if (error?.code === "23505") throw new AppError(409, "Already liked");
+    if ((error?.cause?.code ?? error?.code) === "23505") throw new AppError(409, "Already liked");
     throw error;
   }
 }

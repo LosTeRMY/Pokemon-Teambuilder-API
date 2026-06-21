@@ -4,6 +4,7 @@ import authRouter from './routes/auth';
 import gamedataRouter from './routes/gamedata';
 import teamsRouter from './routes/teams';
 import usersRouter from './routes/users';
+import analysisRouter from './routes/analysis';
 import { AppError } from './errors';
 
 const app = express();
@@ -19,6 +20,7 @@ app.use(express.json());
 app.use('/auth', authRouter);
 app.use('/gamedata', gamedataRouter);
 app.use('/teams', teamsRouter);
+app.use('/pokemon-analyses', analysisRouter);
 
 app.get('/health', (req, res) => {
     res.json({ status: 'ok' });

@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { spriteUrl } from "@/lib/mockData";
-import { tc } from "@/lib/browserUtils";
+import { tc, bestStat } from "@/lib/browserUtils";
 import { slug } from "@/lib/lookups";
 import type { GBPokemon } from "@/lib/gameData";
 import TypeBadge from "@/components/ui/TypeBadge";
@@ -22,12 +22,12 @@ export default function Hero({
   setsCount,
 }: {
   mon: GBPokemon;
-  role: string;
-  overview: string;
-  usageRate: number;
-  topItemName: string;
-  topItemPct: number;
-  setsCount: number;
+  role?: string;
+  overview?: string;
+  usageRate?: number;
+  topItemName?: string;
+  topItemPct?: number;
+  setsCount?: number;
 }) {
   const [loaded, setLoaded] = useState(false);
   const imgRef = useRef<HTMLImageElement>(null);
@@ -43,6 +43,8 @@ export default function Hero({
   const total = bst(mon.baseStats);
   const tierHue = TIER_HUE[mon.tier];
   const tierLabel = TIER_LABEL[mon.tier] ?? mon.tier.toUpperCase();
+
+  const standout = bestStat(mon.baseStats);
 
   return (
     <div
@@ -95,9 +97,11 @@ export default function Hero({
             #{String(mon.dexNum ?? mon.id).padStart(3, "0")}
           </span>
           {tierHue && <TierBadge hue={tierHue}>{tierLabel} tier</TierBadge>}
-          <span className="inline-flex items-center gap-1.5 ml-auto text-[12px] font-bold text-accent bg-accent-soft rounded-full px-3 py-1">
-            <b className="font-mono">{usageRate.toFixed(1)}%</b> usage
-          </span>
+          {usageRate != null && (
+            <span className="inline-flex items-center gap-1.5 ml-auto text-[12px] font-bold text-accent bg-accent-soft rounded-full px-3 py-1">
+              <b className="font-mono">{usageRate.toFixed(1)}%</b> usage
+            </span>
+          )}
         </div>
         <h1 className="text-[44px] font-extrabold tracking-[-0.035em] m-0 mb-3.25 leading-[0.98]">
           {mon.name}
@@ -107,12 +111,14 @@ export default function Hero({
             <TypeBadge key={t} type={t} />
           ))}
         </div>
-        <span className="inline-flex items-center gap-2 self-start text-[13px] font-bold text-ink bg-surface-2 border border-line rounded-[9px] px-3.25 py-1.5 mb-3.75">
-          <span className="w-1.5 h-1.5 rounded-full bg-accent" />
-          {role}
-        </span>
+        {role && (
+          <span className="inline-flex items-center gap-2 self-start text-[13px] font-bold text-ink bg-surface-2 border border-line rounded-[9px] px-3.25 py-1.5 mb-3.75">
+            <span className="w-1.5 h-1.5 rounded-full bg-accent" />
+            {role}
+          </span>
+        )}
         <p className="an-prose m-0 text-[15px] leading-[1.62] text-muted max-w-[92ch]">
-          {overview}
+          {overview || "No community analysis has been written for this Pokémon yet."}
         </p>
       </div>
 
@@ -122,11 +128,17 @@ export default function Hero({
           <span className="text-[10.5px] font-bold tracking-[0.09em] uppercase text-faint">
             Usage
           </span>
-          <span className="text-[22px] font-extrabold tracking-[-0.02em] flex items-baseline gap-0.75 font-mono">
-            {usageRate.toFixed(1)}
-            <small className="text-[13px] font-bold text-faint">%</small>
-          </span>
-          <span className="text-[11.5px] text-faint">3rd-most-used in OU</span>
+          {usageRate != null ? (
+            <>
+              <span className="text-[22px] font-extrabold tracking-[-0.02em] flex items-baseline gap-0.75 font-mono">
+                {usageRate.toFixed(1)}
+                <small className="text-[13px] font-bold text-faint">%</small>
+              </span>
+              <span className="text-[11.5px] text-faint">{usageRate.toFixed(1)}% of Gen 4 {tierLabel} teams</span>
+            </>
+          ) : (
+            <span className="text-[15px] font-bold text-faint">No data yet</span>
+          )}
         </div>
         <div className="flex-1 flex flex-col justify-center gap-0.75 py-4 px-5.5 border-b border-line-soft max-[1240px]:border-b-0 max-[1240px]:border-r max-[820px]:flex-[1_1_45%]">
           <span className="text-[10.5px] font-bold tracking-[0.09em] uppercase text-faint">
@@ -136,28 +148,40 @@ export default function Hero({
             {total}
           </span>
           <span className="text-[11.5px] text-faint">
-            Atk {mon.baseStats.atk} · bulky
+            {standout.label} {standout.value} · {standout.word}
           </span>
         </div>
         <div className="flex-1 flex flex-col justify-center gap-0.75 py-4 px-5.5 border-b border-line-soft max-[1240px]:border-b-0 max-[1240px]:border-r max-[820px]:flex-[1_1_45%]">
           <span className="text-[10.5px] font-bold tracking-[0.09em] uppercase text-faint">
             Most-run item
           </span>
-          <span className="text-[17px] font-extrabold tracking-[-0.02em]">
-            {topItemName}
-          </span>
-          <span className="text-[11.5px] text-faint font-mono">
-            {topItemPct.toFixed(1)}% of sets
-          </span>
+          {topItemName ? (
+            <>
+              <span className="text-[17px] font-extrabold tracking-[-0.02em]">
+                {topItemName}
+              </span>
+              <span className="text-[11.5px] text-faint font-mono">
+                {(topItemPct ?? 0).toFixed(1)}% of sets
+              </span>
+            </>
+          ) : (
+            <span className="text-[15px] font-bold text-faint">No data yet</span>
+          )}
         </div>
         <div className="flex-1 flex flex-col justify-center gap-0.75 py-4 px-5.5 max-[820px]:flex-[1_1_45%]">
           <span className="text-[10.5px] font-bold tracking-[0.09em] uppercase text-faint">
             Viable sets
           </span>
-          <span className="text-[22px] font-extrabold tracking-[-0.02em] font-mono">
-            {setsCount}
-          </span>
-          <span className="text-[11.5px] text-faint">sweeper → support</span>
+          {setsCount ? (
+            <>
+              <span className="text-[22px] font-extrabold tracking-[-0.02em] font-mono">
+                {setsCount}
+              </span>
+              <span className="text-[11.5px] text-faint">sweeper → support</span>
+            </>
+          ) : (
+            <span className="text-[15px] font-bold text-faint">No data yet</span>
+          )}
         </div>
       </div>
     </div>
