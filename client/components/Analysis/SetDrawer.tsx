@@ -64,11 +64,13 @@ export default function SetDrawer({
   index,
   moveTypes,
   onClose,
+  onEdit,
 }: {
   set: AnalysisSet;
   index: number;
   moveTypes: Record<string, string>;
   onClose: () => void;
+  onEdit?: (set: AnalysisSet) => void;
 }) {
   const isAI = set.provenance.kind === "ai";
 
@@ -127,6 +129,14 @@ export default function SetDrawer({
             </div>
             <span className="text-[12px] text-faint">{set.role}</span>
           </div>
+          {onEdit && index >= 0 && (
+            <button
+              className="border border-line bg-surface text-muted text-[12.5px] font-bold px-3 py-1.5 rounded-[9px] hover:border-accent hover:text-accent hover:bg-accent-soft cursor-pointer"
+              onClick={() => onEdit(set)}
+            >
+              Edit
+            </button>
+          )}
           <button
             className="bg-transparent border-0 text-[16px] text-faint p-1.5 rounded-md hover:text-ink hover:bg-surface-2 cursor-pointer"
             onClick={onClose}
@@ -254,15 +264,12 @@ export default function SetDrawer({
               {isAI ? "✦" : set.provenance.author[0].toUpperCase()}
             </span>
             <span className="text-[12.5px] text-ink">
-              {isAI ? "Drafted by " : "Maintained by "}
+              {isAI ? "Drafted by " : "Last edited by "}
               <b className="font-bold">{set.provenance.author}</b>
               <span className="text-faint">
                 {" "}
-                ·{" "}
-                {isAI
-                  ? "needs review"
-                  : `${set.provenance.reviewers} reviews`}{" "}
-                · {set.provenance.updated}
+                · {isAI ? "needs review · " : ""}
+                {set.provenance.updated}
               </span>
             </span>
           </div>

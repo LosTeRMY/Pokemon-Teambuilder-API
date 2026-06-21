@@ -8,9 +8,17 @@ import { cn } from "@/lib/cn";
 export default function ProposalsList({
   proposals,
   onOpenProposed,
+  onVote,
+  isModerator,
+  onAccept,
+  onReject,
 }: {
   proposals: Proposal[];
   onOpenProposed: (p: Proposal) => void;
+  onVote?: (id: number, voted: boolean) => void;
+  isModerator?: boolean;
+  onAccept?: (id: number) => void;
+  onReject?: (id: number) => void;
 }) {
   // Top/New is a presentational re-sort only — votes themselves are static
   // display data here, there's no vote action wired up.
@@ -127,22 +135,47 @@ export default function ProposalsList({
                   View proposed set
                 </button>
               )}
-              <div className="flex items-center justify-between gap-2.5">
-                <span
-                  className="inline-flex items-center gap-1.5 text-[11.5px] font-bold rounded-full px-2.75 py-1"
-                  style={{
-                    color: "var(--warn)",
-                    background: "var(--warn-soft)",
-                    border:
-                      "1px solid color-mix(in srgb, var(--warn) 26%, var(--surface))",
-                  }}
-                >
-                  <i className="w-1.5 h-1.5 rounded-full bg-warn" />
-                  Pending review
-                </span>
-                <span
-                  className="inline-flex items-center gap-1.5 border border-line bg-surface text-muted text-[12px] font-bold px-2.75 py-1.25 rounded-lg"
-                  title="Votes"
+              <div className="flex items-center justify-between gap-2.5 flex-wrap">
+                <div className="flex items-center gap-1.75">
+                  <span
+                    className="inline-flex items-center gap-1.5 text-[11.5px] font-bold rounded-full px-2.75 py-1"
+                    style={{
+                      color: "var(--warn)",
+                      background: "var(--warn-soft)",
+                      border:
+                        "1px solid color-mix(in srgb, var(--warn) 26%, var(--surface))",
+                    }}
+                  >
+                    <i className="w-1.5 h-1.5 rounded-full bg-warn" />
+                    Pending review
+                  </span>
+                  {isModerator && (
+                    <>
+                      <button
+                        className="text-[11.5px] font-bold text-ok px-2 py-1 rounded-lg border border-line bg-surface hover:bg-ok-soft"
+                        onClick={() => onAccept?.(p.id)}
+                      >
+                        Accept
+                      </button>
+                      <button
+                        className="text-[11.5px] font-bold text-like-fg px-2 py-1 rounded-lg border border-line bg-surface hover:bg-surface-2"
+                        onClick={() => onReject?.(p.id)}
+                      >
+                        Reject
+                      </button>
+                    </>
+                  )}
+                </div>
+                <button
+                  className={cn(
+                    "inline-flex items-center gap-1.5 border text-[12px] font-bold px-2.75 py-1.25 rounded-lg transition-colors duration-140",
+                    p.hasVoted
+                      ? "border-accent bg-accent-soft text-accent"
+                      : "border-line bg-surface text-muted hover:border-accent hover:text-accent",
+                  )}
+                  title={p.hasVoted ? "Remove your vote" : "Vote for this proposal"}
+                  onClick={() => onVote?.(p.id, p.hasVoted)}
+                  disabled={!onVote}
                 >
                   <svg
                     viewBox="0 0 24 24"
@@ -157,7 +190,7 @@ export default function ProposalsList({
                     <path d="m6 15 6-6 6 6" />
                   </svg>
                   <span className="font-mono">{p.votes}</span>
-                </span>
+                </button>
               </div>
             </div>
           ))}

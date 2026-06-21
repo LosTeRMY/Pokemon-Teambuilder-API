@@ -1,5 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
+import { db } from '../db';
+import { users } from '../db/schema';
+import { eq } from 'drizzle-orm';
 
 export const optionalAuth = (req: Request, _res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
@@ -30,3 +33,14 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
         return res.status(401).json({ error: 'Unauthorized' });
     }
 };
+
+// Must run after authenticateToken (needs req.userId). No self-service way to
+// grant moderator/admin yet — set users.role directly in the DB for now.
+export const requireRole = (...roles: Array<'moderator' | 'admin'>) =>
+    async (req: Request, res: Response, next: NextFunction) => {
+        const [user] = await db.select({ role: users.role }).from(users).where(eq(users.id, req.userId!));
+        if (!user || !roles.includes(user.role as 'moderator' | 'admin')) {
+            return res.status(403).json({ error: 'Forbidden' });
+        }
+        next();
+    };

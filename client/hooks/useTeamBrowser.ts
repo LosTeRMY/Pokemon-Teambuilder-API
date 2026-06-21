@@ -21,7 +21,7 @@ export function useTeamBrowser() {
   const [drawer, setDrawer] = useState(false);
   const [copied, setCopied] = useState(false);
 
-  const size = 77;
+  const size = 64;
   const compact = false;
 
   const queryString = useMemo(() => LK.encode(s), [s]);

@@ -31,6 +31,54 @@ export type ComboHandlers = {
   removeCombo: (c: Combo) => void;
 };
 
+// Arbitrary flavor thresholds for the word shown next to a base stat value —
+// shared by BaseStats.tsx (per-stat rows) and Hero.tsx (vitals tile).
+export const statRating = (v: number): string =>
+  v >= 130
+    ? "Excellent"
+    : v >= 110
+      ? "Great"
+      : v >= 95
+        ? "Good"
+        : v >= 80
+          ? "Decent"
+          : v >= 65
+            ? "Average"
+            : v >= 50
+              ? "Mediocre"
+              : "Poor";
+
+// Same flavor-text idea as statRating, but over HP + Def + SpD combined —
+// a rough "how hard is this thing to kill" read, not a precise game stat.
+export const bulkRating = (hp: number, def: number, spd: number): string => {
+  const bulk = hp + def + spd;
+  return bulk >= 320
+    ? "Top-tier bulk"
+    : bulk >= 280
+      ? "Great bulk"
+      : bulk >= 240
+        ? "Good bulk"
+        : bulk >= 200
+          ? "Decent bulk"
+          : bulk >= 160
+            ? "Average bulk"
+            : "Below-average bulk";
+};
+
+type BaseStats = { hp: number; atk: number; def: number; spa: number; spd: number; spe: number };
+const STAT_LABEL_SHORT: Record<keyof BaseStats, string> = { hp: "HP", atk: "Atk", def: "Def", spa: "SpA", spd: "SpD", spe: "Spe" };
+// What each base stat actually gives a Pokémon — used to describe its single
+// highest stat rather than judge it (see statRating for the latter).
+const STAT_ATTRIBUTE: Record<keyof BaseStats, string> = { hp: "bulky", atk: "strong", def: "sturdy", spa: "potent", spd: "resilient", spe: "fast" };
+
+// The Pokémon's single highest base stat, labeled and paired with the
+// attribute it gives (e.g. 135 Speed -> "Spe 135 · fast").
+export function bestStat(s: BaseStats): { label: string; value: number; word: string } {
+  const keys = Object.keys(STAT_LABEL_SHORT) as (keyof BaseStats)[];
+  const bestKey = keys.reduce((best, k) => (s[k] > s[best] ? k : best), keys[0]);
+  return { label: STAT_LABEL_SHORT[bestKey], value: s[bestKey], word: STAT_ATTRIBUTE[bestKey] };
+}
+
 export const tc = (t: string) => TYPE_COLORS[t] || "#888";
 export const fmtName = (id: number) => LK.fmtById.get(id)?.name || String(id);
 export const fmtTier = (id: number) => LK.fmtById.get(id)?.tier || "pu";

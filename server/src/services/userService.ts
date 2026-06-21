@@ -64,7 +64,7 @@ export async function updateUser(userId: number, data: UpdateUserData, requestin
   try {
     await db.update(users).set(updates).where(eq(users.id, userId));
   } catch (error: any) {
-    if (error?.code === "23505") throw new AppError(409, "Email already in use");
+    if ((error?.cause?.code ?? error?.code) === "23505") throw new AppError(409, "Email already in use");
     throw error;
   }
 

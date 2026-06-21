@@ -46,7 +46,7 @@ export default function SetCard({
   set: AnalysisSet;
   index: number;
   moveTypes: Record<string, string>;
-  onOpen: (id: string) => void;
+  onOpen: (id: number) => void;
 }) {
   const isAI = set.provenance.kind === "ai";
   return (
@@ -166,14 +166,12 @@ export default function SetCard({
             {isAI ? "✦" : set.provenance.author[0].toUpperCase()}
           </span>
           <span className="text-[12.5px] text-ink">
-            {isAI ? "Drafted by " : "Maintained by "}
+            {isAI ? "Drafted by " : "Last edited by "}
             <b className="font-bold">{set.provenance.author}</b>
             <span className="text-faint">
               {" "}
-              · {isAI
-                ? "needs review"
-                : `${set.provenance.reviewers} reviews`}{" "}
-              · {set.provenance.updated}
+              · {isAI ? "needs review · " : ""}
+              {set.provenance.updated}
             </span>
           </span>
         </div>

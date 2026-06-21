@@ -2587,7 +2587,7 @@
       "spe": 85
     },
     "abilities": [46],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": null,
     "dexNum": 144
   },
@@ -4765,7 +4765,7 @@
       "spe": 100
     },
     "abilities": [53, 82],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": 274,
     "dexNum": 264
   },
@@ -5683,7 +5683,7 @@
       "spe": 65
     },
     "abilities": [30, 38],
-    "tier": "publ",
+    "tier": "nu",
     "evolvesFrom": 415,
     "dexNum": 315
   },
@@ -8815,7 +8815,7 @@
       "spe": 80
     },
     "abilities": [26],
-    "tier": "ou",
+    "tier": "uu",
     "evolvesFrom": null,
     "dexNum": 481
   },

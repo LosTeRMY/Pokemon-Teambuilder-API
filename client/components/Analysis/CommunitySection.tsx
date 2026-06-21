@@ -65,12 +65,20 @@ export default function CommunitySection({
   proposals,
   sets,
   onOpenProposed,
+  onVote,
+  isModerator,
+  onAccept,
+  onReject,
 }: {
   contributors: Contributor[];
   revisions: Revision[];
   proposals: Proposal[];
   sets: AnalysisSet[];
   onOpenProposed: (p: Proposal) => void;
+  onVote?: (id: number, voted: boolean) => void;
+  isModerator?: boolean;
+  onAccept?: (id: number) => void;
+  onReject?: (id: number) => void;
 }) {
   return (
     <div className="flex flex-col gap-4">
@@ -80,7 +88,14 @@ export default function CommunitySection({
         <div className="max-[1240px]:col-span-2 max-[820px]:col-span-1">
           <AiReviewList sets={sets} />
         </div>
-        <ProposalsList proposals={proposals} onOpenProposed={onOpenProposed} />
+        <ProposalsList
+          proposals={proposals}
+          onOpenProposed={onOpenProposed}
+          onVote={onVote}
+          isModerator={isModerator}
+          onAccept={onAccept}
+          onReject={onReject}
+        />
         <ActivityTimeline revisions={revisions} />
       </div>
     </div>
