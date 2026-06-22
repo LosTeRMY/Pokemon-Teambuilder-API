@@ -32,7 +32,7 @@ cd ../client && npm install
 Both apps need env files (not committed — create them yourself):
 
 `server/.env`:
-```
+```env
 DATABASE_URL=postgresql://...   # Postgres connection string (local or Neon)
 JWT_SECRET=...                  # any secret string
 PORT=3001
@@ -40,7 +40,7 @@ CLIENT_ORIGIN=http://localhost:3000
 ```
 
 `client/.env.local`:
-```
+```env
 NEXT_PUBLIC_API_URL=http://localhost:3001
 ```
 

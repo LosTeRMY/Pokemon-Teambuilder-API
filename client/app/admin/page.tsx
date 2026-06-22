@@ -58,7 +58,8 @@ function UserRow({ u, isSelf, onChangeRole }: { u: AdminUser; isSelf: boolean; o
 export default function AdminPage() {
   const { theme, toggle } = useTheme();
   const { user, isLoading: authLoading } = useAuth();
-  const { users, isLoading: usersLoading, updateRole } = useAdminUsers();
+  const isAdmin = !authLoading && user?.role === "admin";
+  const { users, isLoading: usersLoading, updateRole } = useAdminUsers(isAdmin);
   const router = useRouter();
 
   const [q, setQ] = useState("");

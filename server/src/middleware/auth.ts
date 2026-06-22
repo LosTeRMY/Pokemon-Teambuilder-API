@@ -13,13 +13,27 @@ async function tokenStillValid(decoded: { userId: number; tokenVersion?: number 
     return !!user && user.tokenVersion === decoded.tokenVersion;
 }
 
+// A bad/expired/missing token is an expected, everyday case — treat it as
+// "not authenticated". A thrown DB error from tokenStillValid() is not
+// expected, and swallowing it here would both mislabel a real 500 as a 401
+// and hide it from app.ts's error logging entirely — so the two are kept in
+// separate try/catches and only the JWT one is ever silenced.
 export const optionalAuth = async (req: Request, _res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
     if (header?.startsWith('Bearer ')) {
+        let decoded: { userId: number; tokenVersion: number } | null = null;
         try {
-            const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
-            if (await tokenStillValid(decoded)) req.userId = decoded.userId;
-        } catch {}
+            decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
+        } catch {
+            decoded = null;
+        }
+        if (decoded) {
+            try {
+                if (await tokenStillValid(decoded)) req.userId = decoded.userId;
+            } catch (err) {
+                return next(err);
+            }
+        }
     }
     next();
 };
@@ -34,16 +48,23 @@ export const authenticateToken = async (req: Request, res: Response, next: NextF
 
     const token = header.slice(7)
 
+    let decoded: { userId: number; tokenVersion: number };
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
+        decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
+    } catch {
+        return res.status(401).json({ error: 'Unauthorized' });
+    }
+
+    try {
         if (!(await tokenStillValid(decoded))) {
             return res.status(401).json({ error: 'Unauthorized' });
         }
-        req.userId = decoded.userId;
-        next();
-    } catch (error) {
-        return res.status(401).json({ error: 'Unauthorized' });
+    } catch (err) {
+        return next(err);
     }
+
+    req.userId = decoded.userId;
+    next();
 };
 
 // Must run after authenticateToken (needs req.userId). No self-service way to

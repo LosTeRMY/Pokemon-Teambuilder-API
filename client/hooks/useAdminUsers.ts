@@ -8,12 +8,17 @@ export type AdminUser = { id: number; username: string; email: string; role: Adm
 
 const QUERY_KEY = ["admin", "users"];
 
-export function useAdminUsers() {
+// `enabled` defaults to true for callers that already know it's safe to
+// fire; the admin page passes false until auth has resolved and confirmed
+// the viewer is actually an admin, so non-admins (and admins mid-load) never
+// issue a request that's guaranteed to 403.
+export function useAdminUsers(enabled = true) {
   const queryClient = useQueryClient();
 
   const query = useQuery({
     queryKey: QUERY_KEY,
     queryFn: () => apiFetch<AdminUser[]>("/users"),
+    enabled,
   });
 
   const updateRole = useMutation({

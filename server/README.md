@@ -35,7 +35,7 @@ covered there.
 
 Create `server/.env` with:
 
-```
+```text
 DATABASE_URL=     # postgres connection string (local or Neon) — required, process exits if missing
 JWT_SECRET=       # any secret string — required, process exits if missing
 PORT=3000         # optional, defaults to 3000
@@ -103,7 +103,7 @@ No test runner is configured (`npm test` exits 1).
 
 JWT access tokens, 7-day expiry. Protected endpoints require:
 
-```
+```text
 Authorization: Bearer <token>
 ```
 
@@ -134,6 +134,7 @@ migration file or `schema.sql`.
 ## API
 
 ### Auth
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | POST | `/auth/register` | — | Create account (rate limited: 5/hour/IP). Returns the new `user` object only — **no token**. Callers must call `/auth/login` separately to get one (the Next.js client's `/api/auth/register` route does this chaining server-side so the browser never sees two round trips). |
@@ -142,6 +143,7 @@ migration file or `schema.sql`.
 | POST | `/auth/logout-all` | Required | Bump `token_version` — invalidates every token issued to this account, including the one used to call it |
 
 ### Static data (JSON-backed, no DB queries — all under `/gamedata`)
+
 | Method | Endpoint |
 |--------|----------|
 | GET | `/gamedata/pokemons` |
@@ -153,6 +155,7 @@ migration file or `schema.sql`.
 | GET | `/gamedata/learnsets` |
 
 ### Teams
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | GET | `/teams` | Optional | Browse teams with filters, paginated |
@@ -171,12 +174,14 @@ plus combo filters `pokemon_item=`, `pokemon_move=`, `pokemon_ability=`,
 specific attribute. `liked_by=me` resolves from the JWT.
 
 ### Users
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | GET | `/users/:id` | Optional | Public profile + a lean teams array |
 | PATCH | `/users/:id` | Required | Update email, password, avatar, or bio (own account only). Email/password changes require `currentPassword`. A password change also revokes all other sessions (see Security). `avatar: ""` clears the avatar (distinct from omitting the field). |
 
 ### Pokémon Analyses (Community layer)
+
 | Method | Endpoint | Auth | Description |
 |--------|----------|------|-------------|
 | GET | `/pokemon-analyses/:pokemonId` | Optional | Full analysis: role/overview, sets, contributors, revision history, open proposals (with `hasVoted` if authenticated). Returns `null` (not 404) if nobody's contributed yet. |
