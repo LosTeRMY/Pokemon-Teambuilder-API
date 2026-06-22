@@ -1,7 +1,7 @@
 import { db } from "../db";
 import { users } from "../db/schema";
 import bcrypt from "bcrypt";
-import { eq } from "drizzle-orm";
+import { eq, sql } from "drizzle-orm";
 import jwt from "jsonwebtoken";
 import { AppError } from "../errors";
 
@@ -27,14 +27,18 @@ export async function register(data: { email: string; password: string; username
   }
 }
 
+// A real bcrypt hash of a string nobody will ever type — compared against
+// when the email doesn't exist, so login() always pays the same bcrypt cost
+// and a timing attack can't distinguish "no such email" from "wrong password".
+const DUMMY_HASH = "$2b$12$rn1cnsFVx6/wp9Dyu1d73OI4dISwRTzwTUrbYeHUs5QVpoeyy8y3O";
+
 export async function login(data: { email: string; password: string }) {
   const [user] = await db.select().from(users).where(eq(users.email, data.email));
-  if (!user) throw new AppError(400, "Invalid email or password");
 
-  const isMatch = await bcrypt.compare(data.password, user.password);
-  if (!isMatch) throw new AppError(400, "Invalid email or password");
+  const isMatch = await bcrypt.compare(data.password, user?.password ?? DUMMY_HASH);
+  if (!user || !isMatch) throw new AppError(400, "Invalid email or password");
 
-  const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, { expiresIn: "7d" });
+  const token = jwt.sign({ userId: user.id, tokenVersion: user.tokenVersion }, process.env.JWT_SECRET!, { expiresIn: "7d" });
   return {
     token,
     user: {
@@ -42,6 +46,13 @@ export async function login(data: { email: string; password: string }) {
       avatar: user.avatar, bio: user.bio, role: user.role, createdAt: user.createdAt,
     },
   };
+}
+
+// Bumping tokenVersion makes every JWT issued before this call fail the
+// check in middleware/auth.ts, even though the JWTs themselves are still
+// cryptographically valid and unexpired.
+export async function logoutAll(userId: number) {
+  await db.update(users).set({ tokenVersion: sql`${users.tokenVersion} + 1` }).where(eq(users.id, userId));
 }
 
 export async function getCurrentUser(userId: number) {

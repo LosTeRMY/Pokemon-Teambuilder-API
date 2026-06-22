@@ -1,9 +1,13 @@
 import { Router } from 'express';
-import { authenticateToken, optionalAuth } from '../middleware/auth';
+import { authenticateToken, optionalAuth, requireRole } from '../middleware/auth';
 import z from 'zod';
 import * as userService from '../services/userService';
 
 const router = Router();
+
+const roleSchema = z.object({
+    role: z.enum(['user', 'moderator', 'admin']),
+});
 
 const patchUserSchema = z.object({
     email: z.string().email().optional(),
@@ -20,6 +24,19 @@ const patchUserSchema = z.object({
             message: "currentPassword is required when updating email or password",
             path: ["currentPassword"],
         });
+    }
+});
+
+// Admin-only user list, for the role-management panel. Must be registered
+// before /:id can ever be confused with it — Express distinguishes the exact
+// "/" path from "/:id" automatically, but keep this comment as a flag in
+// case routes are ever reordered or rewritten as a single handler.
+router.get('/', authenticateToken, requireRole('admin'), async (req, res, next) => {
+    try {
+        const result = await userService.listUsers();
+        res.json(result);
+    } catch (err) {
+        next(err);
     }
 });
 
@@ -44,6 +61,21 @@ router.patch('/:id', authenticateToken, async (req, res, next) => {
 
     try {
         const result = await userService.updateUser(userId, parsed.data, req.userId!);
+        res.json(result);
+    } catch (err) {
+        next(err);
+    }
+});
+
+router.patch('/:id/role', authenticateToken, requireRole('admin'), async (req, res, next) => {
+    const userId = Number(req.params.id);
+    if (!Number.isInteger(userId) || userId <= 0) return res.status(400).json({ error: "Invalid id" });
+
+    const parsed = roleSchema.safeParse(req.body);
+    if (!parsed.success) return res.status(400).json({ error: parsed.error.flatten().fieldErrors });
+
+    try {
+        const result = await userService.updateUserRole(userId, parsed.data.role, req.userId!);
         res.json(result);
     } catch (err) {
         next(err);

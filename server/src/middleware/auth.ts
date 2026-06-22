@@ -4,18 +4,27 @@ import { db } from '../db';
 import { users } from '../db/schema';
 import { eq } from 'drizzle-orm';
 
-export const optionalAuth = (req: Request, _res: Response, next: NextFunction) => {
+// JWTs are otherwise stateless — this DB round trip is what makes them
+// revocable (logoutAll / a password change bumps tokenVersion, see
+// authService.ts and userService.ts). Returns true if the token's embedded
+// tokenVersion still matches the user's current one.
+async function tokenStillValid(decoded: { userId: number; tokenVersion?: number }): Promise<boolean> {
+    const [user] = await db.select({ tokenVersion: users.tokenVersion }).from(users).where(eq(users.id, decoded.userId));
+    return !!user && user.tokenVersion === decoded.tokenVersion;
+}
+
+export const optionalAuth = async (req: Request, _res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
     if (header?.startsWith('Bearer ')) {
         try {
-            const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET!) as { userId: number };
-            req.userId = decoded.userId;
+            const decoded = jwt.verify(header.slice(7), process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
+            if (await tokenStillValid(decoded)) req.userId = decoded.userId;
         } catch {}
     }
     next();
 };
 
-export const authenticateToken = (req: Request, res: Response, next: NextFunction) => {
+export const authenticateToken = async (req: Request, res: Response, next: NextFunction) => {
     const header = req.headers.authorization;
 
     // Check the authorization header exists and starts with "Bearer "
@@ -26,7 +35,10 @@ export const authenticateToken = (req: Request, res: Response, next: NextFunctio
     const token = header.slice(7)
 
     try {
-        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number };
+        const decoded = jwt.verify(token, process.env.JWT_SECRET!) as { userId: number; tokenVersion: number };
+        if (!(await tokenStillValid(decoded))) {
+            return res.status(401).json({ error: 'Unauthorized' });
+        }
         req.userId = decoded.userId;
         next();
     } catch (error) {

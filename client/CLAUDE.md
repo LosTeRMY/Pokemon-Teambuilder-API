@@ -49,6 +49,8 @@ Held-item icons are served from `public/sprites/items/<slug>.png` (same slug con
 | `/builder` | `app/builder/page.tsx` | Team builder — species/item/ability/move/EV-IV editor, drafts persisted to `localStorage` |
 | `/profile/[id]` | `app/profile/[id]/page.tsx` | Public profile — any user's avatar/bio/stats + published teams (GET `/users/:id` + GET `/teams?user=`) |
 | `/profile/settings` | `app/profile/settings/page.tsx` | Own-account editor — profile/email/password forms (PATCH `/users/:id`); redirects to `/login` if signed out |
+| `/login` | `app/login/page.tsx` | Email/password form -> `useAuth().login()` |
+| `/register` | `app/register/page.tsx` | Username/email/password form -> `useAuth().register()` |
 
 The Stitch AI design-export mockups for `/profile/[id]` and `/profile/settings` (`Account Settings (offline).html` / `User Profile (offline).html`) have been deleted now that those pages match them, same as the `/builder` mockup before them.
 
@@ -80,7 +82,10 @@ components/
     CommunitySection.tsx # contributors, revision history, set proposals
     ActivityTimeline.tsx # revision history list
     AiReviewList.tsx     # AI-authored content pending human review
-    ProposalsList.tsx    # pending "suggest a new set" proposals
+    ProposalsList.tsx    # pending "suggest a new set" proposals — vote button (optimistic),
+                          # moderator-only Accept/Reject buttons (isModerator prop)
+    SetForm.tsx          # shared add/edit-set + suggest-a-proposal form (mode: "set"|"proposal"),
+                          # rendered inside TeamBuilder/Modal.tsx from page.tsx
   TeamBuilder/        # team builder page (`/builder`)
     Sidebar.tsx        # "My teams" rail/drawer: search, draft/published filter, team cards
     TeamListCard.tsx    # one saved-team card in the sidebar
@@ -139,6 +144,10 @@ lib/
   sessionCookie.ts   # httpOnly cookie get/set/clear helpers shared by app/api/auth/* routes
   teamBrowserMap.ts  # GET /teams row -> BrowserTeam/BrowserMember (display shape for TeamCard/MonSlot)
   teamPublishMap.ts  # DraftTeam <-> POST/PUT /teams payload, incl. gender enum and EV/IV key remap
+  usageStats.ts      # USAGE_STATS (data/usage-stats.json import) -> usageBySlug: Map<slug, Usage>;
+                      # real Smogon ladder data, unrelated to the DB-backed analysisMap.ts below
+  analysisMap.ts     # GET /pokemon-analyses/:id response -> AnalysisSet/Contributor/Revision/Proposal
+                      # display shapes (app/pokedex/[slug]/data.ts); mirrors teamBrowserMap.ts's role
 
 hooks/
   useFilterState.ts  # FilterState + URL sync; exposes add/remove helpers and activeCount;
@@ -154,7 +163,13 @@ hooks/
                      # pendingDeleteId + DeleteTeamModal (cancelDelete/confirmDelete) since that
                      # delete hits DELETE /teams/:id and can't be undone
   useAuth.ts         # TanStack Query wrapper around app/api/auth/* — { user, login, register, logout };
-                     # AuthUser includes createdAt (used by the settings page's "Member since")
+                     # AuthUser includes createdAt (used by the settings page's "Member since") and
+                     # role ("user"|"moderator"|"admin", see server/CLAUDE.md "Security") — used to
+                     # gate the Accept/Reject buttons in ProposalsList.tsx
+  usePokemonAnalysis.ts # GET /pokemon-analyses/:pokemonId via TanStack Query, mapped through
+                     # lib/analysisMap.ts; mutations for overview/set edits, propose, accept/reject
+                     # (plain invalidate-on-success) and vote (optimistic, mirrors useLikeToggle —
+                     # cancels in-flight queries first so a stale refetch can't clobber the optimistic write)
   useTheme.ts        # reads/writes localStorage "pb-theme"; sets data-theme on <html>
   useLikeToggle.ts   # shared optimistic like/unlike-with-rollback for a BrowserTeam[] query key —
                      # used by useTeamBrowser and useUserProfile so the two don't duplicate the logic

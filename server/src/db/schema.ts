@@ -11,6 +11,11 @@ export const users = pgTable('users', {
     avatar: varchar('avatar', { length: 255 }),
     bio: varchar('bio', { length: 255 }),
     role: userRoleEnum('role').notNull().default('user'),
+    // Embedded in every JWT at sign-time and checked on every authenticated
+    // request (middleware/auth.ts) — bumping this invalidates every
+    // previously issued token at once, since JWTs are otherwise stateless
+    // and can't be revoked any other way before they expire.
+    tokenVersion: integer('token_version').notNull().default(0),
     createdAt: timestamp('created_at').defaultNow(),
 });
 

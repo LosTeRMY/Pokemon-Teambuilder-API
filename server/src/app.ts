@@ -1,5 +1,6 @@
 import express, { Request, Response, NextFunction } from 'express';
 import cors from 'cors';
+import helmet from 'helmet';
 import authRouter from './routes/auth';
 import gamedataRouter from './routes/gamedata';
 import teamsRouter from './routes/teams';
@@ -8,6 +9,8 @@ import analysisRouter from './routes/analysis';
 import { AppError } from './errors';
 
 const app = express();
+
+app.use(helmet());
 
 // cors() silently falls back to Access-Control-Allow-Origin: * when origin is
 // falsy — fail loudly instead of allowing any origin to make credentialed requests.
