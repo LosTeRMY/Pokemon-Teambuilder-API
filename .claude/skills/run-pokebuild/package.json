@@ -1,0 +1,10 @@
+{
+  "name": "run-pokebuild-driver",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Self-contained Playwright driver for the run-pokebuild skill. Not part of client/ or server/ — deliberately isolated so it never touches their package.json/lockfile.",
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.61.0"
+  }
+}
